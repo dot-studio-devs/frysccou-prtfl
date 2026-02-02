@@ -146,6 +146,24 @@ export const workExperience = [
     isCurrent: true,
   },
   {
+    id: 4,
+    company: {
+      en: "Dot Studio",
+      es: "Dot Studio",
+    },
+    role: {
+      en: "Full Stack Engineer & Content Creator",
+      es: "Full Stack Engineer & Creador de Contenido",
+    },
+    period: "Aug 2024 - Present",
+    description: {
+      en: "Independent Developer building functional, well-structured digital solutions. Creating tech content to bridge the gap between complex code and community learning.",
+      es: "Desarrollador independiente construyendo soluciones digitales funcionales y bien estructuradas. Creando contenido tecnológico para cerrar la brecha entre código complejo y aprendizaje comunitario.",
+    },
+    logo: "/work/dot-logo.svg",
+    isCurrent: true,
+  },
+  {
     id: 2,
     company: {
       en: "Zatobox",
@@ -179,27 +197,27 @@ export const workExperience = [
     },
     logo: "/work/dragon-pyramid.jpg",
   },
-  {
-    id: 4,
-    company: {
-      en: "Dot Studio",
-      es: "Dot Studio",
-    },
-    role: {
-      en: "Full Stack Engineer & Content Creator",
-      es: "Full Stack Engineer & Creador de Contenido",
-    },
-    period: "Aug 2024 - Present",
-    description: {
-      en: "Independent Developer building functional, well-structured digital solutions. Creating tech content to bridge the gap between complex code and community learning.",
-      es: "Desarrollador independiente construyendo soluciones digitales funcionales y bien estructuradas. Creando contenido tecnológico para cerrar la brecha entre código complejo y aprendizaje comunitario.",
-    },
-    logo: "/work/dot-logo.svg",
-    isCurrent: true,
-  },
 ];
 
 export const education = [
+  {
+    id: 5,
+    institution: {
+      en: "Escuela Da Vinci",
+      es: "Escuela Da Vinci",
+    },
+    degree: {
+      en: "Web Design and Programming",
+      es: "Diseño y Programación Web",
+    },
+    period: "2026 - Present",
+    description: {
+      en: "Official Web Design and Programming degree. Specialist in Full Stack development, UX/UI, Ecommerce, and Artificial Intelligence application.",
+      es: "Tecnicatura Oficial en Diseño y Programación Web. Especialista en desarrollo Full Stack, UX/UI, Ecommerce y aplicación de Inteligencia Artificial.",
+    },
+    logo: "/student/da-vinci.png",
+    isCurrent: true,
+  },
   {
     id: 1,
     institution: {
@@ -210,12 +228,13 @@ export const education = [
       en: "Web Development & Mobile Applications",
       es: "Tecnicatura en Desarrollo Web & Aplicaciones Móviles",
     },
-    period: "2025 - 2027",
+    period: "2025 - Present",
     description: {
       en: "Comprehensive training in modern web and mobile development technologies and methodologies.",
       es: "Formación integral en tecnologías y metodologías modernas de desarrollo web y móvil.",
     },
     logo: "/student/issd.png",
+    isCurrent: true,
   },
   {
     id: 2,

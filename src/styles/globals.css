@@ -9,6 +9,7 @@
   --color-accent: #c4b5fd;
   --color-accent-soft: #ede9fe;
   --color-accent-muted: #ddd6fe;
+  --color-accent-text: #7c3aed;
 
   --color-rose-accent: #fda4af;
   --color-rose-soft: #ffe4e6;
@@ -22,8 +23,8 @@
   --color-gray-300: #d1d5db;
 
   --color-text-primary: #1f2937;
-  --color-text-secondary: #4b5563;
-  --color-text-muted: #9ca3af;
+  --color-text-muted: #4b5563;
+  --color-text-secondary: #374151;
 
   --font-primary: "Inter", system-ui, sans-serif;
   --font-display: "Outfit", system-ui, sans-serif;

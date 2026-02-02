@@ -1,6 +1,10 @@
 ---
 import { translations } from "../i18n/translations.js";
 import { ArrowRight } from "lucide-astro";
+import { Image } from "astro:assets";
+import me from "../assets/images/me.png";
+import dotLogo from "../assets/work/dot-logo.svg";
+
 const t = translations.en;
 ---
 
@@ -11,9 +15,12 @@ const t = translations.en;
         <div
           class="w-24 h-24 rounded-full border-4 border-white shadow-2xl shadow-accent-soft/50 ring-1 ring-gray-100 overflow-hidden"
         >
-          <img
-            src="/me.png"
+          <Image
+            src={me}
             alt="Francisco"
+            width={200}
+            height={200}
+            format="webp"
             class="w-full h-full object-cover"
           />
         </div>
@@ -68,9 +75,11 @@ const t = translations.en;
             <div
               class="w-20 h-20 rounded-2xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden shadow-xl shadow-gray-200/50"
             >
-              <img
-                src="/work/dot-logo.svg"
+              <Image
+                src={dotLogo}
                 alt="Dot Studio"
+                width={48}
+                height={48}
                 class="w-12 h-12 object-contain"
               />
             </div>

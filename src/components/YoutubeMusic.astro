@@ -1,6 +1,8 @@
 ---
 import { Music, ExternalLink } from "lucide-astro";
 import { translations } from "../i18n/translations.js";
+import { Image } from "astro:assets";
+import ytMusicCover from "../assets/images/yt-music.jpg";
 
 const t = translations.en;
 
@@ -21,7 +23,7 @@ interface Track {
 const playlistId = "PLr8nCm0aobtRA0SAeeK4Fa9tbWf-r-ton";
 const apiKey = import.meta.env.YOUTUBE_API_KEY;
 
-const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${playlistId}&key=${apiKey}`;
+const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=${playlistId}&key=${apiKey}`;
 
 let tracks: Track[] = [];
 try {
@@ -38,6 +40,14 @@ const cleanTitle = (title: string) => {
     .replace(/\s*\/\/.*$/, "")
     .trim();
 };
+
+const gradients = [
+  "from-indigo-500/20 to-purple-500/20",
+  "from-blue-500/20 to-cyan-500/20",
+  "from-emerald-500/20 to-teal-500/20",
+  "from-rose-500/20 to-pink-500/20",
+  "from-amber-500/20 to-orange-500/20",
+];
 ---
 
 <section id="music" class="py-12 relative overflow-hidden">
@@ -74,9 +84,15 @@ const cleanTitle = (title: string) => {
             <div
               class="relative rounded-xl overflow-hidden shadow-lg aspect-square md:aspect-auto"
             >
-              <img
-                src="/yt-music.jpg"
+              <Image
+                src={ytMusicCover}
                 alt="90 degree angle"
+                width={400}
+                height={400}
+                format="webp"
+                quality={80}
+                loading="lazy"
+                decoding="async"
                 class="w-full h-full object-cover"
               />
               <div
@@ -105,7 +121,7 @@ const cleanTitle = (title: string) => {
               <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
                 <div class="text-center">
                   <div class="text-xl md:text-2xl font-bold text-accent">
-                    222
+                    226
                   </div>
                   <div
                     class="text-xs text-text-muted uppercase tracking-wide"
@@ -144,23 +160,22 @@ const cleanTitle = (title: string) => {
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         {
-          tracks.map((track: Track) => (
+          tracks.map((track: Track, index) => (
             <a
               href={`https://music.youtube.com/watch?v=${track.snippet.resourceId.videoId}`}
               target="_blank"
               class="group relative p-px rounded-xl bg-linear-to-r from-accent/20 to-rose-accent/20 hover:from-accent/40 hover:to-rose-accent/40 transition-all duration-500 hover:shadow-lg hover:shadow-accent/10"
             >
               <div class="bg-white/80 backdrop-blur-sm rounded-[calc(0.75rem-1px)] p-2 h-full border border-white hover:border-accent/30 transition-all duration-500">
-                <div class="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-100">
-                  <img
-                    src={
-                      track.snippet.thumbnails.high?.url ||
-                      track.snippet.thumbnails.default.url
-                    }
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    alt={track.snippet.title}
-                  />
-                  <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div
+                  class={`relative aspect-square rounded-lg overflow-hidden mb-2 bg-linear-to-br ${gradients[index % gradients.length]} flex items-center justify-center p-4`}
+                >
+                  <div class="absolute inset-0 bg-white/10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div class="bg-white/30 backdrop-blur-md rounded-full w-10 h-10 flex items-center justify-center shadow-lg border border-white/40 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                    <Music class="w-5 h-5 text-accent" />
+                  </div>
+
                   <div class="absolute bottom-1.5 right-1.5 w-7 h-7 rounded-full bg-accent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-1 group-hover:translate-y-0 shadow-lg">
                     <ExternalLink class="w-3 h-3 text-white" />
                   </div>
@@ -198,6 +213,12 @@ const cleanTitle = (title: string) => {
     </div>
   </div>
 </section>
+
+<style>
+  .yt-music-card {
+    will-change: transform, opacity;
+  }
+</style>
 
 <script>
   import gsap from "gsap";

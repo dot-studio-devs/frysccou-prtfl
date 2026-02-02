@@ -2,6 +2,38 @@
 import { translations } from "../i18n/translations.js";
 import { Clock, MapPin } from "lucide-astro";
 const t = translations.en;
+
+const routineData = [
+  { id: "mon", type: "normal" },
+  { id: "tue", type: "normal" },
+  { id: "wed", type: "study" },
+  { id: "thu", type: "study" },
+  { id: "fri", type: "study" },
+  { id: "sat", type: "free" },
+  { id: "sun", type: "free" },
+];
+
+const routines = {
+  normal: [
+    { time: "07:00 - 08:00", label: "routineHuman", color: "text-amber-400" },
+    { time: "08:00 - 17:00", label: "routineWorking", color: "text-accent" },
+    { time: "12:00 - 13:00", label: "routineLunch", color: "text-rose-accent" },
+    { time: "17:00 - 22:00", label: "routineHuman", color: "text-amber-400" },
+    { time: "22:00 - 02:00", label: "routineGaming", color: "text-violet-400" },
+    { time: "02:00 - 07:00", label: "routineSleep", color: "text-indigo-400" },
+  ],
+  study: [
+    { time: "07:00 - 08:00", label: "routineHuman", color: "text-amber-400" },
+    { time: "08:00 - 17:00", label: "routineWorking", color: "text-accent" },
+    { time: "12:00 - 13:00", label: "routineLunch", color: "text-rose-accent" },
+    { time: "17:00 - 19:00", label: "routineHuman", color: "text-amber-400" },
+    { time: "19:00 - 23:00", label: "study", color: "text-blue-500" },
+    { time: "23:00 - 00:00", label: "homework", color: "text-emerald-500" },
+    { time: "00:00 - 01:00", label: "routineGaming", color: "text-violet-400" },
+    { time: "01:00 - 07:00", label: "routineSleep", color: "text-indigo-400" },
+  ],
+  free: [{ time: "00:00 - 23:59", label: "freeDay", color: "text-accent" }],
+};
 ---
 
 <section id="availability" class="py-12 relative overflow-hidden">
@@ -69,97 +101,49 @@ const t = translations.en;
         </div>
 
         <div class="mt-8 pt-10 border-t border-gray-100 relative z-10">
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <div
-              class="routine-block p-4 rounded-2xl bg-gray-50/50 border border-gray-100 hover:border-accent/30 transition-all"
-            >
-              <span
-                class="text-[10px] font-bold text-accent uppercase tracking-wider block mb-1"
-                >08:00 - 17:00</span
-              >
-              <span
-                class="text-xs font-bold text-text-primary block"
-                data-i18n="availability.routineWorking"
-                >{t.availability.routineWorking}</span
-              >
-              <span
-                class="text-[10px] text-text-muted italic"
-                data-i18n="availability.routineWorkingSub"
-                >{t.availability.routineWorkingSub}</span
-              >
-            </div>
-            <div
-              class="routine-block p-4 rounded-2xl bg-gray-50/50 border border-gray-100 hover:border-accent/30 transition-all"
-            >
-              <span
-                class="text-[10px] font-bold text-rose-accent uppercase tracking-wider block mb-1"
-                >12:00 - 13:00</span
-              >
-              <span
-                class="text-xs font-bold text-text-primary block"
-                data-i18n="availability.routineLunch"
-                >{t.availability.routineLunch}</span
-              >
-              <span
-                class="text-[10px] text-text-muted italic"
-                data-i18n="availability.routineLunchSub"
-                >{t.availability.routineLunchSub}</span
-              >
-            </div>
-            <div
-              class="routine-block p-4 rounded-2xl bg-gray-50/50 border border-gray-100 hover:border-accent/30 transition-all"
-            >
-              <span
-                class="text-[10px] font-bold text-accent uppercase tracking-wider block mb-1"
-                >17:00 - 22:00</span
-              >
-              <span
-                class="text-xs font-bold text-text-primary block"
-                data-i18n="availability.routineHuman"
-                >{t.availability.routineHuman}</span
-              >
-              <span
-                class="text-[10px] text-text-muted italic"
-                data-i18n="availability.routineHumanSub"
-                >{t.availability.routineHumanSub}</span
-              >
-            </div>
-            <div
-              class="routine-block p-4 rounded-2xl bg-gray-50/50 border border-gray-100 hover:border-accent/30 transition-all"
-            >
-              <span
-                class="text-[10px] font-bold text-accent uppercase tracking-wider block mb-1"
-                >22:00 - 00:00</span
-              >
-              <span
-                class="text-xs font-bold text-text-primary block"
-                data-i18n="availability.routineGaming"
-                >{t.availability.routineGaming}</span
-              >
-              <span
-                class="text-[10px] text-text-muted italic"
-                data-i18n="availability.routineGamingSub"
-                >{t.availability.routineGamingSub}</span
-              >
-            </div>
-            <div
-              class="routine-block p-4 rounded-2xl bg-gray-50/50 border border-gray-100 hover:border-accent/30 transition-all hidden lg:block"
-            >
-              <span
-                class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block mb-1"
-                >02:00 - 07:00</span
-              >
-              <span
-                class="text-xs font-bold text-text-primary block"
-                data-i18n="availability.routineSleep"
-                >{t.availability.routineSleep}</span
-              >
-              <span
-                class="text-[10px] text-text-muted italic"
-                data-i18n="availability.routineSleepSub"
-                >{t.availability.routineSleepSub}</span
-              >
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4">
+            {
+              routineData.map((day) => (
+                <div
+                  id={`day-${day.id}`}
+                  class="calendar-day p-4 rounded-3xl bg-transparent border border-gray-100 transition-all duration-300 flex flex-col h-full relative"
+                >
+                  <span
+                    class="day-label text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-4 text-center block"
+                    data-i18n={`availability.days.${day.id}`}
+                  >
+                    {
+                      t.availability.days[
+                        day.id as keyof typeof t.availability.days
+                      ]
+                    }
+                  </span>
+                  <div class="flex flex-col gap-3 grow">
+                    {routines[day.type as keyof typeof routines].map(
+                      (block) => (
+                        <div class="flex flex-col">
+                          <span
+                            class={`text-[9px] font-bold uppercase tracking-tight ${block.color}`}
+                          >
+                            {block.time}
+                          </span>
+                          <span
+                            class="text-[11px] font-bold text-text-primary leading-tight"
+                            data-i18n={`availability.${block.label}`}
+                          >
+                            {
+                              t.availability[
+                                block.label as keyof typeof t.availability
+                              ] as string
+                            }
+                          </span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -205,38 +189,127 @@ const t = translations.en;
     const hour = parseInt(parts.find((p) => p.type === "hour")?.value || "0");
     const timeStr = formatter.format(now);
 
+    const dayFormatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Argentina/Buenos_Aires",
+      weekday: "short",
+    });
+    const day = dayFormatter.format(now);
+    const dayMap: Record<string, string> = {
+      Mon: "mon",
+      Tue: "tue",
+      Wed: "wed",
+      Thu: "thu",
+      Fri: "fri",
+      Sat: "sat",
+      Sun: "sun",
+    };
+    const currentDayId = dayMap[day];
+
+    document.querySelectorAll(".calendar-day").forEach((el) => {
+      el.classList.remove("border-accent", "border-2");
+      el.classList.add("border-gray-100");
+
+      const label = el.querySelector(".day-label");
+      if (label) {
+        label.classList.remove("text-accent");
+        label.classList.add("text-text-muted");
+      }
+    });
+
+    const activeDayEl = document.getElementById(`day-${currentDayId}`);
+    if (activeDayEl) {
+      activeDayEl.classList.remove("border-gray-100");
+      activeDayEl.classList.add("border-accent", "border-2");
+
+      const label = activeDayEl.querySelector(".day-label");
+      if (label) {
+        label.classList.remove("text-text-muted");
+        label.classList.add("text-accent");
+      }
+    }
+
     timeEl.textContent = timeStr;
 
-    if (hour >= 8 && hour < 12) {
-      statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-      statusText.textContent = t.availability.workingBusy;
-      availabilityMsg.textContent = t.availability.workingMsg;
-      dynamicBg.style.backgroundColor = "#60a5fa";
-    } else if (hour >= 12 && hour < 13) {
-      statusDot.className = "w-3 h-3 rounded-full bg-rose-400";
-      statusText.textContent = t.availability.lunchBreak;
-      availabilityMsg.textContent = t.availability.lunchMsg;
-      dynamicBg.style.backgroundColor = "#fda4af";
-    } else if (hour >= 13 && hour < 17) {
-      statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-      statusText.textContent = t.availability.workingAfternoon;
-      availabilityMsg.textContent = t.availability.workingAfternoonMsg;
-      dynamicBg.style.backgroundColor = "#c4b5fd";
-    } else if (hour >= 17 && hour < 22) {
-      statusDot.className = "w-3 h-3 rounded-full bg-amber-400";
-      statusText.textContent = t.availability.humanMode;
+    if (day === "Sat" || day === "Sun") {
+      statusDot.className = "w-3 h-3 rounded-full bg-accent";
+      statusText.textContent = t.availability.freeDay;
       availabilityMsg.textContent = t.availability.humanModeMsg;
-      dynamicBg.style.backgroundColor = "#fbbf24";
-    } else if (hour >= 22 || hour < 2) {
-      statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-violet-400";
-      statusText.textContent = t.availability.gamingTime;
-      availabilityMsg.textContent = t.availability.gamingMsg;
-      dynamicBg.style.backgroundColor = "#8b5cf6";
+      dynamicBg.style.backgroundColor = "#60a5fa";
+    } else if (day === "Wed" || day === "Thu" || day === "Fri") {
+      if (hour >= 8 && hour < 12) {
+        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
+        statusText.textContent = t.availability.workingBusy;
+        availabilityMsg.textContent = t.availability.workingMsg;
+        dynamicBg.style.backgroundColor = "#60a5fa";
+      } else if (hour >= 12 && hour < 13) {
+        statusDot.className = "w-3 h-3 rounded-full bg-rose-400";
+        statusText.textContent = t.availability.lunchBreak;
+        availabilityMsg.textContent = t.availability.lunchMsg;
+        dynamicBg.style.backgroundColor = "#fda4af";
+      } else if (hour >= 13 && hour < 17) {
+        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
+        statusText.textContent = t.availability.workingAfternoon;
+        availabilityMsg.textContent = t.availability.workingAfternoonMsg;
+        dynamicBg.style.backgroundColor = "#c4b5fd";
+      } else if (hour >= 17 && hour < 19) {
+        statusDot.className = "w-3 h-3 rounded-full bg-amber-400";
+        statusText.textContent = t.availability.humanMode;
+        availabilityMsg.textContent = t.availability.humanModeMsg;
+        dynamicBg.style.backgroundColor = "#fbbf24";
+      } else if (hour >= 19 && hour < 23) {
+        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-blue-500";
+        statusText.textContent = t.availability.study;
+        availabilityMsg.textContent = t.availability.workingMsg;
+        dynamicBg.style.backgroundColor = "#3b82f6";
+      } else if (hour >= 23 || hour < 0) {
+        statusDot.className = "w-3 h-3 rounded-full bg-emerald-500";
+        statusText.textContent = t.availability.homework;
+        availabilityMsg.textContent = t.availability.workingMsg;
+        dynamicBg.style.backgroundColor = "#10b981";
+      } else if (hour === 0) {
+        statusDot.className = "w-3 h-3 rounded-full bg-violet-400";
+        statusText.textContent = t.availability.gamingTime;
+        availabilityMsg.textContent = t.availability.gamingMsg;
+        dynamicBg.style.backgroundColor = "#8b5cf6";
+      } else {
+        statusDot.className = "w-3 h-3 rounded-full bg-indigo-500";
+        statusText.textContent = t.availability.sleeping;
+        availabilityMsg.textContent = t.availability.sleepingMsg;
+        dynamicBg.style.backgroundColor = "#4338ca";
+      }
     } else {
-      statusDot.className = "w-3 h-3 rounded-full bg-indigo-500";
-      statusText.textContent = t.availability.sleeping;
-      availabilityMsg.textContent = t.availability.sleepingMsg;
-      dynamicBg.style.backgroundColor = "#4338ca";
+      if (hour >= 8 && hour < 12) {
+        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
+        statusText.textContent = t.availability.workingBusy;
+        availabilityMsg.textContent = t.availability.workingMsg;
+        dynamicBg.style.backgroundColor = "#60a5fa";
+      } else if (hour >= 12 && hour < 13) {
+        statusDot.className = "w-3 h-3 rounded-full bg-rose-400";
+        statusText.textContent = t.availability.lunchBreak;
+        availabilityMsg.textContent = t.availability.lunchMsg;
+        dynamicBg.style.backgroundColor = "#fda4af";
+      } else if (hour >= 13 && hour < 17) {
+        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
+        statusText.textContent = t.availability.workingAfternoon;
+        availabilityMsg.textContent = t.availability.workingAfternoonMsg;
+        dynamicBg.style.backgroundColor = "#c4b5fd";
+      } else if (hour >= 17 && hour < 22) {
+        statusDot.className = "w-3 h-3 rounded-full bg-amber-400";
+        statusText.textContent = t.availability.humanMode;
+        availabilityMsg.textContent = t.availability.humanModeMsg;
+        dynamicBg.style.backgroundColor = "#fbbf24";
+      } else if (hour >= 22 || hour < 2) {
+        statusDot.className =
+          "w-3 h-3 rounded-full animate-pulse bg-violet-400";
+        statusText.textContent = t.availability.gamingTime;
+        availabilityMsg.textContent = t.availability.gamingMsg;
+        dynamicBg.style.backgroundColor = "#8b5cf6";
+      } else {
+        statusDot.className = "w-3 h-3 rounded-full bg-indigo-500";
+        statusText.textContent = t.availability.sleeping;
+        availabilityMsg.textContent = t.availability.sleepingMsg;
+        dynamicBg.style.backgroundColor = "#4338ca";
+      }
     }
   }
 

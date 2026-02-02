@@ -82,7 +82,6 @@ import CustomCursor from "../components/CustomCursor.astro";
 
     document.documentElement.lang = lang;
 
-    // Disparar evento para componentes de React (Islas)
     const event = new CustomEvent("languageChange", { detail: t });
     window.dispatchEvent(event);
   }

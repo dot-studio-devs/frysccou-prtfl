@@ -38,11 +38,12 @@ const t = translations.en;
         <div class="order-2 md:order-1">
           <h3
             class="text-lg font-bold text-text-primary mb-4 flex items-center gap-2"
-            data-i18n="guestbook.messagesTitle"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"
             ></span>
-            {t.guestbook.messagesTitle}
+            <span data-i18n="guestbook.messagesTitle"
+              >{t.guestbook.messagesTitle}</span
+            >
           </h3>
           <GuestbookList client:load translations={t.guestbook} />
         </div>

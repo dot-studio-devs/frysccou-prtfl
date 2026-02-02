@@ -11,7 +11,18 @@ import {
   User,
   Link2,
 } from "lucide-astro";
+import { Image } from "astro:assets";
+import landingTemplate from "../assets/templates/landing-template.png";
+import blogTemplate from "../assets/templates/blog-template.png";
+const landingYoutubeId = "NGPnoOegxxs";
+const blogYoutubeId = "RQrsdh8cyNo";
+
 const t = translations.en;
+
+const templateImages: Record<string, any> = {
+  landing: landingTemplate,
+  blog: blogTemplate,
+};
 
 const products = [
   {
@@ -20,8 +31,8 @@ const products = [
     priceARS: t.marketplace.items.landing.priceARS,
     priceUSD: t.marketplace.items.landing.priceUSD,
     mpLink: "https://mpago.la/2EQWepT",
-    image: "/templates/landing-template.png",
-    video: "/preview/preview.mp4",
+    image: landingTemplate,
+    youtubeId: landingYoutubeId,
     desc: t.marketplace.items.landing.aboutDesc,
     topics: [
       "React",
@@ -41,8 +52,8 @@ const products = [
     priceARS: t.marketplace.items.blog.priceARS,
     priceUSD: t.marketplace.items.blog.priceUSD,
     mpLink: "https://mpago.la/2qSZUuE",
-    image: "/templates/blog-template.png",
-    video: "/preview/blog-preview.mp4",
+    image: blogTemplate,
+    youtubeId: blogYoutubeId,
     desc: t.marketplace.items.blog.aboutDesc,
     topics: [
       "Blog",
@@ -80,21 +91,21 @@ const products = [
       </p>
     </div>
 
-    <!-- Showroom Grid -->
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 showroom-grid opacity-0 translate-y-10"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 showroom-grid">
       {
         products.map((product) => (
           <button
-            class="showroom-item group relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer text-left"
+            class="showroom-item opacity-0 translate-y-10 group relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer text-left"
             data-product-id={product.id}
             id={`btn-${product.id}`}
           >
             <div class="aspect-video overflow-hidden">
-              <img
-                src={product.image}
+              <Image
+                src={templateImages[product.id]}
                 alt={product.name}
+                width={600}
+                height={337}
+                format="webp"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -134,12 +145,10 @@ const products = [
       }
     </div>
 
-    <!-- Active Product Display -->
     <div
       class="grid lg:grid-cols-12 gap-6 sm:gap-12 items-start"
       id="display-area"
     >
-      <!-- Info Card -->
       <div
         class="lg:col-span-7 marketplace-card opacity-0 lg:-translate-x-5 translate-y-10 lg:translate-y-0 bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-xl shadow-accent-soft/10"
       >
@@ -148,12 +157,19 @@ const products = [
             id="media-container"
             class="w-full h-full relative cursor-pointer"
           >
-            <img
-              id="template-image"
-              src={products[0].image}
-              alt="Template Preview"
-              class="w-full h-full object-cover transition-transform duration-700"
-            />
+            {
+              products.map((p, idx) => (
+                <Image
+                  id={`display-img-${p.id}`}
+                  src={templateImages[p.id]}
+                  alt="Template Preview"
+                  width={1200}
+                  height={675}
+                  format="webp"
+                  class={`template-display-img w-full h-full object-cover transition-transform duration-700 ${idx === 0 ? "" : "hidden"}`}
+                />
+              ))
+            }
             <div
               id="play-overlay"
               class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all duration-300"
@@ -171,14 +187,16 @@ const products = [
               </p>
             </div>
           </div>
-          <video
+          <iframe
             id="template-video"
-            class="hidden w-full h-full object-cover"
-            controls
-            playsinline
-            src={products[0].video}
+            class="hidden absolute inset-0 w-full h-full z-20"
+            src=""
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
           >
-          </video>
+          </iframe>
         </div>
 
         <div class="p-4 sm:p-6 md:p-10">
@@ -211,7 +229,6 @@ const products = [
         </div>
       </div>
 
-      <!-- Payment Section -->
       <div
         class="lg:col-span-5 flex flex-col gap-6 marketplace-payment opacity-0 lg:translate-x-5 translate-y-10 lg:translate-y-0"
       >
@@ -385,7 +402,6 @@ const products = [
           </div>
         </div>
 
-        <!-- Help Card -->
         <div
           class="bg-linear-to-br from-accent-soft to-white p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl md:rounded-4xl border border-accent/10 shadow-xl shadow-accent-soft/20 overflow-hidden relative group"
         >
@@ -426,7 +442,6 @@ const products = [
       </div>
     </div>
 
-    <!-- Post-Payment Section (Always Visible) -->
     <div
       class="mt-12 sm:mt-16 bg-off-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-4xl p-4 sm:p-8 md:p-12 border border-gray-100 shadow-xl opacity-0 translate-y-10 post-payment-section"
     >
@@ -531,7 +546,7 @@ const products = [
       ease: "power3.out",
     });
 
-    gsap.to(".showroom-grid", {
+    gsap.to(".showroom-item", {
       scrollTrigger: {
         trigger: ".showroom-grid",
         start: "top 85%",
@@ -539,7 +554,8 @@ const products = [
       },
       opacity: 1,
       y: 0,
-      duration: 1,
+      duration: 0.8,
+      stagger: 0.2,
       ease: "power3.out",
     });
 
@@ -612,15 +628,10 @@ const products = [
       ease: "power3.out",
     });
 
-    // Elements
     const mediaContainer = document.getElementById("media-container");
     const playOverlay = document.getElementById("play-overlay");
-    const templateImage = document.getElementById(
-      "template-image",
-    ) as HTMLImageElement | null;
-    const templateVideo = document.getElementById(
-      "template-video",
-    ) as HTMLVideoElement | null;
+    const displayImages = document.querySelectorAll(".template-display-img");
+    const templateIframe = document.getElementById("template-video") as any;
     const activeTitle = document.getElementById("active-title");
     const activeDesc = document.getElementById("active-desc");
     const activeTopics = document.getElementById("active-topics");
@@ -631,7 +642,6 @@ const products = [
     ) as HTMLAnchorElement | null;
     const showroomItems = document.querySelectorAll(".showroom-item");
 
-    // Switcher Elements
     const btnArs = document.getElementById("btn-ars");
     const btnUsd = document.getElementById("btn-usd");
     const switcherBg = document.getElementById("switcher-bg");
@@ -640,22 +650,39 @@ const products = [
     const actionArs = document.getElementById("action-ars");
     const actionUsd = document.getElementById("action-usd");
 
-    // Video Logic
     mediaContainer?.addEventListener("click", () => {
-      playOverlay?.classList.add("hidden");
-      templateImage?.classList.add("hidden");
-      templateVideo?.classList.remove("hidden");
-      templateVideo?.play();
+      const activeBtn = document.querySelector(".showroom-item.border-accent");
+      const activeId =
+        (activeBtn as HTMLElement)?.dataset.productId || "landing";
+      const product = products.find((p: any) => p.id === activeId);
+
+      if (product && product.youtubeId) {
+        mediaContainer?.classList.add("hidden");
+        if (templateIframe) {
+          templateIframe.src = `https://www.youtube.com/embed/${product.youtubeId}?autoplay=1`;
+          templateIframe.classList.remove("hidden");
+        }
+      }
     });
 
     function resetVideo() {
+      mediaContainer?.classList.remove("hidden");
       playOverlay?.classList.remove("hidden");
-      templateImage?.classList.remove("hidden");
-      templateVideo?.classList.add("hidden");
-      templateVideo?.pause();
+      displayImages.forEach((img) => img.classList.add("hidden"));
+
+      const activeBtn = document.querySelector(".showroom-item.border-accent");
+      const activeId =
+        (activeBtn as HTMLElement)?.dataset.productId || "landing";
+      document
+        .getElementById(`display-img-${activeId}`)
+        ?.classList.remove("hidden");
+
+      if (templateIframe) {
+        templateIframe.classList.add("hidden");
+        templateIframe.src = "";
+      }
     }
 
-    // Product Switcher Logic
     function updateProduct(productId: string) {
       const product = products.find((p: any) => p.id === productId);
       if (!product) return;
@@ -669,8 +696,14 @@ const products = [
 
       // Update basic info
       resetVideo();
-      if (templateImage) templateImage.src = product.image;
-      if (templateVideo) templateVideo.src = product.video;
+      displayImages.forEach((img) => img.classList.add("hidden"));
+      document
+        .getElementById(`display-img-${productId}`)
+        ?.classList.remove("hidden");
+
+      if (templateIframe && product.youtubeId) {
+        templateIframe.src = "";
+      }
 
       if (activeTitle) {
         activeTitle.textContent = product.name;
@@ -716,7 +749,6 @@ const products = [
       });
     });
 
-    // Currency Switcher Logic
     function updateCurrency(toUsd: boolean) {
       if (toUsd) {
         switcherBg?.style.setProperty("left", "calc(50%)");
@@ -742,7 +774,6 @@ const products = [
     btnArs?.addEventListener("click", () => updateCurrency(false));
     btnUsd?.addEventListener("click", () => updateCurrency(true));
 
-    // Copy Address
     const copyBtn = document.getElementById("copy-address");
     const copyText = document.getElementById("copy-text");
     const walletAddress =
@@ -767,7 +798,6 @@ const products = [
       }
     });
 
-    // Initialize first product as active
     document
       .getElementById("btn-landing")
       ?.classList.add("border-accent", "ring-2", "ring-accent");

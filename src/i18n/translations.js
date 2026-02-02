@@ -2,6 +2,11 @@ export const translations = {
   en: {
     nav: {
       about: "About",
+      aboutExp: "Experience & Education",
+      aboutMe: "Me",
+      aboutMark: "Leave your mark",
+      aboutStudio: "Dot Studio",
+      aboutDonations: "Donations",
       skills: "Skills",
       projects: "Projects",
       experience: "Experience",
@@ -119,6 +124,18 @@ export const translations = {
       routineGamingSub: "Available on chat",
       routineSleep: "Deep Sleep",
       routineSleepSub: "If it rings, I answer",
+      study: "Study / Learning",
+      homework: "Meet & Homework",
+      freeDay: "Free Day",
+      days: {
+        mon: "Mon",
+        tue: "Tue",
+        wed: "Wed",
+        thu: "Thu",
+        fri: "Fri",
+        sat: "Sat",
+        sun: "Sun",
+      },
     },
     guestbook: {
       badge: "Guestbook",
@@ -179,6 +196,11 @@ export const translations = {
   es: {
     nav: {
       about: "Sobre mí",
+      aboutExp: "Trayectoria",
+      aboutMe: "Yo",
+      aboutMark: "Dejá tu huella",
+      aboutStudio: "Dot Studio",
+      aboutDonations: "Donaciones",
       skills: "Habilidades",
       projects: "Proyectos",
       experience: "Trayectoria",
@@ -296,6 +318,18 @@ export const translations = {
       routineGamingSub: "Atento al chat",
       routineSleep: "Quinto Sueño",
       routineSleepSub: "Si suena, atiendo",
+      study: "Estudio / Aprendizaje",
+      homework: "Meet y Tarea",
+      freeDay: "Día Libre",
+      days: {
+        mon: "Lun",
+        tue: "Mar",
+        wed: "Mie",
+        thu: "Jue",
+        fri: "Vie",
+        sat: "Sab",
+        sun: "Dom",
+      },
     },
     guestbook: {
       badge: "Libro de Visitas",

@@ -2,6 +2,19 @@
 import { translations } from "../i18n/translations.js";
 import { projects } from "../i18n/data.js";
 import { Github } from "lucide-astro";
+import { Image } from "astro:assets";
+import liz from "../assets/projects/liz.png";
+import consentido from "../assets/projects/consentido.png";
+import zatobox from "../assets/projects/zatobox.png";
+import dotstudio from "../assets/projects/dot-studio.png";
+
+const projectImages: Record<number, any> = {
+  1: liz,
+  2: consentido,
+  3: zatobox,
+  4: dotstudio,
+};
+
 const t = translations.en;
 ---
 
@@ -24,9 +37,15 @@ const t = translations.en;
         projects.map((project, index) => (
           <div class="project-card opacity-0 translate-y-10 group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-accent transition-all duration-500 hover:shadow-2xl hover:shadow-accent-soft/20 hover:-translate-y-2">
             <div class="aspect-video bg-gray-50 relative overflow-hidden">
-              <img
-                src={project.image}
+              <Image
+                src={projectImages[project.id]}
                 alt={project.title.en}
+                width={600}
+                height={337}
+                format="webp"
+                quality={80}
+                loading="lazy"
+                decoding="async"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div class="absolute inset-0 bg-linear-to-t from-text-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -85,6 +104,7 @@ const t = translations.en;
                   href={project.codeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="View Source Code on GitHub"
                   class="px-5 py-3 bg-white border border-gray-200 text-text-secondary rounded-xl text-sm font-semibold transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent-soft/20"
                 >
                   <Github class="w-5 h-5" />

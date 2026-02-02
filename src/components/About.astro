@@ -2,13 +2,20 @@
 import { translations } from "../i18n/translations.js";
 import { hobbies } from "../i18n/data.js";
 import { ChevronRight, ChevronLeft } from "lucide-astro";
+import { Image } from "astro:assets";
+import me1 from "../assets/images/me.png";
+import me2 from "../assets/images/me2.jpg";
+import me3 from "../assets/images/me3.jpg";
+import me4 from "../assets/images/me4.jpg";
+import meChiquito from "../assets/images/mechiquito.jpg";
+
 const t = translations.en;
 const meImages = [
-  "/me.png",
-  "/me2.jpg",
-  "/me3.jpg",
-  "/me4.jpg",
-  "/mechiquito.jpg",
+  { src: me1, alt: "Francisco 1" },
+  { src: me2, alt: "Francisco 2" },
+  { src: me3, alt: "Francisco 3" },
+  { src: me4, alt: "Francisco 4" },
+  { src: meChiquito, alt: "Francisco small" },
 ];
 ---
 
@@ -37,13 +44,19 @@ const meImages = [
             class="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-gray-100"
           >
             {
-              meImages.map((src, idx) => (
-                <img
-                  src={src}
-                  alt="Francisco"
+              meImages.map((img, idx) => (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={600}
+                  height={600}
+                  format="webp"
+                  quality={80}
                   class="about-carousel-img absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
                   style={idx === 0 ? "opacity: 1; pointer-events: auto;" : ""}
                   data-index={idx}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding={idx === 0 ? "sync" : "async"}
                 />
               ))
             }
@@ -51,12 +64,14 @@ const meImages = [
 
           <button
             id="prev-image"
+            aria-label="Previous Image"
             class="absolute left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-white/50 flex items-center justify-center text-text-primary opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer pointer-events-auto"
           >
             <ChevronLeft class="w-6 h-6" />
           </button>
           <button
             id="next-image"
+            aria-label="Next Image"
             class="absolute right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-white/50 flex items-center justify-center text-text-primary opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer pointer-events-auto"
           >
             <ChevronRight class="w-6 h-6" />
@@ -148,6 +163,10 @@ const meImages = [
               <img
                 src="https://ghchart.rshah.org/7c3aed/esspindola"
                 alt="GitHub Contributions Graph"
+                width="800"
+                height="120"
+                loading="lazy"
+                decoding="async"
                 class="w-full h-auto rounded-xl transition-all duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100"
               />
             </div>

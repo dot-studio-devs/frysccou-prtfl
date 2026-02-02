@@ -1,6 +1,9 @@
 ---
 import { translations } from "../i18n/translations.js";
 import { ChevronRight, X } from "lucide-astro";
+import { Image } from "astro:assets";
+import dotLogo from "../assets/work/dot-logo.svg";
+
 const t = translations.en;
 ---
 
@@ -25,45 +28,101 @@ const t = translations.en;
       >
     </a>
 
-    <div
-      class="hidden md:flex items-center gap-6 lg:gap-8 bg-white/50 px-6 py-2 rounded-xl border border-white/40 shadow-sm"
-    >
-      <a href="#about" class="nav-item group relative" data-i18n="nav.about">
+    <div class="hidden md:flex items-center gap-4 lg:gap-6">
+      <div class="relative group/about flex items-center">
+        <a href="#about" class="nav-item group relative h-full py-2">
+          <span
+            class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
+            data-i18n="nav.about">{t.nav.about}</span
+          >
+          <span
+            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
+          ></span>
+        </a>
+
+        <div
+          class="absolute left-1/2 -translate-x-1/2 top-[calc(100%-8px)] pt-4 opacity-0 scale-95 translate-y-2 pointer-events-none group-hover/about:opacity-100 group-hover/about:scale-100 group-hover/about:translate-y-0 group-hover/about:pointer-events-auto transition-all duration-200 z-50"
+        >
+          <div
+            class="bg-white rounded-2xl border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2 flex flex-col min-w-50"
+          >
+            <a
+              href="#about"
+              class="sub-nav-link px-4 py-2.5 rounded-xl hover:bg-accent-soft text-text-primary hover:text-accent font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/sub"
+            >
+              <span data-i18n="nav.aboutMe">{t.nav.aboutMe}</span>
+              <ChevronRight
+                class="w-3 h-3 opacity-0 group-hover/sub:opacity-100 translate-x-1 transition-all"
+              />
+            </a>
+            <a
+              href="#experience"
+              class="sub-nav-link px-4 py-2.5 rounded-xl hover:bg-accent-soft text-text-primary hover:text-accent font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/sub"
+            >
+              <span data-i18n="nav.aboutExp">{t.nav.aboutExp}</span>
+              <ChevronRight
+                class="w-3 h-3 opacity-0 group-hover/sub:opacity-100 translate-x-1 transition-all"
+              />
+            </a>
+            <a
+              href="#guestbook"
+              class="sub-nav-link px-4 py-2.5 rounded-xl hover:bg-accent-soft text-text-primary hover:text-accent font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/sub"
+            >
+              <span data-i18n="nav.aboutMark">{t.nav.aboutMark}</span>
+              <ChevronRight
+                class="w-3 h-3 opacity-0 group-hover/sub:opacity-100 translate-x-1 transition-all"
+              />
+            </a>
+            <a
+              href="https://dot-studio.site"
+              target="_blank"
+              class="sub-nav-link px-4 py-2.5 rounded-xl hover:bg-accent-soft text-text-primary hover:text-accent font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/sub"
+            >
+              <span data-i18n="nav.aboutStudio">{t.nav.aboutStudio}</span>
+              <ChevronRight
+                class="w-3 h-3 opacity-0 group-hover/sub:opacity-100 translate-x-1 transition-all"
+              />
+            </a>
+            <a
+              href="#donations"
+              class="sub-nav-link px-4 py-2.5 rounded-xl hover:bg-accent-soft text-text-primary hover:text-accent font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/sub"
+            >
+              <span data-i18n="nav.aboutDonations">{t.nav.aboutDonations}</span>
+              <ChevronRight
+                class="w-3 h-3 opacity-0 group-hover/sub:opacity-100 translate-x-1 transition-all"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-px h-3 bg-gray-200/60 hidden lg:block"></div>
+
+      <a href="#skills" class="nav-item group relative">
         <span
           class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
-          >{t.nav.about}</span
+          data-i18n="nav.skills">{t.nav.skills}</span
         >
         <span
           class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
         ></span>
       </a>
-      <a href="#skills" class="nav-item group relative" data-i18n="nav.skills">
+
+      <div class="w-px h-3 bg-gray-200/60 hidden lg:block"></div>
+
+      <a href="#projects" class="nav-item group relative">
         <span
           class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
-          >{t.nav.skills}</span
+          data-i18n="nav.projects">{t.nav.projects}</span
         >
         <span
           class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
         ></span>
       </a>
-      <a
-        href="#projects"
-        class="nav-item group relative"
-        data-i18n="nav.projects"
-      >
-        <span
-          class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
-          >{t.nav.projects}</span
-        >
-        <span
-          class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
-        ></span>
-      </a>
-      <a
-        href="#marketplace"
-        class="nav-item group relative"
-        data-i18n="nav.marketplace"
-      >
+
+      <div class="w-px h-3 bg-gray-200/60 hidden lg:block"></div>
+
+      <a href="#marketplace" class="nav-item group relative">
         <div class="absolute -top-4 -right-1 flex items-center">
           <span class="relative flex h-2 w-2 mr-1">
             <span
@@ -80,20 +139,19 @@ const t = translations.en;
         </div>
         <span
           class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
-          >{t.nav.marketplace}</span
+          data-i18n="nav.marketplace">{t.nav.marketplace}</span
         >
         <span
           class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
         ></span>
       </a>
-      <a
-        href="#contact"
-        class="nav-item group relative"
-        data-i18n="nav.contact"
-      >
+
+      <div class="w-px h-3 bg-gray-200/60 hidden lg:block"></div>
+
+      <a href="#contact" class="nav-item group relative">
         <span
           class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
-          >{t.nav.contact}</span
+          data-i18n="nav.contact">{t.nav.contact}</span
         >
         <span
           class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
@@ -139,9 +197,11 @@ const t = translations.en;
         class="hidden md:flex w-9 h-9 items-center justify-center rounded-lg hover:bg-gray-100 transition-all duration-300 group"
         aria-label="Visit Dot Studio"
       >
-        <img
-          src="/work/dot-logo.svg"
+        <Image
+          src={dotLogo}
           alt="Dot Studio"
+          width={20}
+          height={20}
           class="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
         />
       </a>
@@ -155,6 +215,7 @@ const t = translations.en;
 
       <button
         id="mobile-menu-btn"
+        aria-label="Open Menu"
         class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors group"
       >
         <span
@@ -184,6 +245,7 @@ const t = translations.en;
       <h3 class="text-xl font-[Outfit] font-bold text-text-primary">Menu</h3>
       <button
         id="close-sidebar"
+        aria-label="Close Menu"
         class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors"
       >
         <X class="w-5 h-5 text-text-primary" />
@@ -195,9 +257,8 @@ const t = translations.en;
         <a
           href="#about"
           class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-          data-i18n="nav.about"
         >
-          {t.nav.about}
+          <span data-i18n="nav.about">{t.nav.about}</span>
           <ChevronRight
             class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
             stroke-width={2.5}
@@ -206,203 +267,252 @@ const t = translations.en;
         <a
           href="#skills"
           class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-          data-i18n="nav.skills"
         >
-          {t.nav.skills}
+          <span data-i18n="nav.skills">{t.nav.skills}</span>
           <ChevronRight
             class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
             stroke-width={2.5}
           />
         </a>
-        <a
-          href="#projects"
-          class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-          data-i18n="nav.projects"
-        >
-          {t.nav.projects}
-          <ChevronRight
-            class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-            stroke-width={2.5}
-          />
-        </a>
-        <a
-          href="#marketplace"
-          class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-          data-i18n="nav.marketplace"
-        >
-          <div class="flex items-center gap-2">
-            {t.nav.marketplace}
-            <span
-              class="inline-flex items-center px-1.5 py-0.5 rounded-sm text-[8px] font-black bg-linear-to-r from-accent to-rose-accent text-white leading-none"
-              >HOT</span
+        <div class="flex flex-col gap-1">
+          <div class="flex flex-col">
+            <a
+              href="#about"
+              class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
             >
-          </div>
-          <ChevronRight
-            class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-            stroke-width={2.5}
-          />
-        </a>
-        <a
-          href="#contact"
-          class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-          data-i18n="nav.contact"
-        >
-          {t.nav.contact}
-          <ChevronRight
-            class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-            stroke-width={2.5}
-          />
-        </a>
-
-        <div class="my-4 border-t border-gray-100"></div>
-
-        <a
-          href="#donations"
-          class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-        >
-          <div class="flex items-center gap-3">
-            <div class="relative">
-              <div
-                class="coffee-steam absolute -top-1 left-1/2 -translate-x-1/2 flex gap-0.5 items-end h-3"
+              <span data-i18n="nav.about">{t.nav.about}</span>
+              <ChevronRight
+                class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+                stroke-width={2.5}
+              />
+            </a>
+            <div class="grid grid-cols-2 gap-2 px-4 pb-4">
+              <a
+                href="#about"
+                class="mobile-nav-link py-2 px-3 rounded-lg bg-gray-50 text-[10px] font-bold text-text-muted hover:text-accent hover:bg-accent-soft uppercase tracking-widest transition-all duration-300"
+                data-i18n="nav.aboutMe">{t.nav.aboutMe}</a
               >
-                <span
-                  class="w-0.5 h-1 bg-accent/40 rounded-full animate-steam-1"
-                ></span>
-                <span
-                  class="w-0.5 h-1.5 bg-accent/60 rounded-full animate-steam-2"
-                ></span>
-                <span
-                  class="w-0.5 h-1 bg-accent/40 rounded-full animate-steam-3"
-                ></span>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              <a
+                href="#experience"
+                class="mobile-nav-link py-2 px-3 rounded-lg bg-gray-50 text-[10px] font-bold text-text-muted hover:text-accent hover:bg-accent-soft uppercase tracking-widest transition-all duration-300"
+                data-i18n="nav.aboutExp">{t.nav.aboutExp}</a
               >
-                <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
-                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"></path>
-              </svg>
+              <a
+                href="#guestbook"
+                class="mobile-nav-link py-2 px-3 rounded-lg bg-gray-50 text-[10px] font-bold text-text-muted hover:text-accent hover:bg-accent-soft uppercase tracking-widest transition-all duration-300"
+                data-i18n="nav.aboutMark">{t.nav.aboutMark}</a
+              >
+              <a
+                href="#donations"
+                class="mobile-nav-link py-2 px-3 rounded-lg bg-gray-50 text-[10px] font-bold text-text-muted hover:text-accent hover:bg-accent-soft uppercase tracking-widest transition-all duration-300"
+                data-i18n="nav.aboutDonations">{t.nav.aboutDonations}</a
+              >
             </div>
-            <span>Support my work</span>
           </div>
-          <ChevronRight
-            class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-            stroke-width={2.5}
-          />
-        </a>
 
-        <a
-          href="https://dot-studio.site"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
-        >
-          <div class="flex items-center gap-3">
-            <img src="/work/dot-logo.svg" alt="Dot Studio" class="w-5 h-5" />
-            <span>Dot Studio</span>
-          </div>
-          <ChevronRight
-            class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-            stroke-width={2.5}
-          />
-        </a>
+          <a
+            href="#skills"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <span data-i18n="nav.skills">{t.nav.skills}</span>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+          <a
+            href="#projects"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <span data-i18n="nav.projects">{t.nav.projects}</span>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+          <a
+            href="#marketplace"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <div class="flex items-center gap-2">
+              <span data-i18n="nav.marketplace">{t.nav.marketplace}</span>
+              <span
+                class="inline-flex items-center px-1.5 py-0.5 rounded-sm text-[8px] font-black bg-linear-to-r from-accent to-rose-accent text-white leading-none"
+                >HOT</span
+              >
+            </div>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+          <a
+            href="#contact"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <span data-i18n="nav.contact">{t.nav.contact}</span>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+
+          <div class="my-4 border-t border-gray-100"></div>
+
+          <a
+            href="#donations"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <div
+                  class="coffee-steam absolute -top-1 left-1/2 -translate-x-1/2 flex gap-0.5 items-end h-3"
+                >
+                  <span
+                    class="w-0.5 h-1 bg-accent/40 rounded-full animate-steam-1"
+                  ></span>
+                  <span
+                    class="w-0.5 h-1.5 bg-accent/60 rounded-full animate-steam-2"
+                  ></span>
+                  <span
+                    class="w-0.5 h-1 bg-accent/40 rounded-full animate-steam-3"
+                  ></span>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+                  <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"></path>
+                </svg>
+              </div>
+              <span>Support my work</span>
+            </div>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+
+          <a
+            href="https://dot-studio.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <div class="flex items-center gap-3">
+              <Image
+                src={dotLogo}
+                alt="Dot Studio"
+                width={20}
+                height={20}
+                class="w-5 h-5"
+              />
+              <span>Dot Studio</span>
+            </div>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</nav>
 
-<style>
-  .animate-steam-1 {
-    animation: steam 2s infinite ease-in-out;
-  }
-  .animate-steam-2 {
-    animation: steam 2s infinite ease-in-out 0.4s;
-  }
-  .animate-steam-3 {
-    animation: steam 2s infinite ease-in-out 0.8s;
-  }
-
-  @keyframes steam {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 0;
+  <style>
+    .animate-steam-1 {
+      animation: steam 2s infinite ease-in-out;
     }
-    50% {
-      opacity: 1;
+    .animate-steam-2 {
+      animation: steam 2s infinite ease-in-out 0.4s;
     }
-    100% {
-      transform: translateY(-8px) scale(1.5);
-      opacity: 0;
+    .animate-steam-3 {
+      animation: steam 2s infinite ease-in-out 0.8s;
     }
-  }
-</style>
 
-<script>
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-  const closeSidebarBtn = document.getElementById("close-sidebar");
-  const mobileSidebar = document.getElementById("mobile-sidebar");
-  const sidebarOverlay = document.getElementById("mobile-sidebar-overlay");
-  const bar1 = document.getElementById("bar1");
-  const bar2 = document.getElementById("bar2");
-  const bar3 = document.getElementById("bar3");
-
-  let isOpen = false;
-
-  function openSidebar() {
-    isOpen = true;
-    mobileSidebar?.classList.remove("translate-x-full");
-    mobileSidebar?.classList.add("translate-x-0");
-    sidebarOverlay?.classList.remove("opacity-0", "pointer-events-none");
-    sidebarOverlay?.classList.add("opacity-100");
-    document.body.style.overflow = "hidden";
-
-    if (bar1) bar1.style.transform = "rotate(45deg) translateY(7px)";
-    if (bar2) bar2.style.opacity = "0";
-    if (bar3) bar3.style.transform = "rotate(-45deg) translateY(-7px)";
-  }
-
-  function closeSidebar() {
-    isOpen = false;
-    mobileSidebar?.classList.add("translate-x-full");
-    mobileSidebar?.classList.remove("translate-x-0");
-    sidebarOverlay?.classList.add("opacity-0", "pointer-events-none");
-    sidebarOverlay?.classList.remove("opacity-100");
-    document.body.style.overflow = "";
-
-    if (bar1) bar1.style.transform = "none";
-    if (bar2) bar2.style.opacity = "1";
-    if (bar3) bar3.style.transform = "none";
-  }
-
-  function toggleSidebar() {
-    if (isOpen) {
-      closeSidebar();
-    } else {
-      openSidebar();
+    @keyframes steam {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-8px) scale(1.5);
+        opacity: 0;
+      }
     }
-  }
+  </style>
 
-  mobileMenuBtn?.addEventListener("click", toggleSidebar);
-  closeSidebarBtn?.addEventListener("click", closeSidebar);
-  sidebarOverlay?.addEventListener("click", closeSidebar);
+  <script>
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const closeSidebarBtn = document.getElementById("close-sidebar");
+    const mobileSidebar = document.getElementById("mobile-sidebar");
+    const sidebarOverlay = document.getElementById("mobile-sidebar-overlay");
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
 
-  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-    link.addEventListener(
-      "click",
-      function (this: HTMLAnchorElement, e: Event) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href");
+    let isOpen = false;
 
+    function openSidebar() {
+      isOpen = true;
+      mobileSidebar?.classList.remove("translate-x-full");
+      mobileSidebar?.classList.add("translate-x-0");
+      sidebarOverlay?.classList.remove("opacity-0", "pointer-events-none");
+      sidebarOverlay?.classList.add("opacity-100");
+      document.body.style.overflow = "hidden";
+
+      if (bar1) bar1.style.transform = "rotate(45deg) translateY(7px)";
+      if (bar2) bar2.style.opacity = "0";
+      if (bar3) bar3.style.transform = "rotate(-45deg) translateY(-7px)";
+    }
+
+    function closeSidebar() {
+      isOpen = false;
+      mobileSidebar?.classList.add("translate-x-full");
+      mobileSidebar?.classList.remove("translate-x-0");
+      sidebarOverlay?.classList.add("opacity-0", "pointer-events-none");
+      sidebarOverlay?.classList.remove("opacity-100");
+      document.body.style.overflow = "";
+
+      if (bar1) bar1.style.transform = "none";
+      if (bar2) bar2.style.opacity = "1";
+      if (bar3) bar3.style.transform = "none";
+    }
+
+    function toggleSidebar() {
+      if (isOpen) {
         closeSidebar();
+      } else {
+        openSidebar();
+      }
+    }
 
-        setTimeout(() => {
-          if (targetId && targetId !== "#") {
+    mobileMenuBtn?.addEventListener("click", toggleSidebar);
+    closeSidebarBtn?.addEventListener("click", closeSidebar);
+    sidebarOverlay?.addEventListener("click", closeSidebar);
+
+    document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener(
+        "click",
+        function (this: HTMLAnchorElement, e: Event) {
+          const targetId = this.getAttribute("href");
+          if (!targetId || targetId.startsWith("http") || targetId === "#")
+            return;
+
+          e.preventDefault();
+          closeSidebar();
+
+          setTimeout(() => {
             const target = document.querySelector(targetId);
             if (target) {
               target.scrollIntoView({
@@ -410,69 +520,71 @@ const t = translations.en;
                 block: "start",
               });
             }
-          }
-        }, 300);
-      },
-    );
-  });
+          }, 300);
+        },
+      );
+    });
 
-  document.querySelectorAll('.nav-item[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener(
-      "click",
-      function (this: HTMLAnchorElement, e: Event) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href");
-        if (!targetId || targetId === "#") return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      },
-    );
-  });
+    document
+      .querySelectorAll('.nav-item[href^="#"], .sub-nav-link[href^="#"]')
+      .forEach((anchor) => {
+        anchor.addEventListener(
+          "click",
+          function (this: HTMLAnchorElement, e: Event) {
+            const targetId = this.getAttribute("href");
+            if (!targetId || targetId === "#") return;
+            e.preventDefault();
+            const target = document.querySelector(targetId);
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          },
+        );
+      });
 
-  window.addEventListener("scroll", () => {
-    const nav = document.getElementById("main-nav");
-    const container = document.getElementById("nav-container");
-    const isScrolled = window.scrollY > 60;
+    window.addEventListener("scroll", () => {
+      const nav = document.getElementById("main-nav");
+      const container = document.getElementById("nav-container");
+      const isScrolled = window.scrollY > 60;
 
-    if (isScrolled) {
-      nav?.classList.add("top-6", "px-6");
-      container?.classList.add(
-        "max-w-5xl",
-        "rounded-2xl",
-        "bg-white/70",
-        "backdrop-blur-xl",
-        "border-white/40",
-        "shadow-2xl",
-        "py-3",
-      );
-      container?.classList.remove(
-        "bg-white",
-        "py-4",
-        "border-b",
-        "border-gray-100",
-      );
-    } else {
-      nav?.classList.remove("top-6", "px-6");
-      container?.classList.remove(
-        "max-w-5xl",
-        "rounded-2xl",
-        "bg-white/70",
-        "backdrop-blur-xl",
-        "border-white/40",
-        "shadow-2xl",
-        "py-3",
-      );
-      container?.classList.add(
-        "bg-white",
-        "py-4",
-        "border-b",
-        "border-gray-100",
-      );
-    }
-  });
-</script>
+      if (isScrolled) {
+        nav?.classList.add("top-6", "px-6");
+        container?.classList.add(
+          "max-w-5xl",
+          "rounded-2xl",
+          "bg-white/70",
+          "backdrop-blur-xl",
+          "border-white/40",
+          "shadow-2xl",
+          "py-3",
+        );
+        container?.classList.remove(
+          "bg-white",
+          "py-4",
+          "border-b",
+          "border-gray-100",
+        );
+      } else {
+        nav?.classList.remove("top-6", "px-6");
+        container?.classList.remove(
+          "max-w-5xl",
+          "rounded-2xl",
+          "bg-white/70",
+          "backdrop-blur-xl",
+          "border-white/40",
+          "shadow-2xl",
+          "py-3",
+        );
+        container?.classList.add(
+          "bg-white",
+          "py-4",
+          "border-b",
+          "border-gray-100",
+        );
+      }
+    });
+  </script>
+</nav>
