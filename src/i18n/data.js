@@ -46,6 +46,29 @@ export const skills = {
 
 export const projects = [
   {
+    id: 5,
+    title: {
+      en: "Las Taurinas | E-commerce Store",
+      es: "Las Taurinas | Tienda Online",
+    },
+    description: {
+      en: "Las Taurinas is a modern e-commerce built on Empretienda, featuring Andreani shipping integration, custom CSS3 styling, and secure payments via Mercado Pago and bank transfers. Focused on providing a seamless UX/UI experience with a fully responsive design.",
+      es: "Las Taurinas es un e-commerce moderno construido en Empretienda, con integración de envíos Andreani, estilos CSS3 personalizados, y pagos seguros mediante Mercado Pago y transferencias bancarias. Enfocado en brindar una experiencia UX/UI fluida con un diseño totalmente responsivo.",
+    },
+    aptitudes: [
+      "Empretienda",
+      "Andreani",
+      "CSS3",
+      "Mercado Pago",
+      "UX/UI",
+      "Responsive Design",
+    ],
+    image: "/projects/lastaurinas.png",
+    liveUrl: "https://lastaurinas.empretienda.com.ar/",
+    codeUrl: "#",
+    isNew: true,
+  },
+  {
     id: 1,
     title: {
       en: "Liz | Anime & Manga Discovery",

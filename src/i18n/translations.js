@@ -167,6 +167,7 @@ export const translations = {
       subtitle: "Selected work from my professional journey",
       viewProject: "Visit",
       viewCode: "Source Code",
+      newBadge: "New",
     },
     experience: {
       title: "Experience & Education",
@@ -362,6 +363,7 @@ export const translations = {
       subtitle: "Trabajos seleccionados de mi trayectoria profesional",
       viewProject: "Visitar",
       viewCode: "Código Fuente",
+      newBadge: "Nuevo",
     },
     experience: {
       title: "Experiencia y Educación",
