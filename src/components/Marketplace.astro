@@ -72,23 +72,35 @@ const products = [
 
 <section
   id="marketplace"
-  class="py-32 relative overflow-hidden bg-white/50"
+  class="py-44 relative bg-white border-t border-black/5 overflow-hidden"
   data-products={JSON.stringify(products)}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-    <div class="text-center mb-16 marketplace-header opacity-0 translate-y-10">
-      <h2
-        class="text-4xl md:text-5xl font-[Outfit] font-bold mb-4 text-text-primary"
-        data-i18n="marketplace.title"
-      >
-        {t.marketplace.title}
-      </h2>
-      <p
-        class="text-text-muted text-lg max-w-2xl mx-auto"
-        data-i18n="marketplace.subtitle"
-      >
-        {t.marketplace.subtitle}
-      </p>
+    <div class="marketplace-header opacity-0 translate-y-10 mb-24">
+      <div class="space-y-10">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-px bg-accent"></span>
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400"
+            >Assets</span
+          >
+        </div>
+
+        <div class="space-y-6">
+          <h2
+            class="text-4xl sm:text-6xl md:text-8xl font-[Outfit] font-black text-gray-950 leading-[0.9] tracking-tighter wrap-break-word"
+            data-i18n="marketplace.title"
+          >
+            {t.marketplace.title}
+          </h2>
+          <p
+            class="text-xl text-gray-500 font-light leading-relaxed max-w-xl"
+            data-i18n="marketplace.subtitle"
+          >
+            {t.marketplace.subtitle}
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 showroom-grid">

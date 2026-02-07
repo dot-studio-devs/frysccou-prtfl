@@ -8,36 +8,55 @@ import dotLogo from "../assets/work/dot-logo.svg";
 const t = translations.en;
 ---
 
-<section id="contact" class="py-32 relative">
+<section
+  id="contact"
+  class="py-44 bg-white border-t border-black/5 relative overflow-hidden"
+>
   <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div class="text-center contact-content opacity-0 translate-y-10">
-      <div class="mb-12 flex justify-center">
+    <div class="contact-content opacity-0 translate-y-10">
+      <div class="contact-header mb-20 space-y-10">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-px bg-accent"></span>
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400"
+            >Inquiry</span
+          >
+        </div>
+
         <div
-          class="w-24 h-24 rounded-full border-4 border-white shadow-2xl shadow-accent-soft/50 ring-1 ring-gray-100 overflow-hidden"
+          class="flex flex-col md:flex-row gap-12 items-start justify-between"
         >
-          <Image
-            src={me}
-            alt="Francisco"
-            width={200}
-            height={200}
-            format="webp"
-            class="w-full h-full object-cover"
-          />
+          <div class="space-y-6 max-w-2xl">
+            <h2
+              class="text-6xl md:text-8xl font-[Outfit] font-black text-gray-950 leading-[0.9] tracking-tighter"
+              data-i18n="contact.title"
+            >
+              {t.contact.title}
+            </h2>
+            <p
+              class="text-xl text-gray-500 font-light leading-relaxed"
+              data-i18n="contact.subtitle"
+            >
+              {t.contact.subtitle}
+            </p>
+          </div>
+
+          <div class="shrink-0">
+            <div
+              class="w-32 h-32 rounded-full border-4 border-white shadow-2xl shadow-accent-soft/50 ring-1 ring-gray-100 overflow-hidden"
+            >
+              <Image
+                src={me}
+                alt="Francisco"
+                width={200}
+                height={200}
+                format="webp"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      <h2
-        class="text-4xl md:text-5xl lg:text-7xl font-[Outfit] font-bold mb-6 text-text-primary"
-        data-i18n="contact.title"
-      >
-        {t.contact.title}
-      </h2>
-      <p
-        class="text-text-muted text-lg md:text-xl mb-12 max-w-2xl mx-auto"
-        data-i18n="contact.subtitle"
-      >
-        {t.contact.subtitle}
-      </p>
 
       <div
         class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
@@ -53,7 +72,9 @@ const t = translations.en;
         </a>
       </div>
 
-      <div class="flex items-center justify-center gap-4 text-text-muted mb-12">
+      <div
+        class="flex items-center justify-center gap-4 text-text-muted mb-12 mx-auto"
+      >
         <div class="h-px w-16 bg-gray-200"></div>
         <span
           class="text-xs font-bold uppercase tracking-widest"
@@ -66,7 +87,7 @@ const t = translations.en;
         href="https://dot-studio.site"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block group w-full max-w-md"
+        class="block group w-full max-w-md mx-auto"
       >
         <div
           class="bg-white rounded-3xl p-8 border border-gray-100 hover:border-accent transition-all duration-500 hover:shadow-2xl hover:shadow-accent-soft/30 hover:-translate-y-2 text-center"

@@ -7,31 +7,35 @@ import GuestbookForm from "./guestbook/GuestbookForm";
 const t = translations.en;
 ---
 
-<section id="guestbook" class="py-16 relative overflow-hidden">
+<section
+  id="guestbook"
+  class="py-44 bg-white border-t border-black/5 relative overflow-hidden"
+>
   <div class="max-w-6xl mx-auto px-6 relative z-10">
     <div class="guestbook-container opacity-0 translate-y-10">
-      <div class="text-center mb-12">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-soft/30 border border-accent/20 mb-4"
-        >
-          <BookHeart class="w-4 h-4 text-accent" />
+      <div class="guestbook-header mb-20 space-y-10">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-px bg-accent"></span>
           <span
-            class="text-xs font-bold text-accent uppercase tracking-widest"
-            data-i18n="guestbook.badge">{t.guestbook.badge}</span
+            class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400"
+            >Community</span
           >
         </div>
-        <h2
-          class="text-3xl md:text-4xl font-[Outfit] font-bold text-text-primary mb-3"
-          data-i18n="guestbook.title"
-        >
-          {t.guestbook.title}
-        </h2>
-        <p
-          class="text-text-muted text-sm md:text-base"
-          data-i18n="guestbook.subtitle"
-        >
-          {t.guestbook.subtitle}
-        </p>
+
+        <div class="space-y-6">
+          <h2
+            class="text-6xl md:text-8xl font-[Outfit] font-black text-gray-950 leading-[0.9] tracking-tighter"
+            data-i18n="guestbook.title"
+          >
+            {t.guestbook.title}
+          </h2>
+          <p
+            class="text-xl text-gray-500 font-light leading-relaxed max-w-xl"
+            data-i18n="guestbook.subtitle"
+          >
+            {t.guestbook.subtitle}
+          </p>
+        </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">

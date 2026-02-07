@@ -52,7 +52,7 @@ import CustomCursor from "../components/CustomCursor.astro";
         value = value?.[k];
       }
       if (value && typeof value === "string") {
-        el.textContent = value;
+        el.innerHTML = value;
       }
     });
 

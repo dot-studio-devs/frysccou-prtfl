@@ -1,6 +1,6 @@
 ---
 import { translations } from "../i18n/translations.js";
-import { Clock, MapPin } from "lucide-astro";
+import { Plus } from "lucide-astro";
 const t = translations.en;
 
 const routineData = [
@@ -15,141 +15,166 @@ const routineData = [
 
 const routines = {
   normal: [
-    { time: "07:00 - 08:00", label: "routineHuman", color: "text-amber-400" },
-    { time: "08:00 - 17:00", label: "routineWorking", color: "text-accent" },
-    { time: "12:00 - 13:00", label: "routineLunch", color: "text-rose-accent" },
-    { time: "17:00 - 22:00", label: "routineHuman", color: "text-amber-400" },
-    { time: "22:00 - 02:00", label: "routineGaming", color: "text-violet-400" },
-    { time: "02:00 - 07:00", label: "routineSleep", color: "text-indigo-400" },
+    { time: "07:00", label: "routineHuman", color: "bg-amber-400" },
+    { time: "08:00", label: "routineWorking", color: "bg-accent" },
+    { time: "12:00", label: "routineLunch", color: "bg-rose-accent" },
+    { time: "17:00", label: "routineHuman", color: "bg-amber-400" },
+    { time: "22:00", label: "routineGaming", color: "bg-violet-400" },
+    { time: "02:00", label: "routineSleep", color: "bg-indigo-400" },
   ],
   study: [
-    { time: "07:00 - 08:00", label: "routineHuman", color: "text-amber-400" },
-    { time: "08:00 - 17:00", label: "routineWorking", color: "text-accent" },
-    { time: "12:00 - 13:00", label: "routineLunch", color: "text-rose-accent" },
-    { time: "17:00 - 19:00", label: "routineHuman", color: "text-amber-400" },
-    { time: "19:00 - 23:00", label: "study", color: "text-blue-500" },
-    { time: "23:00 - 00:00", label: "homework", color: "text-emerald-500" },
-    { time: "00:00 - 01:00", label: "routineGaming", color: "text-violet-400" },
-    { time: "01:00 - 07:00", label: "routineSleep", color: "text-indigo-400" },
+    { time: "07:00", label: "routineHuman", color: "bg-amber-400" },
+    { time: "08:00", label: "routineWorking", color: "bg-accent" },
+    { time: "12:00", label: "routineLunch", color: "bg-rose-accent" },
+    { time: "17:00", label: "routineHuman", color: "bg-amber-400" },
+    { time: "19:00", label: "study", color: "bg-blue-500" },
+    { time: "23:00", label: "homework", color: "bg-emerald-500" },
+    { time: "00:00", label: "routineGaming", color: "bg-violet-400" },
+    { time: "01:00", label: "routineSleep", color: "bg-indigo-400" },
   ],
-  free: [{ time: "00:00 - 23:59", label: "freeDay", color: "text-accent" }],
+  free: [{ time: "00:00", label: "freeDay", color: "bg-accent" }],
 };
 ---
 
-<section id="availability" class="py-12 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div
-      class="availability-card opacity-0 translate-y-10 group relative p-px rounded-[2.5rem] bg-linear-to-r from-accent/20 to-rose-accent/20 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10"
-    >
-      <div
-        class="bg-white/80 backdrop-blur-xl rounded-[2.45rem] p-8 md:p-12 border border-white overflow-hidden relative"
-      >
-        <div
-          id="dynamic-bg"
-          class="absolute inset-0 opacity-10 transition-colors duration-2000 pointer-events-none"
-        >
+<section id="availability" class="py-44 bg-white border-t border-black/5">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[0.8fr,1.2fr] gap-20 items-start">
+      <!-- Live Status Side -->
+      <div class="space-y-12 availability-reveal">
+        <div class="space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-px bg-accent"></span>
+            <span
+              class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400"
+              >Current Status</span
+            >
+          </div>
+
+          <div class="space-y-4">
+            <h3
+              id="local-time"
+              class="text-6xl md:text-8xl font-[Outfit] font-black text-gray-900 leading-none tabular-nums tracking-tighter"
+            >
+              00:00:00
+            </h3>
+            <div
+              class="flex items-center gap-3 text-gray-400 font-medium tracking-wide"
+            >
+              <span class="text-xs uppercase" data-i18n="availability.location"
+                >{t.availability.location}</span
+              >
+              <span class="w-1 h-1 rounded-full bg-gray-200"></span>
+              <span id="day-of-week" class="text-xs uppercase">Monday</span>
+            </div>
+          </div>
         </div>
 
         <div
-          class="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10 mb-12"
+          class="p-8 rounded-3xl bg-gray-50 border border-black/3 space-y-6 relative overflow-hidden group"
         >
-          <div class="flex items-center gap-6">
-            <div
-              class="w-16 h-16 rounded-2xl bg-accent-soft/30 flex items-center justify-center text-accent group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
-            >
-              <Clock class="w-8 h-8" />
-            </div>
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <MapPin class="w-4 h-4 text-text-muted" />
-                <span
-                  class="text-text-muted text-sm font-bold tracking-widest uppercase"
-                  data-i18n="availability.location"
-                  >{t.availability.location}</span
-                >
-              </div>
-              <h3
-                id="local-time"
-                class="text-4xl md:text-5xl font-[Outfit] font-bold text-text-primary tabular-nums"
-              >
-                00:00:00
-              </h3>
-            </div>
-          </div>
-
           <div
-            class="flex flex-col items-center md:items-end text-center md:text-right max-w-sm"
+            id="status-pulse"
+            class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-colors duration-1000"
           >
-            <div
-              id="status-container"
-              class="flex items-center gap-3 mb-3 px-4 py-2 rounded-full bg-white shadow-sm border border-gray-100"
-            >
-              <span
-                id="status-dot"
-                class="w-3 h-3 rounded-full animate-pulse transition-colors duration-500"
-              ></span>
-              <span id="status-text" class="text-sm font-bold text-text-primary"
-                >{t.availability.checking}</span
-              >
-            </div>
-            <p
-              id="availability-msg"
-              class="text-text-muted text-sm md:text-base leading-relaxed font-medium"
-            >
-            </p>
           </div>
-        </div>
 
-        <div class="mt-8 pt-10 border-t border-gray-100 relative z-10">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4">
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="relative">
+              <div
+                id="status-dot"
+                class="w-3 h-3 rounded-full transition-colors duration-500"
+              >
+              </div>
+              <div
+                id="status-dot-ping"
+                class="absolute inset-0 w-3 h-3 rounded-full animate-ping opacity-40 transition-colors duration-500"
+              >
+              </div>
+            </div>
+            <span
+              id="status-text"
+              class="text-xs font-black uppercase tracking-widest text-gray-900"
+              >{t.availability.checking}</span
+            >
+          </div>
+
+          <p
+            id="availability-msg"
+            class="text-lg text-gray-500 font-light leading-snug relative z-10 italic"
+          >
+            Thinking...
+          </p>
+        </div>
+      </div>
+
+      <!-- Schedule Side -->
+      <div class="space-y-12 availability-reveal">
+        <div
+          class="flex items-center justify-between border-b border-black/5 pb-6"
+        >
+          <p
+            class="text-[10px] font-black uppercase tracking-widest text-gray-400"
+          >
+            Weekly Routine
+          </p>
+          <div class="flex gap-2">
             {
               routineData.map((day) => (
                 <div
-                  id={`day-${day.id}`}
-                  class="calendar-day p-4 rounded-3xl bg-transparent border border-gray-100 transition-all duration-300 flex flex-col h-full relative"
-                >
-                  <span
-                    class="day-label text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-4 text-center block"
-                    data-i18n={`availability.days.${day.id}`}
-                  >
-                    {
-                      t.availability.days[
-                        day.id as keyof typeof t.availability.days
-                      ]
-                    }
-                  </span>
-                  <div class="flex flex-col gap-3 grow">
-                    {routines[day.type as keyof typeof routines].map(
-                      (block) => (
-                        <div class="flex flex-col">
-                          <span
-                            class={`text-[9px] font-bold uppercase tracking-tight ${block.color}`}
-                          >
-                            {block.time}
-                          </span>
-                          <span
-                            class="text-[11px] font-bold text-text-primary leading-tight"
-                            data-i18n={`availability.${block.label}`}
-                          >
-                            {
-                              t.availability[
-                                block.label as keyof typeof t.availability
-                              ] as string
-                            }
-                          </span>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </div>
+                  id={`dot-${day.id}`}
+                  class="w-1.5 h-1.5 rounded-full bg-gray-100 transition-all duration-500"
+                />
               ))
             }
           </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-1">
+          {
+            routineData.map((day) => (
+              <div
+                id={`day-row-${day.id}`}
+                class="group flex items-center gap-6 py-4 px-4 hover:bg-gray-50 rounded-2xl transition-all duration-300 border-l-2 border-transparent"
+              >
+                <span
+                  class="w-8 text-[10px] font-black uppercase tracking-widest text-gray-300 group-hover:text-gray-900 transition-colors"
+                  data-i18n={`availability.days.${day.id}`}
+                >
+                  {
+                    t.availability.days[
+                      day.id as keyof typeof t.availability.days
+                    ]
+                  }
+                </span>
+
+                <div class="flex-1 flex gap-1 h-1.5 rounded-full overflow-hidden bg-gray-100/50">
+                  {routines[day.type as keyof typeof routines].map((block) => (
+                    <div
+                      class={`${block.color} h-full first:rounded-l-full last:rounded-r-full opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
+                      style={`flex-grow: 1`}
+                      title={`${block.time} - ${block.label}`}
+                    />
+                  ))}
+                </div>
+
+                <div class="hidden sm:block">
+                  <Plus class="w-4 h-4 text-gray-100 group-hover:text-accent transition-colors" />
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .availability-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+</style>
 
 <script>
   import gsap from "gsap";
@@ -167,13 +192,14 @@ const routines = {
   function updateAvailability() {
     const t = getCurrentTranslations();
     const timeEl = document.getElementById("local-time");
+    const dayEl = document.getElementById("day-of-week");
     const statusDot = document.getElementById("status-dot");
+    const statusDotPing = document.getElementById("status-dot-ping");
     const statusText = document.getElementById("status-text");
     const availabilityMsg = document.getElementById("availability-msg");
-    const dynamicBg = document.getElementById("dynamic-bg");
+    const statusPulse = document.getElementById("status-pulse");
 
-    if (!timeEl || !statusDot || !statusText || !availabilityMsg || !dynamicBg)
-      return;
+    if (!timeEl || !statusDot || !statusText || !availabilityMsg) return;
 
     const now = new Date();
     const options: Intl.DateTimeFormatOptions = {
@@ -184,133 +210,142 @@ const routines = {
       hour12: false,
     };
 
-    const formatter = new Intl.DateTimeFormat("en-US", options);
-    const parts = formatter.formatToParts(now);
-    const hour = parseInt(parts.find((p) => p.type === "hour")?.value || "0");
-    const timeStr = formatter.format(now);
+    const timeStr = new Intl.DateTimeFormat("en-US", options).format(now);
+    const hour = parseInt(timeStr.split(":")[0]);
 
-    const dayFormatter = new Intl.DateTimeFormat("en-US", {
+    const dayName = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Argentina/Buenos_Aires",
+      weekday: "long",
+    }).format(now);
+    const dayShort = new Intl.DateTimeFormat("en-US", {
       timeZone: "America/Argentina/Buenos_Aires",
       weekday: "short",
-    });
-    const day = dayFormatter.format(now);
+    })
+      .format(now)
+      .toLowerCase();
+
     const dayMap: Record<string, string> = {
-      Mon: "mon",
-      Tue: "tue",
-      Wed: "wed",
-      Thu: "thu",
-      Fri: "fri",
-      Sat: "sat",
-      Sun: "sun",
+      mon: "mon",
+      tue: "tue",
+      wed: "wed",
+      thu: "thu",
+      fri: "fri",
+      sat: "sat",
+      sun: "sun",
     };
-    const currentDayId = dayMap[day];
 
-    document.querySelectorAll(".calendar-day").forEach((el) => {
-      el.classList.remove("border-accent", "border-2");
-      el.classList.add("border-gray-100");
+    const currentDayKey = dayMap[dayShort] || "mon";
 
-      const label = el.querySelector(".day-label");
-      if (label) {
-        label.classList.remove("text-accent");
-        label.classList.add("text-text-muted");
-      }
-    });
-
-    const activeDayEl = document.getElementById(`day-${currentDayId}`);
-    if (activeDayEl) {
-      activeDayEl.classList.remove("border-gray-100");
-      activeDayEl.classList.add("border-accent", "border-2");
-
-      const label = activeDayEl.querySelector(".day-label");
-      if (label) {
-        label.classList.remove("text-text-muted");
-        label.classList.add("text-accent");
-      }
-    }
-
+    // Update Time and Day
     timeEl.textContent = timeStr;
+    if (dayEl) dayEl.textContent = dayName;
 
-    if (day === "Sat" || day === "Sun") {
-      statusDot.className = "w-3 h-3 rounded-full bg-accent";
-      statusText.textContent = t.availability.freeDay;
-      availabilityMsg.textContent = t.availability.humanModeMsg;
-      dynamicBg.style.backgroundColor = "#60a5fa";
-    } else if (day === "Wed" || day === "Thu" || day === "Fri") {
-      if (hour >= 8 && hour < 12) {
-        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-        statusText.textContent = t.availability.workingBusy;
-        availabilityMsg.textContent = t.availability.workingMsg;
-        dynamicBg.style.backgroundColor = "#60a5fa";
-      } else if (hour >= 12 && hour < 13) {
-        statusDot.className = "w-3 h-3 rounded-full bg-rose-400";
-        statusText.textContent = t.availability.lunchBreak;
-        availabilityMsg.textContent = t.availability.lunchMsg;
-        dynamicBg.style.backgroundColor = "#fda4af";
-      } else if (hour >= 13 && hour < 17) {
-        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-        statusText.textContent = t.availability.workingAfternoon;
-        availabilityMsg.textContent = t.availability.workingAfternoonMsg;
-        dynamicBg.style.backgroundColor = "#c4b5fd";
-      } else if (hour >= 17 && hour < 19) {
-        statusDot.className = "w-3 h-3 rounded-full bg-amber-400";
-        statusText.textContent = t.availability.humanMode;
-        availabilityMsg.textContent = t.availability.humanModeMsg;
-        dynamicBg.style.backgroundColor = "#fbbf24";
-      } else if (hour >= 19 && hour < 23) {
-        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-blue-500";
-        statusText.textContent = t.availability.study;
-        availabilityMsg.textContent = t.availability.workingMsg;
-        dynamicBg.style.backgroundColor = "#3b82f6";
-      } else if (hour >= 23 || hour < 0) {
-        statusDot.className = "w-3 h-3 rounded-full bg-emerald-500";
-        statusText.textContent = t.availability.homework;
-        availabilityMsg.textContent = t.availability.workingMsg;
-        dynamicBg.style.backgroundColor = "#10b981";
-      } else if (hour === 0) {
-        statusDot.className = "w-3 h-3 rounded-full bg-violet-400";
-        statusText.textContent = t.availability.gamingTime;
-        availabilityMsg.textContent = t.availability.gamingMsg;
-        dynamicBg.style.backgroundColor = "#8b5cf6";
-      } else {
-        statusDot.className = "w-3 h-3 rounded-full bg-indigo-500";
-        statusText.textContent = t.availability.sleeping;
-        availabilityMsg.textContent = t.availability.sleepingMsg;
-        dynamicBg.style.backgroundColor = "#4338ca";
-      }
+    // Reset Day Indicators
+    document
+      .querySelectorAll("[id^='dot-']")
+      .forEach((el) => el.classList.replace("bg-accent", "bg-gray-100"));
+    document
+      .querySelectorAll("[id^='day-row-']")
+      .forEach((el) => el.classList.remove("border-accent", "bg-gray-50"));
+
+    const activeDot = document.getElementById(`dot-${currentDayKey}`);
+    const activeRow = document.getElementById(`day-row-${currentDayKey}`);
+    if (activeDot) activeDot.classList.replace("bg-gray-100", "bg-accent");
+    if (activeRow) activeRow.classList.add("border-accent", "bg-gray-50");
+
+    // Availability Logic
+    let status = {
+      color: "bg-indigo-400",
+      bg: "rgba(129, 140, 248, 0.1)",
+      text: t.availability.sleeping,
+      msg: t.availability.sleepingMsg,
+    };
+
+    const isWeekend = dayShort === "sat" || dayShort === "sun";
+    const isStudyDay =
+      dayShort === "wed" || dayShort === "thu" || dayShort === "fri";
+
+    if (isWeekend) {
+      status = {
+        color: "bg-accent",
+        bg: "rgba(168, 85, 247, 0.1)",
+        text: t.availability.freeDay,
+        msg: t.availability.humanModeMsg,
+      };
+    } else if (isStudyDay) {
+      if (hour >= 8 && hour < 17)
+        status = {
+          color: "bg-accent",
+          bg: "rgba(168, 85, 247, 0.1)",
+          text: t.availability.workingBusy,
+          msg: t.availability.workingMsg,
+        };
+      else if (hour >= 17 && hour < 19)
+        status = {
+          color: "bg-amber-400",
+          bg: "rgba(251, 191, 36, 0.1)",
+          text: t.availability.humanMode,
+          msg: t.availability.humanModeMsg,
+        };
+      else if (hour >= 19 && hour < 23)
+        status = {
+          color: "bg-blue-500",
+          bg: "rgba(59, 130, 246, 0.1)",
+          text: t.availability.study,
+          msg: t.availability.workingMsg,
+        };
+      else if (hour >= 23 || hour < 1)
+        status = {
+          color: "bg-emerald-500",
+          bg: "rgba(16, 185, 129, 0.1)",
+          text: t.availability.homework,
+          msg: t.availability.workingMsg,
+        };
+      else if (hour >= 1 && hour < 2)
+        status = {
+          color: "bg-violet-400",
+          bg: "rgba(167, 139, 250, 0.1)",
+          text: t.availability.gamingTime,
+          msg: t.availability.gamingMsg,
+        };
     } else {
-      if (hour >= 8 && hour < 12) {
-        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-        statusText.textContent = t.availability.workingBusy;
-        availabilityMsg.textContent = t.availability.workingMsg;
-        dynamicBg.style.backgroundColor = "#60a5fa";
-      } else if (hour >= 12 && hour < 13) {
-        statusDot.className = "w-3 h-3 rounded-full bg-rose-400";
-        statusText.textContent = t.availability.lunchBreak;
-        availabilityMsg.textContent = t.availability.lunchMsg;
-        dynamicBg.style.backgroundColor = "#fda4af";
-      } else if (hour >= 13 && hour < 17) {
-        statusDot.className = "w-3 h-3 rounded-full animate-pulse bg-rose-500";
-        statusText.textContent = t.availability.workingAfternoon;
-        availabilityMsg.textContent = t.availability.workingAfternoonMsg;
-        dynamicBg.style.backgroundColor = "#c4b5fd";
-      } else if (hour >= 17 && hour < 22) {
-        statusDot.className = "w-3 h-3 rounded-full bg-amber-400";
-        statusText.textContent = t.availability.humanMode;
-        availabilityMsg.textContent = t.availability.humanModeMsg;
-        dynamicBg.style.backgroundColor = "#fbbf24";
-      } else if (hour >= 22 || hour < 2) {
-        statusDot.className =
-          "w-3 h-3 rounded-full animate-pulse bg-violet-400";
-        statusText.textContent = t.availability.gamingTime;
-        availabilityMsg.textContent = t.availability.gamingMsg;
-        dynamicBg.style.backgroundColor = "#8b5cf6";
-      } else {
-        statusDot.className = "w-3 h-3 rounded-full bg-indigo-500";
-        statusText.textContent = t.availability.sleeping;
-        availabilityMsg.textContent = t.availability.sleepingMsg;
-        dynamicBg.style.backgroundColor = "#4338ca";
-      }
+      if (hour >= 8 && hour < 17)
+        status = {
+          color: "bg-accent",
+          bg: "rgba(168, 85, 247, 0.1)",
+          text: t.availability.workingBusy,
+          msg: t.availability.workingMsg,
+        };
+      else if (hour >= 17 && hour < 22)
+        status = {
+          color: "bg-amber-400",
+          bg: "rgba(251, 191, 36, 0.1)",
+          text: t.availability.humanMode,
+          msg: t.availability.humanModeMsg,
+        };
+      else if (hour >= 22 || hour < 2)
+        status = {
+          color: "bg-violet-400",
+          bg: "rgba(167, 139, 250, 0.1)",
+          text: t.availability.gamingTime,
+          msg: t.availability.gamingMsg,
+        };
     }
+
+    if (hour >= 12 && hour < 13)
+      status = {
+        color: "bg-rose-accent",
+        bg: "rgba(244, 63, 94, 0.1)",
+        text: t.availability.lunchBreak,
+        msg: t.availability.lunchMsg,
+      };
+
+    statusDot.className = `w-3 h-3 rounded-full transition-colors duration-500 ${status.color}`;
+    if (statusDotPing)
+      statusDotPing.className = `absolute inset-0 w-3 h-3 rounded-full animate-ping opacity-40 transition-colors duration-500 ${status.color}`;
+    statusText.textContent = status.text;
+    availabilityMsg.textContent = status.msg;
+    if (statusPulse) statusPulse.style.backgroundColor = status.bg;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -333,15 +368,16 @@ const routines = {
       attributeFilter: ["lang"],
     });
 
-    gsap.to(".availability-card", {
-      scrollTrigger: {
-        trigger: "#availability",
-        start: "top 90%",
-      },
+    gsap.to(".availability-reveal", {
       opacity: 1,
       y: 0,
-      duration: 1,
+      duration: 1.2,
+      stagger: 0.2,
       ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#availability",
+        start: "top 80%",
+      },
     });
   });
 </script>

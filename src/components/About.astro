@@ -1,181 +1,150 @@
 ---
 import { translations } from "../i18n/translations.js";
 import { hobbies } from "../i18n/data.js";
-import { ChevronRight, ChevronLeft } from "lucide-astro";
+import { Plus } from "lucide-astro";
 import { Image } from "astro:assets";
 import me1 from "../assets/images/me.png";
-import me2 from "../assets/images/me2.jpg";
-import me3 from "../assets/images/me3.jpg";
-import me4 from "../assets/images/me4.jpg";
-import meChiquito from "../assets/images/mechiquito.jpg";
 
-const t = translations.en;
-const meImages = [
-  { src: me1, alt: "Francisco 1" },
-  { src: me2, alt: "Francisco 2" },
-  { src: me3, alt: "Francisco 3" },
-  { src: me4, alt: "Francisco 4" },
-  { src: meChiquito, alt: "Francisco small" },
-];
+const t = (translations as any).en;
 ---
 
-<section id="about" class="py-32 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 about-header opacity-0 translate-y-10">
-      <h2
-        class="text-4xl md:text-5xl font-[Outfit] font-bold mb-4 text-text-primary"
-        data-i18n="about.title"
+<section id="about" class="py-44 bg-white relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Top Decorative Line -->
+    <div class="h-px w-full bg-black/3 mb-24 relative">
+      <div
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-0.5 bg-accent"
       >
-        {t.about.title}
-      </h2>
-      <p class="text-text-muted text-lg italic" data-i18n="about.subtitle">
-        {t.about.subtitle}
-      </p>
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div
-        class="about-image opacity-0 -translate-x-10 relative group/carousel"
-      >
-        <div
-          class="aspect-square rounded-3xl bg-gray-50 p-4 relative overflow-hidden border border-gray-100 hover:border-accent transition-all duration-500 hover:shadow-2xl hover:shadow-accent-soft/20"
-        >
-          <div
-            class="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-gray-100"
-          >
-            {
-              meImages.map((img, idx) => (
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={600}
-                  height={600}
-                  format="webp"
-                  quality={80}
-                  class="about-carousel-img absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
-                  style={idx === 0 ? "opacity: 1; pointer-events: auto;" : ""}
-                  data-index={idx}
-                  loading={idx === 0 ? "eager" : "lazy"}
-                  decoding={idx === 0 ? "sync" : "async"}
-                />
-              ))
-            }
-          </div>
-
-          <button
-            id="prev-image"
-            aria-label="Previous Image"
-            class="absolute left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-white/50 flex items-center justify-center text-text-primary opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer pointer-events-auto"
-          >
-            <ChevronLeft class="w-6 h-6" />
-          </button>
-          <button
-            id="next-image"
-            aria-label="Next Image"
-            class="absolute right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-white/50 flex items-center justify-center text-text-primary opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-accent hover:text-white cursor-pointer pointer-events-auto"
-          >
-            <ChevronRight class="w-6 h-6" />
-          </button>
-
-          <div
-            class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2"
-          >
-            {
-              meImages.map((_, idx) => (
-                <div
-                  class={`carousel-dot w-2 h-2 rounded-full transition-all duration-300 ${idx === 0 ? "bg-accent w-4" : "bg-white/60"}`}
-                  data-index={idx}
-                />
-              ))
-            }
-          </div>
-
-          <div
-            class="absolute top-4 right-4 w-3 h-3 rounded-full bg-accent animate-pulse z-20"
-          >
-          </div>
-          <div
-            class="absolute bottom-12 left-12 w-2 h-2 rounded-full bg-rose-accent animate-pulse z-20"
-          >
-          </div>
-        </div>
-      </div>
-
-      <div class="about-text opacity-0 translate-x-10">
-        <p
-          class="text-text-secondary text-lg leading-relaxed mb-6 font-medium"
-          data-i18n="about.description1"
-        >
-          {t.about.description1}
-        </p>
-        <p
-          class="text-text-secondary text-lg leading-relaxed mb-10"
-          data-i18n="about.description2"
-        >
-          {t.about.description2}
-        </p>
-
-        <div class="grid sm:grid-cols-1 gap-6 mb-10">
-          <div class="space-y-4">
-            <h3
-              class="text-xs font-bold uppercase tracking-widest text-accent mb-4"
-              data-i18n="about.hobbiesTitle"
+    <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-32 items-start">
+      <!-- Content Side -->
+      <div class="space-y-24 about-main">
+        <div class="space-y-10">
+          <div class="flex items-center gap-6 about-reveal">
+            <div
+              class="w-16 h-16 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-white p-1 bg-white"
             >
-              {t.about.hobbiesTitle}
-            </h3>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-text-secondary text-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                <span data-i18n="about.funFact1">{t.about.funFact1}</span>
-              </li>
-              <li class="flex items-center gap-3 text-text-secondary text-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-rose-accent"></span>
-                <span data-i18n="about.funFact2">{t.about.funFact2}</span>
-              </li>
-              <li class="flex items-center gap-3 text-text-secondary text-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                <span data-i18n="about.funFact3">{t.about.funFact3}</span>
-              </li>
-            </ul>
+              <Image
+                src={me1}
+                alt="Francisco"
+                width={64}
+                height={64}
+                class="w-full h-full object-cover rounded-xl"
+              />
+            </div>
+            <div>
+              <p
+                class="text-[9px] font-black uppercase tracking-[0.6em] text-accent/50 leading-none mb-2"
+                data-i18n="about.title"
+              >
+                {t.about.title}
+              </p>
+              <h2
+                class="text-4xl md:text-5xl font-[Outfit] font-black text-gray-900 leading-none tracking-tighter"
+                data-i18n="about.subtitle"
+              >
+                {t.about.subtitle}
+              </h2>
+            </div>
+          </div>
+
+          <div class="space-y-8 max-w-2xl about-reveal">
+            <p
+              class="text-2xl md:text-3xl text-gray-800 font-light leading-relaxed tracking-tight"
+              data-i18n="about.description1"
+            >
+              {t.about.description1}
+            </p>
+            <p
+              class="text-lg text-gray-400 font-light leading-relaxed"
+              data-i18n="about.description2"
+            >
+              {t.about.description2}
+            </p>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-2">
+        <!-- Hobbies Section (High-End Typographic Grid) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 about-reveal">
           {
             hobbies.map((hobby) => (
-              <span class="hobby-tag px-4 py-1.5 bg-white rounded-full border border-gray-100 text-text-secondary text-xs font-bold flex items-center gap-2 hover:border-accent hover:bg-accent-soft/30 hover:shadow-sm transition-all duration-300 cursor-default">
-                <span>{hobby.icon}</span>
-                <span data-i18n={`hobbies.${hobby.key}`}>
+              <div class="group py-4 border-t border-black/3 hover:border-accent transition-all duration-700">
+                <p class="text-[9px] font-black uppercase tracking-widest text-gray-300 group-hover:text-gray-950 transition-colors mb-2">
+                  Category
+                </p>
+                <span
+                  class="text-xs font-black uppercase tracking-widest text-gray-500 group-hover:text-accent transition-colors"
+                  data-i18n={`hobbies.${hobby.key}`}
+                >
                   {t.hobbies[hobby.key as keyof typeof t.hobbies]}
                 </span>
-              </span>
+              </div>
             ))
           }
         </div>
+      </div>
 
-        <div class="mt-8 github-stats opacity-0 translate-y-4">
-          <div
-            class="p-0.5 bg-linear-to-r from-accent/20 to-rose-accent/20 rounded-4xl"
-          >
-            <div
-              class="bg-white/80 backdrop-blur-sm rounded-[1.85rem] p-4 md:p-6 border border-white hover:border-accent transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-accent/5 group"
+      <!-- Sidebar: Conceptual & Structured -->
+      <div class="lg:pt-4 space-y-20 about-sidebar">
+        <div class="space-y-12 about-reveal">
+          <div class="relative pl-10 border-l border-accent/20">
+            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-accent" />
+            <p
+              class="text-[10px] font-black uppercase tracking-widest text-gray-300 mb-4"
             >
-              <img
-                src="https://ghchart.rshah.org/7c3aed/esspindola"
-                alt="GitHub Contributions Graph"
-                width="800"
-                height="120"
-                loading="lazy"
-                decoding="async"
-                class="w-full h-auto rounded-xl transition-all duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100"
-              />
-            </div>
+              Core Philosophy
+            </p>
+            <p
+              class="text-xl text-gray-900 font-light italic leading-snug"
+              data-i18n="about.funFact1"
+            >
+              {t.about.funFact1}
+            </p>
+          </div>
+
+          <div class="relative pl-10 border-l border-rose-accent/20">
+            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-rose-accent" />
+            <p
+              class="text-[10px] font-black uppercase tracking-widest text-gray-300 mb-4"
+            >
+              Focus State
+            </p>
+            <p
+              class="text-xl text-gray-900 font-light italic leading-snug"
+              data-i18n="about.funFact2"
+            >
+              {t.about.funFact2}
+            </p>
+          </div>
+
+          <div class="relative pl-10 border-l border-gray-100">
+            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-gray-200" />
+            <p
+              class="text-[10px] font-black uppercase tracking-widest text-gray-300 mb-4"
+            >
+              Tech DNA
+            </p>
+            <p
+              class="text-xl text-gray-900 font-light italic leading-snug"
+              data-i18n="about.funFact3"
+            >
+              {t.about.funFact3}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+</style>
 
 <script>
   import gsap from "gsap";
@@ -184,149 +153,16 @@ const meImages = [
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".about-carousel-img");
-    const dots = document.querySelectorAll(".carousel-dot");
-    const prevBtn = document.getElementById("prev-image");
-    const nextBtn = document.getElementById("next-image");
-
-    let currentIndex = 0;
-    const totalImages = images.length;
-
-    if (totalImages === 0) return;
-
-    function showImage(index: number) {
-      if (index === currentIndex) return;
-
-      const currentImg = images[currentIndex] as HTMLElement;
-      const nextImg = images[index] as HTMLElement;
-
-      dots[currentIndex].classList.remove("bg-accent", "w-4");
-      dots[currentIndex].classList.add("bg-white/60");
-      dots[index].classList.add("bg-accent", "w-4");
-      dots[index].classList.remove("bg-white/60");
-
-      gsap.to(currentImg, {
-        opacity: 0,
-        scale: 1.05,
-        duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: () => {
-          currentImg.style.pointerEvents = "none";
-        },
-      });
-
-      gsap.fromTo(
-        nextImg,
-        { opacity: 0, scale: 0.95 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          onStart: () => {
-            nextImg.style.pointerEvents = "auto";
-          },
-        },
-      );
-
-      currentIndex = index;
-    }
-
-    const carouselContainer = document.querySelector(".about-image div");
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carouselContainer?.addEventListener(
-      "touchstart",
-      (e: any) => {
-        touchStartX = e.changedTouches[0].screenX;
-      },
-      { passive: true },
-    );
-
-    carouselContainer?.addEventListener(
-      "touchend",
-      (e: any) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      },
-      { passive: true },
-    );
-
-    function handleSwipe() {
-      const swipeDistance = touchEndX - touchStartX;
-      if (Math.abs(swipeDistance) > 50) {
-        if (swipeDistance > 0) {
-          let next = currentIndex - 1;
-          if (next < 0) next = totalImages - 1;
-          showImage(next);
-        } else {
-          let next = (currentIndex + 1) % totalImages;
-          showImage(next);
-        }
-      }
-    }
-
-    prevBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      let next = currentIndex - 1;
-      if (next < 0) next = totalImages - 1;
-      showImage(next);
-    });
-
-    nextBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      let next = (currentIndex + 1) % totalImages;
-      showImage(next);
-    });
-
-    gsap.to(".about-header", {
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
+    gsap.to(".about-reveal", {
       opacity: 1,
       y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".about-image", {
+      duration: 1.4,
+      stagger: 0.2,
+      ease: "power4.out",
       scrollTrigger: {
         trigger: "#about",
-        start: "top 75%",
-        toggleActions: "play none none none",
+        start: "top 80%",
       },
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".about-text", {
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 75%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".github-stats", {
-      scrollTrigger: {
-        trigger: ".github-stats",
-        start: "top 90%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: "power3.out",
     });
   });
 </script>

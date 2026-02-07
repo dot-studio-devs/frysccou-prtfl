@@ -60,25 +60,29 @@ export const translations = {
       },
     },
     hero: {
+      badge: "High-End Digital Solutions",
+      title: "DIGITAL<br/>CRAFT",
       greeting: "Hi, I'm",
       name: "Francisco",
       role: "Full Stack / Web Engineer",
       description:
         "Building beautiful and functional digital experiences. Balancing aesthetics, UX/UI, and high-performance design.",
       cta: "View My Work",
+      ctaSub: "Selected Work",
       ctaStudio: "Visit Dot Studio",
+      ctaStudioSub: "Brand Service",
     },
     about: {
       title: "About Me",
-      subtitle: "Hey there! I'm Francisco 🖤🐈",
+      subtitle: "Full Stack Engineer & Web Designer",
       description1:
         "I’m a Full Stack Engineer passionate about creating beautiful and functional frontend experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and functional design. If an idea pops into my head, chances are I’ll build it and ship it.",
       description2:
         "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga.",
       hobbiesTitle: "Fun Facts & Hobbies",
-      funFact1: "Obsessed with pixel-perfect details 🌸",
-      funFact2: "I code better with high-quality music 🎧",
-      funFact3: "Anime, gaming, and manga fan 📺",
+      funFact1: "Every frame is treated with surgical precision.",
+      funFact2: "Curated audio environments to sustain cognitive flow.",
+      funFact3: "Driven by clean architecture and optimized performance.",
     },
     hobbies: {
       anime: "Watching Anime",
@@ -111,9 +115,8 @@ export const translations = {
       gamingTime: "Gaming Time",
       gamingMsg:
         "Relaxing with some games, but still available if you reach out.",
-      sleeping: "In deep sleep",
-      sleepingMsg:
-        "Zzz... Phone is on in case it rings, but I'm dreaming hard!",
+      sleeping: "Deep Sleep",
+      sleepingMsg: "Off-grid until morning. Urgent calls only.",
       routineWorking: "Working",
       routineWorkingSub: "Busy",
       routineLunch: "Lunch Break",
@@ -254,25 +257,29 @@ export const translations = {
       },
     },
     hero: {
+      badge: "Soluciones Digitales de Alto Nivel",
+      title: "ARTE<br/>DIGITAL",
       greeting: "Hola, soy",
       name: "Francisco",
-      role: "Full Stack Engineer",
+      role: "Full Stack / Web Engineer",
       description:
-        "Construyendo experiencias digitales hermosas y funcionales. Equilibrando estética, UX/UI y diseño de alto rendimiento.",
-      cta: "Ver Mi Trabajo",
+        "Desarrollando experiencias digitales excepcionales. El balance perfecto entre estética, ingeniería y diseño funcional.",
+      cta: "Ver Mis Trabajos",
+      ctaSub: "Trabajos Seleccionados",
       ctaStudio: "Visitar Dot Studio",
+      ctaStudioSub: "Servicio de Marca",
     },
     about: {
       title: "Sobre Mí",
-      subtitle: "¡Hola! Soy Francisco 🖤🐈",
+      subtitle: "Ingeniero Full Stack & Diseñador Web",
       description1:
         "Soy un Full Stack Engineer apasionado por crear experiencias frontend hermosas y funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño funcional. Si una idea llega a mi cabeza, es muy probable que la construya y la lance.",
       description2:
         "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga.",
       hobbiesTitle: "Datos Curiosos y Hobbies",
-      funFact1: "Obsesionado con los detalles pixel-perfect 🌸",
-      funFact2: "Programo mejor con música de alta calidad 🎧",
-      funFact3: "Fan del anime, gaming y manga 📺",
+      funFact1: "Cada frame se trata con precisión quirúrgica.",
+      funFact2: "Ambientes de audio curados para mantener el flujo cognitivo.",
+      funFact3: "Impulsado por arquitectura limpia y rendimiento optimizado.",
     },
     hobbies: {
       anime: "Ver Anime",
@@ -306,9 +313,8 @@ export const translations = {
       gamingTime: "Gaming Time",
       gamingMsg:
         "Relajando con unos juegos, pero sigo disponible si me hablás.",
-      sleeping: "En el quinto sueño",
-      sleepingMsg:
-        "Zzz... Pendiente al cel por si suena, ¡pero estoy soñando fuerte!",
+      sleeping: "Sueño Profundo",
+      sleepingMsg: "Desconectado hasta la mañana. Solo llamadas urgentes.",
       routineWorking: "Working",
       routineWorkingSub: "Ocupado",
       routineLunch: "Lunch Break",
