@@ -1,77 +1,214 @@
 ---
 import { translations } from "../i18n/translations.js";
-import { Coffee, ArrowRight } from "lucide-astro";
-const t = translations.en;
+import { Coffee, ArrowRight, Copy, Check } from "lucide-astro";
+const t = (translations as any).en;
+
+const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
 ---
 
-<section id="donations" class="py-16 relative overflow-hidden">
-  <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div
-      class="donation-card opacity-0 translate-y-10 group relative bg-white/60 backdrop-blur-xl rounded-[2.5rem] p-10 md:p-14 border border-white/50 shadow-2xl shadow-accent/10 hover:shadow-accent/20 transition-all duration-700 hover:-translate-y-2 overflow-hidden text-center"
-    >
-      <div
-        class="absolute -top-24 -right-24 w-80 h-80 bg-accent/15 rounded-full blur-3xl group-hover:bg-accent/25 transition-colors duration-700"
-      >
-      </div>
-      <div
-        class="absolute -bottom-24 -left-24 w-80 h-80 bg-rose-accent/10 rounded-full blur-3xl group-hover:bg-rose-accent/20 transition-colors duration-700"
-      >
-      </div>
+<section
+  id="donations"
+  class="py-32 bg-white relative overflow-hidden border-t border-gray-100"
+>
+  <!-- Minimalist Structural Lines -->
+  <div
+    class="absolute inset-x-0 top-1/2 h-px bg-gray-100/60 pointer-events-none hidden lg:block"
+  >
+  </div>
 
-      <div class="relative z-10">
-        <div
-          class="mb-8 inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white shadow-xl shadow-accent/10 border border-accent/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
-        >
-          <Coffee class="w-10 h-10 text-accent" />
+  <div class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-0 border border-gray-100">
+      <!-- Left Panel: Large Typography -->
+      <div
+        class="p-10 sm:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between"
+      >
+        <div class="space-y-8">
+          <div class="overflow-hidden">
+            <div class="donation-reveal flex items-center gap-3">
+              <span class="w-8 h-px bg-rose-accent"></span>
+              <span
+                class="text-[10px] font-black uppercase tracking-[0.4em] text-rose-accent/80"
+                >Support</span
+              >
+            </div>
+          </div>
+
+          <h2
+            class="text-5xl sm:text-6xl lg:text-7xl font-[Outfit] font-black leading-[0.9] tracking-tighter text-gray-950"
+          >
+            <div class="overflow-hidden">
+              <span
+                class="donation-reveal inline-block"
+                data-i18n="donations.title">{t.donations.title}</span
+              >
+            </div>
+          </h2>
         </div>
 
-        <h2
-          class="text-3xl md:text-4xl font-[Outfit] font-bold mb-4 text-text-primary"
-          data-i18n="donations.title"
-        >
-          {t.donations.title}
-        </h2>
+        <div class="mt-12 lg:mt-0 opacity-10 hidden sm:block">
+          <Coffee class="w-24 h-24 text-gray-950" strokeWidth={1} />
+        </div>
+      </div>
 
-        <p
-          class="text-text-muted text-lg mb-10 max-w-sm mx-auto leading-relaxed"
-          data-i18n="donations.description"
-        >
-          {t.donations.description}
-        </p>
+      <!-- Right Panel: Links & Crypto -->
+      <div
+        class="p-10 sm:p-16 lg:p-24 bg-gray-50/30 flex flex-col justify-center space-y-12"
+      >
+        <!-- Mercado Pago Option -->
+        <div class="overflow-hidden">
+          <div class="donation-reveal">
+            <a
+              href="https://link.mercadopago.com.ar/frysccoudev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-6 no-underline"
+            >
+              <div
+                class="relative w-16 h-16 rounded-2xl bg-gray-950 flex items-center justify-center group-hover:bg-accent transition-all duration-500 overflow-hidden shrink-0"
+              >
+                <Coffee
+                  class="w-6 h-6 text-white group-hover:text-gray-950 transition-colors duration-500"
+                />
+              </div>
 
-        <a
-          href="https://link.mercadopago.com.ar/frysccoudev"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-10 py-5 bg-text-primary text-white rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-accent hover:scale-105 hover:shadow-2xl hover:shadow-accent/40 group/btn"
-        >
-          <span data-i18n="donations.button">{t.donations.button}</span>
-          <ArrowRight
-            class="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
-        </a>
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-xs font-black uppercase tracking-[0.2em] text-gray-950"
+                    data-i18n="donations.button">{t.donations.button}</span
+                  >
+                  <ArrowRight
+                    class="w-4 h-4 text-gray-300 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300"
+                  />
+                </div>
+                <p
+                  class="text-[9px] text-gray-400 font-medium uppercase tracking-widest italic"
+                >
+                  Pay via Mercado Pago (ARS)
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Crypto / USDT Option -->
+        <div class="overflow-hidden border-t border-gray-100 pt-8">
+          <div class="donation-reveal space-y-6">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full bg-rose-accent animate-pulse">
+              </div>
+              <span
+                class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-950"
+                >Crypto / USDT</span
+              >
+            </div>
+
+            <div
+              class="bg-white border border-gray-100 rounded-2xl p-6 space-y-4"
+            >
+              <div
+                class="flex justify-between items-center text-[9px] font-black uppercase tracking-widest"
+              >
+                <span class="text-gray-400"
+                  >Network: <span class="text-gray-950">Polygon</span></span
+                >
+                <span class="text-gray-400"
+                  >Asset: <span class="text-gray-950">USDT</span></span
+                >
+              </div>
+
+              <div
+                class="relative group/wallet cursor-pointer"
+                id="copy-wallet"
+              >
+                <div
+                  class="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between border border-transparent group-hover/wallet:border-rose-accent/20 transition-all duration-300"
+                >
+                  <span
+                    class="text-[10px] font-mono text-gray-400 truncate pr-4"
+                    >{WALLET_ADDRESS}</span
+                  >
+                  <div
+                    class="shrink-0 flex items-center gap-2 text-rose-accent"
+                  >
+                    <span
+                      id="copy-text"
+                      class="text-[8px] font-black uppercase tracking-tighter opacity-0 group-hover/wallet:opacity-100 transition-opacity"
+                      >Copy</span
+                    >
+                    <div class="relative w-4 h-4">
+                      <Copy
+                        id="copy-icon"
+                        class="w-4 h-4 absolute inset-0 transition-all duration-300"
+                      />
+                      <Check
+                        id="check-icon"
+                        class="w-4 h-4 absolute inset-0 scale-0 opacity-0 text-green-500 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<script>
+<script define:vars={{ WALLET_ADDRESS }}>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".donation-card", {
+    // Hide all initially
+    gsap.set(".donation-reveal", { y: "150%" });
+
+    gsap.to(".donation-reveal", {
       scrollTrigger: {
         trigger: "#donations",
-        start: "top 85%",
-        toggleActions: "play none none none",
+        start: "top 80%",
       },
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
+      y: "0%",
+      duration: 1.5,
+      stagger: 0.1,
+      ease: "power4.out",
+    });
+
+    // Copy Wallet Logic
+    const copyBtn = document.getElementById("copy-wallet");
+    const copyText = document.getElementById("copy-text");
+    const copyIcon = document.getElementById("copy-icon");
+    const checkIcon = document.getElementById("check-icon");
+
+    copyBtn?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(WALLET_ADDRESS);
+
+        // Success State
+        if (copyText) copyText.innerText = "Copied!";
+        copyIcon?.classList.add("scale-0", "opacity-0");
+        checkIcon?.classList.remove("scale-0", "opacity-0");
+        checkIcon?.classList.add("scale-100", "opacity-100");
+
+        setTimeout(() => {
+          if (copyText) copyText.innerText = "Copy";
+          copyIcon?.classList.remove("scale-0", "opacity-0");
+          checkIcon?.classList.add("scale-0", "opacity-0");
+          checkIcon?.classList.remove("scale-100", "opacity-100");
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy!", err);
+      }
     });
   });
 </script>
+
+<style>
+  .donation-reveal {
+    will-change: transform;
+  }
+</style>

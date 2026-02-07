@@ -61,7 +61,7 @@ export const translations = {
     },
     hero: {
       badge: "High-End Digital Solutions",
-      title: "DIGITAL<br/>CRAFT",
+      title: "HI, I'M<br/>FRANCISCO",
       greeting: "Hi, I'm",
       name: "Francisco",
       role: "Full Stack / Web Engineer",
@@ -73,16 +73,16 @@ export const translations = {
       ctaStudioSub: "Brand Service",
     },
     about: {
-      title: "About Me",
-      subtitle: "Full Stack Engineer & Web Designer",
+      title: "My Story",
+      subtitle: "Engineering with purpose & design with soul",
       description1:
-        "I’m a Full Stack Engineer passionate about creating beautiful and functional frontend experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and functional design. If an idea pops into my head, chances are I’ll build it and ship it.",
+        "Hi, I'm Francisco Espindola, a Full Stack Engineer passionate about creating beautiful and functional digital experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and high-performance code. If an idea pops into my head, chances are I’ll build it and ship it.",
       description2:
-        "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga.",
+        "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga. I'm always looking for new challenges and opportunities to learn and grow.",
       hobbiesTitle: "Fun Facts & Hobbies",
-      funFact1: "Every frame is treated with surgical precision.",
-      funFact2: "Curated audio environments to sustain cognitive flow.",
-      funFact3: "Driven by clean architecture and optimized performance.",
+      funFact1: "Building products with heart and surgical precision.",
+      funFact2: "Listening to music is my secret for deep work sessions.",
+      funFact3: "Obsessed with clean architecture and modern stacks.",
     },
     hobbies: {
       anime: "Watching Anime",
@@ -258,7 +258,7 @@ export const translations = {
     },
     hero: {
       badge: "Soluciones Digitales de Alto Nivel",
-      title: "ARTE<br/>DIGITAL",
+      title: "HOLA, SOY<br/>FRANCISCO",
       greeting: "Hola, soy",
       name: "Francisco",
       role: "Full Stack / Web Engineer",
@@ -270,16 +270,17 @@ export const translations = {
       ctaStudioSub: "Servicio de Marca",
     },
     about: {
-      title: "Sobre Mí",
-      subtitle: "Ingeniero Full Stack & Diseñador Web",
+      title: "Mi Historia",
+      subtitle: "Ingeniería con propósito y diseño con alma",
       description1:
-        "Soy un Full Stack Engineer apasionado por crear experiencias frontend hermosas y funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño funcional. Si una idea llega a mi cabeza, es muy probable que la construya y la lance.",
+        "¡Hola! Soy Francisco Espindola, un Full Stack Engineer apasionado por crear experiencias hermosas y soluciones funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño de alto rendimiento. Si una idea me entusiasma, es muy probable que la construya y la lance al mundo.",
       description2:
-        "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga.",
+        "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga. Siempre estoy buscando nuevos retos que me permitan seguir aprendiendo.",
       hobbiesTitle: "Datos Curiosos y Hobbies",
-      funFact1: "Cada frame se trata con precisión quirúrgica.",
-      funFact2: "Ambientes de audio curados para mantener el flujo cognitivo.",
-      funFact3: "Impulsado por arquitectura limpia y rendimiento optimizado.",
+      funFact1: "Construyendo productos con alma y precisión quirúrgica.",
+      funFact2:
+        "La música es mi motor para entrar en estado de flujo profundo.",
+      funFact3: "Obsesionado con la arquitectura limpia y stacks modernos.",
     },
     hobbies: {
       anime: "Ver Anime",
