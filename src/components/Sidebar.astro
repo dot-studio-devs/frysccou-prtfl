@@ -11,8 +11,8 @@ import {
   Coffee,
   ChevronLeft,
   Languages,
-  ExternalLink,
-  LayoutGrid,
+  Sun,
+  Moon,
 } from "lucide-astro";
 import { Image } from "astro:assets";
 import dotLogo from "../assets/work/dot-logo.svg";
@@ -22,7 +22,7 @@ const t = translations.en;
 
 <aside
   id="sidebar"
-  class="fixed left-0 top-0 h-screen bg-white border-r border-gray-100 z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open"
+  class="fixed left-0 top-0 h-screen bg-surface border-r border-th-border z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open"
 >
   <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
     <a href="#" class="flex items-center justify-center group/logo">
@@ -39,7 +39,7 @@ const t = translations.en;
   >
     <a
       href="#about"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -54,7 +54,7 @@ const t = translations.en;
 
     <a
       href="#skills"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -69,7 +69,7 @@ const t = translations.en;
 
     <a
       href="#projects"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -84,7 +84,7 @@ const t = translations.en;
 
     <a
       href="#marketplace"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group relative"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group relative"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -103,7 +103,7 @@ const t = translations.en;
 
     <a
       href="#contact"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -118,11 +118,11 @@ const t = translations.en;
   </nav>
 
   <div
-    class="p-3 border-t border-gray-100 space-y-2 flex flex-col items-stretch"
+    class="p-3 border-t border-th-border space-y-2 flex flex-col items-stretch"
   >
     <a
       href="#donations"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -138,7 +138,7 @@ const t = translations.en;
     <a
       href="https://dot-studio.site"
       target="_blank"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -157,10 +157,27 @@ const t = translations.en;
       >
     </a>
 
-    <div class="pt-2">
+    <div class="pt-2 space-y-2">
+      <button
+        id="theme-toggle-sidebar"
+        class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group overflow-hidden"
+      >
+        <div
+          class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+        >
+          <Sun class="w-5 h-5 theme-icon-light" />
+          <Moon class="w-5 h-5 theme-icon-dark hidden" />
+        </div>
+        <span
+          id="theme-label-sidebar"
+          class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
+          >Light</span
+        >
+      </button>
+
       <button
         id="lang-toggle-sidebar"
-        class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl bg-gray-900 text-white hover:bg-accent transition-all duration-500 group overflow-hidden"
+        class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white transition-all duration-500 group overflow-hidden"
       >
         <div
           class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -177,7 +194,7 @@ const t = translations.en;
 
     <button
       id="sidebar-toggle"
-      class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted transition-all duration-500 group mt-4 overflow-hidden"
+      class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted transition-all duration-500 group mt-4 overflow-hidden"
     >
       <div
         class="sidebar-toggle-icon w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -199,7 +216,7 @@ const t = translations.en;
 >
   <div
     id="mobile-nav-container"
-    class="bg-white/80 backdrop-blur-xl w-full px-6 py-3 flex items-center justify-between border-b border-gray-100"
+    class="bg-surface/80 backdrop-blur-xl w-full px-6 py-3 flex items-center justify-between border-b border-th-border"
   >
     <a href="#" class="flex items-center group">
       <img
@@ -208,21 +225,31 @@ const t = translations.en;
         class="h-8 w-auto transition-transform duration-500 group-hover:scale-105"
       />
     </a>
-    <button
-      id="mobile-menu-btn"
-      aria-label="Open Menu"
-      class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors group"
-    >
-      <span
-        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300 origin-center"
-        id="bar1"></span>
-      <span
-        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300"
-        id="bar2"></span>
-      <span
-        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300 origin-center"
-        id="bar3"></span>
-    </button>
+    <div class="flex items-center gap-2">
+      <button
+        id="theme-toggle-mobile"
+        aria-label="Toggle Theme"
+        class="w-10 h-10 flex items-center justify-center bg-surface-subtle rounded-xl hover:bg-surface-hover transition-colors"
+      >
+        <Sun class="w-5 h-5 text-th-text theme-icon-light-mobile" />
+        <Moon class="w-5 h-5 text-th-text theme-icon-dark-mobile hidden" />
+      </button>
+      <button
+        id="mobile-menu-btn"
+        aria-label="Open Menu"
+        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-surface-subtle rounded-xl hover:bg-surface-hover transition-colors group"
+      >
+        <span
+          class="w-5 h-0.5 bg-th-text group-hover:bg-accent transition-all duration-300 origin-center"
+          id="bar1"></span>
+        <span
+          class="w-5 h-0.5 bg-th-text group-hover:bg-accent transition-all duration-300"
+          id="bar2"></span>
+        <span
+          class="w-5 h-0.5 bg-th-text group-hover:bg-accent transition-all duration-300 origin-center"
+          id="bar3"></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -233,22 +260,22 @@ const t = translations.en;
 </div>
 <div
   id="mobile-sidebar"
-  class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl translate-x-full transition-transform duration-300 md:hidden z-70 flex flex-col"
+  class="fixed top-0 right-0 h-full w-80 bg-surface shadow-2xl translate-x-full transition-transform duration-300 md:hidden z-70 flex flex-col"
 >
-  <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-    <h3 class="text-xl font-[Outfit] font-bold text-text-primary">Menu</h3>
+  <div class="p-6 border-b border-th-border flex items-center justify-between">
+    <h3 class="text-xl font-[Outfit] font-bold text-th-text">Menu</h3>
     <button
       id="close-sidebar"
       aria-label="Close Menu"
-      class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors"
+      class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-subtle hover:bg-surface-hover transition-colors"
     >
-      <X class="w-5 h-5 text-text-primary" />
+      <X class="w-5 h-5 text-th-text" />
     </button>
   </div>
   <div class="flex-1 overflow-y-auto p-6 space-y-2">
     <a
       href="#about"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.about">{t.nav.about}</span>
       <ChevronRight
@@ -258,7 +285,7 @@ const t = translations.en;
     </a>
     <a
       href="#skills"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.skills">{t.nav.skills}</span>
       <ChevronRight
@@ -268,7 +295,7 @@ const t = translations.en;
     </a>
     <a
       href="#projects"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.projects">{t.nav.projects}</span>
       <ChevronRight
@@ -278,7 +305,7 @@ const t = translations.en;
     </a>
     <a
       href="#marketplace"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <div class="flex items-center gap-2">
         <span data-i18n="nav.marketplace">{t.nav.marketplace}</span>
@@ -294,7 +321,7 @@ const t = translations.en;
     </a>
     <a
       href="#contact"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.contact">{t.nav.contact}</span>
       <ChevronRight
@@ -302,10 +329,10 @@ const t = translations.en;
         stroke-width={2.5}
       />
     </a>
-    <div class="my-6 border-t border-gray-100"></div>
+    <div class="my-6 border-t border-th-border"></div>
     <button
       id="lang-toggle-mobile"
-      class="w-full flex items-center justify-between p-4 rounded-xl bg-gray-900 text-white hover:bg-accent transition-all duration-300 font-bold uppercase tracking-widest text-[10px]"
+      class="w-full flex items-center justify-between p-4 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-[10px]"
     >
       <span>Language</span>
       <span id="current-lang-mobile">EN</span>
@@ -342,13 +369,29 @@ const t = translations.en;
     width: 100%;
   }
 
-  /* Ensure smooth transitions for everything */
   .sidebar-link,
   .sidebar-text,
   .sidebar-icon-container,
   .sidebar-toggle-icon,
   aside {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  [data-theme="dark"] .theme-icon-light,
+  [data-theme="dark"] .theme-icon-light-mobile {
+    display: none;
+  }
+  [data-theme="dark"] .theme-icon-dark,
+  [data-theme="dark"] .theme-icon-dark-mobile {
+    display: block;
+  }
+  [data-theme="light"] .theme-icon-light,
+  [data-theme="light"] .theme-icon-light-mobile {
+    display: block;
+  }
+  [data-theme="light"] .theme-icon-dark,
+  [data-theme="light"] .theme-icon-dark-mobile {
+    display: none;
   }
 </style>
 
@@ -377,11 +420,15 @@ const t = translations.en;
     const isOpening = !sidebar?.classList.contains("open");
     sidebar?.classList.toggle("open");
     if (isOpening) {
+      sidebar?.classList.remove("w-20");
+      sidebar?.classList.add("w-64");
       localStorage.setItem("sidebar-collapsed", "false");
       document.body.classList.remove("sidebar-collapsed");
       document.body.classList.add("sidebar-expanded");
       if (toggleLabel) toggleLabel.setAttribute("data-i18n", "nav.collapse");
     } else {
+      sidebar?.classList.remove("w-64");
+      sidebar?.classList.add("w-20");
       localStorage.setItem("sidebar-collapsed", "true");
       document.body.classList.remove("sidebar-expanded");
       document.body.classList.add("sidebar-collapsed");
@@ -437,6 +484,28 @@ const t = translations.en;
   }
   langSidebar?.addEventListener("click", triggerLangChange);
   langMobile?.addEventListener("click", triggerLangChange);
+
+  function updateThemeUI() {
+    const current =
+      document.documentElement.getAttribute("data-theme") || "light";
+    const label = document.getElementById("theme-label-sidebar");
+    if (label) label.textContent = current === "dark" ? "Dark" : "Light";
+  }
+
+  const themeToggleSidebar = document.getElementById("theme-toggle-sidebar");
+  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+
+  function toggleTheme() {
+    const current =
+      document.documentElement.getAttribute("data-theme") || "light";
+    const next = current === "dark" ? "light" : "dark";
+    window.setTheme(next);
+    updateThemeUI();
+  }
+
+  themeToggleSidebar?.addEventListener("click", toggleTheme);
+  themeToggleMobile?.addEventListener("click", toggleTheme);
+  updateThemeUI();
 
   document
     .querySelectorAll('aside a[href^="#"], .mobile-nav-link')

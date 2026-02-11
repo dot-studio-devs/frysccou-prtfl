@@ -28,6 +28,17 @@ const { title = "Francisco | Full Stack Engineer & Web Designer" } =
     <link rel="apple-touch-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        function getThemeCookie() {
+          var match = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
+          return match ? match[1] : null;
+        }
+        var saved = getThemeCookie();
+        var theme = saved || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body
     class="bg-cream text-text-primary font-[Inter] antialiased overflow-x-hidden"
@@ -43,11 +54,39 @@ const { title = "Francisco | Full Stack Engineer & Web Designer" } =
         interface Window {
           gsap: typeof gsap;
           ScrollTrigger: typeof ScrollTrigger;
+          setTheme: (theme: string) => void;
+          getTheme: () => string;
         }
       }
 
       window.gsap = gsap;
       window.ScrollTrigger = ScrollTrigger;
+
+      function setThemeCookie(theme: string) {
+        var expires = new Date();
+        expires.setDate(expires.getDate() + 14);
+        document.cookie =
+          "theme=" +
+          theme +
+          ";expires=" +
+          expires.toUTCString() +
+          ";path=/;SameSite=Lax";
+      }
+
+      function getThemeCookie(): string {
+        var match = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
+        return match ? match[1] : "light";
+      }
+
+      window.setTheme = function (theme: string) {
+        document.documentElement.setAttribute("data-theme", theme);
+        setThemeCookie(theme);
+        window.dispatchEvent(new CustomEvent("themeChange", { detail: theme }));
+      };
+
+      window.getTheme = function () {
+        return document.documentElement.getAttribute("data-theme") || "light";
+      };
     </script>
   </body>
 </html>
