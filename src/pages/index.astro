@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Availability from "../components/Availability.astro";
@@ -18,22 +18,47 @@ import CustomCursor from "../components/CustomCursor.astro";
 
 <Layout>
   <CustomCursor />
-  <Navbar />
-  <main>
-    <Hero />
-    <About />
-    <Availability />
-    <YoutubeMusic />
-    <Skills />
-    <Projects />
-    <Experience />
-    <Marketplace />
-    <Guestbook />
-    <Contact />
-    <Donations />
-  </main>
-  <Footer />
+  <Sidebar />
+
+  <div
+    id="content-wrapper"
+    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen"
+  >
+    <main>
+      <Hero />
+      <About />
+      <Availability />
+      <YoutubeMusic />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Marketplace />
+      <Guestbook />
+      <Contact />
+      <Donations />
+    </main>
+    <Footer />
+  </div>
+
+  <button id="lang-toggle" class="hidden" aria-hidden="true"></button>
 </Layout>
+
+<style is:global>
+  body.sidebar-expanded #content-wrapper {
+    padding-left: 256px;
+  }
+  body.sidebar-collapsed #content-wrapper {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 768px) {
+    body.sidebar-expanded #content-wrapper,
+    body.sidebar-collapsed #content-wrapper {
+      padding-left: 0;
+      padding-top: 64px;
+    }
+  }
+</style>
 
 <script>
   import { translations } from "../i18n/translations.js";
@@ -100,11 +125,12 @@ import CustomCursor from "../components/CustomCursor.astro";
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
-        e.preventDefault();
         const targetId = this.getAttribute("href");
-        if (!targetId) return;
+        if (!targetId || targetId === "#") return;
+
         const target = document.querySelector(targetId);
         if (target) {
+          e.preventDefault();
           target.scrollIntoView({
             behavior: "smooth",
             block: "start",

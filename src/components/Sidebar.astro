@@ -1,0 +1,455 @@
+---
+import { translations } from "../i18n/translations.js";
+import {
+  ChevronRight,
+  X,
+  User,
+  Cpu,
+  Briefcase,
+  ShoppingCart,
+  Mail,
+  Coffee,
+  ChevronLeft,
+  Languages,
+  ExternalLink,
+  LayoutGrid,
+} from "lucide-astro";
+import { Image } from "astro:assets";
+import dotLogo from "../assets/work/dot-logo.svg";
+
+const t = translations.en;
+---
+
+<aside
+  id="sidebar"
+  class="fixed left-0 top-0 h-screen bg-white border-r border-gray-100 z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open"
+>
+  <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
+    <a href="#" class="flex items-center justify-center group/logo">
+      <img
+        src="/ysc-transparente.png"
+        alt="Frysccou"
+        class="h-10 w-auto transition-transform duration-500 group-hover/logo:scale-105"
+      />
+    </a>
+  </div>
+
+  <nav
+    class="flex-1 px-3 py-4 space-y-2 overflow-y-auto overflow-x-hidden custom-scrollbar flex flex-col items-stretch"
+  >
+    <a
+      href="#about"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <User class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.about">{t.nav.about}</span
+      >
+    </a>
+
+    <a
+      href="#skills"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Cpu class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.skills">{t.nav.skills}</span
+      >
+    </a>
+
+    <a
+      href="#projects"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Briefcase class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.projects">{t.nav.projects}</span
+      >
+    </a>
+
+    <a
+      href="#marketplace"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group relative"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <ShoppingCart class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.marketplace">{t.nav.marketplace}</span
+      >
+      <span
+        class="sidebar-text absolute right-3 top-1/2 -translate-y-1/2 text-[8px] font-black italic text-white uppercase tracking-tighter bg-linear-to-r from-accent to-rose-accent px-1 rounded-sm opacity-100 transition-opacity duration-300"
+        >HOT</span
+      >
+    </a>
+
+    <a
+      href="#contact"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-accent-soft text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Mail class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.contact">{t.nav.contact}</span
+      >
+    </a>
+  </nav>
+
+  <div
+    class="p-3 border-t border-gray-100 space-y-2 flex flex-col items-stretch"
+  >
+    <a
+      href="#donations"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Coffee class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="donations.button">{t.donations.button}</span
+      >
+    </a>
+
+    <a
+      href="https://dot-studio.site"
+      target="_blank"
+      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted hover:text-accent transition-all duration-500 group"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Image
+          src={dotLogo}
+          alt="Dot Studio"
+          width={20}
+          height={20}
+          class="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+        />
+      </div>
+      <span
+        class="sidebar-text text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.aboutStudio">{t.nav.aboutStudio}</span
+      >
+    </a>
+
+    <div class="pt-2">
+      <button
+        id="lang-toggle-sidebar"
+        class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl bg-gray-900 text-white hover:bg-accent transition-all duration-500 group overflow-hidden"
+      >
+        <div
+          class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+        >
+          <Languages class="w-5 h-5" />
+        </div>
+        <span
+          id="current-lang-sidebar"
+          class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
+          >EN</span
+        >
+      </button>
+    </div>
+
+    <button
+      id="sidebar-toggle"
+      class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-gray-100 text-text-muted transition-all duration-500 group mt-4 overflow-hidden"
+    >
+      <div
+        class="sidebar-toggle-icon w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <ChevronLeft class="w-5 h-5" />
+      </div>
+      <span
+        id="toggle-label"
+        class="sidebar-text text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="nav.collapse">{t.nav.collapse}</span
+      >
+    </button>
+  </div>
+</aside>
+
+<nav
+  id="mobile-nav"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex md:hidden justify-center pl-0"
+>
+  <div
+    id="mobile-nav-container"
+    class="bg-white/80 backdrop-blur-xl w-full px-6 py-3 flex items-center justify-between border-b border-gray-100"
+  >
+    <a href="#" class="flex items-center group">
+      <img
+        src="/ysc-transparente.png"
+        alt="Frysccou"
+        class="h-8 w-auto transition-transform duration-500 group-hover:scale-105"
+      />
+    </a>
+    <button
+      id="mobile-menu-btn"
+      aria-label="Open Menu"
+      class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors group"
+    >
+      <span
+        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300 origin-center"
+        id="bar1"></span>
+      <span
+        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300"
+        id="bar2"></span>
+      <span
+        class="w-5 h-0.5 bg-text-primary group-hover:bg-accent transition-all duration-300 origin-center"
+        id="bar3"></span>
+    </button>
+  </div>
+</nav>
+
+<div
+  id="mobile-sidebar-overlay"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-60"
+>
+</div>
+<div
+  id="mobile-sidebar"
+  class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl translate-x-full transition-transform duration-300 md:hidden z-70 flex flex-col"
+>
+  <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+    <h3 class="text-xl font-[Outfit] font-bold text-text-primary">Menu</h3>
+    <button
+      id="close-sidebar"
+      aria-label="Close Menu"
+      class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors"
+    >
+      <X class="w-5 h-5 text-text-primary" />
+    </button>
+  </div>
+  <div class="flex-1 overflow-y-auto p-6 space-y-2">
+    <a
+      href="#about"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <span data-i18n="nav.about">{t.nav.about}</span>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="#skills"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <span data-i18n="nav.skills">{t.nav.skills}</span>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="#projects"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <span data-i18n="nav.projects">{t.nav.projects}</span>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="#marketplace"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <div class="flex items-center gap-2">
+        <span data-i18n="nav.marketplace">{t.nav.marketplace}</span>
+        <span
+          class="inline-flex items-center px-1.5 py-0.5 rounded-sm text-[8px] font-black bg-linear-to-r from-accent to-rose-accent text-white leading-none"
+          >HOT</span
+        >
+      </div>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="#contact"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <span data-i18n="nav.contact">{t.nav.contact}</span>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <div class="my-6 border-t border-gray-100"></div>
+    <button
+      id="lang-toggle-mobile"
+      class="w-full flex items-center justify-between p-4 rounded-xl bg-gray-900 text-white hover:bg-accent transition-all duration-300 font-bold uppercase tracking-widest text-[10px]"
+    >
+      <span>Language</span>
+      <span id="current-lang-mobile">EN</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  #sidebar:not(.open) {
+    width: 80px;
+  }
+  #sidebar:not(.open) .sidebar-text {
+    opacity: 0;
+    transform: translateX(-10px);
+    pointer-events: none;
+    width: 0;
+    margin: 0;
+  }
+  #sidebar:not(.open) .sidebar-toggle-icon {
+    transform: rotate(180deg);
+  }
+  #sidebar:not(.open) .sidebar-link {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0;
+  }
+  #sidebar:not(.open) .sidebar-icon-container,
+  #sidebar:not(.open) .sidebar-toggle-icon {
+    width: 100%;
+  }
+
+  /* Ensure smooth transitions for everything */
+  .sidebar-link,
+  .sidebar-text,
+  .sidebar-icon-container,
+  .sidebar-toggle-icon,
+  aside {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+</style>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const sidebarToggle = document.getElementById("sidebar-toggle");
+  const toggleLabel = document.getElementById("toggle-label");
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const closeSidebarBtn = document.getElementById("close-sidebar");
+  const mobileSidebar = document.getElementById("mobile-sidebar");
+  const sidebarOverlay = document.getElementById("mobile-sidebar-overlay");
+  const bar1 = document.getElementById("bar1");
+  const bar2 = document.getElementById("bar2");
+  const bar3 = document.getElementById("bar3");
+
+  if (localStorage.getItem("sidebar-collapsed") === "true") {
+    sidebar?.classList.remove("open", "w-64");
+    sidebar?.classList.add("w-20");
+    document.body.classList.add("sidebar-collapsed");
+    if (toggleLabel) toggleLabel.setAttribute("data-i18n", "nav.expand");
+  } else {
+    document.body.classList.add("sidebar-expanded");
+  }
+
+  sidebarToggle?.addEventListener("click", () => {
+    const isOpening = !sidebar?.classList.contains("open");
+    sidebar?.classList.toggle("open");
+    if (isOpening) {
+      localStorage.setItem("sidebar-collapsed", "false");
+      document.body.classList.remove("sidebar-collapsed");
+      document.body.classList.add("sidebar-expanded");
+      if (toggleLabel) toggleLabel.setAttribute("data-i18n", "nav.collapse");
+    } else {
+      localStorage.setItem("sidebar-collapsed", "true");
+      document.body.classList.remove("sidebar-expanded");
+      document.body.classList.add("sidebar-collapsed");
+      if (toggleLabel) toggleLabel.setAttribute("data-i18n", "nav.expand");
+    }
+    window.dispatchEvent(new CustomEvent("languageChange"));
+  });
+
+  let isMobileOpen = false;
+  function openMobileSidebar() {
+    isMobileOpen = true;
+    mobileSidebar?.classList.remove("translate-x-full");
+    mobileSidebar?.classList.add("translate-x-0");
+    sidebarOverlay?.classList.remove("opacity-0", "pointer-events-none");
+    sidebarOverlay?.classList.add("opacity-100");
+    document.body.style.overflow = "hidden";
+    if (bar1) bar1.style.transform = "rotate(45deg) translateY(7px)";
+    if (bar2) bar2.style.opacity = "0";
+    if (bar3) bar3.style.transform = "rotate(-45deg) translateY(-7px)";
+  }
+  function closeMobileSidebar() {
+    isMobileOpen = false;
+    mobileSidebar?.classList.add("translate-x-full");
+    mobileSidebar?.classList.remove("translate-x-0");
+    sidebarOverlay?.classList.add("opacity-0", "pointer-events-none");
+    sidebarOverlay?.classList.remove("opacity-100");
+    document.body.style.overflow = "";
+    if (bar1) bar1.style.transform = "none";
+    if (bar2) bar2.style.opacity = "1";
+    if (bar3) bar3.style.transform = "none";
+  }
+  mobileMenuBtn?.addEventListener("click", () =>
+    isMobileOpen ? closeMobileSidebar() : openMobileSidebar(),
+  );
+  closeSidebarBtn?.addEventListener("click", closeMobileSidebar);
+  sidebarOverlay?.addEventListener("click", closeMobileSidebar);
+
+  const langSidebar = document.getElementById("lang-toggle-sidebar");
+  const langMobile = document.getElementById("lang-toggle-mobile");
+  function triggerLangChange() {
+    const legacyToggle = document.getElementById("lang-toggle");
+    if (legacyToggle) legacyToggle.click();
+    setTimeout(() => {
+      const currentLang = document.documentElement.lang.toUpperCase();
+      const dots = [
+        document.getElementById("current-lang-sidebar"),
+        document.getElementById("current-lang-mobile"),
+      ];
+      dots.forEach((dot) => {
+        if (dot) dot.textContent = currentLang;
+      });
+    }, 50);
+  }
+  langSidebar?.addEventListener("click", triggerLangChange);
+  langMobile?.addEventListener("click", triggerLangChange);
+
+  document
+    .querySelectorAll('aside a[href^="#"], .mobile-nav-link')
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        if (link.classList.contains("mobile-nav-link")) closeMobileSidebar();
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+</script>

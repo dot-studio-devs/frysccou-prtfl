@@ -12,6 +12,8 @@ export const translations = {
       experience: "Experience",
       marketplace: "Marketplace",
       contact: "Contact",
+      collapse: "Collapse Menu",
+      expand: "Expand Menu",
     },
     marketplace: {
       title: "Marketplace",
@@ -218,6 +220,8 @@ export const translations = {
       experience: "Trayectoria",
       marketplace: "Marketplace",
       contact: "Contacto",
+      collapse: "Contraer Menú",
+      expand: "Expandir Menú",
     },
     marketplace: {
       title: "Marketplace",
