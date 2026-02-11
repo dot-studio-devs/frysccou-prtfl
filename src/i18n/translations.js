@@ -193,7 +193,14 @@ export const translations = {
       button: "Buy me a coffee",
     },
     footer: {
-      madeWith: "Made with 🖤🐈⬛",
+      description:
+        "Crafting premium digital experiences where engineering meets soul. Specialized in building high-performance applications with a focus on exceptional UI/UX and scalable architectures.",
+      status: "Available for new opportunities",
+      explore: "Explore",
+      services: "Services",
+      connect: "Stay Connected",
+      backToTop: "Back to top",
+      madeWith: "Made with 🖤🐕",
       by: "by Francisco (Esspindola)",
       rights: "All rights reserved",
     },
@@ -395,7 +402,14 @@ export const translations = {
       button: "Invitame un café",
     },
     footer: {
-      madeWith: "Hecho con 🖤🐈⬛",
+      description:
+        "Desarrollando experiencias digitales premium donde la ingeniería se encuentra con el alma. Especializado en aplicaciones de alto rendimiento con foco en UI/UX excepcional y arquitecturas escalables.",
+      status: "Disponible para nuevas oportunidades",
+      explore: "Explorar",
+      services: "Servicios",
+      connect: "Mantente conectado",
+      backToTop: "Volver arriba",
+      madeWith: "Hecho con 🖤🐕",
       by: "por Francisco (Esspindola)",
       rights: "Todos los derechos reservados",
     },

@@ -6,16 +6,16 @@
 }
 
 @theme {
-  --color-accent: #c4b5fd;
-  --color-accent-soft: #ede9fe;
-  --color-accent-muted: #ddd6fe;
-  --color-accent-text: #7c3aed;
+  --color-accent: #e7d0f7;
+  --color-accent-soft: #f5edfe;
+  --color-accent-muted: #f0e1fd;
+  --color-accent-text: #6d28d9;
 
   --color-rose-accent: #fda4af;
   --color-rose-soft: #ffe4e6;
 
   --color-dot-green: #c1ff72;
-  --color-dot-purple: #c4b5fd;
+  --color-dot-purple: #e7d0f7;
 
   --color-white: #ffffff;
   --color-off-white: #fafafa;
