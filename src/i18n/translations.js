@@ -62,17 +62,14 @@ export const translations = {
       },
     },
     hero: {
-      badge: "High-End Digital Solutions",
-      title: "HI, I'M<br/>FRANCISCO",
       greeting: "Hi, I'm",
       name: "Francisco",
-      role: "Full Stack / Web Engineer",
-      description:
-        "Building beautiful and functional digital experiences. Balancing aesthetics, UX/UI, and high-performance design.",
+      role: "Web Engineer",
+      manifesto:
+        "I believe the web deserves craftsmanship, not just code. That's why I don't just develop — I engineer every detail, from interface design to system architecture.",
       cta: "View My Work",
-      ctaSub: "Selected Work",
       ctaStudio: "Visit Dot Studio",
-      ctaStudioSub: "Brand Service",
+      location: "Buenos Aires, Argentina",
     },
     about: {
       title: "My Story",
@@ -269,17 +266,14 @@ export const translations = {
       },
     },
     hero: {
-      badge: "Soluciones Digitales de Alto Nivel",
-      title: "HOLA, SOY<br/>FRANCISCO",
       greeting: "Hola, soy",
       name: "Francisco",
-      role: "Full Stack / Web Engineer",
-      description:
-        "Desarrollando experiencias digitales excepcionales. El balance perfecto entre estética, ingeniería y diseño funcional.",
+      role: "Web Engineer",
+      manifesto:
+        "Creo que la web merece artesanía, no solo código. Por eso no solo desarrollo — diseño cada detalle, desde la interfaz hasta la arquitectura del sistema.",
       cta: "Ver Mis Trabajos",
-      ctaSub: "Trabajos Seleccionados",
       ctaStudio: "Visitar Dot Studio",
-      ctaStudioSub: "Servicio de Marca",
+      location: "Buenos Aires, Argentina",
     },
     about: {
       title: "Mi Historia",

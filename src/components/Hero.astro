@@ -6,23 +6,19 @@ const t = (translations as any).en;
 
 <section
   id="hero"
-  class="relative min-h-dvh flex flex-col bg-white select-none overflow-hidden pt-32 pb-12 px-6 sm:px-12"
+  class="relative min-h-dvh flex flex-col bg-white select-none overflow-hidden"
 >
-  <!-- Minimalist Framework Lines -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div
-      class="absolute top-0 left-1/2 w-px h-full bg-gray-100/60 hidden lg:block"
-    >
-    </div>
-    <div
-      class="absolute top-[40%] left-0 w-full h-px bg-gray-100/60 hidden lg:block"
-    >
-    </div>
+  <div
+    class="absolute top-[-10%] right-[10%] w-125 h-125 rounded-full bg-accent/15 blur-[150px] pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-[10%] left-[-5%] w-100 h-100 rounded-full bg-rose-soft/50 blur-[120px] pointer-events-none"
+  >
   </div>
 
-  <!-- Background Name Stencil (Subtle) -->
   <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.03]"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02]"
   >
     <span
       class="text-[30vw] font-[Outfit] font-black leading-none uppercase tracking-[-0.05em]"
@@ -30,106 +26,95 @@ const t = (translations as any).en;
     >
   </div>
 
-  <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col relative z-10">
-    <div class="grid lg:grid-cols-2 gap-0 flex-1 border border-gray-100">
-      <!-- Left Panel: The Greeting & Identity -->
-      <div
-        class="p-8 sm:p-12 lg:p-20 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100"
-      >
-        <div class="space-y-6">
-          <div class="overflow-hidden">
-            <div class="hero-reveal flex items-center gap-3">
-              <span class="w-10 h-px bg-accent"></span>
-              <span
-                class="text-[10px] font-black uppercase tracking-[0.4em] text-accent-text"
-                data-i18n="hero.badge">{t.hero.badge}</span
-              >
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <div class="overflow-hidden">
-              <h1
-                class="hero-reveal text-[3.5rem] sm:text-[5rem] lg:text-[6rem] font-[Outfit] font-black leading-[0.9] tracking-tight text-gray-950"
-              >
-                <span data-i18n="hero.greeting">{t.hero.greeting}</span><br />
-                <span
-                  class="text-accent underline decoration-gray-100 decoration-8 underline-offset-8"
-                  data-i18n="hero.name">{t.hero.name}</span
-                >
-              </h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="hidden lg:block overflow-hidden">
-          <div
-            class="hero-reveal flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.4em] text-gray-300"
+  <div
+    class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center relative z-10 px-6 sm:px-12 py-32"
+  >
+    <div class="space-y-12 sm:space-y-16">
+      <div class="overflow-hidden">
+        <div class="hero-reveal flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400"
+            data-i18n="hero.greeting">{t.hero.greeting}</span
           >
-            <span>Buenos Aires / Argentina</span>
-            <span class="w-1 h-1 rounded-full bg-gray-200"></span>
-            <span>2026 Portfolio</span>
-          </div>
         </div>
       </div>
 
-      <!-- Right Panel: The Mission & CTAs -->
-      <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-end bg-gray-50/30">
-        <div class="max-w-md space-y-12">
-          <div class="space-y-6">
-            <div class="overflow-hidden">
-              <p
-                class="hero-reveal text-2xl sm:text-3xl font-light text-gray-900 leading-tight"
-                data-i18n="hero.role"
-              >
-                {t.hero.role}
-              </p>
-            </div>
-            <div class="overflow-hidden">
-              <p
-                class="hero-reveal text-base sm:text-lg text-gray-400 font-light leading-relaxed"
-                data-i18n="hero.description"
-              >
-                {t.hero.description}
-              </p>
-            </div>
-          </div>
+      <div class="overflow-hidden">
+        <h1
+          class="hero-reveal font-[Outfit] font-black leading-[0.85] tracking-tighter text-gray-950 hero-name"
+        >
+          <span data-i18n="hero.name">{t.hero.name}</span><span
+            class="text-accent">.</span
+          >
+        </h1>
+      </div>
 
-          <!-- Vertical CTA Stack -->
-          <div class="space-y-6">
-            <div class="overflow-hidden">
-              <a
-                href="#projects"
-                class="hero-reveal group inline-flex items-center gap-6 py-4 px-8 bg-gray-950 text-white rounded-full hover:bg-accent hover:text-gray-950 transition-all duration-500 no-underline"
-              >
-                <span
-                  class="text-xs font-black uppercase tracking-widest"
-                  data-i18n="hero.cta">{t.hero.cta}</span
-                >
-                <ArrowUpRight
-                  class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </a>
-            </div>
-
-            <div class="overflow-hidden">
-              <a
-                href="https://dot-studio.site"
-                target="_blank"
-                class="hero-reveal group inline-flex items-center gap-4 text-gray-400 hover:text-dot-green transition-colors duration-500 no-underline"
-              >
-                <Globe
-                  class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity"
-                />
-                <span
-                  class="text-[10px] font-black uppercase tracking-[0.3em]"
-                  data-i18n="hero.ctaStudio">{t.hero.ctaStudio}</span
-                >
-              </a>
-            </div>
+      <div
+        class="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10 max-w-4xl"
+      >
+        <div class="overflow-hidden shrink-0">
+          <div
+            class="hero-reveal inline-flex items-center px-5 py-2.5 rounded-full bg-accent text-gray-950"
+          >
+            <span
+              class="text-[10px] font-black uppercase tracking-[0.25em] whitespace-nowrap"
+              data-i18n="hero.role">{t.hero.role}</span
+            >
           </div>
         </div>
+        <div class="overflow-hidden">
+          <p
+            class="hero-reveal text-base sm:text-lg lg:text-xl text-gray-400 font-light leading-relaxed"
+            data-i18n="hero.manifesto"
+          >
+            {t.hero.manifesto}
+          </p>
+        </div>
       </div>
+
+      <div class="flex flex-col sm:flex-row items-start gap-5">
+        <div class="overflow-hidden">
+          <a
+            href="#projects"
+            class="hero-reveal group inline-flex items-center gap-6 py-4 px-8 bg-gray-950 text-white rounded-full hover:bg-accent hover:text-gray-950 transition-all duration-500 no-underline"
+          >
+            <span
+              class="text-xs font-black uppercase tracking-widest"
+              data-i18n="hero.cta">{t.hero.cta}</span
+            >
+            <ArrowUpRight
+              class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            />
+          </a>
+        </div>
+
+        <div class="overflow-hidden">
+          <a
+            href="https://dot-studio.site"
+            target="_blank"
+            class="hero-reveal group inline-flex items-center gap-3 py-4 text-gray-400 hover:text-accent transition-colors duration-500 no-underline"
+          >
+            <Globe
+              class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity"
+            />
+            <span
+              class="text-[10px] font-black uppercase tracking-[0.3em]"
+              data-i18n="hero.ctaStudio">{t.hero.ctaStudio}</span
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute bottom-12 left-6 sm:left-12 hidden lg:flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.4em] text-gray-300"
+    >
+      <span class="hero-reveal" data-i18n="hero.location"
+        >{t.hero.location}</span
+      >
+      <span class="hero-reveal w-1 h-1 rounded-full bg-gray-300"></span>
+      <span class="hero-reveal">2026</span>
     </div>
   </div>
 </section>
@@ -145,18 +130,12 @@ const t = (translations as any).en;
       },
     });
 
-    // Hide all initially
     gsap.set(".hero-reveal", { y: "150%" });
 
     tl.to(".hero-reveal", {
       y: "0%",
-      stagger: 0.1,
-    }).fromTo(
-      ".bg-gray-100",
-      { scaleX: 0 },
-      { scaleX: 1, stagger: 0.2, duration: 1.5 },
-      "-=1.5",
-    );
+      stagger: 0.12,
+    });
   });
 </script>
 
@@ -165,9 +144,12 @@ const t = (translations as any).en;
     will-change: transform;
   }
 
-  /* Remove annoying selection behavior for text purely for aesthetics */
   #hero {
     -webkit-user-select: none;
     user-select: none;
+  }
+
+  .hero-name {
+    font-size: clamp(4rem, 12vw, 11rem);
   }
 </style>
