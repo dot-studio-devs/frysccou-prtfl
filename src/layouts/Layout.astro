@@ -1,8 +1,19 @@
 ---
 import "../styles/globals.css";
 
-const { title = "Francisco | Full Stack Engineer & Web Designer" } =
-  Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Francisco | Full Stack Engineer & Web Designer",
+  description = "Francisco (Esspindola) - Full Stack / Web Engineer. Expert in crafting high-performance, scalable web applications and premium UI/UX designs.",
+  image = "/ysc.png",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
 ---
 
 <!doctype html>
@@ -10,10 +21,31 @@ const { title = "Francisco | Full Stack Engineer & Web Designer" } =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Francisco (Esspindola) - Full Stack / Web Engineer. Expert in crafting high-performance, scalable web applications and premium UI/UX designs."
-    />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -23,11 +55,12 @@ const { title = "Francisco | Full Stack Engineer & Web Designer" } =
       media="print"
       onload="this.media='all'"
     />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
     <script is:inline>
       (function () {
         function getThemeCookie() {
