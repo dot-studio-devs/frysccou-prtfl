@@ -1,5 +1,6 @@
 ---
 import "../styles/globals.css";
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -78,7 +79,7 @@ const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
       })();
     </script>
 
-    <script defer src="https://va.vercel-scripts.com/v1/analytics"></script>
+    <Analytics />
   </head>
   <body
     class="bg-cream text-text-primary font-[Inter] antialiased overflow-x-hidden"
