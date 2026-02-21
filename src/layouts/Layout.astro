@@ -72,11 +72,6 @@ const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
       onload="this.media='all'"
     />
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
-
     <script is:inline>
       (function () {
         function getThemeCookie() {
@@ -89,15 +84,21 @@ const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
       })();
     </script>
 
-
+    <!-- Plausible Analytics -->
+    <script is:inline>
+      /* @ts-ignore */
+      window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) };
+      window.plausible.init = window.plausible.init || function (i) { window.plausible.o = i || {} };
+      window.plausible.init({ bindToWindow: true });
+    </script>
+    <script async defer data-domain="frysccou.dev" src="https://plausible.io/js/script.js"></script>
   </head>
   <body
     class="bg-cream text-text-primary font-[Inter] antialiased overflow-x-hidden"
   >
     <slot />
     <script>
-      import { init } from "@plausible-analytics/tracker";
-      init({ domain: "frysccou.dev" });
+      import gsap from "gsap";
       import { ScrollTrigger } from "gsap/ScrollTrigger";
 
       gsap.registerPlugin(ScrollTrigger);
