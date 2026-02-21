@@ -165,13 +165,13 @@ const gradients = [
         </div>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div class="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
         {
           tracks.map((track: Track, index) => (
             <a
               href={`https://music.youtube.com/watch?v=${track.snippet.resourceId.videoId}`}
               target="_blank"
-              class="group relative p-px rounded-xl bg-linear-to-r from-accent/20 to-rose-accent/20 hover:from-accent/40 hover:to-rose-accent/40 transition-all duration-500 hover:shadow-lg hover:shadow-accent/10"
+              class="group relative flex-shrink-0 w-44 p-px rounded-xl bg-linear-to-r from-accent/20 to-rose-accent/20 hover:from-accent/40 hover:to-rose-accent/40 transition-all duration-500 hover:shadow-lg hover:shadow-accent/10 snap-start"
             >
               <div class="bg-white/80 backdrop-blur-sm rounded-[calc(0.75rem-1px)] p-2 h-full border border-white hover:border-accent/30 transition-all duration-500">
                 <div
@@ -224,6 +224,13 @@ const gradients = [
 <style>
   .yt-music-card {
     will-change: transform, opacity;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>
 

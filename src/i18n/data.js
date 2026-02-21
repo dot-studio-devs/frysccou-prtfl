@@ -46,6 +46,22 @@ export const skills = {
 
 export const projects = [
   {
+    id: 6,
+    title: {
+      en: "Thender | Dating & Communities Platform",
+      es: "Thender | Plataforma de Citas y Comunidades",
+    },
+    description: {
+      en: "A cutting-edge dating and community platform designed for niche groups to connect, share, and grow together. Built with real-time capabilities, secure authentication, and a sleek user experience focusing on meaningful connections.",
+      es: "Una plataforma de citas y comunidades de vanguardia diseñada para que grupos específicos se conecten, compartan y crezcan juntos. Construida con capacidades en tiempo real, autenticación segura y una experiencia de usuario fluida centrada en conexiones significativas.",
+    },
+    aptitudes: ["Next.js", "Convex", "Clerk", "Tailwind CSS", "TypeScript"],
+    image: "/projects/thender.png",
+    liveUrl: "https://thender.site/",
+    codeUrl: "#",
+    isNew: true,
+  },
+  {
     id: 5,
     title: {
       en: "Las Taurinas | E-commerce Store",
@@ -66,7 +82,7 @@ export const projects = [
     image: "/projects/lastaurinas.png",
     liveUrl: "https://lastaurinas.empretienda.com.ar/",
     codeUrl: "#",
-    isNew: true,
+    isNew: false,
   },
   {
     id: 1,

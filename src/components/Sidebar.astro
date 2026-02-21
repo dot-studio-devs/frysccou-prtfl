@@ -499,8 +499,16 @@ const t = translations.en;
     const current =
       document.documentElement.getAttribute("data-theme") || "light";
     const next = current === "dark" ? "light" : "dark";
+    const style = document.createElement("style");
+    style.textContent = "*, *::before, *::after { transition: none !important; }";
+    document.head.appendChild(style);
     window.setTheme(next);
     updateThemeUI();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.head.removeChild(style);
+      });
+    });
   }
 
   themeToggleSidebar?.addEventListener("click", toggleTheme);

@@ -9,7 +9,12 @@ const t = (translations as any).en;
   class="relative min-h-dvh flex flex-col bg-white select-none overflow-hidden"
 >
   <div
-    class="absolute top-[-10%] right-[10%] w-125 h-125 rounded-full bg-accent/15 blur-[150px] pointer-events-none"
+    class="absolute inset-0 opacity-[0.03] pointer-events-none"
+    style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 60px 60px;"
+  >
+  </div>
+  <div
+    class="absolute top-[-10%] right-[10%] w-125 h-125 rounded-full bg-accent/20 blur-[150px] pointer-events-none"
   >
   </div>
   <div
@@ -18,12 +23,21 @@ const t = (translations as any).en;
   </div>
 
   <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02]"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.015]"
   >
     <span
-      class="text-[30vw] font-[Outfit] font-black leading-none uppercase tracking-[-0.05em]"
-      >FRAN</span
+      class="text-[12vw] font-[Outfit] font-black leading-none uppercase tracking-[-0.02em]"
+      >WEB ENGINEER</span
     >
+  </div>
+
+  <div
+    class="absolute top-32 right-12 w-px h-32 bg-gradient-to-b from-transparent via-accent to-transparent hidden lg:block"
+  >
+  </div>
+  <div
+    class="absolute bottom-40 left-12 w-32 h-px bg-gradient-to-r from-transparent via-accent to-transparent hidden lg-block"
+  >
   </div>
 
   <div
@@ -93,10 +107,10 @@ const t = (translations as any).en;
           <a
             href="https://dot-studio.site"
             target="_blank"
-            class="hero-reveal group inline-flex items-center gap-3 py-4 text-gray-400 hover:text-accent transition-colors duration-500 no-underline"
+            class="hero-reveal group inline-flex items-center gap-3 py-4 text-gray-400 hover:text-[#c1ff72] transition-colors duration-500 no-underline"
           >
             <Globe
-              class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity"
+              class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity group-hover:text-[#c1ff72]"
             />
             <span
               class="text-[10px] font-black uppercase tracking-[0.3em]"

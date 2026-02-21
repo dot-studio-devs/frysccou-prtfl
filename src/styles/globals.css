@@ -135,17 +135,52 @@
 }
 
 @layer base {
-  html[data-theme] *:not([style*="transform"]) {
-    transition:
-      background-color 0.4s ease,
-      border-color 0.4s ease,
-      color 0.4s ease,
-      box-shadow 0.4s ease;
-  }
-
   html {
     background-color: var(--surface-primary);
     color: var(--text-heading);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body,
+  section,
+  header,
+  footer,
+  nav,
+  aside,
+  main,
+  article,
+  div,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  ul,
+  ol,
+  li,
+  form,
+  label,
+  figure,
+  figcaption,
+  svg,
+  img,
+  video,
+  canvas,
+  iframe,
+  [data-theme] {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   ::-webkit-scrollbar {
