@@ -1,0 +1,1 @@
+import{g as t}from"./index.CB87Sc6I.js";import{S as o}from"./ScrollTrigger.Cv03IO65.js";t.registerPlugin(o);document.addEventListener("DOMContentLoaded",()=>{t.to(".contact-content",{scrollTrigger:{trigger:"#contact",start:"top 80%",toggleActions:"play none none none"},opacity:1,y:0,duration:1.2,ease:"power3.out"})});

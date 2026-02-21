@@ -1,0 +1,1 @@
+import{g as r}from"./index.CB87Sc6I.js";import{S as t}from"./ScrollTrigger.Cv03IO65.js";r.registerPlugin(t);document.addEventListener("DOMContentLoaded",()=>{r.to(".about-reveal",{opacity:1,y:0,duration:1.4,stagger:.2,ease:"power4.out",scrollTrigger:{trigger:"#about",start:"top 80%"}})});

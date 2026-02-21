@@ -1,0 +1,1 @@
+import{g as o}from"./index.CB87Sc6I.js";import{S as t}from"./ScrollTrigger.Cv03IO65.js";o.registerPlugin(t);document.addEventListener("DOMContentLoaded",()=>{o.to(".guestbook-container",{scrollTrigger:{trigger:"#guestbook",start:"top 85%"},opacity:1,y:0,duration:1,ease:"power3.out"})});

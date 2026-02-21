@@ -5,15 +5,19 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  ogImage?: string;
 }
 
 const {
   title = "Francisco | Full Stack Engineer & Web Designer",
   description = "Francisco (Esspindola) - Full Stack / Web Engineer. Expert in crafting high-performance, scalable web applications and premium UI/UX designs.",
   image = "/ysc.png",
+  ogImage = "/ysc.png",
 } = Astro.props;
 
+const siteName = "Francisco Portfolio";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
+const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
 ---
 
 <!doctype html>
@@ -27,23 +31,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="author" content="Francisco Esspindola" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    <meta name="twitter:image" content={fullOgImage} />
+    <meta name="twitter:creator" content="@frysccou" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,6 +88,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script>
+      /* @ts-ignore */
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      /* @ts-ignore */
+      plausible.init()
+    </script>
+    <script async src="https://plausible.io/js/pa-rfS81lLCAb8cFuM0Z4PYh.js"></script>
   </head>
   <body
     class="bg-cream text-text-primary font-[Inter] antialiased overflow-x-hidden"

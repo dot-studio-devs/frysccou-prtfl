@@ -1,0 +1,1 @@
+import{g as r}from"./index.CB87Sc6I.js";import{S as t}from"./ScrollTrigger.Cv03IO65.js";r.registerPlugin(t);document.addEventListener("DOMContentLoaded",()=>{r.to(".yt-music-card",{scrollTrigger:{trigger:"#music",start:"top 85%"},opacity:1,y:0,duration:1,ease:"power3.out"})});

@@ -1,0 +1,1 @@
+import{g as e}from"./index.CB87Sc6I.js";document.addEventListener("DOMContentLoaded",()=>{const t=e.timeline({defaults:{ease:"power4.out",duration:1.8}});e.set(".hero-reveal",{y:"150%"}),t.to(".hero-reveal",{y:"0%",stagger:.12})});
