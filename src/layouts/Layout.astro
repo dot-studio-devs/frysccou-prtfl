@@ -89,15 +89,15 @@ const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
       })();
     </script>
 
-    <!-- Privacy-friendly analytics by Plausible -->
-    <script async defer data-domain="frysccou.dev" src="https://plausible.io/js/script.js"></script>
+
   </head>
   <body
     class="bg-cream text-text-primary font-[Inter] antialiased overflow-x-hidden"
   >
     <slot />
     <script>
-      import gsap from "gsap";
+      import { init } from "@plausible-analytics/tracker";
+      init({ domain: "frysccou.dev" });
       import { ScrollTrigger } from "gsap/ScrollTrigger";
 
       gsap.registerPlugin(ScrollTrigger);
