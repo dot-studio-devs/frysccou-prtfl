@@ -1,7 +1,8 @@
 ---
 import { translations } from "../i18n/translations.js";
-import { ArrowUpRight, Globe, Code2, Layers } from "lucide-astro";
+import { Image } from "astro:assets";
 import mainLogo from "../assets/images/ysc-logo.png";
+import { ArrowUpRight, Globe, Code2, Layers } from "lucide-astro";
 const t = (translations as any).en;
 ---
 
@@ -229,10 +230,12 @@ const t = (translations as any).en;
                     class="absolute inset-0 bg-linear-to-tr from-accent/20 to-transparent opacity-0 group-hover/status:opacity-100 transition-opacity"
                   >
                   </div>
-                  <img
-                    src={mainLogo.src}
+                  <Image
+                    src={mainLogo}
                     alt="Logo"
                     loading="eager"
+                    width={28}
+                    height={28}
                     class="w-7 h-7 object-contain opacity-80 group-hover/status:opacity-100"
                   />
                 </div>

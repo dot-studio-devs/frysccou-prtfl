@@ -6,7 +6,13 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://frysccou-portfolio.vercel.app",
   integrations: [react()],
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+    imagesConfig: {
+      domains: [],
+      sizes: [320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    },
+  }),
   output: "server",
   image: {
     remotePatterns: [
