@@ -213,7 +213,15 @@ export const translations = {
       title: "Sidebar Position",
       left: "Left Side",
       right: "Right Side",
-      description: "Choose your preferred side for the navigation menu.",
+      description: "Choose your preferred theme for the interface.",
+      light: "Light Mode",
+      dark: "Dark Mode",
+      warm: "Warm Paper",
+      slate: "Slate Night",
+      forest: "Deep Forest",
+      sakura: "Sakura Breeze",
+      midnight: "Midnight Void",
+      neon: "Neon Cyber",
     },
     dotPortal: {
       subtitle: "Engineering Superior Digital Artifacts & Premium Experiences",
@@ -223,6 +231,12 @@ export const translations = {
       pixel: "Pixel Perfect",
       cta: "Enter Studio Ecosystem",
       dismiss: "Terminate Session",
+    },
+    error404: {
+      title: "Void Encountered",
+      message:
+        "The resource you are looking for has been moved or deleted from this sector.",
+      backHome: "Return to Base",
     },
   },
   es: {
@@ -442,7 +456,15 @@ export const translations = {
       title: "Posición de Sidebar",
       left: "Lado Izquierdo",
       right: "Lado Derecho",
-      description: "Elegí tu lado preferido para el menú de navegación.",
+      description: "Elegí tu tema preferido para la interfaz.",
+      light: "Modo Claro",
+      dark: "Modo Oscuro",
+      warm: "Papel Cálido",
+      slate: "Noche Pizarra",
+      forest: "Bosque Profundo",
+      sakura: "Brisa Sakura",
+      midnight: "Vacío Medianoche",
+      neon: "Ciber Neón",
     },
     dotPortal: {
       subtitle:
@@ -453,6 +475,12 @@ export const translations = {
       pixel: "Pixel Perfect",
       cta: "Entrar al Ecosistema",
       dismiss: "Terminar Sesión",
+    },
+    error404: {
+      title: "Vacío Encontrado",
+      message:
+        "El recurso que estás buscando ha sido movido o eliminado de este sector.",
+      backHome: "Volver a Base",
     },
   },
   pt: {
@@ -672,7 +700,15 @@ export const translations = {
       title: "Posição da Sidebar",
       left: "Lado Esquerdo",
       right: "Lado Direito",
-      description: "Escolha o seu lado preferido para o menu de navegação.",
+      description: "Escolha o seu tema preferido para a interface.",
+      light: "Modo Claro",
+      dark: "Modo Escuro",
+      warm: "Papel Quente",
+      slate: "Noite Ardósia",
+      forest: "Floresta Profunda",
+      sakura: "Brisa Sakura",
+      midnight: "Vazio Meia-noite",
+      neon: "Ciber Neon",
     },
     dotPortal: {
       subtitle:
@@ -683,6 +719,12 @@ export const translations = {
       pixel: "Pixel Perfect",
       cta: "Entrar no Ecossistema",
       dismiss: "Encerrar Sessão",
+    },
+    error404: {
+      title: "Vazio Encontrado",
+      message:
+        "O recurso que você está procurando foi movido ou excluído deste setor.",
+      backHome: "Voltar para Base",
     },
   },
   ja: {
@@ -771,7 +813,7 @@ export const translations = {
       description2:
         "ピクセルパーフェクトな细节に執着しており、フェイoritサウンドトラックを聴きながらコーディングすると更高効率になります。何かを構築していないときは、ゲームやマンガを読むを楽しんでします。常常に新しい挑战を学び成長する機会を求めています。",
       hobbiesTitle: "おもしろい事実と趣味",
-      funFact1: "心と手術的な精度で 제품을 구축합니다.",
+      funFact1: "心と手術的な精度で 製品を構築します。",
       funFact2: "音楽はディープワークセッションの私の秘密です。",
       funFact3: "クリーンアーキテクチャとモダンスタックに執着しています。",
     },

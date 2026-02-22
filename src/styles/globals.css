@@ -130,6 +130,130 @@
   --accent-text: #bae6fd;
 }
 
+[data-theme="forest"] {
+  --surface-primary: #050a05;
+  --surface-secondary: #0a110a;
+  --surface-tertiary: #0f1a0f;
+  --surface-elevated: #0f1a0f;
+  --surface-muted: #0f1a0f;
+  --surface-subtle: #1a2a1a;
+  --surface-hover: #1a2a1a;
+
+  --border-primary: #1a2a1a;
+  --border-secondary: #2a3a2a;
+  --border-muted: #3a4a3a;
+
+  --text-heading: #eef5ee;
+  --text-body: #a8b8a8;
+  --text-muted: #788878;
+
+  --sidebar-bg: #0a110a;
+  --card-bg: #0f1a0f;
+  --overlay-bg: rgba(5, 10, 5, 0.9);
+  --input-bg: #0f1a0f;
+  --tag-bg: #1a2a1a;
+  --button-dark-bg: #eef5ee;
+  --button-dark-text: #050a05;
+
+  --accent-color: #4ade80;
+  --accent-soft: #064e3b;
+  --accent-muted: #065f46;
+  --accent-text: #dcfce7;
+}
+
+[data-theme="sakura"] {
+  --surface-primary: #fff5f7;
+  --surface-secondary: #fffafb;
+  --surface-tertiary: #feeef1;
+  --surface-elevated: #fff5f7;
+  --surface-muted: #fdecef;
+  --surface-subtle: #f9dbe1;
+  --surface-hover: #f9dbe1;
+
+  --border-primary: #f9dbe1;
+  --border-secondary: #f4bcc6;
+  --border-muted: #e49ca9;
+
+  --text-heading: #4a1d24;
+  --text-body: #7a3d46;
+  --text-muted: #a65d68;
+
+  --sidebar-bg: #fffafb;
+  --card-bg: #feeef1;
+  --overlay-bg: rgba(74, 29, 36, 0.4);
+  --input-bg: #fdecef;
+  --tag-bg: #f9dbe1;
+  --button-dark-bg: #4a1d24;
+  --button-dark-text: #fff5f7;
+
+  --accent-color: #ec4899;
+  --accent-soft: #fdf2f8;
+  --accent-muted: #fce7f3;
+  --accent-text: #9d174d;
+}
+
+[data-theme="midnight"] {
+  --surface-primary: #000000;
+  --surface-secondary: #050505;
+  --surface-tertiary: #0a0a0a;
+  --surface-elevated: #0a0a0a;
+  --surface-muted: #0a0a0a;
+  --surface-subtle: #111111;
+  --surface-hover: #111111;
+
+  --border-primary: #111111;
+  --border-secondary: #1a1a1a;
+  --border-muted: #222222;
+
+  --text-heading: #ffffff;
+  --text-body: #a3a3a3;
+  --text-muted: #737373;
+
+  --sidebar-bg: #050505;
+  --card-bg: #0a0a0a;
+  --overlay-bg: rgba(0, 0, 0, 0.95);
+  --input-bg: #0a0a0a;
+  --tag-bg: #111111;
+  --button-dark-bg: #ffffff;
+  --button-dark-text: #000000;
+
+  --accent-color: #6d28d9;
+  --accent-soft: #1e1b4b;
+  --accent-muted: #312e81;
+  --accent-text: #c4b5fd;
+}
+
+[data-theme="neon"] {
+  --surface-primary: #050505;
+  --surface-secondary: #0a0a0a;
+  --surface-tertiary: #0f0f0f;
+  --surface-elevated: #0f0f0f;
+  --surface-muted: #0f0f0f;
+  --surface-subtle: #1a1a1a;
+  --surface-hover: #1a1a1a;
+
+  --border-primary: #1a1a1a;
+  --border-secondary: #c1ff72;
+  --border-muted: #c1ff72;
+
+  --text-heading: #ffffff;
+  --text-body: #e5e5e5;
+  --text-muted: #9ca3af;
+
+  --sidebar-bg: #0a0a0a;
+  --card-bg: #0f0f0f;
+  --overlay-bg: rgba(0, 0, 0, 0.9);
+  --input-bg: #0f0f0f;
+  --tag-bg: #1a1a1a;
+  --button-dark-bg: #c1ff72;
+  --button-dark-text: #000000;
+
+  --accent-color: #c1ff72;
+  --accent-soft: #1a2e05;
+  --accent-muted: #244107;
+  --accent-text: #d4ff9c;
+}
+
 @theme {
   --color-accent: var(--accent-color);
   --color-accent-soft: var(--accent-soft);
@@ -241,5 +365,45 @@
   color: var(--color-text-muted) !important;
 }
 [data-theme="slate"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="forest"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="forest"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="forest"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="sakura"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="sakura"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="sakura"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="midnight"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="midnight"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="midnight"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="neon"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="neon"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="neon"] .bg-white {
   background-color: var(--surface-primary) !important;
 }

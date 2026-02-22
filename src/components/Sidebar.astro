@@ -16,6 +16,9 @@ import {
   Languages,
   Sun,
   Moon,
+  TreePine,
+  Flower2,
+  Zap,
 } from "lucide-astro";
 
 import { Image } from "astro:assets";
@@ -190,25 +193,57 @@ const t = translations.en;
             class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
             data-theme-set="light"
           >
-            <Sun class="w-4 h-4" /> Light
+            <Sun class="w-4 h-4" />
+            <span data-i18n="sidebar.light">Light</span>
           </button>
           <button
             class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
             data-theme-set="dark"
           >
-            <Moon class="w-4 h-4" /> Dark
+            <Moon class="w-4 h-4" />
+            <span data-i18n="sidebar.dark">Dark</span>
           </button>
           <button
             class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
             data-theme-set="warm"
           >
-            <Coffee class="w-4 h-4" /> Warm
+            <Coffee class="w-4 h-4" />
+            <span data-i18n="sidebar.warm">Warm</span>
           </button>
           <button
             class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
             data-theme-set="slate"
           >
-            <Sparkles class="w-4 h-4" /> Slate
+            <Sparkles class="w-4 h-4" />
+            <span data-i18n="sidebar.slate">Slate</span>
+          </button>
+          <button
+            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-theme-set="forest"
+          >
+            <TreePine class="w-4 h-4" />
+            <span data-i18n="sidebar.forest">Forest</span>
+          </button>
+          <button
+            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-theme-set="sakura"
+          >
+            <Flower2 class="w-4 h-4" />
+            <span data-i18n="sidebar.sakura">Sakura</span>
+          </button>
+          <button
+            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-theme-set="midnight"
+          >
+            <Moon class="w-4 h-4" />
+            <span data-i18n="sidebar.midnight">Midnight</span>
+          </button>
+          <button
+            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-theme-set="neon"
+          >
+            <Zap class="w-4 h-4" />
+            <span data-i18n="sidebar.neon">Neon</span>
           </button>
         </div>
       </div>

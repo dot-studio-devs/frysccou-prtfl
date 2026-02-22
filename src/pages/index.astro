@@ -106,9 +106,15 @@ import CustomCursor from "../components/CustomCursor.astro";
       });
 
     document.documentElement.lang = lang;
+    document.cookie = `selected-lang=${lang}; path=/; max-age=31536000`;
 
     const event = new CustomEvent("languageChange", { detail: t });
     window.dispatchEvent(event);
+  }
+
+  function getLangCookie() {
+    const match = document.cookie.match(/selected-lang=([^;]+)/);
+    return match ? match[1] : "en";
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -117,6 +123,14 @@ import CustomCursor from "../components/CustomCursor.astro";
 
     const langs = ["en", "es", "pt", "ja"];
     let langIndex = 0;
+
+    const initialLang = getLangCookie();
+    langIndex = langs.indexOf(initialLang);
+    if (langIndex === -1) langIndex = 0;
+    currentLang = langs[langIndex];
+    if (currentLangSpan)
+      currentLangSpan.textContent = currentLang.toUpperCase();
+    updateTexts(currentLang as any);
 
     langToggle?.addEventListener("click", () => {
       langIndex = (langIndex + 1) % langs.length;
