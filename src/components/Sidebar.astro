@@ -12,6 +12,7 @@ import {
   Sparkles,
   Palette,
   ChevronLeft,
+  Settings2,
   Languages,
   Sun,
   Moon,
@@ -26,7 +27,7 @@ const t = translations.en;
 
 <aside
   id="sidebar"
-  class="fixed left-0 top-0 h-screen bg-surface border-r border-th-border z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open"
+  class="fixed top-0 h-screen bg-surface border-th-border z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open left-0 border-r"
 >
   <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
     <a href="#" class="flex items-center justify-center group/logo">
@@ -230,6 +231,61 @@ const t = translations.en;
     </button>
   </div>
 
+  <div class="pt-2 relative" id="side-hover-area">
+    <button
+      class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 overflow-hidden opacity-40 hover:opacity-100"
+    >
+      <div
+        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
+      >
+        <Settings2 class="w-5 h-5" />
+      </div>
+      <span
+        class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
+        data-i18n="sidebar.title">{t.sidebar.title}</span
+      >
+    </button>
+    <div
+      id="side-flyout"
+      class="theme-flyout absolute left-full bottom-0 pl-2 opacity-0 scale-95 pointer-events-none transition-all duration-300 z-50 transition-side-flyout"
+    >
+      <div
+        class="bg-surface rounded-xl border border-th-border shadow-xl p-4 flex flex-col gap-3 min-w-48"
+      >
+        <div class="space-y-1">
+          <h4
+            class="text-[10px] font-black uppercase tracking-widest text-text-primary"
+            data-i18n="sidebar.title"
+          >
+            {t.sidebar.title}
+          </h4>
+          <p
+            class="text-[9px] text-text-muted leading-relaxed"
+            data-i18n="sidebar.description"
+          >
+            {t.sidebar.description}
+          </p>
+        </div>
+        <div class="flex flex-col gap-1">
+          <button
+            class="side-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-side-set="left"
+          >
+            <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
+            <span data-i18n="sidebar.left">{t.sidebar.left}</span>
+          </button>
+          <button
+            class="side-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
+            data-side-set="right"
+          >
+            <div class="w-1.5 h-1.5 rounded-full bg-rose-accent"></div>
+            <span data-i18n="sidebar.right">{t.sidebar.right}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button
     id="sidebar-toggle"
     class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted transition-all duration-500 group mt-4 overflow-hidden"
@@ -242,8 +298,10 @@ const t = translations.en;
     <span
       id="toggle-label"
       class="sidebar-text text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all duration-500 opacity-100 translate-x-0"
-      data-i18n="nav.collapse">{t.nav.collapse}</span
+      data-i18n="nav.collapse"
     >
+      {t.nav.collapse}
+    </span>
   </button>
 </aside>
 
@@ -353,6 +411,40 @@ const t = translations.en;
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.contact">{t.nav.contact}</span>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="#donations"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <div class="flex items-center gap-3">
+        <Coffee class="w-5 h-5" />
+        <span data-i18n="donations.button">{t.donations.button}</span>
+      </div>
+      <ChevronRight
+        class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        stroke-width={2.5}
+      />
+    </a>
+    <a
+      href="https://dot-studio.site"
+      target="_blank"
+      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
+    >
+      <div class="flex items-center gap-3">
+        <img
+          src={dotLogo.src}
+          alt="Dot Studio"
+          width="20"
+          height="20"
+          loading="lazy"
+          class="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+        />
+        <span data-i18n="nav.aboutStudio">{t.nav.aboutStudio}</span>
+      </div>
       <ChevronRight
         class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
         stroke-width={2.5}
@@ -574,6 +666,71 @@ const t = translations.en;
   });
 
   updateThemeUI();
+
+  const sideHoverArea = document.getElementById("side-hover-area");
+  const sideFlyout = document.getElementById("side-flyout");
+  let sideCloseTimer = null;
+
+  function showSideFlyout() {
+    if (sideCloseTimer) {
+      clearTimeout(sideCloseTimer);
+      sideCloseTimer = null;
+    }
+    if (sideFlyout) {
+      const isRight = sidebar?.classList.contains("right-0");
+      if (isRight) {
+        sideFlyout.style.left = "auto";
+        sideFlyout.style.right = "100%";
+        sideFlyout.style.paddingLeft = "0";
+        sideFlyout.style.paddingRight = "8px";
+      } else {
+        sideFlyout.style.left = "100%";
+        sideFlyout.style.right = "auto";
+        sideFlyout.style.paddingLeft = "8px";
+        sideFlyout.style.paddingRight = "0";
+      }
+      sideFlyout.classList.add("theme-flyout-visible");
+    }
+  }
+
+  function hideSideFlyout() {
+    sideCloseTimer = setTimeout(() => {
+      if (sideFlyout) sideFlyout.classList.remove("theme-flyout-visible");
+    }, 600);
+  }
+
+  sideHoverArea?.addEventListener("mouseenter", showSideFlyout);
+  sideHoverArea?.addEventListener("mouseleave", hideSideFlyout);
+  sideFlyout?.addEventListener("mouseenter", showSideFlyout);
+  sideFlyout?.addEventListener("mouseleave", hideSideFlyout);
+
+  function setSidebarSide(side, save = true) {
+    if (!sidebar) return;
+    sidebar.classList.remove("left-0", "right-0", "border-r", "border-l");
+    if (side === "right") {
+      sidebar.classList.add("right-0", "border-l");
+    } else {
+      sidebar.classList.add("left-0", "border-r");
+    }
+    if (save) {
+      document.cookie = `sidebar-side=${side}; path=/; max-age=31536000`;
+      hideSideFlyout();
+    }
+  }
+
+  function getSidebarSide() {
+    const match = document.cookie.match(/sidebar-side=([^;]+)/);
+    return match ? match[1] : "left";
+  }
+
+  setSidebarSide(getSidebarSide(), false);
+
+  document.querySelectorAll(".side-option").forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const side = opt.getAttribute("data-side-set");
+      if (side) setSidebarSide(side);
+    });
+  });
 
   document
     .querySelectorAll('aside a[href^="#"], .mobile-nav-link')

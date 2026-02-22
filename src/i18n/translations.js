@@ -209,6 +209,12 @@ export const translations = {
       by: "by Francisco (Esspindola)",
       rights: "All rights reserved",
     },
+    sidebar: {
+      title: "Sidebar Position",
+      left: "Left Side",
+      right: "Right Side",
+      description: "Choose your preferred side for the navigation menu.",
+    },
   },
   es: {
     nav: {
@@ -423,6 +429,12 @@ export const translations = {
       by: "por Francisco (Esspindola)",
       rights: "Todos los derechos reservados",
     },
+    sidebar: {
+      title: "Posición de Sidebar",
+      left: "Lado Izquierdo",
+      right: "Lado Derecho",
+      description: "Elegí tu lado preferido para el menú de navegación.",
+    },
   },
   pt: {
     nav: {
@@ -636,6 +648,12 @@ export const translations = {
       madeWith: "Feito com 🖤🐕",
       by: "por Francisco (Esspindola)",
       rights: "Todos os direitos reservados",
+    },
+    sidebar: {
+      title: "Posição da Sidebar",
+      left: "Lado Esquerdo",
+      right: "Lado Direito",
+      description: "Escolha o seu lado preferido para o menu de navegação.",
     },
   },
   ja: {
