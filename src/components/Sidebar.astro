@@ -19,6 +19,7 @@ import {
 
 import { Image } from "astro:assets";
 import dotLogo from "../assets/work/dot-logo.svg";
+import mainLogo from "../assets/images/ysc-logo.png";
 
 const t = translations.en;
 ---
@@ -30,7 +31,7 @@ const t = translations.en;
   <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
     <a href="#" class="flex items-center justify-center group/logo">
       <img
-        src="/ysc-transparente.png"
+        src={mainLogo.src}
         alt="Frysccou"
         loading="eager"
         class="h-10 w-auto transition-transform duration-500 group-hover/logo:scale-105"
@@ -148,7 +149,7 @@ const t = translations.en;
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
       >
         <img
-          src="/dot-logo.svg"
+          src={dotLogo.src}
           alt="Dot Studio"
           width="20"
           height="20"
@@ -256,7 +257,7 @@ const t = translations.en;
   >
     <a href="#" class="flex items-center group">
       <img
-        src="/ysc-transparente.png"
+        src={mainLogo.src}
         alt="Frysccou"
         class="h-8 w-auto transition-transform duration-500 group-hover:scale-105"
       />
