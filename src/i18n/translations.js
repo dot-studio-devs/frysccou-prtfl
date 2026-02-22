@@ -215,6 +215,15 @@ export const translations = {
       right: "Right Side",
       description: "Choose your preferred side for the navigation menu.",
     },
+    dotPortal: {
+      subtitle: "Engineering Superior Digital Artifacts & Premium Experiences",
+      methodology: "Methodology",
+      arch: "Hexagonal Arch",
+      standard: "Standard",
+      pixel: "Pixel Perfect",
+      cta: "Enter Studio Ecosystem",
+      dismiss: "Terminate Session",
+    },
   },
   es: {
     nav: {
@@ -435,6 +444,16 @@ export const translations = {
       right: "Lado Derecho",
       description: "Elegí tu lado preferido para el menú de navegación.",
     },
+    dotPortal: {
+      subtitle:
+        "Ingeniería de Artefactos Digitales Superiores y Experiencias Premium",
+      methodology: "Metodología",
+      arch: "Arq. Hexagonal",
+      standard: "Estándar",
+      pixel: "Pixel Perfect",
+      cta: "Entrar al Ecosistema",
+      dismiss: "Terminar Sesión",
+    },
   },
   pt: {
     nav: {
@@ -654,6 +673,16 @@ export const translations = {
       left: "Lado Esquerdo",
       right: "Lado Direito",
       description: "Escolha o seu lado preferido para o menu de navegação.",
+    },
+    dotPortal: {
+      subtitle:
+        "Engenharia de Artefatos Digitais Superiores e Experiências Premium",
+      methodology: "Metodologia",
+      arch: "Arq. Hexagonal",
+      standard: "Padrão",
+      pixel: "Pixel Perfect",
+      cta: "Entrar no Ecossistema",
+      dismiss: "Encerrar Sessão",
     },
   },
   ja: {

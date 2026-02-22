@@ -1,0 +1,218 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+import dotLogo from "../../assets/work/dot-logo.svg";
+import { translations } from "../../i18n/translations.js";
+
+const t = translations.en;
+---
+
+<div
+  id="dot-studio-portal"
+  class="fixed inset-0 z-100 opacity-0 pointer-events-none transition-all duration-700 overflow-hidden"
+>
+  <div
+    class="absolute inset-0 bg-[#050505]/95 backdrop-blur-sm shadow-[inset_0_0_150px_rgba(193,255,114,0.15)]"
+  >
+  </div>
+
+  <div
+    id="particles-container"
+    class="absolute inset-0 pointer-events-none opacity-40"
+  >
+  </div>
+
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute top-0 left-0 w-64 h-64 bg-dot-green/10 blur-[100px] rounded-full -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-64 h-64 bg-dot-purple/10 blur-[100px] rounded-full translate-x-1/2 translate-y-1/2"
+    >
+    </div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
+    <div
+      id="portal-card"
+      class="relative w-full max-w-lg bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-8 md:p-12 shadow-2xl scale-95 opacity-0 transition-all duration-1000 cubic-bezier(0.23,1,0.32,1)"
+    >
+      <div
+        class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-dot-green rounded-3xl rotate-12 flex items-center justify-center shadow-2xl shadow-dot-green/20 overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-linear-to-br from-white/20 to-transparent"
+        >
+        </div>
+        <img
+          src={dotLogo.src}
+          alt="Dot Studio"
+          class="w-12 h-12 -rotate-12 relative z-10"
+        />
+      </div>
+
+      <div class="mt-8 space-y-8 text-center">
+        <div class="space-y-4">
+          <h2
+            class="text-4xl md:text-5xl font-[Outfit] font-black tracking-tighter uppercase leading-none italic text-white"
+          >
+            Dot Studio<span class="text-dot-green">.</span>
+          </h2>
+          <p
+            class="text-white/40 text-[10px] md:text-xs font-bold max-w-xs mx-auto leading-relaxed uppercase tracking-[0.3em]"
+            data-i18n="dotPortal.subtitle"
+          >
+            {t.dotPortal.subtitle}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 pt-4 text-left">
+          <div
+            class="bg-white/[0.03] border border-white/5 rounded-2xl p-5 hover:bg-white/[0.05] transition-colors"
+          >
+            <div
+              class="text-[9px] font-black uppercase tracking-widest text-dot-green mb-1 opacity-70"
+              data-i18n="dotPortal.methodology"
+            >
+              {t.dotPortal.methodology}
+            </div>
+            <div
+              class="text-xs font-bold text-white uppercase italic"
+              data-i18n="dotPortal.arch"
+            >
+              {t.dotPortal.arch}
+            </div>
+          </div>
+          <div
+            class="bg-white/[0.03] border border-white/5 rounded-2xl p-5 hover:bg-white/[0.05] transition-colors"
+          >
+            <div
+              class="text-[9px] font-black uppercase tracking-widest text-dot-purple mb-1 opacity-70"
+              data-i18n="dotPortal.standard"
+            >
+              {t.dotPortal.standard}
+            </div>
+            <div
+              class="text-xs font-bold text-white uppercase italic"
+              data-i18n="dotPortal.pixel"
+            >
+              {t.dotPortal.pixel}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <a
+            href="https://dot-studio.site"
+            target="_blank"
+            class="group/btn relative flex items-center justify-center gap-3 py-5 bg-dot-green text-black rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-[#d4ff9c] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-dot-green/10"
+          >
+            <span data-i18n="dotPortal.cta">{t.dotPortal.cta}</span>
+            <ArrowUpRight
+              class="w-4 h-4 transition-transform duration-500 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+            />
+          </a>
+
+          <button
+            id="close-portal"
+            class="py-4 text-[9px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white/60 transition-colors duration-500"
+            data-i18n="dotPortal.dismiss"
+          >
+            {t.dotPortal.dismiss}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const portal = document.getElementById("dot-studio-portal");
+  const card = document.getElementById("portal-card");
+  const closeBtn = document.getElementById("close-portal");
+  const container = document.getElementById("particles-container");
+
+  let active = false;
+
+  function createParticle() {
+    if (!active || !container) return;
+
+    const particle = document.createElement("div");
+    const size = Math.random() * 3 + 1;
+    const colors = ["#c1ff72", "#e7d0f7", "#ffffff"];
+
+    particle.className = "absolute rounded-full";
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.filter = "blur(1px)";
+    particle.style.opacity = "0";
+
+    container.appendChild(particle);
+
+    const anim = particle.animate(
+      [
+        { opacity: 0, transform: "translateY(0) scale(1)" },
+        {
+          opacity: 0.6,
+          transform: `translateY(-${Math.random() * 100 + 50}px) scale(1.5)`,
+          offset: 0.5,
+        },
+        {
+          opacity: 0,
+          transform: `translateY(-${Math.random() * 200 + 100}px) scale(0)`,
+          offset: 1,
+        },
+      ],
+      {
+        duration: Math.random() * 3000 + 2000,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+    );
+
+    anim.onfinish = () => particle.remove();
+  }
+
+  let particleInterval: number | null = null;
+
+  window.addEventListener("trigger-dot-portal", () => {
+    active = true;
+    portal?.classList.remove("opacity-0", "pointer-events-none");
+    portal?.classList.add("opacity-100", "pointer-events-auto");
+
+    setTimeout(() => {
+      card?.classList.remove("opacity-0", "scale-95");
+      card?.classList.add("opacity-100", "scale-100");
+    }, 100);
+
+    particleInterval = setInterval(createParticle, 100) as any;
+  });
+
+  function closePortal() {
+    active = false;
+    if (particleInterval) clearInterval(particleInterval);
+
+    card?.classList.remove("opacity-100", "scale-100");
+    card?.classList.add("opacity-0", "scale-95");
+
+    setTimeout(() => {
+      portal?.classList.remove("opacity-100", "pointer-events-auto");
+      portal?.classList.add("opacity-0", "pointer-events-none");
+      if (container) container.innerHTML = "";
+    }, 700);
+  }
+
+  closeBtn?.addEventListener("click", closePortal);
+  portal?.addEventListener("click", (e) => {
+    if (e.target === portal) closePortal();
+  });
+</script>
+
+<style>
+  .cubic-bezier {
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+</style>

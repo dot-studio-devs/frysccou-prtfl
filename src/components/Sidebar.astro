@@ -144,7 +144,7 @@ const t = translations.en;
     <a
       href="https://dot-studio.site"
       target="_blank"
-      class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
+      class="sidebar-link dot-studio-portal-trigger flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -181,7 +181,7 @@ const t = translations.en;
       </button>
       <div
         id="theme-flyout"
-        class="theme-flyout absolute left-full bottom-0 pl-2 opacity-0 scale-95 pointer-events-none transition-all duration-300 z-50"
+        class="theme-flyout absolute bottom-0 opacity-0 scale-95 pointer-events-none transition-all duration-300 z-50"
       >
         <div
           class="bg-surface rounded-xl border border-th-border shadow-xl p-2 flex flex-col gap-1 min-w-35"
@@ -432,7 +432,7 @@ const t = translations.en;
     <a
       href="https://dot-studio.site"
       target="_blank"
-      class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
+      class="mobile-nav-link dot-studio-portal-trigger p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <div class="flex items-center gap-3">
         <img
@@ -541,7 +541,21 @@ const t = translations.en;
       clearTimeout(themeCloseTimer);
       themeCloseTimer = null;
     }
-    if (themeFlyout) themeFlyout.classList.add("theme-flyout-visible");
+    if (themeFlyout) {
+      const isRight = sidebar?.classList.contains("right-0");
+      if (isRight) {
+        themeFlyout.style.left = "auto";
+        themeFlyout.style.right = "100%";
+        themeFlyout.style.paddingLeft = "0";
+        themeFlyout.style.paddingRight = "8px";
+      } else {
+        themeFlyout.style.left = "100%";
+        themeFlyout.style.right = "auto";
+        themeFlyout.style.paddingLeft = "8px";
+        themeFlyout.style.paddingRight = "0";
+      }
+      themeFlyout.classList.add("theme-flyout-visible");
+    }
   }
   function hideThemeFlyout() {
     themeCloseTimer = setTimeout(function () {
@@ -729,6 +743,13 @@ const t = translations.en;
     opt.addEventListener("click", () => {
       const side = opt.getAttribute("data-side-set");
       if (side) setSidebarSide(side);
+    });
+  });
+
+  document.querySelectorAll(".dot-studio-portal-trigger").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent("trigger-dot-portal"));
     });
   });
 
