@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+:root {
+  --surface-primary: #ffffff;
+  --surface-secondary: #fefefe;
+  --surface-tertiary: #fafafa;
+  --surface-elevated: #ffffff;
+  --surface-muted: #f9fafb;
+  --surface-subtle: #f3f4f6;
+  --surface-hover: #f3f4f6;
+
+  --border-primary: #f3f4f6;
+  --border-secondary: #e5e7eb;
+  --border-muted: #d1d5db;
+
+  --text-heading: #1f2937;
+  --text-body: #374151;
+  --text-muted: #4b5563;
+
+  --sidebar-bg: #ffffff;
+  --card-bg: #ffffff;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --input-bg: #f9fafb;
+  --tag-bg: #f9fafb;
+  --button-dark-bg: #111827;
+  --button-dark-text: #ffffff;
+  --scrollbar-track: transparent;
+
+  --accent-color: #e7d0f7;
+  --accent-soft: #f5edfe;
+  --accent-muted: #f0e1fd;
+  --accent-text: #6d28d9;
+}
+
+[data-theme="dark"] {
+  --surface-primary: #0f0f11;
+  --surface-secondary: #131316;
+  --surface-tertiary: #18181b;
+  --surface-elevated: #1c1c21;
+  --surface-muted: #1c1c21;
+  --surface-subtle: #27272a;
+  --surface-hover: #27272a;
+
+  --border-primary: #27272a;
+  --border-secondary: #3f3f46;
+  --border-muted: #52525b;
+
+  --text-heading: #fafafa;
+  --text-body: #d4d4d8;
+  --text-muted: #a1a1aa;
+
+  --sidebar-bg: #131316;
+  --card-bg: #18181b;
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --input-bg: #1c1c21;
+  --tag-bg: #27272a;
+  --button-dark-bg: #fafafa;
+  --button-dark-text: #0f0f11;
+
+  --accent-color: #e7d0f7;
+  --accent-soft: #2d1f3d;
+  --accent-muted: #3a2650;
+  --accent-text: #c4b5fd;
+}
+
+[data-theme="warm"] {
+  --surface-primary: #fbf7ef;
+  --surface-secondary: #fdfaf3;
+  --surface-tertiary: #f5f0e5;
+  --surface-elevated: #fbf7ef;
+  --surface-muted: #f2ede0;
+  --surface-subtle: #ebe4d1;
+  --surface-hover: #ebe4d1;
+
+  --border-primary: #ebe4d1;
+  --border-secondary: #dfd4b8;
+  --border-muted: #c9b99a;
+
+  --text-heading: #433422;
+  --text-body: #5f4b32;
+  --text-muted: #8c7355;
+
+  --sidebar-bg: #fdfaf3;
+  --card-bg: #f5f0e5;
+  --overlay-bg: rgba(67, 52, 34, 0.4);
+  --input-bg: #f2ede0;
+  --tag-bg: #ebe4d1;
+  --button-dark-bg: #433422;
+  --button-dark-text: #fbf7ef;
+
+  --accent-color: #d97706;
+  --accent-soft: #fef3c7;
+  --accent-muted: #fde68a;
+  --accent-text: #92400e;
+}
+
+[data-theme="slate"] {
+  --surface-primary: #020617;
+  --surface-secondary: #0f172a;
+  --surface-tertiary: #1e293b;
+  --surface-elevated: #1e293b;
+  --surface-muted: #1e293b;
+  --surface-subtle: #334155;
+  --surface-hover: #334155;
+
+  --border-primary: #1e293b;
+  --border-secondary: #334155;
+  --border-muted: #475569;
+
+  --text-heading: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --sidebar-bg: #0f172a;
+  --card-bg: #1e293b;
+  --overlay-bg: rgba(0, 0, 0, 0.8);
+  --input-bg: #1e293b;
+  --tag-bg: #334155;
+  --button-dark-bg: #f8fafc;
+  --button-dark-text: #020617;
+
+  --accent-color: #38bdf8;
+  --accent-soft: #0c4a6e;
+  --accent-muted: #075985;
+  --accent-text: #bae6fd;
+}
+
+@theme {
+  --color-accent: var(--accent-color);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-text: var(--accent-text);
+
+  --color-rose-accent: #fda4af;
+  --color-rose-soft: #ffe4e6;
+
+  --color-dot-green: #c1ff72;
+  --color-dot-purple: #e7d0f7;
+
+  --color-white: #ffffff;
+  --color-off-white: #fafafa;
+  --color-cream: #fefefe;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
+
+  --color-text-primary: var(--text-heading);
+  --color-text-muted: var(--text-muted);
+  --color-text-secondary: var(--text-body);
+
+  --color-surface: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-tertiary: var(--surface-tertiary);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-hover: var(--surface-hover);
+  --color-th-border: var(--border-primary);
+  --color-th-border-secondary: var(--border-secondary);
+  --color-th-border-muted: var(--border-muted);
+  --color-th-text: var(--text-heading);
+  --color-th-text-body: var(--text-body);
+  --color-th-text-muted: var(--text-muted);
+  --color-th-sidebar: var(--sidebar-bg);
+  --color-th-card: var(--card-bg);
+  --color-th-input: var(--input-bg);
+  --color-th-tag: var(--tag-bg);
+  --color-th-btn-dark: var(--button-dark-bg);
+  --color-th-btn-dark-text: var(--button-dark-text);
+
+  --font-primary: "Inter", system-ui, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--surface-primary);
+    color: var(--text-heading);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 10px;
+    border: 2px solid transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-heading);
+  }
+
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="dark"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="dark"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="warm"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="warm"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="warm"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}
+
+[data-theme="slate"] .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="slate"] .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+[data-theme="slate"] .bg-white {
+  background-color: var(--surface-primary) !important;
+}

@@ -1,0 +1,132 @@
+---
+import "../styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Francisco | Full Stack Engineer & Web Designer",
+  description = "Francisco (Esspindola) - Full Stack / Web Engineer. Expert in crafting high-performance, scalable web applications and premium UI/UX designs.",
+  image = "/ysc.png",
+  ogImage = "/ysc.png",
+} = Astro.props;
+
+const siteName = "Francisco Portfolio";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
+const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Francisco Esspindola" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+    <meta name="twitter:creator" content="@frysccou" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <script is:inline>
+      (function () {
+        function getThemeCookie() {
+          var match = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
+          return match ? match[1] : null;
+        }
+        var saved = getThemeCookie();
+        var theme = saved || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+
+    <script defer src="https://va.vercel-scripts.com/v1/analytics"></script>
+  </head>
+  <body
+    class="bg-surface text-th-text font-[Inter] antialiased overflow-x-hidden"
+  >
+    <slot />
+    <script>
+      import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      declare global {
+        interface Window {
+          gsap: typeof gsap;
+          ScrollTrigger: typeof ScrollTrigger;
+          setTheme: (theme: string) => void;
+          getTheme: () => string;
+        }
+      }
+
+      window.gsap = gsap;
+      window.ScrollTrigger = ScrollTrigger;
+
+      function setThemeCookie(theme: string) {
+        var expires = new Date();
+        expires.setDate(expires.getDate() + 14);
+        document.cookie =
+          "theme=" +
+          theme +
+          ";expires=" +
+          expires.toUTCString() +
+          ";path=/;SameSite=Lax";
+      }
+
+      function getThemeCookie(): string {
+        var match = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
+        return match ? match[1] : "light";
+      }
+
+      window.setTheme = function (theme: string) {
+        document.documentElement.setAttribute("data-theme", theme);
+        setThemeCookie(theme);
+        window.dispatchEvent(new CustomEvent("themeChange", { detail: theme }));
+      };
+
+      window.getTheme = function () {
+        return document.documentElement.getAttribute("data-theme") || "light";
+      };
+    </script>
+  </body>
+</html>

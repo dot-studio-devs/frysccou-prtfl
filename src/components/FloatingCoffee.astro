@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import dotLogo from "../assets/work/dot-logo.svg";
+---
+
+<a
+  href="#contact"
+  id="floating-studio"
+  class="fixed bottom-6 right-6 z-40 group opacity-0 translate-y-10"
+  aria-label="Visit Dot Studio"
+>
+  <Image
+    src={dotLogo}
+    alt="Dot Studio"
+    width={64}
+    height={64}
+    class="w-16 h-16 rounded-full bg-surface p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-th-border"
+  />
+</a>
+
+<style>
+  #floating-studio.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("floating-studio");
+
+    setTimeout(() => {
+      btn?.classList.add("visible");
+    }, 2000);
+  });
+</script>

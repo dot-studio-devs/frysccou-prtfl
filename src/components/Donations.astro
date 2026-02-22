@@ -1,0 +1,214 @@
+---
+import { translations } from "../i18n/translations.js";
+import { Coffee, ArrowRight, Copy, Check } from "lucide-astro";
+const t = (translations as any).en;
+
+const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
+---
+
+<section
+  id="donations"
+  class="py-32 bg-surface relative overflow-hidden border-t border-th-border"
+>
+  <!-- Minimalist Structural Lines -->
+  <div
+    class="absolute inset-x-0 top-1/2 h-px bg-th-border/60 pointer-events-none hidden lg:block"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-0 border border-th-border">
+      <!-- Left Panel: Large Typography -->
+      <div
+        class="p-10 sm:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-th-border flex flex-col justify-between"
+      >
+        <div class="space-y-8">
+          <div class="overflow-hidden">
+            <div class="donation-reveal flex items-center gap-3">
+              <span class="w-8 h-px bg-rose-accent"></span>
+              <span
+                class="text-[10px] font-black uppercase tracking-[0.4em] text-rose-accent/80"
+                >Support</span
+              >
+            </div>
+          </div>
+
+          <h2
+            class="text-5xl sm:text-6xl lg:text-7xl font-[Outfit] font-black leading-[0.9] tracking-tighter text-text-primary"
+          >
+            <div class="overflow-hidden">
+              <span
+                class="donation-reveal inline-block"
+                data-i18n="donations.title">{t.donations.title}</span
+              >
+            </div>
+          </h2>
+        </div>
+
+        <div class="mt-12 lg:mt-0 opacity-10 hidden sm:block">
+          <Coffee class="w-24 h-24 text-text-primary" strokeWidth={1} />
+        </div>
+      </div>
+
+      <!-- Right Panel: Links & Crypto -->
+      <div
+        class="p-10 sm:p-16 lg:p-24 bg-surface-muted/30 flex flex-col justify-center space-y-12"
+      >
+        <!-- Mercado Pago Option -->
+        <div class="overflow-hidden">
+          <div class="donation-reveal">
+            <a
+              href="https://link.mercadopago.com.ar/frysccoudev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-6 no-underline"
+            >
+              <div
+                class="relative w-16 h-16 rounded-2xl bg-th-btn-dark flex items-center justify-center group-hover:bg-accent transition-all duration-500 overflow-hidden shrink-0"
+              >
+                <Coffee
+                  class="w-6 h-6 text-th-btn-dark-text group-hover:text-text-primary transition-colors duration-500"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-xs font-black uppercase tracking-[0.2em] text-text-primary"
+                    data-i18n="donations.button">{t.donations.button}</span
+                  >
+                  <ArrowRight
+                    class="w-4 h-4 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300"
+                  />
+                </div>
+                <p
+                  class="text-[9px] text-text-muted font-medium uppercase tracking-widest italic"
+                >
+                  Pay via Mercado Pago (ARS)
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Crypto / USDT Option -->
+        <div class="overflow-hidden border-t border-th-border pt-8">
+          <div class="donation-reveal space-y-6">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full bg-rose-accent animate-pulse">
+              </div>
+              <span
+                class="text-[10px] font-black uppercase tracking-[0.3em] text-text-primary"
+                >Crypto / USDT</span
+              >
+            </div>
+
+            <div
+              class="bg-surface border border-th-border rounded-2xl p-6 space-y-4"
+            >
+              <div
+                class="flex justify-between items-center text-[9px] font-black uppercase tracking-widest"
+              >
+                <span class="text-text-muted"
+                  >Network: <span class="text-text-primary">Polygon</span></span
+                >
+                <span class="text-text-muted"
+                  >Asset: <span class="text-text-primary">USDT</span></span
+                >
+              </div>
+
+              <div
+                class="relative group/wallet cursor-pointer"
+                id="copy-wallet"
+              >
+                <div
+                  class="bg-surface-muted rounded-xl px-4 py-3 flex items-center justify-between border border-transparent group-hover/wallet:border-rose-accent/20 transition-all duration-300"
+                >
+                  <span
+                    class="text-[10px] font-mono text-text-muted truncate pr-4"
+                    >{WALLET_ADDRESS}</span
+                  >
+                  <div
+                    class="shrink-0 flex items-center gap-2 text-rose-accent"
+                  >
+                    <span
+                      id="copy-text"
+                      class="text-[8px] font-black uppercase tracking-tighter opacity-0 group-hover/wallet:opacity-100 transition-opacity"
+                      >Copy</span
+                    >
+                    <div class="relative w-4 h-4">
+                      <Copy
+                        id="copy-icon"
+                        class="w-4 h-4 absolute inset-0 transition-all duration-300"
+                      />
+                      <Check
+                        id="check-icon"
+                        class="w-4 h-4 absolute inset-0 scale-0 opacity-0 text-green-500 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ WALLET_ADDRESS }}>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Hide all initially
+    gsap.set(".donation-reveal", { y: "150%" });
+
+    gsap.to(".donation-reveal", {
+      scrollTrigger: {
+        trigger: "#donations",
+        start: "top 80%",
+      },
+      y: "0%",
+      duration: 1.5,
+      stagger: 0.1,
+      ease: "power4.out",
+    });
+
+    // Copy Wallet Logic
+    const copyBtn = document.getElementById("copy-wallet");
+    const copyText = document.getElementById("copy-text");
+    const copyIcon = document.getElementById("copy-icon");
+    const checkIcon = document.getElementById("check-icon");
+
+    copyBtn?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(WALLET_ADDRESS);
+
+        // Success State
+        if (copyText) copyText.innerText = "Copied!";
+        copyIcon?.classList.add("scale-0", "opacity-0");
+        checkIcon?.classList.remove("scale-0", "opacity-0");
+        checkIcon?.classList.add("scale-100", "opacity-100");
+
+        setTimeout(() => {
+          if (copyText) copyText.innerText = "Copy";
+          copyIcon?.classList.remove("scale-0", "opacity-0");
+          checkIcon?.classList.add("scale-0", "opacity-0");
+          checkIcon?.classList.remove("scale-100", "opacity-100");
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy!", err);
+      }
+    });
+  });
+</script>
+
+<style>
+  .donation-reveal {
+    will-change: transform;
+  }
+</style>

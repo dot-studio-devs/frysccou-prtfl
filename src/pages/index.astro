@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Availability from "../components/Availability.astro";
+import YoutubeMusic from "../components/YoutubeMusic.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Marketplace from "../components/Marketplace.astro";
+import Guestbook from "../components/Guestbook.astro";
+import Contact from "../components/Contact.astro";
+import Donations from "../components/Donations.astro";
+import Footer from "../components/Footer.astro";
+import CustomCursor from "../components/CustomCursor.astro";
+---
+
+<Layout>
+  <CustomCursor />
+  <Sidebar />
+
+  <div
+    id="content-wrapper"
+    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen"
+  >
+    <main>
+      <Hero />
+      <About />
+      <Availability />
+      <YoutubeMusic />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Marketplace />
+      <Guestbook />
+      <Contact />
+      <Donations />
+    </main>
+    <Footer />
+  </div>
+
+  <button id="lang-toggle" class="hidden" aria-hidden="true"></button>
+</Layout>
+
+<style is:global>
+  body.sidebar-expanded #content-wrapper {
+    padding-left: 256px;
+  }
+  body.sidebar-collapsed #content-wrapper {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 768px) {
+    body.sidebar-expanded #content-wrapper,
+    body.sidebar-collapsed #content-wrapper {
+      padding-left: 0;
+      padding-top: 64px;
+    }
+  }
+</style>
+
+<script>
+  import { translations } from "../i18n/translations.js";
+
+  let currentLang = "en";
+
+  function updateTexts(lang: "en" | "es" | "pt" | "ja") {
+    const t = (translations as any)[lang];
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (!key) return;
+      const keys = key.split(".");
+      let value: any = t;
+      for (const k of keys) {
+        value = value?.[k];
+      }
+      if (value && typeof value === "string") {
+        el.innerHTML = value;
+      }
+    });
+
+    document.querySelectorAll(".project-title").forEach((el) => {
+      const text = el.getAttribute(`data-lang-${lang}`);
+      if (text) el.textContent = text;
+    });
+
+    document.querySelectorAll(".project-desc").forEach((el) => {
+      const text = el.getAttribute(`data-lang-${lang}`);
+      if (text) el.textContent = text;
+    });
+
+    document
+      .querySelectorAll(".work-company, .work-role, .work-desc")
+      .forEach((el) => {
+        const text = el.getAttribute(`data-lang-${lang}`);
+        if (text) el.textContent = text;
+      });
+
+    document
+      .querySelectorAll(".edu-institution, .edu-degree, .edu-desc")
+      .forEach((el) => {
+        const text = el.getAttribute(`data-lang-${lang}`);
+        if (text) el.textContent = text;
+      });
+
+    document.documentElement.lang = lang;
+
+    const event = new CustomEvent("languageChange", { detail: t });
+    window.dispatchEvent(event);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const langToggle = document.getElementById("lang-toggle");
+    const currentLangSpan = document.getElementById("current-lang");
+
+    const langs = ["en", "es", "pt", "ja"];
+    let langIndex = 0;
+
+    langToggle?.addEventListener("click", () => {
+      langIndex = (langIndex + 1) % langs.length;
+      currentLang = langs[langIndex];
+      if (currentLangSpan) {
+        currentLangSpan.textContent = currentLang.toUpperCase();
+      }
+      updateTexts(currentLang as any);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+  });
+</script>

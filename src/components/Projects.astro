@@ -1,0 +1,207 @@
+---
+import { translations } from "../i18n/translations.js";
+import { projects } from "../i18n/data.js";
+import { Github } from "lucide-astro";
+import { Image } from "astro:assets";
+import liz from "../assets/projects/liz.png";
+import consentido from "../assets/projects/consentido.png";
+import zatobox from "../assets/projects/zatobox.png";
+import dotstudio from "../assets/projects/dot-studio.png";
+import lastaurinas from "../assets/projects/lastaurinas.png";
+import thender from "../assets/projects/thender.png";
+
+const projectImages: Record<number, any> = {
+  1: liz,
+  2: consentido,
+  3: zatobox,
+  4: dotstudio,
+  5: lastaurinas,
+  6: thender,
+};
+
+const t = translations.en;
+---
+
+<section
+  id="projects"
+  class="py-32 bg-surface border-t border-th-border relative overflow-hidden"
+>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="projects-header opacity-0 translate-y-10 mb-20">
+      <div class="space-y-10">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-px bg-accent"></span>
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.4em] text-text-muted"
+            >Works</span
+          >
+        </div>
+
+        <div class="space-y-6">
+          <h2
+            class="text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter"
+            data-i18n="projects.title"
+          >
+            {t.projects.title}
+          </h2>
+          <p
+            class="text-xl text-text-muted font-light leading-relaxed max-w-xl"
+            data-i18n="projects.subtitle"
+          >
+            {t.projects.subtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      {
+        projects.map((project, index) => (
+          <div
+            class={`project-card opacity-0 translate-y-10 group bg-surface rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative ${project.id === 6 ? "border-[#D4C4A8] border-2 shadow-xl shadow-[#D4C4A8]/20 hover:shadow-[#D4C4A8]/40" : "border-th-border hover:border-accent hover:shadow-accent-soft/20"}`}
+          >
+            {project.id === 6 && (
+              <div class="absolute -inset-0.5 bg-linear-to-r from-[#D4C4A8] to-[#C9B896] rounded-[26px] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-tilt -z-10" />
+            )}
+            <div class="aspect-video bg-surface-muted relative overflow-hidden">
+              {project.isNew && (
+                <div class="absolute top-4 right-4 z-20">
+                  <div class="bg-[#D4C4A8] text-white py-1.5 px-4 rounded-full border-2 border-white shadow-md flex items-center gap-2 backdrop-blur-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                    <span
+                      class="text-[10px] font-black uppercase tracking-[0.15em]"
+                      data-i18n="projects.newBadge"
+                    >
+                      {t.projects.newBadge}
+                    </span>
+                  </div>
+                </div>
+              )}
+              <Image
+                src={projectImages[project.id]}
+                alt={project.title.en}
+                width={600}
+                height={337}
+                format="webp"
+                quality={80}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-text-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div class="absolute top-6 left-6">
+                <div class="px-3 py-1 bg-surface/80 backdrop-blur-md border border-th-border rounded-full text-[10px] font-bold tracking-widest text-text-muted uppercase">
+                  {(index + 1).toString().padStart(2, "0")} • Featured
+                </div>
+              </div>
+            </div>
+
+            <div class="p-8">
+              <h3
+                class="text-2xl font-[Outfit] font-bold text-text-primary mb-4 project-title flex items-center gap-3"
+                data-project-id={project.id}
+                data-lang-en={project.title.en}
+                data-lang-es={project.title.es}
+                data-lang-pt={project.title.pt}
+                data-lang-ja={project.title.ja}
+              >
+                {project.id === 6 && (
+                  <div class="flex items-center gap-2 shrink-0">
+                    <div class="relative w-12 h-12 rounded-full border-2 border-[#D4C4A8] bg-surface shadow-xs overflow-hidden flex items-center justify-center">
+                      <span class="text-2xl">🔥</span>
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-[#D4C4A8] animate-pulse shadow-[0_0_8px_rgba(212,196,168,0.8)]" />
+                  </div>
+                )}
+                {project.title.en}
+              </h3>
+              <p
+                class="text-text-muted text-base mb-8 leading-relaxed project-desc"
+                data-project-id={project.id}
+                data-lang-en={project.description.en}
+                data-lang-es={project.description.es}
+                data-lang-pt={project.description.pt}
+                data-lang-ja={project.description.ja}
+              >
+                {project.description.en}
+              </p>
+
+              {project.aptitudes && (
+                <div class="mb-8">
+                  <p class="text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
+                    Aptitudes
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {project.aptitudes.map((skill) => (
+                      <span
+                        class={`px-3 py-1 bg-surface-muted rounded-lg text-xs text-text-secondary border border-th-border transition-all duration-300 ${project.id === 6 ? "group-hover:border-[#D4C4A8]/30 group-hover:bg-[#D4C4A8]/10" : "group-hover:border-accent/30 group-hover:bg-accent-soft/30"}`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div class="flex gap-4">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`flex-1 px-6 py-3 rounded-xl text-sm font-semibold text-center transition-all duration-300 hover:shadow-lg ${project.id === 6 ? "bg-[#D4C4A8] text-white hover:bg-[#C9B896] hover:shadow-[#D4C4A8]/20" : "bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white hover:shadow-accent/20"}`}
+                >
+                  <span data-i18n="projects.viewProject">
+                    {t.projects.viewProject}
+                  </span>
+                </a>
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Source Code on GitHub"
+                  class="px-5 py-3 bg-surface border border-th-border-secondary text-text-secondary rounded-xl text-sm font-semibold transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent-soft/20"
+                >
+                  <Github class="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.to(".projects-header", {
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.to(".project-card", {
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+  });
+</script>
