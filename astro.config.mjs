@@ -7,6 +7,11 @@ export default defineConfig({
   integrations: [react()],
   adapter: vercel(),
   output: "server",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

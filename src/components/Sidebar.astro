@@ -32,6 +32,7 @@ const t = translations.en;
       <img
         src="/ysc-transparente.png"
         alt="Frysccou"
+        loading="eager"
         class="h-10 w-auto transition-transform duration-500 group-hover/logo:scale-105"
       />
     </a>
@@ -146,11 +147,12 @@ const t = translations.en;
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
       >
-        <Image
-          src={dotLogo}
+        <img
+          src="/dot-logo.svg"
           alt="Dot Studio"
-          width={20}
-          height={20}
+          width="20"
+          height="20"
+          loading="lazy"
           class="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
         />
       </div>
