@@ -61,7 +61,7 @@ export const projects = [
     },
     aptitudes: ["Next.js", "Convex", "Clerk", "Tailwind CSS", "TypeScript"],
     image: "/projects/thender.png",
-    liveUrl: "https://thender.site/",
+    liveUrl: "https://thender.vercel.app/",
     codeUrl: "#",
     isNew: true,
   },
