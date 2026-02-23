@@ -4,17 +4,20 @@
 [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Deployment: Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?logo=vercel&logoColor=white)](https://vercel.com/)
+[![Database: Turso](https://img.shields.io/badge/Database-Turso-00EAD5?logo=turso&logoColor=white)](https://turso.tech/)
 
 > **"I believe the web deserves craftsmanship, not just code. That's why I don't just develop — I engineer every detail, from interface design to system architecture."**
 
-Welcome to my personal portfolio. A high-performance, premium digital experience where engineering meets soul.
+Welcome to my personal portfolio. A high-performance, premium digital experience where engineering meets soul. This project showcases my technical expertise and my vision for the modern web.
 
 ---
 
-## 🗺️ Navigation / Navegación
+## 🗺️ Navigation / Navegación / Navegação / ナビゲーション
 
 - [English Version](#english-readme)
-- [Versión en Español](#versión-en-español)
+- [Versión en Español](#version-espanol)
+- [Versão em Português](#version-portugues)
+- [日本語版](#version-japanese)
 
 ---
 
@@ -24,109 +27,128 @@ Welcome to my personal portfolio. A high-performance, premium digital experience
 
 ### 🛠️ Tech Stack
 
-- **Core:** [Astro 5](https://astro.build/) (Static Site Generation & Server Island)
-- **Frontend:** [React 19](https://react.dev/) for interactive components.
-- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) (Modern, lightning-fast CSS).
-- **Animations:** [GSAP](https://greensock.com/gsap/) (GreenSock Animation Platform) for smooth, high-end motion.
-- **Icons:** [Lucide](https://lucide.dev/) (Astro & React variants).
-- **Architecture:** Clean, scalable architecture with a focus on maintainability.
+- **Core Engine:** [Astro 5](https://astro.build/) (Leveraging Static Site Generation & Server Islands).
+- **Frontend Logic:** [React 19](https://react.dev/) for high-performance interactive components.
+- **Styling Layer:** [Tailwind CSS 4](https://tailwindcss.com/) (Next-gen utility-first CSS).
+- **Motion Design:** [GSAP](https://greensock.com/gsap/) for smooth, cinematic animations and custom interactions.
+- **Data Persistence:** [Turso (LibSQL)](https://turso.tech/) for edge-ready guestbook management.
+- **Visuals:** [Lucide](https://lucide.dev/) for consistent, scalable iconography.
 
 ### ✨ Key Features
 
-- **i18n Support:** Fully translated in English and Spanish.
-- **Dynamic Content:** Projects and experience managed through structured data.
-- **Marketplace:** Integrated section for premium templates.
-- **Availability Tracker:** Live status based on local time and routine.
-- **Guestbook:** Interactive space for visitors to leave messages.
-- **Custom Cursor:** Smooth, premium interaction experience using GSAP.
-- **Music Flow:** Integration with my coding playlist.
+- **🌍 Global Reach (i18n):** Native support for **English, Spanish, Portuguese, and Japanese** with seamless switching.
+- **💎 Premium UX:** Custom GSAP-powered cursor and high-end micro-interactions.
+- **📊 Real-time Presence:** Availability tracker synced with local time and Argentina-based routine.
+- **🛍️ Digital Marketplace:** Integrated boutique for premium development templates.
+- **🎵 Atmospheric Flow:** Integrated coding playlist to share my inspiration.
+- **✍️ Interactive Guestbook:** A persistent space for visitor connections.
 
-### 🚀 Getting Started
+### 🚀 Development Workflow
 
-1. **Clone the repository:**
+1. **Clone & Enter:**
 
    ```bash
    git clone https://github.com/frysccou/frysccou-portfolio.git
+   cd frysccou-portfolio
    ```
 
-2. **Install dependencies:**
-   _(Note: This project uses **bun**)_
+2. **Setup Dependencies:**
+   _Note: This project is optimized for [Bun](https://bun.sh/)._
 
    ```bash
    bun install
    ```
 
-3. **Start the development server:**
+3. **Ignite Development:**
 
    ```bash
    bun dev
    ```
 
-4. **Build for production:**
-
+4. **Production Build:**
    ```bash
    bun run build
    ```
 
 ---
-<a name="versión-en-español"></a>
+
+<a name="version-espanol"></a>
 
 ## 🇪🇸 Versión en Español
 
 ### 🛠️ Stack Tecnológico
 
-- **Core:** [Astro 5](https://astro.build/) (Generación de sitios estáticos e islas de servidor).
-- **Frontend:** [React 19](https://react.dev/) para componentes interactivos.
-- **Estilos:** [Tailwind CSS 4](https://tailwindcss.com/) (CSS moderno y ultra rápido).
-- **Animaciones:** [GSAP](https://greensock.com/gsap/) para movimientos fluidos de alto nivel.
-- **Iconos:** [Lucide](https://lucide.dev/) (variantes para Astro y React).
-- **Arquitectura:** Estructura limpia y escalable con foco en la mantenibilidad (Arquitectura Hexagonal).
+- **Motor Principal:** [Astro 5](https://astro.build/) (Utilizando Generación de Sitios Estáticos e Islas de Servidor).
+- **Lógica Frontend:** [React 19](https://react.dev/) para componentes interactivos de alto rendimiento.
+- **Capa de Estilos:** [Tailwind CSS 4](https://tailwindcss.com/) (La nueva generación de CSS utilitario).
+- **Diseño de Movimiento:** [GSAP](https://greensock.com/gsap/) para animaciones cinemáticas y transiciones fluidas.
+- **Persistencia de Datos:** [Turso (LibSQL)](https://turso.tech/) para la gestión del libro de visitas en el borde (edge).
+- **Iconografía:** [Lucide](https://lucide.dev/) para un sistema visual coherente y escalable.
 
 ### ✨ Características Principales
 
-- **Soporte i18n:** Totalmente traducido al inglés y español.
-- **Contenido Dinámico:** Gestión de proyectos y experiencia mediante datos estructurados.
-- **Marketplace:** Sección integrada para la venta de plantillas premium.
-- **Tracker de Disponibilidad:** Estado en tiempo real basado en horario local y rutina.
-- **Libro de Visitas:** Espacio interactivo para que los visitantes dejen sus mensajes.
-- **Cursor Personalizado:** Experiencia de interacción premium usando GSAP.
-- **Music Flow:** Integración con mi playlist de programación.
+- **🌍 Alcance Global (i18n):** Soporte nativo multilingüe (**Inglés, Español, Portugués y Japonés**).
+- **💎 UX Premium:** Cursor personalizado mediante GSAP y micro-interacciones de alto nivel.
+- **📊 Disponibilidad en Vivo:** Rastreador de estado sincronizado con horario y rutina local de Buenos Aires.
+- **🛍️ Marketplace Digital:** Sección integrada para la adquisición de plantillas de desarrollo premium.
+- **🎵 Music Flow:** Integración de playlist para compartir la atmósfera de trabajo.
+- **✍️ Libro de Visitas:** Espacio interactivo persistente para visitantes.
 
-### 🚀 Comenzando
+---
 
-1. **Clonar el repositorio:**
+<a name="version-portugues"></a>
 
-   ```bash
-   git clone https://github.com/frysccou/frysccou-portfolio.git
-   ```
+## 🇧🇷 Versão em Português
 
-2. **Instalar dependencias:**
-   _(Nota: Este proyecto utiliza **bun**)_
+### 🛠️ Stack Tecnológico
 
-   ```bash
-   bun install
-   ```
+- **Motor Principal:** [Astro 5](https://astro.build/) (Utilizando Geração de Sites Estáticos e Server Islands).
+- **Lógica de Frontend:** [React 19](https://react.dev/) para componentes interativos de alto desempenho.
+- **Camada de Estilo:** [Tailwind CSS 4](https://tailwindcss.com/) (Próxima geração de CSS utilitário).
+- **Design de Movimento:** [GSAP](https://greensock.com/gsap/) para animações suaves, cinemáticas e interações personalizadas.
+- **Persistência de Dados:** [Turso (LibSQL)](https://turso.tech/) para gerenciamento de guestbook no edge.
+- **Visual:** [Lucide](https://lucide.dev/) para iconografia consistente e escalável.
 
-3. **Ejecutar el servidor de desarrollo:**
+### ✨ Principais Recursos
 
-   ```bash
-   bun dev
-   ```
+- **🌍 Alcance Global (i18n):** Suporte nativo para **Inglês, Espanhol, Português e Japonês** com troca fluida.
+- **💎 UX Premium:** Cursor personalizado com GSAP e micro-interações de ponta.
+- **📊 Presença em Tempo Real:** Rastreador de disponibilidade sincronizado com o horário e rotina de Buenos Aires.
+- **🛍️ Marketplace Digital:** Boutique integrada para templates de desenvolvimento premium.
+- **🎵 Fluxo Atmosférico:** Playlist de codificação integrada para compartilhar minha inspiração.
+- **✍️ Guestbook Interativo:** Espaço persistente para conexões com visitantes.
 
-4. **Compilar para producción:**
+---
 
-   ```bash
-   bun run build
-   ```
+<a name="version-japanese"></a>
+
+## 🇯🇵 日本語版
+
+### 🛠️ 技術スタック
+
+- **コアエンジン:** [Astro 5](https://astro.build/) (静的サイト生成とサーバーアイランドの活用)。
+- **フロントエンドロジック:** [React 19](https://react.dev/) (高性能インタラクティブコンポーネント)。
+- **スタイリング層:** [Tailwind CSS 4](https://tailwindcss.com/) (次世代ユーティリティファーストCSS)。
+- **モーションデザイン:** [GSAP](https://greensock.com/gsap/) (滑らかで映画のようなアニメーションとカスタムインタラクション)。
+- **データ永続化:** [Turso (LibSQL)](https://turso.tech/) (エッジ対応のゲストブック管理)。
+- **ビジュアル:** [Lucide](https://lucide.dev/) (一貫性のあるスケーラブルなアイコン)。
+
+### ✨ 主な機能
+
+- **🌍 グローバル対応 (i18n):** **英語、スペイン語、ポルトガル語、日本語**をネイティブサポート、シームレスな切り替えが可能。
+- **💎 プレミアムUX:** GSAPによるカスタムカーソルと高品質なマイクロインタラクション。
+- **📊 リアルタイムプレゼンス:** ブエノスアイレスの時間とルーチンに同期した状況トラッカー。
+- **🛍️ デジタルマーケットプレイス:** プレミアム開発テンプレートの統合ブティック。
+- **🎵 アトモスフェリック・フロー:** インスピレーションを共有するための統合されたコーディング・プレイリスト。
+- **✍️ インタラクティブ・ゲストブック:** 訪問者とのつながりのための永続的なスペース。
 
 ---
 
 ## 🖤 Credits / Créditos
 
-Designed and developed by **Francisco Espindola**.
-Visit my creative studio: [Dot Studio](https://dotstudio.dev) (Coming soon / Proximamente)
+Designed and engineered with passion by **Francisco Espindola**.
+Explore my creative studio: [Dot Studio](https://dotstudio.dev)
 
+---
 
-
-
-aaaa
+Copyright © 2024-2026 Francisco Espindola. Licensed under the MIT License.
