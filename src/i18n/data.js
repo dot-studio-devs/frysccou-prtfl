@@ -28,6 +28,7 @@ export const skills = {
     { name: "Meteor" },
     { name: "Astro" },
   ],
+  mobile: [{ name: "Flutter" }, { name: "Dart" }, { name: "React Native" }],
   design: [
     { name: "Tailwind CSS" },
     { name: "Bootstrap" },
@@ -40,8 +41,14 @@ export const skills = {
     { name: "Firebase" },
     { name: "MySQL" },
     { name: "PostgreSQL" },
+    { name: "Convex" },
   ],
-  devops: [{ name: "Docker" }, { name: "GitHub" }, { name: "Git" }],
+  devops: [
+    { name: "Docker" },
+    { name: "GitHub" },
+    { name: "Git" },
+    { name: "AWS" },
+  ],
 };
 
 export const projects = [

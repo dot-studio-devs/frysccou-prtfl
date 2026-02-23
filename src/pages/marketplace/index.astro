@@ -1,0 +1,179 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CustomCursor from "../../components/CustomCursor.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import Footer from "../../components/Footer.astro";
+import { translations } from "../../i18n/translations.js";
+import { Image } from "astro:assets";
+import { productsList } from "../../data/marketplace.js";
+import { ArrowLeft } from "lucide-astro";
+
+const t = translations.en;
+const products = productsList.map((p) => {
+  const itemData =
+    t.marketplace.items[p.id as keyof typeof t.marketplace.items];
+  return { ...p, ...itemData };
+});
+---
+
+<Layout title={`Marketplace | ${t.nav.marketplace}`}>
+  <CustomCursor />
+  <Sidebar />
+
+  <div
+    id="content-wrapper"
+    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen flex flex-col pt-20 md:pt-0"
+  >
+    <main class="grow">
+      <section class="py-24 relative bg-surface overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 text-text-muted hover:text-accent font-medium mb-12 transition-colors"
+          >
+            <ArrowLeft class="w-5 h-5" />
+            <span data-i18n="error404.backHome">{t.error404.backHome}</span>
+          </a>
+
+          <div class="mb-16">
+            <div class="space-y-6">
+              <h1
+                class="text-4xl sm:text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter wrap-break-word"
+                data-i18n="marketplace.title"
+              >
+                {t.marketplace.title}
+              </h1>
+              <p
+                class="text-xl text-text-muted font-light leading-relaxed max-w-xl"
+                data-i18n="marketplace.subtitle"
+              >
+                {t.marketplace.subtitle}
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              products.map((product) => (
+                <a
+                  href={`/marketplace/${product.id}`}
+                  class="group relative bg-surface rounded-3xl overflow-hidden border border-th-border shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer text-left block"
+                >
+                  <div class="aspect-video overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={600}
+                      height={337}
+                      format="webp"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span
+                        class="bg-surface text-text-primary font-bold px-6 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                        data-i18n="marketplace.previewBtn"
+                      >
+                        {t.marketplace.previewBtn}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3
+                      class="text-xl font-[Outfit] font-bold text-text-primary mb-2"
+                      data-i18n={`marketplace.items.${product.id}.name`}
+                    >
+                      {product.name}
+                    </h3>
+                    <div class="flex items-center gap-3 mt-4">
+                      <span
+                        class="text-accent font-bold text-lg"
+                        data-i18n={`marketplace.items.${product.id}.priceARS`}
+                      >
+                        {product.priceARS}
+                      </span>
+                      <span class="w-1 h-1 bg-text-muted rounded-full" />
+                      <span
+                        class="text-text-muted font-bold text-sm"
+                        data-i18n={`marketplace.items.${product.id}.priceUSD`}
+                      >
+                        {product.priceUSD}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</Layout>
+
+<style is:global>
+  body.sidebar-expanded #content-wrapper {
+    padding-left: 256px;
+  }
+  body.sidebar-collapsed #content-wrapper {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 768px) {
+    body.sidebar-expanded #content-wrapper,
+    body.sidebar-collapsed #content-wrapper {
+      padding-left: 0;
+      padding-top: 64px;
+    }
+  }
+</style>
+
+<script>
+  import { translations } from "../../i18n/translations.js";
+
+  let currentLang = "en";
+
+  function getLangCookie() {
+    const match = document.cookie.match(/selected-lang=([^;]+)/);
+    return match ? match[1] : "en";
+  }
+
+  function updateTexts(lang: "en" | "es" | "pt" | "ja") {
+    const t = (translations as any)[lang];
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (!key) return;
+
+      const keys = key.split(".");
+      let value: any = t;
+      for (const k of keys) {
+        value = value?.[k];
+      }
+
+      if (value && typeof value === "string") {
+        el.innerHTML = value;
+      }
+    });
+
+    document.documentElement.lang = lang;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const langs = ["en", "es", "pt", "ja"];
+    const initialLang = getLangCookie();
+    let langIndex = langs.indexOf(initialLang);
+    if (langIndex === -1) langIndex = 0;
+
+    currentLang = langs[langIndex];
+    updateTexts(currentLang as any);
+
+    window.addEventListener("languageChange", (e: any) => {
+      const newLang = getLangCookie();
+      if (langs.includes(newLang)) {
+        currentLang = newLang;
+        updateTexts(currentLang as any);
+      }
+    });
+  });
+</script>

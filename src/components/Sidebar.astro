@@ -33,7 +33,7 @@ const t = translations.en;
   class="fixed top-0 h-screen bg-surface border-th-border z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hidden md:flex flex-col group/sidebar w-64 open left-0 border-r"
 >
   <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
-    <a href="#" class="flex items-center justify-center group/logo">
+    <a href="/" class="flex items-center justify-center group/logo">
       <Image
         src={mainLogo}
         alt="Frysccou"
@@ -49,7 +49,7 @@ const t = translations.en;
     class="flex-1 px-3 py-4 space-y-2 overflow-y-auto overflow-x-hidden custom-scrollbar flex flex-col items-stretch"
   >
     <a
-      href="#about"
+      href="/#about"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
@@ -64,7 +64,7 @@ const t = translations.en;
     </a>
 
     <a
-      href="#skills"
+      href="/#skills"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
@@ -79,7 +79,7 @@ const t = translations.en;
     </a>
 
     <a
-      href="#projects"
+      href="/#projects"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
@@ -94,7 +94,7 @@ const t = translations.en;
     </a>
 
     <a
-      href="#marketplace"
+      href="/#marketplace"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group relative"
     >
       <div
@@ -113,7 +113,7 @@ const t = translations.en;
     </a>
 
     <a
-      href="#contact"
+      href="/#contact"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
@@ -132,7 +132,7 @@ const t = translations.en;
     class="p-3 border-t border-th-border space-y-2 flex flex-col items-stretch"
   >
     <a
-      href="#donations"
+      href="/#donations"
       class="sidebar-link flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 group"
     >
       <div
@@ -350,7 +350,7 @@ const t = translations.en;
     id="mobile-nav-container"
     class="bg-surface/80 backdrop-blur-xl w-full px-6 py-3 flex items-center justify-between border-b border-th-border"
   >
-    <a href="#" class="flex items-center group">
+    <a href="/" class="flex items-center group">
       <Image
         src={mainLogo}
         alt="Frysccou"
@@ -400,7 +400,7 @@ const t = translations.en;
   </div>
   <div class="flex-1 overflow-y-auto p-6 space-y-2">
     <a
-      href="#about"
+      href="/#about"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.about">{t.nav.about}</span>
@@ -410,7 +410,7 @@ const t = translations.en;
       />
     </a>
     <a
-      href="#skills"
+      href="/#skills"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.skills">{t.nav.skills}</span>
@@ -420,7 +420,7 @@ const t = translations.en;
       />
     </a>
     <a
-      href="#projects"
+      href="/#projects"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.projects">{t.nav.projects}</span>
@@ -430,7 +430,7 @@ const t = translations.en;
       />
     </a>
     <a
-      href="#marketplace"
+      href="/#marketplace"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <div class="flex items-center gap-2">
@@ -446,7 +446,7 @@ const t = translations.en;
       />
     </a>
     <a
-      href="#contact"
+      href="/#contact"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <span data-i18n="nav.contact">{t.nav.contact}</span>
@@ -456,7 +456,7 @@ const t = translations.en;
       />
     </a>
     <a
-      href="#donations"
+      href="/#donations"
       class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-th-text font-bold transition-all duration-300 flex items-center justify-between group"
     >
       <div class="flex items-center gap-3">
@@ -793,16 +793,20 @@ const t = translations.en;
   });
 
   document
-    .querySelectorAll('aside a[href^="#"], .mobile-nav-link')
+    .querySelectorAll('aside a[href^="/#"], .mobile-nav-link')
     .forEach((link) => {
       link.addEventListener("click", (e) => {
-        const targetId = link.getAttribute("href");
-        if (!targetId || targetId === "#") return;
+        const fullHref = link.getAttribute("href");
+        if (!fullHref || fullHref === "/" || fullHref === "/#") return;
         if (link.classList.contains("mobile-nav-link")) closeMobileSidebar();
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        if (window.location.pathname === "/") {
+          const targetId = fullHref.replace("/", "");
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
       });
     });

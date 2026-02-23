@@ -1,79 +1,19 @@
 ---
 import { translations } from "../i18n/translations.js";
-import {
-  Play,
-  ArrowRight,
-  CircleDollarSign,
-  Copy,
-  MessageCircle,
-  CheckCircle2,
-  Mail,
-  User,
-  Link2,
-} from "lucide-astro";
-import { Image } from "astro:assets";
-import landingTemplate from "../assets/templates/landing-template.png";
-import blogTemplate from "../assets/templates/blog-template.png";
-const landingYoutubeId = "NGPnoOegxxs";
-const blogYoutubeId = "RQrsdh8cyNo";
+import { productsList } from "../data/marketplace.js";
+import { ArrowRight } from "lucide-astro";
 
 const t = translations.en;
-
-const templateImages: Record<string, any> = {
-  landing: landingTemplate,
-  blog: blogTemplate,
-};
-
-const products = [
-  {
-    id: "landing",
-    name: t.marketplace.items.landing.name,
-    priceARS: t.marketplace.items.landing.priceARS,
-    priceUSD: t.marketplace.items.landing.priceUSD,
-    mpLink: "https://mpago.la/2EQWepT",
-    image: landingTemplate,
-    youtubeId: landingYoutubeId,
-    desc: t.marketplace.items.landing.aboutDesc,
-    topics: [
-      "React",
-      "Portfolio",
-      "Marketing",
-      "Astro 5",
-      "Professional",
-      "Tailwind CSS 4",
-      "Framer Motion",
-      "Lucide React",
-      "Hexagonal Architecture",
-    ],
-  },
-  {
-    id: "blog",
-    name: t.marketplace.items.blog.name,
-    priceARS: t.marketplace.items.blog.priceARS,
-    priceUSD: t.marketplace.items.blog.priceUSD,
-    mpLink: "https://mpago.la/2qSZUuE",
-    image: blogTemplate,
-    youtubeId: blogYoutubeId,
-    desc: t.marketplace.items.blog.aboutDesc,
-    topics: [
-      "Blog",
-      "SEO Optimized",
-      "Astro 5",
-      "Content Collections",
-      "Dynamic Routing",
-      "Tailwind CSS 4",
-      "Framer Motion",
-      "Responsive Design",
-      "TypeScript",
-    ],
-  },
-];
+const products = productsList.map((p) => {
+  const itemData =
+    t.marketplace.items[p.id as keyof typeof t.marketplace.items];
+  return { ...p, ...itemData };
+});
 ---
 
 <section
   id="marketplace"
   class="py-44 relative bg-surface border-t border-th-border overflow-hidden"
-  data-products={JSON.stringify(products)}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
     <div class="marketplace-header opacity-0 translate-y-10 mb-24">
@@ -86,19 +26,33 @@ const products = [
           >
         </div>
 
-        <div class="space-y-6">
-          <h2
-            class="text-4xl sm:text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter wrap-break-word"
-            data-i18n="marketplace.title"
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div class="space-y-6 flex-1">
+            <h2
+              class="text-4xl sm:text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter wrap-break-word"
+              data-i18n="marketplace.title"
+            >
+              {t.marketplace.title}
+            </h2>
+            <p
+              class="text-xl text-text-muted font-light leading-relaxed max-w-xl"
+              data-i18n="marketplace.subtitle"
+            >
+              {t.marketplace.subtitle}
+            </p>
+          </div>
+
+          <a
+            href="/marketplace"
+            class="hidden md:inline-flex items-center gap-2 px-8 py-4 bg-accent/10 hover:bg-accent text-accent hover:text-white font-bold rounded-2xl transition-all duration-300 group"
           >
-            {t.marketplace.title}
-          </h2>
-          <p
-            class="text-xl text-text-muted font-light leading-relaxed max-w-xl"
-            data-i18n="marketplace.subtitle"
-          >
-            {t.marketplace.subtitle}
-          </p>
+            <span data-i18n="marketplace.title">{t.marketplace.title}</span>
+            <ArrowRight
+              class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
         </div>
       </div>
     </div>
@@ -106,39 +60,49 @@ const products = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 showroom-grid">
       {
         products.map((product) => (
-          <button
-            class="showroom-item opacity-0 translate-y-10 group relative bg-surface rounded-3xl overflow-hidden border border-th-border shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer text-left"
-            data-product-id={product.id}
-            id={`btn-${product.id}`}
+          <a
+            href={`/marketplace/${product.id}`}
+            class="showroom-item opacity-0 translate-y-10 group relative bg-surface rounded-3xl p-6 sm:p-8 border border-th-border shadow-lg hover:shadow-2xl hover:border-accent/50 transition-all duration-500 cursor-pointer text-left flex flex-col justify-between h-full"
           >
-            <div class="aspect-video overflow-hidden">
-              <Image
-                src={templateImages[product.id]}
-                alt={product.name}
-                width={600}
-                height={337}
-                format="webp"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span
-                  class="bg-surface text-text-primary font-bold px-6 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                  data-i18n="marketplace.buyNow"
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-accent/5 rounded-full blur-3xl group-hover:bg-accent/10 transition-colors duration-500 z-0" />
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-4">
+                <h3
+                  class="text-2xl font-[Outfit] font-bold text-text-primary group-hover:text-accent transition-colors duration-300"
+                  data-i18n={`marketplace.items.${product.id}.name`}
                 >
-                  {t.marketplace.buyNow}
-                </span>
+                  {product.name}
+                </h3>
+                <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:-rotate-45 transition-all duration-300">
+                  <ArrowRight class="w-5 h-5 text-accent group-hover:text-white transition-colors duration-300" />
+                </div>
+              </div>
+              <p
+                class="text-text-muted text-sm sm:text-base leading-relaxed mb-6"
+                data-i18n={`marketplace.items.${product.id}.shortDesc`}
+              >
+                {product.shortDesc}
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-8">
+                {product.topics.slice(0, 3).map((topic: string) => (
+                  <span class="px-3 py-1 bg-surface-muted text-text-secondary text-xs font-semibold rounded-lg border border-th-border transition-colors group-hover:border-accent/30">
+                    {topic}
+                  </span>
+                ))}
+                {product.topics.length > 3 && (
+                  <span class="px-3 py-1 bg-surface-muted text-text-secondary text-xs font-semibold rounded-lg border border-th-border">
+                    +{product.topics.length - 3}
+                  </span>
+                )}
               </div>
             </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-[Outfit] font-bold text-text-primary mb-2"
-                data-i18n={`marketplace.items.${product.id}.name`}
-              >
-                {product.name}
-              </h3>
+
+            <div class="pt-6 border-t border-th-border flex justify-between items-center relative z-10">
               <div class="flex items-center gap-3">
                 <span
-                  class="text-accent font-bold"
+                  class="text-xl sm:text-2xl font-[Outfit] font-extrabold text-text-primary"
                   data-i18n={`marketplace.items.${product.id}.priceARS`}
                 >
                   {product.priceARS}
@@ -152,382 +116,21 @@ const products = [
                 </span>
               </div>
             </div>
-          </button>
+          </a>
         ))
       }
     </div>
 
-    <div
-      class="grid lg:grid-cols-12 gap-6 sm:gap-12 items-start"
-      id="display-area"
-    >
-      <div
-        class="lg:col-span-7 marketplace-card opacity-0 lg:-translate-x-5 translate-y-10 lg:translate-y-0 bg-surface rounded-3xl overflow-hidden border border-th-border shadow-xl shadow-accent-soft/10"
+    <div class="md:hidden flex justify-center mt-8">
+      <a
+        href="/marketplace"
+        class="inline-flex items-center justify-center w-full gap-2 px-8 py-4 bg-accent/10 hover:bg-accent text-accent hover:text-white font-bold rounded-2xl transition-all duration-300 group"
       >
-        <div class="relative aspect-video group bg-th-btn-dark overflow-hidden">
-          <div
-            id="media-container"
-            class="w-full h-full relative cursor-pointer"
-          >
-            {
-              products.map((p, idx) => (
-                <Image
-                  id={`display-img-${p.id}`}
-                  src={templateImages[p.id]}
-                  alt="Template Preview"
-                  width={1200}
-                  height={675}
-                  format="webp"
-                  class={`template-display-img w-full h-full object-cover transition-transform duration-700 ${idx === 0 ? "" : "hidden"}`}
-                />
-              ))
-            }
-            <div
-              id="play-overlay"
-              class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all duration-300"
-            >
-              <div
-                class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 transform group-hover:scale-110 transition-transform duration-300"
-              >
-                <Play class="w-8 h-8 text-white fill-current" />
-              </div>
-              <p
-                class="absolute bottom-8 text-white font-medium tracking-wide text-sm bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm"
-                data-i18n="marketplace.previewBtn"
-              >
-                {t.marketplace.previewBtn}
-              </p>
-            </div>
-          </div>
-          <iframe
-            id="template-video"
-            class="hidden absolute inset-0 w-full h-full z-20"
-            src=""
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          >
-          </iframe>
-        </div>
-
-        <div class="p-4 sm:p-6 md:p-10">
-          <div
-            class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6"
-            id="active-topics"
-          >
-            {
-              products[0].topics.map((tech) => (
-                <span class="px-3 py-1 bg-surface-muted text-text-secondary text-xs font-semibold rounded-lg border border-th-border">
-                  {tech}
-                </span>
-              ))
-            }
-          </div>
-          <h3
-            class="text-2xl sm:text-3xl font-[Outfit] font-bold text-text-primary mb-3 sm:mb-4"
-            id="active-title"
-            data-i18n={`marketplace.items.landing.name`}
-          >
-            {products[0].name}
-          </h3>
-          <p
-            class="text-text-muted text-sm sm:text-base leading-relaxed mb-6 sm:mb-8"
-            id="active-desc"
-            data-i18n={`marketplace.items.landing.aboutDesc`}
-          >
-            {products[0].desc}
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="lg:col-span-5 flex flex-col gap-6 marketplace-payment opacity-0 lg:translate-x-5 translate-y-10 lg:translate-y-0"
-      >
-        <div
-          class="bg-surface rounded-2xl sm:rounded-3xl md:rounded-4xl p-4 sm:p-6 md:p-10 border border-th-border shadow-2xl shadow-accent-soft/20 relative overflow-hidden"
-        >
-          <div
-            class="absolute -top-12 -right-12 w-32 h-32 bg-accent/5 rounded-full blur-3xl"
-          >
-          </div>
-
-          <div class="relative z-10">
-            <h4
-              class="text-xl sm:text-2xl font-[Outfit] font-bold text-text-primary mb-2"
-              data-i18n="marketplace.buyTitle"
-            >
-              {t.marketplace.buyTitle}
-            </h4>
-            <p
-              class="text-text-muted text-xs sm:text-sm mb-6 sm:mb-8"
-              data-i18n="marketplace.buySubtitle"
-            >
-              {t.marketplace.buySubtitle}
-            </p>
-
-            <div class="mb-6 sm:mb-10 min-h-20 sm:min-h-24 flex items-center">
-              <div id="price-ars" class="w-full">
-                <span
-                  class="text-text-muted text-xs font-bold uppercase tracking-widest mb-1 block"
-                  data-i18n="marketplace.investment"
-                  >{t.marketplace.investment}</span
-                >
-                <div class="flex items-baseline gap-2 sm:gap-3">
-                  <span
-                    id="amount-ars"
-                    class="text-4xl sm:text-5xl md:text-6xl font-[Outfit] font-extrabold bg-linear-to-br from-accent to-purple-600 bg-clip-text text-transparent tracking-tight"
-                    >{products[0].priceARS}</span
-                  >
-                  <span class="text-base sm:text-xl font-bold text-accent/60"
-                    >ARS</span
-                  >
-                </div>
-              </div>
-              <div id="price-usd" class="w-full hidden">
-                <span
-                  class="text-text-muted text-xs font-bold uppercase tracking-widest mb-1 block"
-                  data-i18n="marketplace.investment"
-                  >{t.marketplace.investment}</span
-                >
-                <div class="flex items-baseline gap-2 sm:gap-3">
-                  <span
-                    id="amount-usd"
-                    class="text-4xl sm:text-5xl md:text-6xl font-[Outfit] font-extrabold bg-linear-to-br from-accent to-purple-600 bg-clip-text text-transparent tracking-tight"
-                    >{products[0].priceUSD}</span
-                  >
-                  <span class="text-base sm:text-xl font-bold text-accent/60"
-                    >USD</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="bg-surface-muted p-2 rounded-2xl flex relative mb-8 border border-th-border"
-            >
-              <div
-                id="switcher-bg"
-                class="absolute top-2 left-2 bottom-2 w-[calc(50%-8px)] bg-surface rounded-xl shadow-md transition-all duration-500 ease-out z-0 border border-th-border"
-              >
-              </div>
-              <button
-                id="btn-ars"
-                class="flex-1 py-3 text-sm font-bold z-10 text-text-primary transition-colors duration-300"
-                data-i18n="marketplace.arsLabel"
-              >
-                {t.marketplace.arsLabel}
-              </button>
-              <button
-                id="btn-usd"
-                class="flex-1 py-3 text-sm font-bold z-10 text-text-muted transition-colors duration-300 hover:text-text-primary"
-                data-i18n="marketplace.usdLabel"
-              >
-                {t.marketplace.usdLabel}
-              </button>
-            </div>
-
-            <div id="action-ars" class="block space-y-4">
-              <a
-                id="mp-link"
-                href={products[0].mpLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group relative block w-full py-5 bg-linear-to-r from-accent to-purple-600 text-white rounded-2xl font-bold text-center transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 overflow-hidden"
-              >
-                <span
-                  class="relative z-10 flex items-center justify-center gap-3"
-                >
-                  <span data-i18n="marketplace.mpLabel">
-                    {t.marketplace.mpLabel}
-                  </span>
-                  <ArrowRight
-                    class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                </span>
-                <div
-                  class="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                >
-                </div>
-              </a>
-              <p
-                class="text-[10px] text-center text-text-muted font-medium uppercase tracking-widest"
-                data-i18n="marketplace.mpSecure"
-              >
-                {t.marketplace.mpSecure}
-              </p>
-            </div>
-
-            <div id="action-usd" class="hidden space-y-6">
-              <div
-                class="p-6 bg-accent-soft/30 rounded-2xl border border-dashed border-accent/20"
-              >
-                <div class="flex items-center gap-4 mb-5">
-                  <div
-                    class="w-12 h-12 bg-surface rounded-2xl flex items-center justify-center text-accent shadow-sm border border-th-border"
-                  >
-                    <CircleDollarSign class="w-7 h-7" />
-                  </div>
-                  <div>
-                    <p
-                      class="text-xs font-bold text-text-primary uppercase tracking-wider"
-                      data-i18n="marketplace.cryptoTitle"
-                    >
-                      {t.marketplace.cryptoTitle}
-                    </p>
-                    <p
-                      class="text-[10px] text-text-muted"
-                      data-i18n="marketplace.cryptoSubtitle"
-                    >
-                      {t.marketplace.cryptoSubtitle}
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  class="bg-surface p-4 rounded-xl border border-th-border mb-5 break-all shadow-sm"
-                >
-                  <p
-                    class="text-[10px] font-bold text-text-muted uppercase mb-2"
-                    data-i18n="marketplace.walletLabel"
-                  >
-                    {t.marketplace.walletLabel}
-                  </p>
-                  <code
-                    id="wallet-address"
-                    class="text-xs font-mono font-medium text-text-primary"
-                    >0xf2f000a27e36778597f79d9fb38ce31841a3f028</code
-                  >
-                </div>
-
-                <button
-                  id="copy-address"
-                  class="w-full py-4 bg-surface border border-th-border-secondary text-text-primary rounded-xl text-sm font-bold transition-all duration-300 hover:border-accent hover:bg-accent-soft/20 flex items-center justify-center gap-2"
-                >
-                  <Copy class="w-4 h-4" />
-                  <span id="copy-text" data-i18n="marketplace.copyAddress">
-                    {t.marketplace.copyAddress}
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="bg-linear-to-br from-accent-soft to-white p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl md:rounded-4xl border border-accent/10 shadow-xl shadow-accent-soft/20 overflow-hidden relative group"
-        >
-          <div
-            class="absolute -bottom-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl group-hover:bg-accent/30 transition-colors duration-500"
-          >
-          </div>
-
-          <div class="flex items-start gap-3 sm:gap-4 relative z-10">
-            <div class="flex-1 min-w-0">
-              <h4
-                class="text-base sm:text-lg md:text-xl font-[Outfit] font-bold mb-1 sm:mb-2 text-text-primary"
-                data-i18n="marketplace.helpTitle"
-              >
-                {t.marketplace.helpTitle}
-              </h4>
-              <p
-                class="text-text-secondary text-xs sm:text-sm mb-0"
-                data-i18n="marketplace.helpDesc"
-              >
-                {t.marketplace.helpDesc}
-              </p>
-            </div>
-            <div
-              class="w-10 h-10 sm:w-12 sm:h-12 bg-surface rounded-lg sm:rounded-xl flex items-center justify-center text-accent shadow-sm border border-accent/10 shrink-0"
-            >
-              <MessageCircle class="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
-          </div>
-          <a
-            href="#contact"
-            class="mt-4 sm:mt-6 flex items-center justify-center gap-2 text-xs sm:text-sm font-bold bg-th-btn-dark text-th-btn-dark-text w-full py-3 sm:py-4 rounded-lg sm:rounded-xl hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/20 transition-all duration-300 relative z-10"
-            data-i18n="marketplace.helpCta"
-          >
-            {t.marketplace.helpCta}
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="mt-12 sm:mt-16 bg-surface-secondary/80 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-4xl p-4 sm:p-8 md:p-12 border border-th-border shadow-xl opacity-0 translate-y-10 post-payment-section"
-    >
-      <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-        <div
-          class="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center text-green-600 shrink-0"
-        >
-          <CheckCircle2 class="w-6 h-6 sm:w-8 sm:h-8" />
-        </div>
-        <div>
-          <h4
-            class="text-lg sm:text-xl md:text-2xl font-[Outfit] font-bold text-text-primary"
-            data-i18n="marketplace.postPaymentTitle"
-          >
-            {t.marketplace.postPaymentTitle}
-          </h4>
-          <p
-            class="text-text-muted text-xs sm:text-sm"
-            data-i18n="marketplace.postPaymentDesc"
-          >
-            {t.marketplace.postPaymentDesc}
-          </p>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-start">
-        <div class="space-y-3 sm:space-y-4">
-          <div
-            class="flex items-center gap-2 sm:gap-3 text-text-secondary text-xs sm:text-sm font-medium"
-          >
-            <Mail class="w-4 h-4 sm:w-5 sm:h-5 text-accent shrink-0" />
-            <span data-i18n="marketplace.githubEmail"
-              >{t.marketplace.githubEmail}</span
-            >
-          </div>
-          <div
-            class="flex items-center gap-2 sm:gap-3 text-text-secondary text-xs sm:text-sm font-medium"
-          >
-            <User class="w-4 h-4 sm:w-5 sm:h-5 text-accent shrink-0" />
-            <span data-i18n="marketplace.githubUser"
-              >{t.marketplace.githubUser}</span
-            >
-          </div>
-          <div
-            class="flex items-center gap-2 sm:gap-3 text-text-secondary text-xs sm:text-sm font-medium"
-          >
-            <Link2 class="w-4 h-4 sm:w-5 sm:h-5 text-accent shrink-0" />
-            <span data-i18n="marketplace.githubLink"
-              >{t.marketplace.githubLink}</span
-            >
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-3 sm:gap-4">
-          <a
-            href="mailto:dot_studio_dev@gmail.com"
-            class="text-xs sm:text-base md:text-lg font-bold text-accent hover:text-text-primary transition-colors flex items-center gap-1.5 sm:gap-2 break-all"
-          >
-            <span class="w-2 h-2 bg-accent rounded-full shrink-0"></span>
-            dot_studio_dev@gmail.com
-          </a>
-          <span
-            class="text-[10px] sm:text-xs font-bold text-text-muted uppercase tracking-widest pl-3 sm:pl-4"
-            data-i18n="marketplace.orAlsoTo">{t.marketplace.orAlsoTo}</span
-          >
-          <a
-            href="mailto:franespindola71@gmail.com"
-            class="text-xs sm:text-base md:text-lg font-bold text-rose-accent hover:text-text-primary transition-colors flex items-center gap-1.5 sm:gap-2 break-all"
-          >
-            <span class="w-2 h-2 bg-rose-accent rounded-full shrink-0"></span>
-            franespindola71@gmail.com
-          </a>
-        </div>
-      </div>
+        <span data-i18n="marketplace.title">{t.marketplace.title}</span>
+        <ArrowRight
+          class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </a>
     </div>
   </div>
 </section>
@@ -535,7 +138,6 @@ const products = [
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { translations } from "../i18n/translations.js";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -543,9 +145,6 @@ const products = [
     const section = document.getElementById("marketplace");
     if (!section) return;
 
-    const products = JSON.parse(section.dataset.products || "[]");
-
-    // Entrance Animations
     gsap.to(".marketplace-header", {
       scrollTrigger: {
         trigger: "#marketplace",
@@ -570,248 +169,5 @@ const products = [
       stagger: 0.2,
       ease: "power3.out",
     });
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      gsap.to(".marketplace-card", {
-        scrollTrigger: {
-          trigger: "#display-area",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      gsap.to(".marketplace-payment", {
-        scrollTrigger: {
-          trigger: "#display-area",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "power3.out",
-      });
-    });
-
-    mm.add("(max-width: 1023px)", () => {
-      gsap.to(".marketplace-card", {
-        scrollTrigger: {
-          trigger: "#display-area",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      gsap.to(".marketplace-payment", {
-        scrollTrigger: {
-          trigger: "#display-area",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-    });
-
-    gsap.to(".post-payment-section", {
-      scrollTrigger: {
-        trigger: ".post-payment-section",
-        start: "top 95%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    const mediaContainer = document.getElementById("media-container");
-    const playOverlay = document.getElementById("play-overlay");
-    const displayImages = document.querySelectorAll(".template-display-img");
-    const templateIframe = document.getElementById("template-video") as any;
-    const activeTitle = document.getElementById("active-title");
-    const activeDesc = document.getElementById("active-desc");
-    const activeTopics = document.getElementById("active-topics");
-    const amountArs = document.getElementById("amount-ars");
-    const amountUsd = document.getElementById("amount-usd");
-    const mpLink = document.getElementById(
-      "mp-link",
-    ) as HTMLAnchorElement | null;
-    const showroomItems = document.querySelectorAll(".showroom-item");
-
-    const btnArs = document.getElementById("btn-ars");
-    const btnUsd = document.getElementById("btn-usd");
-    const switcherBg = document.getElementById("switcher-bg");
-    const priceArs = document.getElementById("price-ars");
-    const priceUsd = document.getElementById("price-usd");
-    const actionArs = document.getElementById("action-ars");
-    const actionUsd = document.getElementById("action-usd");
-
-    mediaContainer?.addEventListener("click", () => {
-      const activeBtn = document.querySelector(".showroom-item.border-accent");
-      const activeId =
-        (activeBtn as HTMLElement)?.dataset.productId || "landing";
-      const product = products.find((p: any) => p.id === activeId);
-
-      if (product && product.youtubeId) {
-        mediaContainer?.classList.add("hidden");
-        if (templateIframe) {
-          templateIframe.src = `https://www.youtube.com/embed/${product.youtubeId}?autoplay=1`;
-          templateIframe.classList.remove("hidden");
-        }
-      }
-    });
-
-    function resetVideo() {
-      mediaContainer?.classList.remove("hidden");
-      playOverlay?.classList.remove("hidden");
-      displayImages.forEach((img) => img.classList.add("hidden"));
-
-      const activeBtn = document.querySelector(".showroom-item.border-accent");
-      const activeId =
-        (activeBtn as HTMLElement)?.dataset.productId || "landing";
-      document
-        .getElementById(`display-img-${activeId}`)
-        ?.classList.remove("hidden");
-
-      if (templateIframe) {
-        templateIframe.classList.add("hidden");
-        templateIframe.src = "";
-      }
-    }
-
-    function updateProduct(productId: string) {
-      const product = products.find((p: any) => p.id === productId);
-      if (!product) return;
-
-      showroomItems.forEach((btn) => {
-        btn.classList.remove("border-accent", "ring-2", "ring-accent");
-      });
-      document
-        .getElementById(`btn-${productId}`)
-        ?.classList.add("border-accent", "ring-2", "ring-accent");
-
-      // Update basic info
-      resetVideo();
-      displayImages.forEach((img) => img.classList.add("hidden"));
-      document
-        .getElementById(`display-img-${productId}`)
-        ?.classList.remove("hidden");
-
-      if (templateIframe && product.youtubeId) {
-        templateIframe.src = "";
-      }
-
-      if (activeTitle) {
-        activeTitle.textContent = product.name;
-        activeTitle.setAttribute(
-          "data-i18n",
-          `marketplace.items.${productId}.name`,
-        );
-      }
-
-      if (activeDesc) {
-        activeDesc.textContent = product.desc;
-        activeDesc.setAttribute(
-          "data-i18n",
-          `marketplace.items.${productId}.aboutDesc`,
-        );
-      }
-
-      if (amountArs) amountArs.textContent = product.priceARS;
-      if (amountUsd) amountUsd.textContent = product.priceUSD;
-      if (mpLink) mpLink.href = product.mpLink;
-
-      if (activeTopics) {
-        activeTopics.innerHTML = "";
-        product.topics.forEach((tech: string) => {
-          const span = document.createElement("span");
-          span.className =
-            "px-3 py-1 bg-surface-muted text-text-secondary text-xs font-semibold rounded-lg border border-th-border";
-          span.textContent = tech;
-          activeTopics.appendChild(span);
-        });
-      }
-
-      // Scroll to display
-      document
-        .getElementById("display-area")
-        ?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-
-    showroomItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const id = (item as HTMLElement).dataset.productId;
-        if (id) updateProduct(id);
-      });
-    });
-
-    function updateCurrency(toUsd: boolean) {
-      if (toUsd) {
-        switcherBg?.style.setProperty("left", "calc(50%)");
-        btnUsd?.classList.replace("text-text-muted", "text-text-primary");
-        btnArs?.classList.replace("text-text-primary", "text-text-muted");
-
-        priceArs?.classList.add("hidden");
-        priceUsd?.classList.remove("hidden");
-        actionArs?.classList.add("hidden");
-        actionUsd?.classList.remove("hidden");
-      } else {
-        switcherBg?.style.setProperty("left", "8px");
-        btnArs?.classList.replace("text-text-muted", "text-text-primary");
-        btnUsd?.classList.replace("text-text-primary", "text-text-muted");
-
-        priceUsd?.classList.add("hidden");
-        priceArs?.classList.remove("hidden");
-        actionUsd?.classList.add("hidden");
-        actionArs?.classList.remove("hidden");
-      }
-    }
-
-    btnArs?.addEventListener("click", () => updateCurrency(false));
-    btnUsd?.addEventListener("click", () => updateCurrency(true));
-
-    const copyBtn = document.getElementById("copy-address");
-    const copyText = document.getElementById("copy-text");
-    const walletAddress =
-      document.getElementById("wallet-address")?.textContent;
-
-    copyBtn?.addEventListener("click", () => {
-      if (walletAddress) {
-        navigator.clipboard.writeText(walletAddress);
-        const lang = (document.documentElement.lang as "en" | "es") || "en";
-        const tObj = (translations as any)[lang];
-
-        if (copyText) {
-          const originalText = copyText.innerHTML;
-          copyText.textContent = tObj.marketplace.copied;
-          copyBtn.classList.add("!border-green-200", "bg-green-50");
-
-          setTimeout(() => {
-            copyText.innerHTML = originalText;
-            copyBtn.classList.remove("!border-green-200", "bg-green-50");
-          }, 2000);
-        }
-      }
-    });
-
-    document
-      .getElementById("btn-landing")
-      ?.classList.add("border-accent", "ring-2", "ring-accent");
   });
 </script>

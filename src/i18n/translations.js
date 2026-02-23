@@ -51,6 +51,8 @@ export const translations = {
           priceUSD: "$30",
           aboutDesc:
             "A professional, high-performance Landing Page template built with Astro 5, Tailwind CSS 4, and Framer Motion. Designed under Hexagonal Architecture for maximum maintainability and scalability.",
+          shortDesc:
+            "High-performance marketing & portfolio landing page with advanced animations.",
         },
         blog: {
           name: "Blog Template",
@@ -58,6 +60,8 @@ export const translations = {
           priceUSD: "$45",
           aboutDesc:
             "A professional and modern Blog template designed for high performance and SEO. Features a dynamic content system, smooth animations and a premium reading experience.",
+          shortDesc:
+            "SEO-optimized modern blog with dynamic content collections routing.",
         },
       },
     },
@@ -81,7 +85,7 @@ export const translations = {
       title: "My Story",
       subtitle: "Engineering with purpose & design with soul",
       description1:
-        "Hi, I'm Francisco Espindola, a Full Stack Engineer passionate about creating beautiful and functional digital experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and high-performance code. If an idea pops into my head, chances are I'll build it and ship it.",
+        "Hi, I'm Francisco Espindola, a Full Stack Engineer (though I personally prefer calling myself a Web Engineer, haha) passionate about creating beautiful and functional digital experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and high-performance code. If an idea pops into my head, chances are I'll build it and ship it.",
       description2:
         "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga. I'm always looking for new challenges and opportunities to learn and grow.",
       hobbiesTitle: "Fun Facts & Hobbies",
@@ -167,6 +171,7 @@ export const translations = {
       frontend: "Frontend Frameworks",
       backend: "Backend Frameworks",
       fullstack: "Full Stack & Meta-frameworks",
+      mobile: "Mobile Development",
       design: "Styling & Design",
       databases: "Databases",
       devops: "Tools & DevOps",
@@ -290,6 +295,8 @@ export const translations = {
           priceUSD: "$30",
           aboutDesc:
             "Una plantilla de Landing Page profesional y de alto rendimiento construida con Astro 5, Tailwind CSS 4 y Framer Motion. Diseñada bajo Arquitectura Hexagonal para máxima mantenibilidad y escalabilidad.",
+          shortDesc:
+            "Landing page de alto rendimiento para portafolio o marketing con animaciones fluidas.",
         },
         blog: {
           name: "Blog Template",
@@ -297,6 +304,8 @@ export const translations = {
           priceUSD: "$45",
           aboutDesc:
             "Una plantilla de Blog profesional y moderna diseñada para el alto rendimiento y SEO. Incluye sistema de contenidos dinámico, animaciones fluidas y una experiencia de lectura premium.",
+          shortDesc:
+            "Blog moderno optimizado para SEO con sistema dinámico de colecciones de contenido.",
         },
       },
     },
@@ -320,7 +329,7 @@ export const translations = {
       title: "Mi Historia",
       subtitle: "Ingeniería con propósito y diseño con alma",
       description1:
-        "¡Hola! Soy Francisco Espindola, un Full Stack Engineer apasionado por crear experiencias hermosas y soluciones funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño de alto rendimiento. Si una idea me entusiama, es muy probable que la construya y la lance al mundo.",
+        "¡Hola! Soy Francisco Espindola, un Full Stack Engineer (aunque prefiero llamarme Web Engineer, jaja) apasionado por crear experiencias hermosas y soluciones funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño de alto rendimiento. Si una idea me entusiasma, es muy probable que la construya y la lance al mundo.",
       description2:
         "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga. Siempre estoy buscando nuevos retos que me permitan seguir aprendiendo.",
       hobbiesTitle: "Datos Curiosos y Hobbies",
@@ -409,6 +418,7 @@ export const translations = {
       frontend: "Frameworks Frontend",
       backend: "Frameworks Backend",
       fullstack: "Full Stack & Meta-frameworks",
+      mobile: "Desarrollo Mobile",
       design: "Estilo y Diseño",
       databases: "Bases de Datos",
       devops: "Herramientas & DevOps",
@@ -535,6 +545,8 @@ export const translations = {
           priceUSD: "$30",
           aboutDesc:
             "Um template de Landing Page profissional e de alto desempenho construído com Astro 5, Tailwind CSS 4 e Framer Motion. Projetado sob Arquitetura Hexagonal para máxima manutenibilidade e escalabilidade.",
+          shortDesc:
+            "Landing page de alto desempenho para portfólio ou marketing com animações fluidas.",
         },
         blog: {
           name: "Blog Template",
@@ -542,6 +554,8 @@ export const translations = {
           priceUSD: "$45",
           aboutDesc:
             "Um template de Blog profissional e moderno projetado para alto desempenho e SEO. Sistema de conteúdo dinâmico, animações suaves e experiência de leitura premium.",
+          shortDesc:
+            "Blog moderno otimizado para SEO com sistema dinâmico de coleções de conteúdo.",
         },
       },
     },
@@ -565,7 +579,7 @@ export const translations = {
       title: "Minha História",
       subtitle: "Engenharia com propósito e design com alma",
       description1:
-        "Olá! Sou Francisco Espindola, um Full Stack Engineer apaixonado por criar experiências digitais bonitas e funcionais. Foco em encontrar o equilíbrio perfeito entre estética, UX/UI e código de alto desempenho. Se uma ideia me anima, muito provavelmente vou construí-la e lançá-la.",
+        "Olá! Sou Francisco Espindola, um Full Stack Engineer (embora eu prefira me chamar de Web Engineer, rsrs) apaixonado por criar experiências digitais bonitas e funcionais. Foco em encontrar o equilíbrio perfeito entre estética, UX/UI e código de alto desempenho. Se uma ideia me anima, muito provavelmente vou construí-la e lançá-la.",
       description2:
         "Sou obcecado por detalhes 'pixel-perfect' e programo melhor ouvindo minhas trilhas sonoras favoritas. Quando não estou construindo coisas, aproveito videogames ou lendo mangá. Sempre procuro novos desafios e oportunidades para aprender e crescer.",
       hobbiesTitle: "Curiosidades e Hobbies",
@@ -653,6 +667,7 @@ export const translations = {
       frontend: "Frameworks Frontend",
       backend: "Frameworks Backend",
       fullstack: "Full Stack & Meta-frameworks",
+      mobile: "Desenvolvimento Mobile",
       design: "Estilo e Design",
       databases: "Bancos de Dados",
       devops: "Ferramentas & DevOps",
@@ -778,7 +793,9 @@ export const translations = {
           priceARS: "$35.000",
           priceUSD: "$30",
           aboutDesc:
-            "Astro 5、Tailwind CSS 4、Framer Motionで構築された、プロフェッショナルで高性能なランディングページテンプレート。 шестиугольアーキテクチャに基づいて設計され、最大の保守性とスケーラビリティを実現しています。",
+            "Astro 5、Tailwind CSS 4、Framer Motionで構築された、プロフェッショナルで高性能なランディングページテンプレート。 六角形アーキテクチャに基づいて設計され、最大の保守性とスケーラビリティを実現しています。",
+          shortDesc:
+            "スムーズなアニメーションを備えた高性能なポートフォリオ＆マーケティング用ランディングページ。",
         },
         blog: {
           name: "ブログテンプレート",
@@ -786,6 +803,8 @@ export const translations = {
           priceUSD: "$45",
           aboutDesc:
             "高いパフォーマンスとSEOのために設計された、プロフェッショナルでモダンブログテンプレート。動的コンテンツシステム、滑らかなアニメーション、プレミアムな読書体験を提供します。",
+          shortDesc:
+            "動的なコンテンツコレクションとルーティングを備えたSEO最適化された最新ブログ。",
         },
       },
     },
@@ -809,7 +828,7 @@ export const translations = {
       title: "私のストーリー",
       subtitle: "目的を持つエンジニアリングと魂を持つデザイン",
       description1:
-        "こんにちは！Francisco Espindolaです。美丽で機能的なデジタル体験を創ることに情熱を持つFull Stack Engineerです。美的、UX/UI、高性能コードの完璧なバランスを見つけることに焦点を当てています。アイデアが降れば、おそらく構築して世に出すでしょう。",
+        "こんにちは！Francisco Espindolaです。Full Stack Engineer（個人的にはWeb Engineerと呼ぶのが好きです、笑）として、美しく機能的なデジタル体験を創ることに情熱を注いでいます。美的、UX/UI、高性能コードの完璧なバランスを見つけることに焦点を当てています。アイデアが降れば、おそらく構築して世に出すでしょう。",
       description2:
         "ピクセルパーフェクトな细节に執着しており、フェイoritサウンドトラックを聴きながらコーディングすると更高効率になります。何かを構築していないときは、ゲームやマンガを読むを楽しんでします。常常に新しい挑战を学び成長する機会を求めています。",
       hobbiesTitle: "おもしろい事実と趣味",
@@ -895,6 +914,7 @@ export const translations = {
       frontend: "フロントエンドフレームワーク",
       backend: "バックエンドフレームワーク",
       fullstack: "フルスタック & メタフレームワーク",
+      mobile: "モバイル開発",
       design: "スタイリング & デザイン",
       databases: "データベース",
       devops: "ツール & DevOps",
