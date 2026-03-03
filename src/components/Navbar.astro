@@ -152,6 +152,18 @@ const t = translations.en;
 
       <div class="w-px h-3 bg-th-border-secondary/60 hidden lg:block"></div>
 
+      <a href="/blog" class="nav-item group relative">
+        <span
+          class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
+          data-i18n="nav.blog">{t.nav.blog || "Blog"}</span
+        >
+        <span
+          class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
+        ></span>
+      </a>
+
+      <div class="w-px h-3 bg-th-border-secondary/60 hidden lg:block"></div>
+
       <a href="#contact" class="nav-item group relative">
         <span
           class="text-text-muted text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors duration-300"
@@ -355,6 +367,16 @@ const t = translations.en;
                 >HOT</span
               >
             </div>
+            <ChevronRight
+              class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+              stroke-width={2.5}
+            />
+          </a>
+          <a
+            href="/blog"
+            class="mobile-nav-link p-4 rounded-xl hover:bg-accent-soft hover:text-accent text-text-primary font-bold transition-all duration-300 flex items-center justify-between group"
+          >
+            <span data-i18n="nav.blog">{t.nav.blog || "Blog"}</span>
             <ChevronRight
               class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
               stroke-width={2.5}

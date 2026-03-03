@@ -1,0 +1,402 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import CustomCursor from "../../components/CustomCursor.astro";
+import Footer from "../../components/Footer.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import { translations } from "../../i18n/translations.js";
+
+export const prerender = false;
+
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+
+const featuredPosts = sortedPosts.filter((p) => p.data.featured);
+const regularPosts = sortedPosts.filter((p) => !p.data.featured);
+
+const t = translations.en;
+---
+
+<Layout
+  title="Blog — Francisco Espindola"
+  description="Thoughts on web engineering, architecture, design systems, and the craft of building things for the web."
+>
+  <CustomCursor />
+  <Sidebar />
+
+  <div
+    id="content-wrapper"
+    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen"
+  >
+    <main>
+      <header class="blog-list-header">
+        <div class="blog-list-header-inner">
+          <div class="blog-list-badge">
+            <span class="blog-list-badge-dot"></span>
+            <span data-i18n="blog.badge">Blog</span>
+          </div>
+
+          <h1 class="blog-list-title" data-i18n="blog.listTitle">
+            Engineering Thoughts
+          </h1>
+          <p class="blog-list-subtitle" data-i18n="blog.listSubtitle">
+            Deep dives on web engineering, architecture, design systems and the
+            craft of building for the web.
+          </p>
+
+          <div class="blog-list-stats">
+            <div class="blog-stat-item">
+              <span class="blog-stat-value">{allPosts.length}</span>
+              <span class="blog-stat-label" data-i18n="blog.statPosts"
+                >Posts</span
+              >
+            </div>
+            <div class="blog-stat-divider"></div>
+            <div class="blog-stat-item">
+              <span class="blog-stat-value"
+                >{
+                  allPosts.reduce(
+                    (acc, p) => acc + (p.data.readingTime || 5),
+                    0,
+                  )
+                }</span
+              >
+              <span class="blog-stat-label" data-i18n="blog.statMinutes"
+                >Minutes of reading</span
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="blog-list-content">
+        {
+          featuredPosts.length > 0 && (
+            <section class="blog-section">
+              <div class="blog-section-label">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                <span data-i18n="blog.featured">Featured</span>
+              </div>
+              <div class="blog-grid-featured">
+                {featuredPosts.map((post) => (
+                  <BlogCard post={post} featured={true} />
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          regularPosts.length > 0 && (
+            <section class="blog-section">
+              <div class="blog-section-label">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+                <span data-i18n="blog.allPosts">All Posts</span>
+              </div>
+              <div class="blog-grid">
+                {regularPosts.map((post) => (
+                  <BlogCard post={post} />
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          allPosts.length === 0 && (
+            <div class="blog-empty">
+              <div class="blog-empty-icon">✍️</div>
+              <h2 class="blog-empty-title" data-i18n="blog.emptyTitle">
+                Coming soon
+              </h2>
+              <p class="blog-empty-desc" data-i18n="blog.emptyDesc">
+                Posts are being crafted. Check back soon.
+              </p>
+            </div>
+          )
+        }
+      </div>
+    </main>
+    <Footer />
+  </div>
+
+  <button id="lang-toggle" class="hidden" aria-hidden="true"></button>
+</Layout>
+
+<style is:global>
+  body.sidebar-expanded #content-wrapper {
+    padding-left: 256px;
+  }
+  body.sidebar-collapsed #content-wrapper {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 768px) {
+    body.sidebar-expanded #content-wrapper,
+    body.sidebar-collapsed #content-wrapper {
+      padding-left: 0;
+      padding-top: 64px;
+    }
+  }
+</style>
+
+<style>
+  .blog-list-header {
+    padding: 5rem 0 3rem;
+    background: linear-gradient(
+      to bottom,
+      var(--surface-secondary),
+      var(--surface-primary)
+    );
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .blog-list-header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .blog-list-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-text);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    width: fit-content;
+  }
+
+  .blog-list-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--accent-color);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.75);
+    }
+  }
+
+  .blog-list-title {
+    font-family: "Outfit", sans-serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+  }
+
+  .blog-list-subtitle {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 560px;
+  }
+
+  .blog-list-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-top: 0.5rem;
+  }
+
+  .blog-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .blog-stat-value {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    line-height: 1;
+  }
+
+  .blog-stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-stat-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: var(--border-secondary);
+  }
+
+  .blog-list-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .blog-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .blog-section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+  }
+
+  .blog-grid-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .blog-empty {
+    text-align: center;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .blog-empty-icon {
+    font-size: 3rem;
+  }
+
+  .blog-empty-title {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+
+  .blog-empty-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .blog-list-header {
+      padding: 3rem 0 2rem;
+    }
+  }
+</style>
+
+<script>
+  import { translations } from "../../i18n/translations.js";
+
+  let currentLang = "en";
+
+  function updateTexts(lang: "en" | "es" | "pt" | "ja") {
+    const t = (translations as any)[lang];
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (!key) return;
+      const keys = key.split(".");
+      let value: any = t;
+      for (const k of keys) {
+        value = value?.[k];
+      }
+      if (value && typeof value === "string") {
+        el.innerHTML = value;
+      }
+    });
+
+    document.documentElement.lang = lang;
+    document.cookie = `selected-lang=${lang}; path=/; max-age=31536000`;
+
+    const event = new CustomEvent("languageChange", { detail: t });
+    window.dispatchEvent(event);
+  }
+
+  function getLangCookie() {
+    const match = document.cookie.match(/selected-lang=([^;]+)/);
+    return match ? match[1] : "en";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const langToggle = document.getElementById("lang-toggle");
+    const currentLangSpan = document.getElementById("current-lang");
+
+    const langs = ["en", "es", "pt", "ja"];
+    let langIndex = 0;
+
+    const initialLang = getLangCookie();
+    langIndex = langs.indexOf(initialLang);
+    if (langIndex === -1) langIndex = 0;
+    currentLang = langs[langIndex];
+    if (currentLangSpan)
+      currentLangSpan.textContent = currentLang.toUpperCase();
+    updateTexts(currentLang as any);
+
+    langToggle?.addEventListener("click", () => {
+      langIndex = (langIndex + 1) % langs.length;
+      currentLang = langs[langIndex];
+      if (currentLangSpan) {
+        currentLangSpan.textContent = currentLang.toUpperCase();
+      }
+      updateTexts(currentLang as any);
+    });
+  });
+</script>

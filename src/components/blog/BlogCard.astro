@@ -1,0 +1,334 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Clock, Tag, ArrowRight } from "lucide-astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const { data, slug } = post;
+
+const formattedDate = data.publishedAt.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<a
+  href={`/blog/${slug}`}
+  class={`blog-card ${featured ? "blog-card--featured" : ""} group`}
+  data-featured={featured}
+>
+  <div class="blog-card-image-wrapper">
+    <img
+      src={data.coverImage}
+      alt={data.title}
+      class="blog-card-image"
+      width={featured ? 800 : 400}
+      height={featured ? 420 : 220}
+      loading="lazy"
+    />
+    <div class="blog-card-image-overlay"></div>
+    {
+      data.featured && (
+        <span class="blog-card-featured-badge">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-3 h-3"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          Featured
+        </span>
+      )
+    }
+  </div>
+
+  <div class="blog-card-body">
+    <div class="blog-card-tags">
+      {
+        data.tags.slice(0, 3).map((tag) => (
+          <span class="blog-card-tag">
+            <Tag class="w-2.5 h-2.5" />
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+
+    <h2 class="blog-card-title">{data.title}</h2>
+    <p class="blog-card-summary">{data.summary}</p>
+
+    <div class="blog-card-footer">
+      <div class="blog-card-author">
+        <img
+          src={data.author.avatar}
+          alt={data.author.name}
+          class="blog-card-avatar"
+          width="28"
+          height="28"
+        />
+        <div class="blog-card-author-info">
+          <span class="blog-card-author-name">{data.author.name}</span>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">{formattedDate}</span>
+            {
+              data.readingTime && (
+                <>
+                  <span class="blog-card-dot">·</span>
+                  <span class="blog-card-read-time">
+                    <Clock class="w-3 h-3" />
+                    {data.readingTime} min
+                  </span>
+                </>
+              )
+            }
+          </div>
+        </div>
+      </div>
+
+      <span class="blog-card-read-btn">
+        <span class="read-label" data-i18n="blog.readPost">Read</span>
+        <ArrowRight
+          class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--border-primary);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+  }
+
+  .blog-card--featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .blog-card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    flex-shrink: 0;
+  }
+
+  .blog-card--featured .blog-card-image-wrapper {
+    width: 50%;
+    aspect-ratio: auto;
+  }
+
+  .blog-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .blog-card:hover .blog-card-image {
+    transform: scale(1.04);
+  }
+
+  .blog-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  .blog-card:hover .blog-card-image-overlay {
+    opacity: 1;
+  }
+
+  .blog-card-featured-badge {
+    position: absolute;
+    top: 0.875rem;
+    left: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    background: var(--accent-color);
+    color: var(--surface-primary);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1.5rem;
+    flex: 1;
+  }
+
+  .blog-card--featured .blog-card-body {
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .blog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .blog-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.625rem;
+    border-radius: 9999px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-card-title {
+    font-family: "Outfit", sans-serif;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+    font-size: 1.125rem;
+  }
+
+  .blog-card--featured .blog-card-title {
+    font-size: 1.5rem;
+  }
+
+  .blog-card:hover .blog-card-title {
+    color: var(--accent-color);
+  }
+
+  .blog-card-summary {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-card--featured .blog-card-summary {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--border-primary);
+  }
+
+  .blog-card-author {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .blog-card-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-color);
+  }
+
+  .blog-card-author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-card-author-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    white-space: nowrap;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .blog-card-date,
+  .blog-card-read-time {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .blog-card-dot {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .blog-card-read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-text);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .blog-card--featured {
+      flex-direction: column;
+    }
+
+    .blog-card--featured .blog-card-image-wrapper {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    .blog-card--featured .blog-card-body {
+      padding: 1.5rem;
+    }
+
+    .blog-card--featured .blog-card-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>
