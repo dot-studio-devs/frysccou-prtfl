@@ -8,6 +8,7 @@ import niuro from "../assets/work/niuro.jpg";
 import dotLogo from "../assets/work/dot-logo.svg";
 import zatoboxWork from "../assets/work/zatobox.jpg";
 import dragonPyramid from "../assets/work/dragon-pyramid.jpg";
+import tokenitIcon from "../assets/work/tokenit-icon.png";
 
 import daVinci from "../assets/student/da-vinci.png";
 import issd from "../assets/student/issd.png";
@@ -35,6 +36,10 @@ const workLogos: Record<number, any> = {
   2: zatoboxWork,
   3: dragonPyramid,
   4: dotLogo,
+};
+
+const clientLogos: Record<string, any> = {
+  Tokenit: tokenitIcon,
 };
 
 const eduLogos: Record<number, any> = {
@@ -167,6 +172,51 @@ const t = translations.en;
                   >
                     {job.description.en}
                   </p>
+
+                  {job.client && (
+                    <div class="mt-4 pt-4 border-t border-th-border">
+                      <p class="text-[9px] font-black uppercase tracking-[0.3em] text-text-muted mb-2">
+                        Client
+                      </p>
+                      <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2">
+                          <div class="w-7 h-7 rounded-lg overflow-hidden border border-th-border bg-surface-muted shrink-0">
+                            <Image
+                              src={clientLogos[job.client]}
+                              alt={job.client}
+                              width={28}
+                              height={28}
+                              quality={80}
+                              loading="lazy"
+                              decoding="async"
+                              class="w-full h-full object-cover"
+                            />
+                          </div>
+                          <span class="text-sm font-bold text-text-primary">
+                            {job.client}
+                          </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                          <a
+                            href={job.clientUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-[10px] font-bold text-accent border border-accent/30 bg-accent/5 hover:bg-accent/15 px-2.5 py-1 rounded-full transition-all duration-200 whitespace-nowrap"
+                          >
+                            tokenit.cl
+                          </a>
+                          <a
+                            href="https://app.tokenit.cl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-[10px] font-bold text-text-secondary border border-th-border hover:border-accent/30 hover:text-accent bg-surface-muted hover:bg-accent/5 px-2.5 py-1 rounded-full transition-all duration-200 whitespace-nowrap"
+                          >
+                            app.tokenit.cl
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))

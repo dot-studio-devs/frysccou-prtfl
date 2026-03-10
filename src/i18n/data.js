@@ -53,6 +53,40 @@ export const skills = {
 
 export const projects = [
   {
+    id: 7,
+    title: {
+      en: "Tokenit | Tokenized Real Estate Investment",
+      es: "Tokenit | Inversión Inmobiliaria Tokenizada",
+      pt: "Tokenit | Investimento Imobiliário Tokenizado",
+      ja: "Tokenit | トークン化不動産投資",
+    },
+    description: {
+      en: "Chilean collective financing platform that enables online investment in fixed real estate returns through blockchain-tokenized assets. I am in charge of both tokenit.cl (the public-facing landing and marketplace) and app.tokenit.cl (the investor dashboard with real-time portfolio monitoring, KYC, digital signing, and AI-powered risk scoring). Built with focus on accessibility, transparency, and Web3 traceability.",
+      es: "Plataforma chilena de financiamiento colectivo que permite invertir online en renta fija inmobiliaria mediante activos tokenizados en blockchain. Estoy a cargo de tokenit.cl (landing pública y marketplace) y app.tokenit.cl (dashboard del inversor con monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA).",
+      pt: "Plataforma chilena de financiamento coletivo que permite investir online em renda fixa imobiliária por meio de ativos tokenizados em blockchain. Responsável por tokenit.cl (landing pública e marketplace) e app.tokenit.cl (dashboard do investidor com monitoramento em tempo real, KYC, assinatura digital e pontuação de risco com IA).",
+      ja: "ブロックチェーンでトークン化された不動産資産を通じてオンライン固定利回り投資を可能にするチリの集団資金調達プラットフォーム。tokenit.cl（公開ランディング＆マーケットプレイス）とapp.tokenit.cl（リアルタイムポートフォリオ監視、KYC、電子署名、AIリスクスコアリングを備えた投資家ダッシュボード）を担当。",
+    },
+    aptitudes: [
+      "Meteor.js",
+      "Python",
+      "Gatsby",
+      "Tailwind CSS",
+      "MongoDB",
+      "Node.js",
+      "React",
+      "Blockchain",
+      "Web3",
+      "MercadoPago",
+      "AI",
+    ],
+    image: "/projects/tokenit.png",
+    image2: "/projects/app-tokenit.png",
+    liveUrl: "https://tokenit.cl",
+    liveUrl2: "https://app.tokenit.cl",
+    codeUrl: "#",
+    isClient: true,
+  },
+  {
     id: 6,
     title: {
       en: "Thender | Dating & Communities Platform",
@@ -213,12 +247,15 @@ export const workExperience = [
     },
     period: "Dec 2025 - Present",
     description: {
-      en: "Developing and optimizing core features for the marketplace platform, ensuring scalability and performance.",
-      es: "Desarrollando y optimizando funcionalidades principales para la plataforma marketplace, asegurando escalabilidad y rendimiento.",
-      pt: "Desenvolvendo e otimizando funcionalidades principais para a plataforma marketplace, garantindo escalabilidade e desempenho.",
-      ja: "マーケットプレイスプラットフォームのコア機能を開発・最適化し、スケーラビリティとパフォーマンスを確保しています。",
+      en: "Placed by Niuro as a Full Stack Engineer at Tokenit — a Chilean blockchain-based real estate investment platform. Responsible for developing and maintaining tokenit.cl (public landing & marketplace) and app.tokenit.cl (investor dashboard with real-time portfolio monitoring, KYC, digital signing, and AI-powered risk scoring).",
+      es: "Posicionado por Niuro como Full Stack Engineer en Tokenit — plataforma chilena de inversión inmobiliaria basada en blockchain. A cargo del desarrollo y mantenimiento de tokenit.cl (landing pública y marketplace) y app.tokenit.cl (dashboard del inversor con monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA).",
+      pt: "Alocado pela Niuro como Full Stack Engineer na Tokenit — plataforma chilena de investimento imobiliário baseada em blockchain. Responsável pelo desenvolvimento e manutenção do tokenit.cl (landing pública e marketplace) e app.tokenit.cl (dashboard do investidor com monitoramento em tempo real, KYC, assinatura digital e pontuação de risco com IA).",
+      ja: "NiuroによりTokenit（チリのブロックチェーンベース不動産投資プラットフォーム）にフルスタックエンジニアとして配属。tokenit.cl（公開ランディング＆マーケットプレイス）とapp.tokenit.cl（リアルタイム監視・KYC・電子署名・AIリスクスコアリングを備えた投資家ダッシュボード）の開発・保守を担当。",
     },
     logo: "/work/niuro.jpg",
+    client: "Tokenit",
+    clientLogo: "/work/tokenit-icon.png",
+    clientUrl: "https://tokenit.cl",
     isCurrent: true,
   },
   {
