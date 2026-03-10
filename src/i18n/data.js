@@ -103,7 +103,7 @@ export const projects = [
     aptitudes: ["Next.js", "Convex", "Clerk", "Tailwind CSS", "TypeScript"],
     image: "/projects/thender.png",
     liveUrl: "https://thender.vercel.app/",
-    codeUrl: "#",
+    codeUrl: "https://github.com/dot-studio-devs/thender",
     isNew: true,
   },
   {
@@ -131,6 +131,7 @@ export const projects = [
     image: "/projects/lastaurinas.png",
     liveUrl: "https://lastaurinas.empretienda.com.ar/",
     codeUrl: "#",
+    hideCode: true,
     isNew: false,
   },
   {
