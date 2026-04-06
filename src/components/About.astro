@@ -8,7 +8,10 @@ import me1 from "../assets/images/me.png";
 const t = (translations as any).en;
 ---
 
-<section id="about" class="py-44 bg-surface relative overflow-hidden">
+<section
+  id="about"
+  class="section-animate py-44 bg-surface relative overflow-hidden"
+>
   <div class="max-w-6xl mx-auto px-6">
     <!-- Top Decorative Line -->
     <div class="h-px w-full bg-black/3 mb-24 relative">
@@ -22,7 +25,7 @@ const t = (translations as any).en;
       <!-- Content Side -->
       <div class="space-y-24 about-main">
         <div class="space-y-10">
-          <div class="flex items-center gap-6 about-reveal">
+          <div class="flex items-center gap-6">
             <div
               class="w-16 h-16 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-th-border p-1 bg-surface"
             >
@@ -50,7 +53,7 @@ const t = (translations as any).en;
             </div>
           </div>
 
-          <div class="space-y-8 max-w-2xl about-reveal">
+          <div class="space-y-8 max-w-2xl">
             <p
               class="text-2xl md:text-3xl text-text-secondary font-light leading-relaxed tracking-tight"
               data-i18n="about.description1"
@@ -67,7 +70,7 @@ const t = (translations as any).en;
         </div>
 
         <!-- Hobbies Section (High-End Typographic Grid) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 about-reveal">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
           {
             hobbies.map((hobby) => (
               <div class="group py-4 border-t border-th-border hover:border-accent transition-all duration-700">
@@ -88,7 +91,7 @@ const t = (translations as any).en;
 
       <!-- Sidebar: Conceptual & Structured -->
       <div class="lg:pt-4 space-y-20 about-sidebar">
-        <div class="space-y-12 about-reveal">
+        <div class="space-y-12">
           <div class="relative pl-10 border-l border-accent/20">
             <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-accent" />
             <p
@@ -139,30 +142,3 @@ const t = (translations as any).en;
   </div>
 </section>
 
-<style>
-  .about-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-</style>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".about-reveal", {
-      opacity: 1,
-      y: 0,
-      duration: 1.4,
-      stagger: 0.2,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%",
-      },
-    });
-  });
-</script>

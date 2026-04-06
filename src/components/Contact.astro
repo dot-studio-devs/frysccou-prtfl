@@ -10,10 +10,10 @@ const t = translations.en;
 
 <section
   id="contact"
-  class="py-44 bg-surface border-t border-th-border relative overflow-hidden"
+  class="section-animate py-44 bg-surface border-t border-th-border relative overflow-hidden"
 >
   <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div class="contact-content opacity-0 translate-y-10">
+    <div class="contact-content">
       <div class="contact-header mb-20 space-y-10">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -130,24 +130,3 @@ const t = translations.en;
     </div>
   </div>
 </section>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".contact-content", {
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
-    });
-  });
-</script>

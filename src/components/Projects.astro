@@ -31,10 +31,10 @@ const t = translations.en;
 
 <section
   id="projects"
-  class="py-32 bg-surface border-t border-th-border relative overflow-hidden"
+  class="section-animate py-32 bg-surface border-t border-th-border relative overflow-hidden"
 >
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="projects-header opacity-0 translate-y-10 mb-20">
+    <div class="projects-header mb-20">
       <div class="space-y-10">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -65,7 +65,7 @@ const t = translations.en;
       {
         projects.map((project, index) => (
           <div
-            class={`project-card opacity-0 translate-y-10 group bg-surface rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative ${
+            class={`project-card group bg-surface rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative ${
               project.id === 7
                 ? "border-emerald-500/30 border-2 shadow-xl shadow-emerald-500/10 hover:shadow-emerald-500/20 md:col-span-2"
                 : project.id === 6
@@ -328,36 +328,3 @@ const t = translations.en;
   </div>
 </section>
 
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".projects-header", {
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".project-card", {
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top 70%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
-  });
-</script>

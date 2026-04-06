@@ -51,10 +51,9 @@ const gradients = [
 ];
 ---
 
-<section id="music" class="py-12 relative overflow-hidden">
+<section id="music" class="section-animate py-12 relative overflow-hidden">
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="yt-music-card opacity-0 translate-y-10">
-      <!-- Studio Header -->
+    <div class="yt-music-card">
       <div class="space-y-10 mb-20">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -255,23 +254,3 @@ const gradients = [
     scrollbar-width: none;
   }
 </style>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".yt-music-card", {
-      scrollTrigger: {
-        trigger: "#music",
-        start: "top 85%",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-  });
-</script>

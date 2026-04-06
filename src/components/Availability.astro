@@ -36,11 +36,14 @@ const routines = {
 };
 ---
 
-<section id="availability" class="py-44 bg-surface border-t border-th-border">
+<section
+  id="availability"
+  class="section-animate py-44 bg-surface border-t border-th-border"
+>
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-[0.8fr,1.2fr] gap-20 items-start">
       <!-- Live Status Side -->
-      <div class="space-y-12 availability-reveal">
+      <div class="space-y-12">
         <div class="space-y-6">
           <div class="flex items-center gap-3">
             <span class="w-8 h-px bg-accent"></span>
@@ -108,7 +111,7 @@ const routines = {
       </div>
 
       <!-- Schedule Side -->
-      <div class="space-y-12 availability-reveal">
+      <div class="space-y-12">
         <div
           class="flex items-center justify-between border-b border-th-border pb-6"
         >
@@ -169,19 +172,8 @@ const routines = {
   </div>
 </section>
 
-<style>
-  .availability-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-</style>
-
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { translations } from "../i18n/translations.js";
-
-  gsap.registerPlugin(ScrollTrigger);
 
   let currentLang = "en";
 
@@ -370,16 +362,5 @@ const routines = {
       attributeFilter: ["lang"],
     });
 
-    gsap.to(".availability-reveal", {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      stagger: 0.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#availability",
-        start: "top 80%",
-      },
-    });
   });
 </script>

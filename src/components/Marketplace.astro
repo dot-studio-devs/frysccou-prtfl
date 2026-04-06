@@ -13,10 +13,10 @@ const products = productsList.map((p) => {
 
 <section
   id="marketplace"
-  class="py-44 relative bg-surface border-t border-th-border overflow-hidden"
+  class="section-animate py-44 relative bg-surface border-t border-th-border overflow-hidden"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-    <div class="marketplace-header opacity-0 translate-y-10 mb-24">
+    <div class="marketplace-header mb-24">
       <div class="space-y-10">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -62,7 +62,7 @@ const products = productsList.map((p) => {
         products.map((product) => (
           <a
             href={`/marketplace/${product.id}`}
-            class="showroom-item opacity-0 translate-y-10 group relative bg-surface rounded-3xl p-6 sm:p-8 border border-th-border shadow-lg hover:shadow-2xl hover:border-accent/50 transition-all duration-500 cursor-pointer text-left flex flex-col justify-between h-full"
+            class="showroom-item group relative bg-surface rounded-3xl p-6 sm:p-8 border border-th-border shadow-lg hover:shadow-2xl hover:border-accent/50 transition-all duration-500 cursor-pointer text-left flex flex-col justify-between h-full"
           >
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-accent/5 rounded-full blur-3xl group-hover:bg-accent/10 transition-colors duration-500 z-0" />
 
@@ -134,40 +134,3 @@ const products = productsList.map((p) => {
     </div>
   </div>
 </section>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const section = document.getElementById("marketplace");
-    if (!section) return;
-
-    gsap.to(".marketplace-header", {
-      scrollTrigger: {
-        trigger: "#marketplace",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".showroom-item", {
-      scrollTrigger: {
-        trigger: ".showroom-grid",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
-  });
-</script>

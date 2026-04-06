@@ -55,10 +55,10 @@ const t = translations.en;
 
 <section
   id="experience"
-  class="py-44 bg-surface border-t border-th-border relative overflow-x-hidden"
+  class="section-animate py-44 bg-surface border-t border-th-border relative overflow-x-hidden"
 >
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="experience-header opacity-0 translate-y-10 mb-24">
+    <div class="experience-header mb-24">
       <div class="space-y-10">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -106,7 +106,7 @@ const t = translations.en;
 
           {
             workExperience.map((job) => (
-              <div class="experience-item opacity-0 translate-y-10 relative pl-12 sm:pl-16 pb-12 last:pb-0 group w-full">
+              <div class="experience-item relative pl-12 sm:pl-16 pb-12 last:pb-0 group w-full">
                 <div
                   class={`absolute left-4.5 top-2 w-3 h-3 rounded-full bg-surface border-2 z-10 transition-colors duration-300 ${job.isCurrent ? "border-text-primary" : "border-text-primary"}`}
                 />
@@ -244,7 +244,7 @@ const t = translations.en;
 
           {
             education.map((edu) => (
-              <div class="education-item opacity-0 translate-y-10 relative pl-12 sm:pl-16 pb-12 last:pb-0 group w-full">
+              <div class="education-item relative pl-12 sm:pl-16 pb-12 last:pb-0 group w-full">
                 <div
                   class={`absolute left-4.5 top-2 w-3 h-3 rounded-full bg-surface border-2 z-10 transition-colors duration-300 ${edu.isCurrent ? "border-rose-accent" : "border-th-border-muted group-hover:bg-text-primary group-hover:border-text-primary"}`}
                 />
@@ -325,52 +325,3 @@ const t = translations.en;
     </div>
   </div>
 </section>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".experience-header", {
-      scrollTrigger: {
-        trigger: "#experience",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".experience-item", {
-      scrollTrigger: {
-        trigger: "#experience",
-        start: "top 75%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      x: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
-
-    gsap.to(".education-item", {
-      scrollTrigger: {
-        trigger: "#experience",
-        start: "top 75%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      x: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
-  });
-</script>

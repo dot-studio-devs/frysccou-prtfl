@@ -307,6 +307,109 @@
   --font-display: "Outfit", system-ui, sans-serif;
 }
 
+:root {
+  --motion-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-entrance: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  --motion-duration-button: 125ms;
+  --motion-duration-reveal: 420ms;
+}
+
+[data-scroll-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-scroll-reveal] {
+    transition:
+      opacity var(--motion-duration-reveal) var(--motion-ease-out),
+      transform var(--motion-duration-reveal) var(--motion-ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-scroll-reveal].is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+html[data-reduced-motion="true"] [data-scroll-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.scroll-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  background: var(--accent-text);
+  z-index: 100000;
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-reduced-motion="false"] .scroll-reading-progress {
+      animation: scroll-reading-progress-fill linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes scroll-reading-progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reading-progress {
+    display: none;
+  }
+}
+
+html[data-reduced-motion="true"] .animate-ping,
+html[data-reduced-motion="true"] .animate-pulse {
+  animation: none;
+}
+
+main .section-animate,
+footer.section-animate {
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main .section-animate,
+  footer.section-animate {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html[data-reduced-motion="true"] main .section-animate,
+html[data-reduced-motion="true"] footer.section-animate {
+  opacity: 1;
+  transform: none;
+}
+
 @layer base {
   html {
     background-color: var(--surface-primary);
@@ -334,6 +437,10 @@
   @media (pointer: fine) {
     * {
       cursor: none !important;
+    }
+
+    html[data-reduced-motion="true"] * {
+      cursor: auto !important;
     }
   }
 }

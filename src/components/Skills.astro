@@ -27,10 +27,10 @@ const skillCategories = [
 
 <section
   id="skills"
-  class="py-44 bg-surface border-t border-th-border relative overflow-hidden"
+  class="section-animate py-44 bg-surface border-t border-th-border relative overflow-hidden"
 >
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="skills-header opacity-0 translate-y-10 mb-24">
+    <div class="skills-header mb-24">
       <div class="space-y-10">
         <div class="flex items-center gap-3">
           <span class="w-8 h-px bg-accent"></span>
@@ -62,7 +62,7 @@ const skillCategories = [
     >
       {
         skillCategories.map((cat) => (
-          <div class="skill-category opacity-0 translate-y-10 bg-surface rounded-3xl p-6 border border-th-border hover:border-accent transition-all duration-500 hover:shadow-xl hover:shadow-accent-soft/20 flex flex-col">
+          <div class="skill-category bg-surface rounded-3xl p-6 border border-th-border hover:border-accent transition-all duration-500 hover:shadow-xl hover:shadow-accent-soft/20 flex flex-col">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-10 h-10 rounded-xl bg-surface-muted flex items-center justify-center text-text-primary border border-th-border">
                 <cat.icon class="w-5 h-5" />
@@ -87,37 +87,3 @@ const skillCategories = [
     </div>
   </div>
 </section>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.to(".skills-header", {
-      scrollTrigger: {
-        trigger: "#skills",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.to(".skill-category", {
-      scrollTrigger: {
-        trigger: "#skills",
-        start: "top 75%",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
-  });
-</script>

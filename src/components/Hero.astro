@@ -8,7 +8,7 @@ const t = (translations as any).en;
 
 <section
   id="hero"
-  class="relative min-h-dvh flex flex-col bg-surface select-none overflow-hidden"
+  class="section-animate relative min-h-dvh flex flex-col bg-surface select-none overflow-hidden"
 >
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-px bg-accent/10"></div>
@@ -40,7 +40,7 @@ const t = (translations as any).en;
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       <div class="lg:col-span-7 space-y-10">
         <div class="overflow-hidden">
-          <div class="hero-reveal flex items-center gap-3">
+          <div class="flex items-center gap-3">
             <div class="flex items-center gap-2">
               <span class="relative flex h-2 w-2">
                 <span
@@ -60,7 +60,7 @@ const t = (translations as any).en;
 
         <div class="overflow-visible">
           <h1
-            class="hero-reveal font-[Outfit] font-black leading-[0.9] tracking-tighter text-text-primary hero-name"
+            class="font-[Outfit] font-black leading-[0.9] tracking-tighter text-text-primary hero-name"
           >
             <span data-i18n="hero.name">{t.hero.name}</span><span
               class="text-accent">.</span
@@ -70,7 +70,7 @@ const t = (translations as any).en;
 
         <div class="overflow-hidden">
           <div
-            class="hero-reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5"
           >
             <Code2 class="w-3.5 h-3.5 text-accent" />
             <span
@@ -82,7 +82,7 @@ const t = (translations as any).en;
 
         <div class="overflow-hidden max-w-xl">
           <p
-            class="hero-reveal text-base sm:text-lg text-text-muted font-light leading-relaxed"
+            class="text-base sm:text-lg text-text-muted font-light leading-relaxed"
             data-i18n="hero.manifesto"
           >
             {t.hero.manifesto}
@@ -93,7 +93,7 @@ const t = (translations as any).en;
           <div class="overflow-hidden">
             <a
               href="/#projects"
-              class="hero-reveal group inline-flex items-center gap-5 py-4 px-8 bg-th-btn-dark text-th-btn-dark-text rounded-full hover:bg-accent hover:text-white transition-all duration-500 no-underline"
+              class="group inline-flex items-center gap-5 py-4 px-8 bg-th-btn-dark text-th-btn-dark-text rounded-full hover:bg-accent hover:text-white transition-all duration-500 no-underline"
             >
               <span
                 class="text-xs font-black uppercase tracking-widest"
@@ -109,7 +109,7 @@ const t = (translations as any).en;
             <a
               href="https://dot-studio.site"
               target="_blank"
-              class="hero-reveal group inline-flex items-center gap-3 py-4 px-2 text-text-muted hover:text-dot-green transition-colors duration-500 no-underline"
+              class="group inline-flex items-center gap-3 py-4 px-2 text-text-muted hover:text-dot-green transition-colors duration-500 no-underline"
             >
               <Globe
                 class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity group-hover:text-dot-green"
@@ -126,7 +126,7 @@ const t = (translations as any).en;
       <div
         class="lg:col-span-5 hidden lg:flex flex-col items-center justify-center"
       >
-        <div class="hero-reveal relative w-full max-w-xs">
+        <div class="relative w-full max-w-xs">
           <div
             class="relative border border-th-border rounded-2xl bg-surface-muted p-6 space-y-5"
           >
@@ -217,8 +217,7 @@ const t = (translations as any).en;
             </div>
           </div>
 
-          <!-- New Session Context Card -->
-          <div class="hero-reveal mt-4 relative w-full group/status">
+          <div class="mt-4 relative w-full group/status">
             <div
               class="border border-th-border rounded-2xl bg-surface/40 backdrop-blur-xl p-4 flex items-center justify-between hover:border-accent/40 transition-colors duration-500"
             >
@@ -289,45 +288,21 @@ const t = (translations as any).en;
     >
       <div class="flex items-center gap-2">
         <span class="w-1 h-1 rounded-full bg-accent"></span>
-        <span class="hero-reveal" data-i18n="hero.location"
+        <span data-i18n="hero.location"
           >{t.hero.location}</span
         >
       </div>
-      <span class="hero-reveal w-1 h-1 rounded-full bg-th-border-muted/50"
+      <span class="w-1 h-1 rounded-full bg-th-border-muted/50"
       ></span>
       <div class="flex items-center gap-2">
         <span class="text-accent/50 italic opacity-50">#</span>
-        <span class="hero-reveal" data-i18n="hero.kernel">{t.hero.kernel}</span>
+        <span data-i18n="hero.kernel">{t.hero.kernel}</span>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  import gsap from "gsap";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "power4.out",
-        duration: 1.8,
-      },
-    });
-
-    gsap.set(".hero-reveal", { y: "150%" });
-
-    tl.to(".hero-reveal", {
-      y: "0%",
-      stagger: 0.12,
-    });
-  });
-</script>
-
 <style>
-  .hero-reveal {
-    will-change: transform;
-  }
-
   #hero {
     -webkit-user-select: none;
     user-select: none;

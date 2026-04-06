@@ -16,7 +16,7 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
 
 <section
   id="donations"
-  class="py-44 bg-surface relative overflow-hidden border-t border-th-border"
+  class="section-animate py-44 bg-surface relative overflow-hidden border-t border-th-border"
 >
   <!-- Background Decorative Elements -->
   <div
@@ -32,7 +32,7 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
     <!-- Section Header (Independent Container) -->
     <div class="px-6 flex flex-col items-center text-center space-y-12 mb-24">
       <div
-        class="donation-reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-rose-accent/30 bg-rose-accent/5"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-rose-accent/30 bg-rose-accent/5"
       >
         <Heart class="w-3.5 h-3.5 text-rose-accent fill-rose-accent/20" />
         <span
@@ -43,14 +43,14 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
 
       <div class="space-y-6 max-w-3xl">
         <h2
-          class="donation-reveal text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter"
+          class="text-6xl md:text-8xl font-[Outfit] font-black text-text-primary leading-[0.9] tracking-tighter"
         >
           <span data-i18n="donations.title">{t.donations.title}</span><span
             class="text-rose-accent">.</span
           >
         </h2>
         <p
-          class="donation-reveal text-xl md:text-2xl text-text-muted font-light leading-relaxed"
+          class="text-xl md:text-2xl text-text-muted font-light leading-relaxed"
           data-i18n="donations.description"
         >
           {t.donations.description}
@@ -64,7 +64,7 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
         class="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch max-w-5xl mx-auto"
       >
         <!-- Mercado Pago Card -->
-        <div class="donation-reveal group relative">
+        <div class="group relative">
           <div
             class="absolute -inset-0.5 bg-linear-to-r from-accent/20 to-rose-accent/20 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"
           >
@@ -115,7 +115,7 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
         </div>
 
         <!-- Crypto Card -->
-        <div class="donation-reveal group relative">
+        <div class="group relative">
           <div
             class="absolute -inset-0.5 bg-linear-to-r from-rose-accent/20 to-accent/20 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"
           >
@@ -206,28 +206,7 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
 </section>
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
   function initDonations() {
-    const section = document.querySelector("#donations");
-    if (!section) return;
-
-    gsap.to(".donation-reveal", {
-      scrollTrigger: {
-        trigger: section,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      y: 0,
-      opacity: 1,
-      duration: 1.2,
-      stagger: 0.15,
-      ease: "power4.out",
-    });
-
     const copyBtn = document.getElementById("copy-wallet");
     const walletAddress = copyBtn?.getAttribute("data-wallet");
     const copyText = document.getElementById("copy-text");
@@ -257,11 +236,3 @@ const WALLET_ADDRESS = "0xf2f000a27e36778597f79d9fb38ce31841a3f028";
 
   document.addEventListener("DOMContentLoaded", initDonations);
 </script>
-
-<style>
-  .donation-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    will-change: transform, opacity;
-  }
-</style>
