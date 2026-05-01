@@ -1,0 +1,549 @@
+---
+import { translations } from "../i18n/translations.js";
+import {
+  X,
+  Languages,
+  Palette,
+  PanelLeft,
+  Sun,
+  Moon,
+  Coffee,
+  Sparkles,
+  TreePine,
+  Flower2,
+  Zap,
+} from "lucide-astro";
+
+const t = translations.en;
+---
+
+<div
+  id="settings-modal-root"
+  class="settings-modal-root fixed inset-0 z-90 pointer-events-none"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="settings-modal-title"
+  aria-hidden="true"
+>
+  <div id="settings-modal-backdrop" class="settings-modal-backdrop"></div>
+
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div id="settings-modal-panel" class="settings-modal-panel">
+      <header
+        class="flex items-start justify-between gap-4 px-6 pt-6 pb-5 border-b border-th-border"
+      >
+        <div>
+          <p
+            class="text-[10px] font-black uppercase tracking-[0.4em] text-accent/60 mb-1"
+          >
+            Control.Panel
+          </p>
+          <h2
+            id="settings-modal-title"
+            class="text-2xl font-[Outfit] font-black text-text-primary tracking-tight"
+          >
+            Preferences
+          </h2>
+          <p class="text-xs text-text-muted mt-1">
+            Language, theme and layout
+          </p>
+        </div>
+        <button
+          id="settings-modal-close"
+          aria-label="Close settings"
+          class="shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-surface-subtle hover:bg-accent-soft hover:text-accent text-text-muted transition-colors"
+        >
+          <X class="w-4 h-4" />
+        </button>
+      </header>
+
+      <div class="settings-modal-body flex-1 overflow-y-auto px-6 py-6 space-y-8">
+        <section>
+          <header class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <Languages class="w-3.5 h-3.5 text-accent" />
+              <h3
+                class="text-[10px] font-black uppercase tracking-[0.3em] text-text-primary"
+              >
+                Language
+              </h3>
+            </div>
+            <span
+              class="text-[9px] font-mono text-text-muted uppercase tracking-widest"
+            >
+              4 options
+            </span>
+          </header>
+          <div class="grid grid-cols-2 gap-2">
+            <button class="settings-option settings-lang-option" data-lang="en">
+              <span class="settings-option-tag">EN</span>
+              <span class="settings-option-name">English</span>
+              <span class="settings-option-check"></span>
+            </button>
+            <button class="settings-option settings-lang-option" data-lang="es">
+              <span class="settings-option-tag">ES</span>
+              <span class="settings-option-name">Español</span>
+              <span class="settings-option-check"></span>
+            </button>
+            <button class="settings-option settings-lang-option" data-lang="pt">
+              <span class="settings-option-tag">PT</span>
+              <span class="settings-option-name">Português</span>
+              <span class="settings-option-check"></span>
+            </button>
+            <button class="settings-option settings-lang-option" data-lang="ja">
+              <span class="settings-option-tag">JA</span>
+              <span class="settings-option-name">日本語</span>
+              <span class="settings-option-check"></span>
+            </button>
+          </div>
+        </section>
+
+        <section>
+          <header class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <Palette class="w-3.5 h-3.5 text-accent" />
+              <h3
+                class="text-[10px] font-black uppercase tracking-[0.3em] text-text-primary"
+              >
+                Theme
+              </h3>
+            </div>
+            <span
+              class="text-[9px] font-mono text-text-muted uppercase tracking-widest"
+            >
+              8 options
+            </span>
+          </header>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="light"
+            >
+              <span class="settings-theme-icon"><Sun class="w-3.5 h-3.5" /></span>
+              <span class="settings-option-name" data-i18n="sidebar.light"
+                >{t.sidebar.light}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="dark"
+            >
+              <span class="settings-theme-icon"><Moon class="w-3.5 h-3.5" /></span>
+              <span class="settings-option-name" data-i18n="sidebar.dark"
+                >{t.sidebar.dark}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="warm"
+            >
+              <span class="settings-theme-icon"
+                ><Coffee class="w-3.5 h-3.5" /></span
+              >
+              <span class="settings-option-name" data-i18n="sidebar.warm"
+                >{t.sidebar.warm}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="slate"
+            >
+              <span class="settings-theme-icon"
+                ><Sparkles class="w-3.5 h-3.5" /></span
+              >
+              <span class="settings-option-name" data-i18n="sidebar.slate"
+                >{t.sidebar.slate}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="forest"
+            >
+              <span class="settings-theme-icon"
+                ><TreePine class="w-3.5 h-3.5" /></span
+              >
+              <span class="settings-option-name" data-i18n="sidebar.forest"
+                >{t.sidebar.forest}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="sakura"
+            >
+              <span class="settings-theme-icon"
+                ><Flower2 class="w-3.5 h-3.5" /></span
+              >
+              <span class="settings-option-name" data-i18n="sidebar.sakura"
+                >{t.sidebar.sakura}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="midnight"
+            >
+              <span class="settings-theme-icon"><Moon class="w-3.5 h-3.5" /></span>
+              <span class="settings-option-name" data-i18n="sidebar.midnight"
+                >{t.sidebar.midnight}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-theme-option"
+              data-theme-set="neon"
+            >
+              <span class="settings-theme-icon"><Zap class="w-3.5 h-3.5" /></span>
+              <span class="settings-option-name" data-i18n="sidebar.neon"
+                >{t.sidebar.neon}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="hidden md:block">
+          <header class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <PanelLeft class="w-3.5 h-3.5 text-accent" />
+              <h3
+                class="text-[10px] font-black uppercase tracking-[0.3em] text-text-primary"
+                data-i18n="sidebar.title"
+              >
+                {t.sidebar.title}
+              </h3>
+            </div>
+            <span
+              class="text-[9px] font-mono text-text-muted uppercase tracking-widest"
+            >
+              Desktop only
+            </span>
+          </header>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              class="settings-option settings-side-option"
+              data-side-set="left"
+            >
+              <span class="settings-side-glyph">
+                <span class="settings-side-bar"></span>
+              </span>
+              <span class="settings-option-name" data-i18n="sidebar.left"
+                >{t.sidebar.left}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+            <button
+              class="settings-option settings-side-option"
+              data-side-set="right"
+            >
+              <span class="settings-side-glyph reverse">
+                <span class="settings-side-bar"></span>
+              </span>
+              <span class="settings-option-name" data-i18n="sidebar.right"
+                >{t.sidebar.right}</span
+              >
+              <span class="settings-option-check"></span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <footer
+        class="px-6 py-3 border-t border-th-border flex items-center justify-between text-[9px] font-mono text-text-muted uppercase tracking-widest"
+      >
+        <span>PREFS.SYS · v1.0</span>
+        <span class="hidden sm:inline">ESC to close</span>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<style>
+  .settings-modal-root {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .settings-modal-root.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .settings-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .settings-modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    max-height: 90dvh;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid var(--th-border, rgba(0, 0, 0, 0.08));
+    background: var(--surface, #fff);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.96) translateY(8px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .settings-modal-root.is-open .settings-modal-panel {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .settings-modal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  .settings-modal-body::-webkit-scrollbar-thumb {
+    background: var(--th-border, rgba(0, 0, 0, 0.15));
+    border-radius: 999px;
+  }
+
+  .settings-option {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 0.875rem;
+    border: 1px solid var(--th-border, rgba(0, 0, 0, 0.08));
+    background: transparent;
+    color: var(--text-primary, #111);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+  }
+  .settings-option:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent, currentColor);
+  }
+  .settings-option:focus-visible {
+    outline: 2px solid var(--accent, currentColor);
+    outline-offset: 2px;
+  }
+
+  .settings-option-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    padding: 0.15rem 0.45rem;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    border-radius: 0.4rem;
+    background: var(--accent-soft, rgba(0, 0, 0, 0.05));
+    color: var(--accent, currentColor);
+  }
+
+  .settings-option-name {
+    flex: 1;
+    text-transform: capitalize;
+  }
+
+  .settings-theme-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.5rem;
+    background: var(--accent-soft, rgba(0, 0, 0, 0.05));
+    color: var(--accent, currentColor);
+  }
+
+  .settings-option-check {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--th-border, rgba(0, 0, 0, 0.2));
+    transition: all 0.2s ease;
+  }
+
+  .settings-option.is-active {
+    border-color: transparent;
+    background: var(--accent-soft, rgba(0, 0, 0, 0.05));
+    box-shadow: inset 0 0 0 1.5px var(--accent, currentColor);
+  }
+  .settings-option.is-active .settings-option-check {
+    background: var(--accent, currentColor);
+    border-color: var(--accent, currentColor);
+    box-shadow:
+      0 0 0 3px
+        color-mix(in oklab, var(--accent, currentColor) 25%, transparent);
+  }
+
+  .settings-side-glyph {
+    width: 1.7rem;
+    height: 1.1rem;
+    border-radius: 0.3rem;
+    background: var(--accent-soft, rgba(0, 0, 0, 0.05));
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .settings-side-glyph .settings-side-bar {
+    width: 0.45rem;
+    background: var(--accent, currentColor);
+  }
+  .settings-side-glyph.reverse {
+    justify-content: flex-end;
+  }
+</style>
+
+<script>
+  import {
+    applyLanguage,
+    getStoredLang,
+    type SupportedLang,
+  } from "../lib/i18n-runtime";
+
+  declare global {
+    interface Window {
+      setTheme?: (theme: string) => void;
+      getTheme?: () => string;
+    }
+  }
+
+  const root = document.getElementById("settings-modal-root");
+  const closeBtn = document.getElementById("settings-modal-close");
+  const backdrop = document.getElementById("settings-modal-backdrop");
+
+  let lastFocused: HTMLElement | null = null;
+
+  function refreshActiveStates() {
+    const currentLang = getStoredLang();
+    document.querySelectorAll(".settings-lang-option").forEach((el) => {
+      el.classList.toggle(
+        "is-active",
+        el.getAttribute("data-lang") === currentLang
+      );
+    });
+
+    const currentTheme =
+      document.documentElement.getAttribute("data-theme") || "light";
+    document.querySelectorAll(".settings-theme-option").forEach((el) => {
+      el.classList.toggle(
+        "is-active",
+        el.getAttribute("data-theme-set") === currentTheme
+      );
+    });
+
+    const sideMatch = document.cookie.match(/sidebar-side=([^;]+)/);
+    const currentSide = sideMatch?.[1] || "left";
+    document.querySelectorAll(".settings-side-option").forEach((el) => {
+      el.classList.toggle(
+        "is-active",
+        el.getAttribute("data-side-set") === currentSide
+      );
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-current-lang]").forEach((el) => {
+      el.textContent = currentLang.toUpperCase();
+    });
+  }
+
+  function openModal() {
+    if (!root) return;
+    lastFocused = document.activeElement as HTMLElement | null;
+    root.classList.add("is-open");
+    root.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    refreshActiveStates();
+    requestAnimationFrame(() => {
+      (closeBtn as HTMLElement | null)?.focus();
+    });
+  }
+
+  function closeModal() {
+    if (!root) return;
+    root.classList.remove("is-open");
+    root.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    lastFocused?.focus?.();
+  }
+
+  window.addEventListener("app:open-settings", openModal);
+  window.addEventListener("app:close-settings", closeModal);
+
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement | null;
+    const trigger = target?.closest("[data-settings-open]");
+    if (trigger) {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  closeBtn?.addEventListener("click", closeModal);
+  backdrop?.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && root?.classList.contains("is-open")) closeModal();
+  });
+
+  document
+    .querySelectorAll<HTMLButtonElement>(".settings-lang-option")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang") as SupportedLang | null;
+        if (!lang) return;
+        applyLanguage(lang);
+        refreshActiveStates();
+      });
+    });
+
+  document
+    .querySelectorAll<HTMLButtonElement>(".settings-theme-option")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const theme = btn.getAttribute("data-theme-set");
+        if (!theme || typeof window.setTheme !== "function") return;
+        window.setTheme(theme);
+        refreshActiveStates();
+      });
+    });
+
+  function applySidebarSide(side: "left" | "right") {
+    const sidebar = document.getElementById("sidebar");
+    if (!sidebar) return;
+    sidebar.classList.remove("left-0", "right-0", "border-r", "border-l");
+    if (side === "right") {
+      sidebar.classList.add("right-0", "border-l");
+    } else {
+      sidebar.classList.add("left-0", "border-r");
+    }
+    document.cookie = `sidebar-side=${side}; path=/; max-age=31536000`;
+  }
+
+  document
+    .querySelectorAll<HTMLButtonElement>(".settings-side-option")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const side = btn.getAttribute("data-side-set") as
+          | "left"
+          | "right"
+          | null;
+        if (!side) return;
+        applySidebarSide(side);
+        refreshActiveStates();
+      });
+    });
+
+  refreshActiveStates();
+  window.addEventListener("themeChange", refreshActiveStates);
+  window.addEventListener("languageChange", refreshActiveStates);
+</script>

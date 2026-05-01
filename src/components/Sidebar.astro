@@ -10,15 +10,8 @@ import {
   Mail,
   Coffee,
   Sparkles,
-  Palette,
   ChevronLeft,
   Settings2,
-  Languages,
-  Sun,
-  Moon,
-  TreePine,
-  Flower2,
-  Zap,
 } from "lucide-astro";
 
 import { Image } from "astro:assets";
@@ -211,108 +204,11 @@ const t = translations.en;
       >
     </a>
 
-    <div class="pt-2 relative" id="theme-hover-area">
-      <button
-        class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 overflow-hidden"
-      >
-        <div
-          class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
-        >
-          <Palette class="w-5 h-5" />
-        </div>
-        <span
-          id="theme-label-sidebar"
-          class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
-          >Theme</span
-        >
-      </button>
-      <div
-        id="theme-flyout"
-        class="theme-flyout absolute bottom-0 opacity-0 scale-95 pointer-events-none transition-all duration-300 z-50"
-      >
-        <div
-          class="bg-surface rounded-xl border border-th-border shadow-xl p-2 flex flex-col gap-1 min-w-35"
-        >
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="light"
-          >
-            <Sun class="w-4 h-4" />
-            <span data-i18n="sidebar.light">Light</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="dark"
-          >
-            <Moon class="w-4 h-4" />
-            <span data-i18n="sidebar.dark">Dark</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="warm"
-          >
-            <Coffee class="w-4 h-4" />
-            <span data-i18n="sidebar.warm">Warm</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="slate"
-          >
-            <Sparkles class="w-4 h-4" />
-            <span data-i18n="sidebar.slate">Slate</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="forest"
-          >
-            <TreePine class="w-4 h-4" />
-            <span data-i18n="sidebar.forest">Forest</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="sakura"
-          >
-            <Flower2 class="w-4 h-4" />
-            <span data-i18n="sidebar.sakura">Sakura</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="midnight"
-          >
-            <Moon class="w-4 h-4" />
-            <span data-i18n="sidebar.midnight">Midnight</span>
-          </button>
-          <button
-            class="theme-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-theme-set="neon"
-          >
-            <Zap class="w-4 h-4" />
-            <span data-i18n="sidebar.neon">Neon</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <button
-      id="lang-toggle-sidebar"
+      id="settings-trigger-sidebar"
+      data-settings-open="true"
+      aria-label="Open preferences"
       class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white transition-all duration-500 group overflow-hidden"
-    >
-      <div
-        class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
-      >
-        <Languages class="w-5 h-5" />
-      </div>
-      <span
-        id="current-lang-sidebar"
-        class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
-        >EN</span
-      >
-    </button>
-  </div>
-
-  <div class="pt-2 relative" id="side-hover-area">
-    <button
-      class="sidebar-link w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-subtle text-th-text-muted hover:text-accent transition-all duration-500 overflow-hidden opacity-40 hover:opacity-100"
     >
       <div
         class="sidebar-icon-container w-10 flex items-center justify-center shrink-0 transition-all duration-500"
@@ -320,49 +216,16 @@ const t = translations.en;
         <Settings2 class="w-5 h-5" />
       </div>
       <span
-        class="sidebar-text text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
-        data-i18n="sidebar.title">{t.sidebar.title}</span
+        class="sidebar-text flex-1 text-left text-[10px] font-bold tracking-widest uppercase transition-all duration-500 opacity-100 translate-x-0"
+      >
+        Preferences
+      </span>
+      <span
+        data-current-lang
+        class="sidebar-text shrink-0 text-[9px] font-mono font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-all duration-500 translate-x-0"
+        >EN</span
       >
     </button>
-    <div
-      id="side-flyout"
-      class="theme-flyout absolute left-full bottom-0 pl-2 opacity-0 scale-95 pointer-events-none transition-all duration-300 z-50 transition-side-flyout"
-    >
-      <div
-        class="bg-surface rounded-xl border border-th-border shadow-xl p-4 flex flex-col gap-3 min-w-48"
-      >
-        <div class="space-y-1">
-          <h4
-            class="text-[10px] font-black uppercase tracking-widest text-text-primary"
-            data-i18n="sidebar.title"
-          >
-            {t.sidebar.title}
-          </h4>
-          <p
-            class="text-[9px] text-text-muted leading-relaxed"
-            data-i18n="sidebar.description"
-          >
-            {t.sidebar.description}
-          </p>
-        </div>
-        <div class="flex flex-col gap-1">
-          <button
-            class="side-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-side-set="left"
-          >
-            <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-            <span data-i18n="sidebar.left">{t.sidebar.left}</span>
-          </button>
-          <button
-            class="side-option flex items-center gap-2 px-3 py-2 rounded-lg text-text-primary hover:bg-accent-soft hover:text-accent text-xs font-bold transition-all duration-200"
-            data-side-set="right"
-          >
-            <div class="w-1.5 h-1.5 rounded-full bg-rose-accent"></div>
-            <span data-i18n="sidebar.right">{t.sidebar.right}</span>
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <button
@@ -552,38 +415,20 @@ const t = translations.en;
       />
     </a>
     <div class="my-6 border-t border-th-border"></div>
-    <div class="grid grid-cols-2 gap-2 mb-4">
-      <button
-        class="theme-option flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-surface-muted text-text-primary hover:bg-accent-soft hover:text-accent border border-th-border text-xs font-bold transition-all duration-200"
-        data-theme-set="light"
-      >
-        <Sun class="w-4 h-4" /> Light
-      </button>
-      <button
-        class="theme-option flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-surface-muted text-text-primary hover:bg-accent-soft hover:text-accent border border-th-border text-xs font-bold transition-all duration-200"
-        data-theme-set="dark"
-      >
-        <Moon class="w-4 h-4" /> Dark
-      </button>
-      <button
-        class="theme-option flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-surface-muted text-text-primary hover:bg-accent-soft hover:text-accent border border-th-border text-xs font-bold transition-all duration-200"
-        data-theme-set="warm"
-      >
-        <Coffee class="w-4 h-4" /> Warm
-      </button>
-      <button
-        class="theme-option flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-surface-muted text-text-primary hover:bg-accent-soft hover:text-accent border border-th-border text-xs font-bold transition-all duration-200"
-        data-theme-set="slate"
-      >
-        <Sparkles class="w-4 h-4" /> Slate
-      </button>
-    </div>
     <button
-      id="lang-toggle-mobile"
-      class="w-full flex items-center justify-between p-4 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-[10px]"
+      data-settings-open="true"
+      aria-label="Open preferences"
+      class="w-full flex items-center justify-between p-4 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent hover:text-white transition-all duration-300 font-bold uppercase tracking-widest text-[10px] group"
     >
-      <span>Language</span>
-      <span id="current-lang-mobile">EN</span>
+      <div class="flex items-center gap-3">
+        <Settings2 class="w-5 h-5" />
+        <span>Preferences</span>
+      </div>
+      <span
+        data-current-lang
+        class="text-[10px] font-mono opacity-70 group-hover:opacity-100 transition-opacity"
+        >EN</span
+      >
     </button>
   </div>
 </div>
@@ -625,54 +470,9 @@ const t = translations.en;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .theme-flyout-visible {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-    pointer-events: auto !important;
-  }
 </style>
 
 <script is:inline>
-  var themeHoverArea = document.getElementById("theme-hover-area");
-  var themeFlyout = document.getElementById("theme-flyout");
-  var themeCloseTimer = null;
-
-  function showThemeFlyout() {
-    if (themeCloseTimer) {
-      clearTimeout(themeCloseTimer);
-      themeCloseTimer = null;
-    }
-    if (themeFlyout) {
-      const isRight = sidebar?.classList.contains("right-0");
-      if (isRight) {
-        themeFlyout.style.left = "auto";
-        themeFlyout.style.right = "100%";
-        themeFlyout.style.paddingLeft = "0";
-        themeFlyout.style.paddingRight = "8px";
-      } else {
-        themeFlyout.style.left = "100%";
-        themeFlyout.style.right = "auto";
-        themeFlyout.style.paddingLeft = "8px";
-        themeFlyout.style.paddingRight = "0";
-      }
-      themeFlyout.classList.add("theme-flyout-visible");
-    }
-  }
-  function hideThemeFlyout() {
-    themeCloseTimer = setTimeout(function () {
-      if (themeFlyout) themeFlyout.classList.remove("theme-flyout-visible");
-    }, 600);
-  }
-
-  if (themeHoverArea) {
-    themeHoverArea.addEventListener("mouseenter", showThemeFlyout);
-    themeHoverArea.addEventListener("mouseleave", hideThemeFlyout);
-  }
-  if (themeFlyout) {
-    themeFlyout.addEventListener("mouseenter", showThemeFlyout);
-    themeFlyout.addEventListener("mouseleave", hideThemeFlyout);
-  }
-
   const sidebar = document.getElementById("sidebar");
   const sidebarToggle = document.getElementById("sidebar-toggle");
   const toggleLabel = document.getElementById("toggle-label");
@@ -743,83 +543,12 @@ const t = translations.en;
   closeSidebarBtn?.addEventListener("click", closeMobileSidebar);
   sidebarOverlay?.addEventListener("click", closeMobileSidebar);
 
-  const langSidebar = document.getElementById("lang-toggle-sidebar");
-  const langMobile = document.getElementById("lang-toggle-mobile");
-  function triggerLangChange() {
-    const legacyToggle = document.getElementById("lang-toggle");
-    if (legacyToggle) legacyToggle.click();
-    setTimeout(() => {
-      const currentLang = document.documentElement.lang.toUpperCase();
-      const dots = [
-        document.getElementById("current-lang-sidebar"),
-        document.getElementById("current-lang-mobile"),
-      ];
-      dots.forEach((dot) => {
-        if (dot) dot.textContent = currentLang;
-      });
-    }, 50);
-  }
-  langSidebar?.addEventListener("click", triggerLangChange);
-  langMobile?.addEventListener("click", triggerLangChange);
-
-  function updateThemeUI() {
-    const current =
-      document.documentElement.getAttribute("data-theme") || "light";
-    const label = document.getElementById("theme-label-sidebar");
-    if (label)
-      label.textContent = current.charAt(0).toUpperCase() + current.slice(1);
+  function getSidebarSide() {
+    const match = document.cookie.match(/sidebar-side=([^;]+)/);
+    return match ? match[1] : "left";
   }
 
-  document.querySelectorAll(".theme-option").forEach(function (opt) {
-    opt.addEventListener("click", function () {
-      var theme = opt.getAttribute("data-theme-set");
-      if (theme && window.setTheme) {
-        window.setTheme(theme);
-        updateThemeUI();
-      }
-    });
-  });
-
-  updateThemeUI();
-
-  const sideHoverArea = document.getElementById("side-hover-area");
-  const sideFlyout = document.getElementById("side-flyout");
-  let sideCloseTimer = null;
-
-  function showSideFlyout() {
-    if (sideCloseTimer) {
-      clearTimeout(sideCloseTimer);
-      sideCloseTimer = null;
-    }
-    if (sideFlyout) {
-      const isRight = sidebar?.classList.contains("right-0");
-      if (isRight) {
-        sideFlyout.style.left = "auto";
-        sideFlyout.style.right = "100%";
-        sideFlyout.style.paddingLeft = "0";
-        sideFlyout.style.paddingRight = "8px";
-      } else {
-        sideFlyout.style.left = "100%";
-        sideFlyout.style.right = "auto";
-        sideFlyout.style.paddingLeft = "8px";
-        sideFlyout.style.paddingRight = "0";
-      }
-      sideFlyout.classList.add("theme-flyout-visible");
-    }
-  }
-
-  function hideSideFlyout() {
-    sideCloseTimer = setTimeout(() => {
-      if (sideFlyout) sideFlyout.classList.remove("theme-flyout-visible");
-    }, 600);
-  }
-
-  sideHoverArea?.addEventListener("mouseenter", showSideFlyout);
-  sideHoverArea?.addEventListener("mouseleave", hideSideFlyout);
-  sideFlyout?.addEventListener("mouseenter", showSideFlyout);
-  sideFlyout?.addEventListener("mouseleave", hideSideFlyout);
-
-  function setSidebarSide(side, save = true) {
+  function applySidebarSide(side) {
     if (!sidebar) return;
     sidebar.classList.remove("left-0", "right-0", "border-r", "border-l");
     if (side === "right") {
@@ -827,25 +556,9 @@ const t = translations.en;
     } else {
       sidebar.classList.add("left-0", "border-r");
     }
-    if (save) {
-      document.cookie = `sidebar-side=${side}; path=/; max-age=31536000`;
-      hideSideFlyout();
-    }
   }
 
-  function getSidebarSide() {
-    const match = document.cookie.match(/sidebar-side=([^;]+)/);
-    return match ? match[1] : "left";
-  }
-
-  setSidebarSide(getSidebarSide(), false);
-
-  document.querySelectorAll(".side-option").forEach((opt) => {
-    opt.addEventListener("click", () => {
-      const side = opt.getAttribute("data-side-set");
-      if (side) setSidebarSide(side);
-    });
-  });
+  applySidebarSide(getSidebarSide());
 
   document.querySelectorAll(".dot-studio-portal-trigger").forEach((el) => {
     el.addEventListener("click", (e) => {

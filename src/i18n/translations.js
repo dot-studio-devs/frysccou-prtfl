@@ -86,7 +86,7 @@ export const translations = {
       title: "My Story",
       subtitle: "Engineering with purpose & design with soul",
       description1:
-        "Hi, I'm Francisco Espindola, a Full Stack Engineer (though I personally prefer calling myself a Web Engineer, haha) passionate about creating beautiful and functional digital experiences. I focus on finding the perfect balance between aesthetics, UX/UI, and high-performance code. If an idea pops into my head, chances are I'll build it and ship it.",
+        "Hi, I'm Francisco Espindola, a Web Engineer working end-to-end across the full stack to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture — where every detail, from typography to deploy, has weight. If an idea sparks, chances are I'll build it and ship it.",
       description2:
         "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga. I'm always looking for new challenges and opportunities to learn and grow.",
       hobbiesTitle: "Fun Facts & Hobbies",
@@ -167,7 +167,8 @@ export const translations = {
     },
     skills: {
       title: "Full Tech Stack",
-      subtitle: "Expertise in modern web technologies and scalable solutions",
+      subtitle:
+        "End-to-end mastery across modern web technologies, performance engineering and scalable architectures.",
       languages: "Core Languages",
       frontend: "Frontend Frameworks",
       backend: "Backend Frameworks",
@@ -205,7 +206,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Crafting premium digital experiences where engineering meets soul. Specialized in building high-performance applications with a focus on exceptional UI/UX and scalable architectures.",
+        "Web Engineer crafting high-performance web applications, premium interfaces and motion-driven experiences. Specialized in design-led engineering, edge-ready architectures and scalable systems where every detail matters.",
       status: "Available for new opportunities",
       explore: "Explore",
       services: "Services",
@@ -350,7 +351,7 @@ export const translations = {
       title: "Mi Historia",
       subtitle: "Ingeniería con propósito y diseño con alma",
       description1:
-        "¡Hola! Soy Francisco Espindola, un Full Stack Engineer (aunque prefiero llamarme Web Engineer, jaja) apasionado por crear experiencias hermosas y soluciones funcionales. Me enfoco en encontrar el equilibrio perfecto entre estética, UX/UI y diseño de alto rendimiento. Si una idea me entusiasma, es muy probable que la construya y la lance al mundo.",
+        "¡Hola! Soy Francisco Espindola, un Web Engineer trabajando end-to-end a lo largo de todo el stack para construir aplicaciones web de alto rendimiento, interfaces premium y experiencias guiadas por motion design. Mi foco vive en la intersección entre diseño, performance y arquitectura — donde cada detalle, desde la tipografía hasta el deploy, pesa. Si una idea me prende, lo más probable es que la construya y la lance al mundo.",
       description2:
         "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga. Siempre estoy buscando nuevos retos que me permitan seguir aprendiendo.",
       hobbiesTitle: "Datos Curiosos y Hobbies",
@@ -434,7 +435,8 @@ export const translations = {
     },
     skills: {
       title: "Stack Tecnológico",
-      subtitle: "Experto en tecnologías web modernas y soluciones escalables",
+      subtitle:
+        "Dominio end-to-end en tecnologías web modernas, performance engineering y arquitecturas escalables.",
       languages: "Lenguajes Core",
       frontend: "Frameworks Frontend",
       backend: "Frameworks Backend",
@@ -473,7 +475,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Desarrollando experiencias digitales premium donde la ingeniería se encuentra con el alma. Especializado en aplicaciones de alto rendimiento con foco en UI/UX excepcional y arquitecturas escalables.",
+        "Web Engineer creando aplicaciones web de alto rendimiento, interfaces premium y experiencias con motion design. Especializado en ingeniería orientada al diseño, arquitecturas edge-ready y sistemas escalables donde cada detalle importa.",
       status: "Disponible para nuevas oportunidades",
       explore: "Explorar",
       services: "Servicios",
@@ -620,7 +622,7 @@ export const translations = {
       title: "Minha História",
       subtitle: "Engenharia com propósito e design com alma",
       description1:
-        "Olá! Sou Francisco Espindola, um Full Stack Engineer (embora eu prefira me chamar de Web Engineer, rsrs) apaixonado por criar experiências digitais bonitas e funcionais. Foco em encontrar o equilíbrio perfeito entre estética, UX/UI e código de alto desempenho. Se uma ideia me anima, muito provavelmente vou construí-la e lançá-la.",
+        "Olá! Sou Francisco Espindola, um Web Engineer trabalhando end-to-end por todo o stack para entregar aplicações web de alto desempenho, interfaces premium e experiências guiadas por motion design. Meu foco vive na interseção entre design, performance e arquitetura — onde cada detalhe, da tipografia ao deploy, tem peso. Se uma ideia me empolga, é muito provável que eu a construa e a lance ao mundo.",
       description2:
         "Sou obcecado por detalhes 'pixel-perfect' e programo melhor ouvindo minhas trilhas sonoras favoritas. Quando não estou construindo coisas, aproveito videogames ou lendo mangá. Sempre procuro novos desafios e oportunidades para aprender e crescer.",
       hobbiesTitle: "Curiosidades e Hobbies",
@@ -703,7 +705,7 @@ export const translations = {
     skills: {
       title: "Stack Tecnológico",
       subtitle:
-        "Especialista em tecnologias web modernas e soluções escaláveis",
+        "Domínio end-to-end em tecnologias web modernas, performance engineering e arquiteturas escaláveis.",
       languages: "Linguagens Core",
       frontend: "Frameworks Frontend",
       backend: "Frameworks Backend",
@@ -742,7 +744,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Criando experiências digitais premium onde engenharia encontra alma. Especializado em aplicações de alto desempenho com foco em UI/UX excepcional e arquiteturas escaláveis.",
+        "Web Engineer criando aplicações web de alto desempenho, interfaces premium e experiências com motion design. Especializado em engenharia orientada a design, arquiteturas edge-ready e sistemas escaláveis onde cada detalhe importa.",
       status: "Disponível para novas oportunidades",
       explore: "Explorar",
       services: "Serviços",
@@ -889,7 +891,7 @@ export const translations = {
       title: "私のストーリー",
       subtitle: "目的を持つエンジニアリングと魂を持つデザイン",
       description1:
-        "こんにちは！Francisco Espindolaです。Full Stack Engineer（個人的にはWeb Engineerと呼ぶのが好きです、笑）として、美しく機能的なデジタル体験を創ることに情熱を注いでいます。美的、UX/UI、高性能コードの完璧なバランスを見つけることに焦点を当てています。アイデアが降れば、おそらく構築して世に出すでしょう。",
+        "こんにちは。Francisco Espindolaです。Web Engineerとして、フロントからバックエンドまで一貫して、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を構築しています。デザイン、パフォーマンス、アーキテクチャの交差点 ― タイポグラフィからデプロイまで、すべてのディテールが意味を持つ場所 ― に焦点を当てています。アイデアがひらめけば、迷わず形にして世に出します。",
       description2:
         "ピクセルパーフェクトな细节に執着しており、フェイoritサウンドトラックを聴きながらコーディングすると更高効率になります。何かを構築していないときは、ゲームやマンガを読むを楽しんでします。常常に新しい挑战を学び成長する機会を求めています。",
       hobbiesTitle: "おもしろい事実と趣味",
@@ -969,8 +971,9 @@ export const translations = {
       beFirst: "最初にあいさつしましょう！",
     },
     skills: {
-      title: "フルスタックテクnologi",
-      subtitle: "最新のWebテクノロジーとスケーラブルなソリューションの専門知識",
+      title: "フルスタックテクノロジー",
+      subtitle:
+        "最新のウェブ技術、パフォーマンスエンジニアリング、スケーラブルなアーキテクチャを横断的に習熟。",
       languages: "コア言語",
       frontend: "フロントエンドフレームワーク",
       backend: "バックエンドフレームワーク",
@@ -1009,7 +1012,7 @@ export const translations = {
     },
     footer: {
       description:
-        "エンジニアリングと魂が出会うプレミアムデジタル体験を制作。例外的なUI/UXとスケーラブルなアーキテクチャに焦点を当てた高性能アプリケーションの構築を専門としています。",
+        "Web Engineerとして、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を制作。デザイン主導のエンジニアリング、エッジ対応のアーキテクチャ、すべてのディテールが意味を持つスケーラブルなシステムを専門としています。",
       status: "新しい機会のために利用可能",
       explore: "探検",
       services: "サービス",

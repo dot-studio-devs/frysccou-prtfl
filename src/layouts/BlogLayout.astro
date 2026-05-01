@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.css";
 import Navbar from "../components/Navbar.astro";
+import SettingsModal from "../components/SettingsModal.astro";
 
 interface Props {
   title: string;
@@ -8,6 +9,8 @@ interface Props {
   coverImage?: string;
   publishedAt?: Date;
   author?: string;
+  keywords?: string;
+  topics?: string[];
 }
 
 const {
@@ -16,26 +19,74 @@ const {
   coverImage = "/ysc.png",
   publishedAt,
   author = "Francisco Espindola",
+  keywords = "Francisco Espindola, Web Engineer, web engineering blog, design-led engineering, performance engineering, Astro, React, TypeScript, motion design, web architecture",
+  topics = [],
 } = Astro.props;
 
-const siteName = "Francisco Portfolio";
+const SUPPORTED_LANGS = ["en", "es", "pt", "ja"] as const;
+type SupportedLang = (typeof SUPPORTED_LANGS)[number];
+const cookieLang = Astro.cookies.get("selected-lang")?.value as
+  | SupportedLang
+  | undefined;
+const lang: SupportedLang =
+  cookieLang && SUPPORTED_LANGS.includes(cookieLang) ? cookieLang : "en";
+
+const ogLocaleMap: Record<SupportedLang, string> = {
+  en: "en_US",
+  es: "es_ES",
+  pt: "pt_BR",
+  ja: "ja_JP",
+};
+const ogLocale = ogLocaleMap[lang];
+const ogLocaleAlternates = SUPPORTED_LANGS.filter((l) => l !== lang).map(
+  (l) => ogLocaleMap[l]
+);
+
+const siteName = "Francisco Espindola Portfolio";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
 const fullCover = new URL(coverImage, Astro.site || Astro.url.href).href;
 const publishedISO = publishedAt ? publishedAt.toISOString() : undefined;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  image: fullCover,
+  inLanguage: lang,
+  author: {
+    "@type": "Person",
+    name: author,
+    url: (Astro.site || Astro.url.href).toString(),
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Francisco Espindola",
+  },
+  ...(publishedISO ? { datePublished: publishedISO } : {}),
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL.toString() },
+  ...(topics.length ? { keywords: topics.join(", ") } : {}),
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0a0a0a" />
 
     <title>{title} — {siteName}</title>
     <meta name="title" content={`${title} — ${siteName}`} />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large"
+    />
 
     <link rel="canonical" href={canonicalURL} />
 
@@ -46,20 +97,39 @@ const publishedISO = publishedAt ? publishedAt.toISOString() : undefined;
     <meta property="og:image" content={fullCover} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={ogLocale} />
+    {
+      ogLocaleAlternates.map((alt) => (
+        <meta property="og:locale:alternate" content={alt} />
+      ))
+    }
     {
       publishedISO && (
         <meta property="article:published_time" content={publishedISO} />
       )
     }
     <meta property="article:author" content={author} />
+    {
+      topics.map((topic) => (
+        <meta property="article:tag" content={topic} />
+      ))
+    }
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullCover} />
+    <meta name="twitter:image:alt" content={title} />
     <meta name="twitter:creator" content="@frysccou" />
+    <meta name="twitter:site" content="@frysccou" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -111,6 +181,7 @@ const publishedISO = publishedAt ? publishedAt.toISOString() : undefined;
   >
     <Navbar />
     <slot />
+    <SettingsModal />
 
     <script>
       import gsap from "gsap";

@@ -223,18 +223,13 @@ const t = translations.en;
       </a>
 
       <button
-        id="theme-toggle"
-        class="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-surface-subtle transition-all duration-300 text-text-muted"
-        aria-label="Change Theme"
+        id="settings-trigger-navbar"
+        data-settings-open="true"
+        class="hidden md:flex items-center gap-2 px-3 py-2 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent transition-all duration-300 text-[10px] font-bold tracking-widest uppercase shadow-lg shadow-black/10"
+        aria-label="Open preferences"
       >
-        <Palette class="w-5 h-5" />
-      </button>
-
-      <button
-        id="lang-toggle"
-        class="flex items-center gap-2 px-4 py-2 rounded-xl bg-th-btn-dark text-th-btn-dark-text hover:bg-accent transition-all duration-300 text-[10px] font-bold tracking-widest uppercase shadow-lg shadow-black/10"
-      >
-        <span id="current-lang">EN</span>
+        <Palette class="w-4 h-4" />
+        <span id="current-lang" data-current-lang>EN</span>
       </button>
 
       <button
