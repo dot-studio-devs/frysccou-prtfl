@@ -16,7 +16,6 @@ import {
 
 import { Image } from "astro:assets";
 import dotLogo from "../assets/work/dot-logo.svg";
-import mainLogo from "../assets/images/ysc-logo.png";
 
 const t = translations.en;
 ---
@@ -27,8 +26,8 @@ const t = translations.en;
 >
   <div class="h-24 flex items-center justify-center overflow-hidden shrink-0">
     <a href="/" class="flex items-center justify-center group/logo">
-      <Image
-        src={mainLogo}
+      <img
+        src="/brand/android-chrome-192x192.png"
         alt="Frysccou"
         loading="eager"
         width={40}
@@ -256,8 +255,8 @@ const t = translations.en;
     class="bg-surface/80 backdrop-blur-xl w-full px-6 py-3 flex items-center justify-between border-b border-th-border"
   >
     <a href="/" class="flex items-center group">
-      <Image
-        src={mainLogo}
+      <img
+        src="/brand/android-chrome-192x192.png"
         alt="Frysccou"
         width={32}
         height={32}
