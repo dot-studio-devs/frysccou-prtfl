@@ -1,85 +1,196 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Sidebar from "../components/Sidebar.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Availability from "../components/Availability.astro";
-import YoutubeMusic from "../components/YoutubeMusic.astro";
-import Skills from "../components/Skills.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Marketplace from "../components/Marketplace.astro";
-import Guestbook from "../components/Guestbook.astro";
-import Contact from "../components/Contact.astro";
-import Donations from "../components/Donations.astro";
 import Footer from "../components/Footer.astro";
-import CustomCursor from "../components/CustomCursor.astro";
+import { projects } from "../i18n/data.js";
+import { ArrowUpRight } from "lucide-astro";
+import { Image } from "astro:assets";
+
+import tokenit from "../assets/projects/tokenit.png";
+import tokenitApp from "../assets/projects/app-tokenit.png";
+import zatobox from "../assets/projects/zatobox.png";
+import consentido from "../assets/projects/consentido.png";
+
+const tokenit_data = (projects as any[]).find((p: any) => p.id === 7);
+const zatobox_data = (projects as any[]).find((p: any) => p.id === 3);
+const consentido_data = (projects as any[]).find((p: any) => p.id === 2);
 ---
 
 <Layout>
-  <div class="scroll-reading-progress" aria-hidden="true"></div>
-  <CustomCursor />
-  <Sidebar />
+  <main>
+    <Hero />
 
-  <div
-    id="content-wrapper"
-    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen"
-  >
-    <main>
-      <Hero />
-      <Availability />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Marketplace />
-      <YoutubeMusic />
-      <Guestbook />
-      <Contact />
-      <Donations />
-    </main>
-    <Footer />
-  </div>
+    <section class="section-animate py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-8 sm:px-12">
+        <div class="flex items-end justify-between mb-16">
+          <div class="space-y-4">
+            <span data-i18n="home.selectedWork" class="text-[10px] font-bold uppercase tracking-[0.4em] text-accent-text/60 block">
+              Selected Work
+            </span>
+            <h2 data-i18n="home.projects" class="text-5xl md:text-7xl font-[Outfit] font-black text-white leading-[0.9] tracking-tighter">
+              Projects.
+            </h2>
+          </div>
+          <a
+            href="/work"
+            class="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-accent-text transition-colors duration-300"
+          >
+            <span data-i18n="home.viewAll">View all</span>
+            <ArrowUpRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
 
+        <div class="space-y-4">
+
+          <!-- Tokenit — card especial doble -->
+          <div class="group border border-white/6 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-accent/[0.04] hover:border-accent/25 transition-all duration-500">
+            <!-- Imágenes split -->
+            <div class="grid grid-cols-2 gap-0 relative">
+              <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" class="overflow-hidden aspect-[16/9] block relative">
+                <Image
+                  src={tokenitApp}
+                  alt="Tokenit App"
+                  width={720}
+                  height={405}
+                  class="w-full h-full object-cover opacity-60 group-hover:opacity-90 hover:scale-[1.02] transition-all duration-700"
+                />
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] font-bold tracking-widest text-white/70 uppercase">
+                  app.tokenit.cl
+                </div>
+              </a>
+              <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" class="overflow-hidden aspect-[16/9] border-l border-white/5 block relative">
+                <Image
+                  src={tokenit}
+                  alt="Tokenit Landing"
+                  width={720}
+                  height={405}
+                  class="w-full h-full object-cover opacity-60 group-hover:opacity-90 hover:scale-[1.02] transition-all duration-700"
+                />
+                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] font-bold tracking-widest text-white/70 uppercase">
+                  tokenit.cl
+                </div>
+              </a>
+              <!-- Divider central con label -->
+              <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none">
+                <div class="px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-accent/30 text-[9px] font-black uppercase tracking-widest text-accent-text">
+                  2 products
+                </div>
+              </div>
+            </div>
+
+            <!-- Info -->
+            <div class="p-6 flex items-start justify-between gap-6">
+              <div class="space-y-3 flex-1">
+                <div class="flex items-center gap-3">
+                  <h3 class="text-white font-[Outfit] font-black text-xl leading-tight">
+                    Tokenit
+                  </h3>
+                  {tokenit_data?.isNew && (
+                    <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest border border-accent/30 text-accent-text bg-accent/10">New</span>
+                  )}
+                  <span class="text-[9px] font-bold uppercase tracking-widest text-white/25 border border-white/8 px-2 py-0.5 rounded-full">Investor Platform</span>
+                </div>
+                <p class="text-white/40 text-sm leading-relaxed max-w-2xl">
+                  {tokenit_data?.description.en}
+                </p>
+              </div>
+              <div class="flex items-center gap-2 shrink-0 mt-1">
+                <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg border border-white/8 flex items-center justify-center text-white/30 hover:text-accent-text hover:border-accent/30 transition-all" aria-label="Open app">
+                  <ArrowUpRight class="w-4 h-4" />
+                </a>
+                <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" class="text-[9px] font-bold uppercase tracking-widest text-white/20 hover:text-accent-text transition-colors border border-white/8 hover:border-accent/30 px-2.5 py-1.5 rounded-lg">
+                  site
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ZatoBox + ConSentido en grilla de 2 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { data: zatobox_data, img: zatobox },
+              { data: consentido_data, img: consentido },
+            ].map(({ data, img }) => data && (
+              <a
+                href={data.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group border border-white/5 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-accent/[0.04] hover:border-accent/20 transition-all duration-500"
+              >
+                <div class="aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={img}
+                    alt={data.title.en}
+                    width={640}
+                    height={360}
+                    class="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-[1.02] transition-all duration-700"
+                  />
+                </div>
+                <div class="p-6 space-y-3">
+                  <div class="flex items-start justify-between">
+                    <h3 class="text-white font-[Outfit] font-bold text-lg leading-tight">
+                      {data.title.en.split("|")[0].trim()}
+                    </h3>
+                    <ArrowUpRight class="w-4 h-4 text-white/20 group-hover:text-accent-text transition-colors shrink-0" />
+                  </div>
+                  <p class="text-white/40 text-sm leading-relaxed line-clamp-2">
+                    {data.description.en}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+        </div>
+
+        <div class="mt-8 sm:hidden">
+          <a
+            href="/work"
+            class="flex items-center justify-center gap-2 py-4 border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-widest text-white/40 hover:text-accent-text hover:border-accent/30 transition-all duration-300"
+          >
+            <span data-i18n="home.viewAllWork">View all work</span>
+            <ArrowUpRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-animate py-40 border-t border-white/5 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]"></div>
+      </div>
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 relative z-10">
+        <div class="space-y-10">
+          <span data-i18n="home.collaborate" class="text-[10px] font-bold uppercase tracking-[0.4em] text-accent-text/60 block">
+            Let's collaborate
+          </span>
+          <h2 class="text-6xl sm:text-7xl md:text-9xl font-[Outfit] font-black leading-[0.88] tracking-tighter">
+            <span data-i18n="home.buildSomething" class="text-white">Build something</span><br/>
+            <span data-i18n="home.great" class="text-accent">great.</span>
+          </h2>
+          <p data-i18n="home.buildDesc" class="text-white/40 text-lg max-w-md leading-relaxed">
+            Open for freelance projects, collaborations, and full-time opportunities.
+            Let's make something worth remembering.
+          </p>
+          <div class="flex items-center gap-6 flex-wrap">
+            <a
+              href="/contact"
+              class="group inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-accent/90 transition-all duration-300 shadow-lg shadow-accent/20"
+            >
+              <span data-i18n="home.getInTouch">Get in touch</span>
+              <ArrowUpRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="mailto:franespindola71@gmail.com"
+              class="text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-accent-text transition-colors duration-300"
+            >
+              franespindola71@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>
-
-<style is:global>
-  body.sidebar-expanded #content-wrapper {
-    padding-left: 256px;
-  }
-  body.sidebar-collapsed #content-wrapper {
-    padding-left: 80px;
-  }
-
-  @media (max-width: 768px) {
-    body.sidebar-expanded #content-wrapper,
-    body.sidebar-collapsed #content-wrapper {
-      padding-left: 0;
-      padding-top: 64px;
-    }
-  }
-</style>
-
-<script>
-  import { applyLanguage, getStoredLang } from "../lib/i18n-runtime";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    applyLanguage(getStoredLang());
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
-        const targetId = this.getAttribute("href");
-        if (!targetId || targetId === "#") return;
-
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      });
-    });
-  });
-</script>

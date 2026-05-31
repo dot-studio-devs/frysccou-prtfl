@@ -1,8 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import Sidebar from "../../components/Sidebar.astro";
-import CustomCursor from "../../components/CustomCursor.astro";
 import Footer from "../../components/Footer.astro";
 import BlogCard from "../../components/blog/BlogCard.astro";
 import { translations } from "../../i18n/translations.js";
@@ -21,17 +19,10 @@ const t = translations.en;
 ---
 
 <Layout
-  title="Blog — Francisco Espindola"
+  title="Blog — YSC by frysccou"
   description="Thoughts on web engineering, architecture, design systems, and the craft of building things for the web."
 >
-  <CustomCursor />
-  <Sidebar />
-
-  <div
-    id="content-wrapper"
-    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen"
-  >
-    <main>
+  <main class="pt-20">
       <header class="blog-list-header">
         <div class="blog-list-header-inner">
           <div class="blog-list-badge">
@@ -140,26 +131,8 @@ const t = translations.en;
       </div>
     </main>
     <Footer />
-  </div>
 
 </Layout>
-
-<style is:global>
-  body.sidebar-expanded #content-wrapper {
-    padding-left: 256px;
-  }
-  body.sidebar-collapsed #content-wrapper {
-    padding-left: 80px;
-  }
-
-  @media (max-width: 768px) {
-    body.sidebar-expanded #content-wrapper,
-    body.sidebar-collapsed #content-wrapper {
-      padding-left: 0;
-      padding-top: 64px;
-    }
-  }
-</style>
 
 <style>
   .blog-list-header {

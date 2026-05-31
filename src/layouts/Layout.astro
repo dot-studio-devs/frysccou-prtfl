@@ -1,7 +1,6 @@
 ---
 import "../styles/globals.css";
-import DotStudioPortal from "../components/work/DotStudioPortal.astro";
-import SettingsModal from "../components/SettingsModal.astro";
+import Navbar from "../components/Navbar.astro";
 
 interface Props {
   title?: string;
@@ -12,14 +11,14 @@ interface Props {
 }
 
 const {
-  title = "Francisco Espindola — Web Engineer crafting high-performance web experiences",
-  description = "Web Engineer based in Buenos Aires, building high-performance web applications, premium interfaces and motion-driven experiences with Astro, React, TypeScript and Tailwind CSS. End-to-end work across design, performance and edge-ready architectures.",
+  title = "YSC by frysccou — Full Stack Engineer & Studio",
+  description = "YSC by frysccou. Full Stack Engineer based in Buenos Aires building premium digital experiences — from interface design to system architecture. End-to-end web engineering with Astro, React, TypeScript and GSAP.",
   image = "/ysc.png",
   ogImage = "/ysc.png",
-  keywords = "Francisco Espindola, Frysccou, Web Engineer, web engineering, design-led engineering, performance engineering, UI/UX engineering, motion design, frontend engineer, full stack capabilities, Astro developer, React engineer, TypeScript, Tailwind CSS, GSAP, edge web applications, scalable web architecture, premium interfaces, high-performance web apps, Buenos Aires, Argentina, hire web engineer, freelance web engineer, Dot Studio",
+  keywords = "YSC, frysccou, Francisco Espindola, Full Stack Engineer, web engineering, premium interfaces, motion design, Astro developer, React engineer, TypeScript, Tailwind CSS, GSAP, Buenos Aires, Argentina, freelance web engineer",
 } = Astro.props;
 
-const SUPPORTED_LANGS = ["en", "es", "pt", "ja"] as const;
+const SUPPORTED_LANGS = ["en", "es"] as const;
 type SupportedLang = (typeof SUPPORTED_LANGS)[number];
 const cookieLang = Astro.cookies.get("selected-lang")?.value as
   | SupportedLang
@@ -27,18 +26,7 @@ const cookieLang = Astro.cookies.get("selected-lang")?.value as
 const lang: SupportedLang =
   cookieLang && SUPPORTED_LANGS.includes(cookieLang) ? cookieLang : "en";
 
-const ogLocaleMap: Record<SupportedLang, string> = {
-  en: "en_US",
-  es: "es_ES",
-  pt: "pt_BR",
-  ja: "ja_JP",
-};
-const ogLocale = ogLocaleMap[lang];
-const ogLocaleAlternates = SUPPORTED_LANGS.filter((l) => l !== lang).map(
-  (l) => ogLocaleMap[l]
-);
-
-const siteName = "Francisco Espindola Portfolio";
+const siteName = "YSC by frysccou";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
 const fullOgImage = new URL(ogImage, Astro.site || Astro.url.href).href;
 
@@ -46,12 +34,12 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Francisco Espindola",
-  alternateName: ["Frysccou", "Esspindola"],
+  alternateName: ["frysccou", "YSC"],
   url: (Astro.site || Astro.url.href).toString(),
   image: fullOgImage,
-  jobTitle: "Web Engineer",
+  jobTitle: "Full Stack Engineer",
   description:
-    "Web Engineer working end-to-end across the full stack to craft high-performance web applications, premium interfaces and motion-driven digital experiences.",
+    "Full Stack Engineer building premium digital experiences end-to-end — from interface design to system architecture.",
   knowsAbout: [
     "Web Engineering",
     "Full Stack Development",
@@ -65,18 +53,11 @@ const personSchema = {
     "Tailwind CSS",
     "GSAP",
     "Node.js",
-    "Edge Computing",
-    "Hexagonal Architecture",
   ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Buenos Aires",
     addressCountry: "AR",
-  },
-  worksFor: {
-    "@type": "Organization",
-    name: "Dot Studio",
-    url: "https://dot-studio.site",
   },
   sameAs: [
     "https://github.com/esspindola",
@@ -90,7 +71,7 @@ const websiteSchema = {
   "@type": "WebSite",
   name: siteName,
   url: (Astro.site || Astro.url.href).toString(),
-  inLanguage: ["en", "es", "pt", "ja"],
+  inLanguage: ["en", "es"],
   author: { "@type": "Person", name: "Francisco Espindola" },
 };
 ---
@@ -101,7 +82,7 @@ const websiteSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#000000" />
 
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -109,10 +90,6 @@ const websiteSchema = {
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Francisco Espindola" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta
-      name="googlebot"
-      content="index, follow, max-snippet:-1, max-image-preview:large"
-    />
 
     <link rel="canonical" href={canonicalURL} />
 
@@ -123,23 +100,13 @@ const websiteSchema = {
     <meta property="og:image" content={fullOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Francisco Espindola — Web Engineer" />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content={ogLocale} />
-    {
-      ogLocaleAlternates.map((alt) => (
-        <meta property="og:locale:alternate" content={alt} />
-      ))
-    }
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullOgImage} />
-    <meta name="twitter:image:alt" content="Francisco Espindola — Web Engineer" />
     <meta name="twitter:creator" content="@frysccou" />
-    <meta name="twitter:site" content="@frysccou" />
 
     <script
       type="application/ld+json"
@@ -150,13 +117,15 @@ const websiteSchema = {
       set:html={JSON.stringify(websiteSchema)}
     />
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/brand/favicon.ico" />
+    <link rel="shortcut icon" href="/brand/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/brand/site.webmanifest" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -171,7 +140,7 @@ const websiteSchema = {
           return match ? match[1] : null;
         }
         var saved = getThemeCookie();
-        var theme = saved || "light";
+        var theme = saved || "midnight";
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
@@ -199,9 +168,9 @@ const websiteSchema = {
   <body
     class="bg-surface text-th-text font-[Inter] antialiased overflow-x-hidden"
   >
+    <div class="scroll-reading-progress" aria-hidden="true"></div>
+    <Navbar />
     <slot />
-    <DotStudioPortal />
-    <SettingsModal />
     <script>
       import gsap from "gsap";
       import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -271,7 +240,7 @@ const websiteSchema = {
 
       function getThemeCookie(): string {
         var match = document.cookie.match(/(?:^|;\s*)theme=([^;]*)/);
-        return match ? match[1] : "light";
+        return match ? match[1] : "midnight";
       }
 
       window.setTheme = function (theme: string) {
@@ -281,7 +250,7 @@ const websiteSchema = {
       };
 
       window.getTheme = function () {
-        return document.documentElement.getAttribute("data-theme") || "light";
+        return document.documentElement.getAttribute("data-theme") || "midnight";
       };
     </script>
   </body>

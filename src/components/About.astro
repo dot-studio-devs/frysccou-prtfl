@@ -8,137 +8,80 @@ import me1 from "../assets/images/me.png";
 const t = (translations as any).en;
 ---
 
-<section
-  id="about"
-  class="section-animate py-44 bg-surface relative overflow-hidden"
->
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Top Decorative Line -->
-    <div class="h-px w-full bg-black/3 mb-24 relative">
-      <div
-        class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-0.5 bg-accent"
-      >
-      </div>
-    </div>
+<section id="about" class="section-animate py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-8 sm:px-12">
 
-    <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-32 items-start">
-      <!-- Content Side -->
-      <div class="space-y-24 about-main">
-        <div class="space-y-10">
-          <div class="flex items-center gap-6">
-            <div
-              class="w-16 h-16 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-th-border p-1 bg-surface"
-            >
-              <Image
-                src={me1}
-                alt="Francisco"
-                width={64}
-                height={64}
-                class="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-            <div>
-              <p
-                class="text-[9px] font-black uppercase tracking-[0.6em] text-accent/50 leading-none mb-2"
-                data-i18n="about.title"
-              >
-                {t.about.title}
-              </p>
-              <h2
-                class="text-4xl md:text-5xl font-[Outfit] font-black text-text-primary leading-none tracking-tighter"
-                data-i18n="about.subtitle"
-              >
-                {t.about.subtitle}
-              </h2>
-            </div>
-          </div>
+    <div class="grid lg:grid-cols-[1.4fr,0.6fr] gap-20 items-start">
 
-          <div class="space-y-8 max-w-2xl">
-            <p
-              class="text-2xl md:text-3xl text-text-secondary font-light leading-relaxed tracking-tight"
-              data-i18n="about.description1"
-            >
-              {t.about.description1}
-            </p>
-            <p
-              class="text-lg text-text-muted font-light leading-relaxed"
-              data-i18n="about.description2"
-            >
-              {t.about.description2}
-            </p>
-          </div>
+      <div class="space-y-16">
+        <div class="space-y-6">
+          <p
+            class="text-lg md:text-xl text-white/60 font-light leading-relaxed"
+            data-i18n="about.description1"
+          >
+            {t.about.description1}
+          </p>
+          <p
+            class="text-base text-white/35 font-light leading-relaxed"
+            data-i18n="about.description2"
+          >
+            {t.about.description2}
+          </p>
         </div>
 
-        <!-- Hobbies Section (High-End Typographic Grid) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
-          {
-            hobbies.map((hobby) => (
-              <div class="group py-4 border-t border-th-border hover:border-accent transition-all duration-700">
-                <p class="text-[9px] font-black uppercase tracking-widest text-text-muted group-hover:text-text-primary transition-colors mb-2">
-                  Category
-                </p>
-                <span
-                  class="text-xs font-black uppercase tracking-widest text-text-muted group-hover:text-accent transition-colors"
-                  data-i18n={`hobbies.${hobby.key}`}
-                >
-                  {t.hobbies[hobby.key as keyof typeof t.hobbies]}
-                </span>
-              </div>
-            ))
-          }
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-0 border-t border-white/6">
+          {hobbies.map((hobby) => (
+            <div class="group py-5 border-r border-white/6 last:border-r-0 px-4 hover:bg-white/[0.02] transition-colors">
+              <p class="text-[9px] font-black uppercase tracking-widest text-white/20 mb-2">hobby</p>
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-white/40 group-hover:text-accent-text transition-colors"
+                data-i18n={`hobbies.${hobby.key}`}
+              >
+                {t.hobbies[hobby.key as keyof typeof t.hobbies]}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <!-- Sidebar: Conceptual & Structured -->
-      <div class="lg:pt-4 space-y-20 about-sidebar">
-        <div class="space-y-12">
-          <div class="relative pl-10 border-l border-accent/20">
-            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-accent" />
-            <p
-              class="text-[10px] font-black uppercase tracking-widest text-text-muted mb-4"
-            >
-              Core Philosophy
-            </p>
-            <p
-              class="text-xl text-text-primary font-light italic leading-snug"
-              data-i18n="about.funFact1"
-            >
+      <div class="space-y-10 lg:pt-2">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shrink-0 shadow-[0_0_20px_rgba(167,139,250,0.1)]">
+            <Image src={me1} alt="Francisco" width={48} height={48} class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <p class="text-xs font-black uppercase tracking-widest text-accent/60 mb-1">frysccou</p>
+            <p class="text-white/70 text-sm font-medium leading-snug">Francisco Espindola<br/><span class="text-white/35 font-normal">Full Stack Engineer · Buenos Aires</span></p>
+          </div>
+        </div>
+
+        <div class="space-y-8 border-t border-white/6 pt-8">
+          <div class="relative pl-7 border-l border-accent/25">
+            <Plus class="absolute -left-2 top-0.5 w-4 h-4 text-accent/60" />
+            <p class="text-[9px] font-black uppercase tracking-widest text-white/25 mb-2">Core Philosophy</p>
+            <p class="text-sm text-white/60 font-light italic leading-snug" data-i18n="about.funFact1">
               {t.about.funFact1}
             </p>
           </div>
 
-          <div class="relative pl-10 border-l border-rose-accent/20">
-            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-rose-accent" />
-            <p
-              class="text-[10px] font-black uppercase tracking-widest text-text-muted mb-4"
-            >
-              Focus State
-            </p>
-            <p
-              class="text-xl text-text-primary font-light italic leading-snug"
-              data-i18n="about.funFact2"
-            >
+          <div class="relative pl-7 border-l border-white/8">
+            <Plus class="absolute -left-2 top-0.5 w-4 h-4 text-white/20" />
+            <p class="text-[9px] font-black uppercase tracking-widest text-white/25 mb-2">Focus State</p>
+            <p class="text-sm text-white/60 font-light italic leading-snug" data-i18n="about.funFact2">
               {t.about.funFact2}
             </p>
           </div>
 
-          <div class="relative pl-10 border-l border-th-border">
-            <Plus class="absolute -left-2.5 top-0 w-5 h-5 text-text-muted" />
-            <p
-              class="text-[10px] font-black uppercase tracking-widest text-text-muted mb-4"
-            >
-              Tech DNA
-            </p>
-            <p
-              class="text-xl text-text-primary font-light italic leading-snug"
-              data-i18n="about.funFact3"
-            >
+          <div class="relative pl-7 border-l border-white/8">
+            <Plus class="absolute -left-2 top-0.5 w-4 h-4 text-white/20" />
+            <p class="text-[9px] font-black uppercase tracking-widest text-white/25 mb-2">Tech DNA</p>
+            <p class="text-sm text-white/60 font-light italic leading-snug" data-i18n="about.funFact3">
               {t.about.funFact3}
             </p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
-

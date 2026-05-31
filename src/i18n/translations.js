@@ -69,12 +69,15 @@ export const translations = {
     hero: {
       greeting: "Hi, I'm",
       name: "Francisco",
-      role: "Web Engineer",
+      role: "Full Stack Engineer",
+      available: "Available for work",
+      location: "Buenos Aires, AR",
+      studio: "YSC Studio",
+      openToWork: "Open to work",
       manifesto:
-        "I believe the web deserves craftsmanship, not just code. That's why I don't just develop — I engineer every detail, from interface design to system architecture.",
-      cta: "View My Work",
-      ctaStudio: "Visit Dot Studio",
-      location: "Buenos Aires, Argentina",
+        "I build premium digital products end-to-end — from pixel-perfect interfaces to scalable system architecture. If it's on the web, I engineer it right.",
+      cta: "View Work",
+      ctaContact: "Get in touch →",
       identity: "Identity.Verified",
       session: "session_active.sys",
       systemLoad: "System Load",
@@ -86,7 +89,7 @@ export const translations = {
       title: "My Story",
       subtitle: "Engineering with purpose & design with soul",
       description1:
-        "Hi, I'm Francisco Espindola, a Web Engineer working end-to-end across the full stack to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture — where every detail, from typography to deploy, has weight. If an idea sparks, chances are I'll build it and ship it.",
+        "Hi, I'm Francisco Espindola, a Full Stack Engineer working end-to-end across the full stack to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture — where every detail, from typography to deploy, has weight. If an idea sparks, chances are I'll build it and ship it.",
       description2:
         "I'm obsessed with pixel-perfect details and I code better while listening to my favorite soundtracks. When I'm not building things, I enjoy gaming or reading manga. I'm always looking for new challenges and opportunities to learn and grow.",
       hobbiesTitle: "Fun Facts & Hobbies",
@@ -191,6 +194,17 @@ export const translations = {
       work: "Work Background",
       education: "Academic Background",
     },
+    home: {
+      selectedWork: "Selected Work",
+      projects: "Projects.",
+      viewAll: "View all",
+      viewAllWork: "View all work",
+      collaborate: "Let's collaborate",
+      buildSomething: "Build something",
+      great: "great.",
+      buildDesc: "Open for freelance projects, collaborations, and full-time opportunities. Let's make something worth remembering.",
+      getInTouch: "Get in touch",
+    },
     contact: {
       title: "Let's Ship Something",
       subtitle:
@@ -206,7 +220,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Web Engineer crafting high-performance web applications, premium interfaces and motion-driven experiences. Specialized in design-led engineering, edge-ready architectures and scalable systems where every detail matters.",
+        "Full Stack Engineer crafting high-performance web applications, premium interfaces and motion-driven experiences. Specialized in design-led engineering, edge-ready architectures and scalable systems where every detail matters.",
       status: "Available for new opportunities",
       explore: "Explore",
       services: "Services",
@@ -334,24 +348,27 @@ export const translations = {
     hero: {
       greeting: "Hola, soy",
       name: "Francisco",
-      role: "Web Engineer",
+      role: "Full Stack Engineer",
+      available: "Disponible para trabajar",
+      location: "Buenos Aires, AR",
+      studio: "YSC Studio",
+      openToWork: "Abierto a proyectos",
       manifesto:
-        "Creo que la web merece artesanía, no solo código. Por eso no solo desarrollo — diseño cada detalle, desde la interfaz hasta la arquitectura del sistema.",
-      cta: "Ver Mis Trabajos",
-      ctaStudio: "Visitar Dot Studio",
-      location: "Buenos Aires, Argentina",
+        "Construyo productos digitales premium de punta a punta — desde interfaces pixel-perfect hasta arquitecturas de sistema escalables. Si está en la web, lo hago bien.",
+      cta: "Ver Trabajos",
+      ctaContact: "Hablemos →",
       identity: "Identidad.Verificada",
       session: "sesion_activa.sys",
       systemLoad: "Carga del Sistema",
       active: "Activo",
-      encrypted: "Encifrado",
+      encrypted: "Cifrado",
       kernel: "2026_SYS_KERNEL",
     },
     about: {
       title: "Mi Historia",
       subtitle: "Ingeniería con propósito y diseño con alma",
       description1:
-        "¡Hola! Soy Francisco Espindola, un Web Engineer trabajando end-to-end a lo largo de todo el stack para construir aplicaciones web de alto rendimiento, interfaces premium y experiencias guiadas por motion design. Mi foco vive en la intersección entre diseño, performance y arquitectura — donde cada detalle, desde la tipografía hasta el deploy, pesa. Si una idea me prende, lo más probable es que la construya y la lance al mundo.",
+        "¡Hola! Soy Francisco Espindola, un Full Stack Engineer trabajando end-to-end a lo largo de todo el stack para construir aplicaciones web de alto rendimiento, interfaces premium y experiencias guiadas por motion design. Mi foco vive en la intersección entre diseño, performance y arquitectura — donde cada detalle, desde la tipografía hasta el deploy, pesa. Si una idea me prende, lo más probable es que la construya y la lance al mundo.",
       description2:
         "Me obsesionan los detalles 'pixel-perfect' y programo mejor escuchando mis bandas sonoras favoritas. Cuando no estoy construyendo cosas, disfruto de los videojuegos o leyendo manga. Siempre estoy buscando nuevos retos que me permitan seguir aprendiendo.",
       hobbiesTitle: "Datos Curiosos y Hobbies",
@@ -459,6 +476,17 @@ export const translations = {
       work: "Experiencia Laboral",
       education: "Formación Académica",
     },
+    home: {
+      selectedWork: "Trabajos Seleccionados",
+      projects: "Proyectos.",
+      viewAll: "Ver todos",
+      viewAllWork: "Ver todos los trabajos",
+      collaborate: "Trabajemos juntos",
+      buildSomething: "Construyamos algo",
+      great: "grandioso.",
+      buildDesc: "Abierto a proyectos freelance, colaboraciones y oportunidades full-time. Hagamos algo que valga la pena.",
+      getInTouch: "Hablemos",
+    },
     contact: {
       title: "Lanzemos algo juntos",
       subtitle:
@@ -475,7 +503,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Web Engineer creando aplicaciones web de alto rendimiento, interfaces premium y experiencias con motion design. Especializado en ingeniería orientada al diseño, arquitecturas edge-ready y sistemas escalables donde cada detalle importa.",
+        "Full Stack Engineer creando aplicaciones web de alto rendimiento, interfaces premium y experiencias con motion design. Especializado en ingeniería orientada al diseño, arquitecturas edge-ready y sistemas escalables donde cada detalle importa.",
       status: "Disponible para nuevas oportunidades",
       explore: "Explorar",
       services: "Servicios",
@@ -605,12 +633,15 @@ export const translations = {
     hero: {
       greeting: "Olá, eu sou",
       name: "Francisco",
-      role: "Web Engineer",
+      role: "Full Stack Engineer",
+      available: "Disponível para trabalhar",
+      location: "Buenos Aires, AR",
+      studio: "YSC Studio",
+      openToWork: "Aberto a projetos",
       manifesto:
-        "A web merece artesanato, não apenas código. Por isso não apenas desenvolvo — desenho cada detalhe, do design de interface à arquitetura de sistemas.",
-      cta: "Ver Meus Trabalhos",
-      ctaStudio: "Visitar Dot Studio",
-      location: "Buenos Aires, Argentina",
+        "Construo produtos digitais premium de ponta a ponta — de interfaces pixel-perfect a arquiteturas de sistema escaláveis. Se está na web, eu faço certo.",
+      cta: "Ver Trabalhos",
+      ctaContact: "Vamos conversar →",
       identity: "Identidade.Verificada",
       session: "sessão_ativa.sys",
       systemLoad: "Carga do Sistema",
@@ -622,7 +653,7 @@ export const translations = {
       title: "Minha História",
       subtitle: "Engenharia com propósito e design com alma",
       description1:
-        "Olá! Sou Francisco Espindola, um Web Engineer trabalhando end-to-end por todo o stack para entregar aplicações web de alto desempenho, interfaces premium e experiências guiadas por motion design. Meu foco vive na interseção entre design, performance e arquitetura — onde cada detalhe, da tipografia ao deploy, tem peso. Se uma ideia me empolga, é muito provável que eu a construa e a lance ao mundo.",
+        "Olá! Sou Francisco Espindola, um Full Stack Engineer trabalhando end-to-end por todo o stack para entregar aplicações web de alto desempenho, interfaces premium e experiências guiadas por motion design. Meu foco vive na interseção entre design, performance e arquitetura — onde cada detalhe, da tipografia ao deploy, tem peso. Se uma ideia me empolga, é muito provável que eu a construa e a lance ao mundo.",
       description2:
         "Sou obcecado por detalhes 'pixel-perfect' e programo melhor ouvindo minhas trilhas sonoras favoritas. Quando não estou construindo coisas, aproveito videogames ou lendo mangá. Sempre procuro novos desafios e oportunidades para aprender e crescer.",
       hobbiesTitle: "Curiosidades e Hobbies",
@@ -728,6 +759,17 @@ export const translations = {
       work: "Experiência Profissional",
       education: "Formação Acadêmica",
     },
+    home: {
+      selectedWork: "Trabalhos Selecionados",
+      projects: "Projetos.",
+      viewAll: "Ver todos",
+      viewAllWork: "Ver todos os trabalhos",
+      collaborate: "Vamos colaborar",
+      buildSomething: "Construamos algo",
+      great: "grandioso.",
+      buildDesc: "Aberto a projetos freelance, colaborações e oportunidades full-time. Vamos criar algo que valha a pena.",
+      getInTouch: "Vamos conversar",
+    },
     contact: {
       title: "Vamos Criar Algo Juntos",
       subtitle:
@@ -744,7 +786,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Web Engineer criando aplicações web de alto desempenho, interfaces premium e experiências com motion design. Especializado em engenharia orientada a design, arquiteturas edge-ready e sistemas escaláveis onde cada detalhe importa.",
+        "Full Stack Engineer criando aplicações web de alto desempenho, interfaces premium e experiências com motion design. Especializado em engenharia orientada a design, arquiteturas edge-ready e sistemas escaláveis onde cada detalhe importa.",
       status: "Disponível para novas oportunidades",
       explore: "Explorar",
       services: "Serviços",
@@ -874,12 +916,15 @@ export const translations = {
     hero: {
       greeting: "こんにちは、私は",
       name: "Francisco",
-      role: "Web Engineer",
+      role: "Full Stack Engineer",
+      available: "お仕事募集中",
+      location: "ブエノスアイレス, AR",
+      studio: "YSC Studio",
+      openToWork: "プロジェクト受付中",
       manifesto:
-        "Webには単なるコードではなく、工芸が必要です。そのため私は開発だけでなく、インターフェースデザインからシステムアーキテクチャまで、すべての细节を設計します。",
-      cta: "私の仕事を見る",
-      ctaStudio: "Dot Studioを見る",
-      location: "ブエノスアイレス、アルゼンチン",
+        "ピクセルパーフェクトなインターフェースからスケーラブルなシステムアーキテクチャまで、エンドツーエンドでプレミアムなデジタル製品を構築します。",
+      cta: "作品を見る",
+      ctaContact: "お問い合わせ →",
       identity: "身元確認済み",
       session: "セッション有効.sys",
       systemLoad: "システム負荷",
@@ -891,7 +936,7 @@ export const translations = {
       title: "私のストーリー",
       subtitle: "目的を持つエンジニアリングと魂を持つデザイン",
       description1:
-        "こんにちは。Francisco Espindolaです。Web Engineerとして、フロントからバックエンドまで一貫して、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を構築しています。デザイン、パフォーマンス、アーキテクチャの交差点 ― タイポグラフィからデプロイまで、すべてのディテールが意味を持つ場所 ― に焦点を当てています。アイデアがひらめけば、迷わず形にして世に出します。",
+        "こんにちは。Francisco Espindolaです。Full Stack Engineerとして、フロントからバックエンドまで一貫して、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を構築しています。デザイン、パフォーマンス、アーキテクチャの交差点 ― タイポグラフィからデプロイまで、すべてのディテールが意味を持つ場所 ― に焦点を当てています。アイデアがひらめけば、迷わず形にして世に出します。",
       description2:
         "ピクセルパーフェクトな细节に執着しており、フェイoritサウンドトラックを聴きながらコーディングすると更高効率になります。何かを構築していないときは、ゲームやマンガを読むを楽しんでします。常常に新しい挑战を学び成長する機会を求めています。",
       hobbiesTitle: "おもしろい事実と趣味",
@@ -996,6 +1041,17 @@ export const translations = {
       work: "職務経験",
       education: "学歴",
     },
+    home: {
+      selectedWork: "厳選された作品",
+      projects: "プロジェクト.",
+      viewAll: "すべて見る",
+      viewAllWork: "すべての作品を見る",
+      collaborate: "一緒に作りましょう",
+      buildSomething: "何か素晴らしいものを",
+      great: "一緒に。",
+      buildDesc: "フリーランスプロジェクト、コラボレーション、フルタイムの機会を歓迎します。忘れられないものを一緒に作りましょう。",
+      getInTouch: "お問い合わせ",
+    },
     contact: {
       title: "一緒に何かを生み出しましょう",
       subtitle:
@@ -1012,7 +1068,7 @@ export const translations = {
     },
     footer: {
       description:
-        "Web Engineerとして、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を制作。デザイン主導のエンジニアリング、エッジ対応のアーキテクチャ、すべてのディテールが意味を持つスケーラブルなシステムを専門としています。",
+        "Full Stack Engineerとして、高性能なウェブアプリケーション、プレミアムなインターフェース、モーションを取り入れた体験を制作。デザイン主導のエンジニアリング、エッジ対応のアーキテクチャ、すべてのディテールが意味を持つスケーラブルなシステムを専門としています。",
       status: "新しい機会のために利用可能",
       explore: "探検",
       services: "サービス",

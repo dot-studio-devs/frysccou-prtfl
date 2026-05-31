@@ -1,7 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import CustomCursor from "../../components/CustomCursor.astro";
-import Sidebar from "../../components/Sidebar.astro";
 import Footer from "../../components/Footer.astro";
 import { translations } from "../../i18n/translations.js";
 import { Image } from "astro:assets";
@@ -17,14 +15,7 @@ const products = productsList.map((p) => {
 ---
 
 <Layout title={`Marketplace | ${t.nav.marketplace}`}>
-  <CustomCursor />
-  <Sidebar />
-
-  <div
-    id="content-wrapper"
-    class="transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] min-h-screen flex flex-col pt-20 md:pt-0"
-  >
-    <main class="grow">
+  <main class="grow pt-20">
       <section class="py-24 relative bg-surface overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <a
@@ -108,25 +99,7 @@ const products = productsList.map((p) => {
       </section>
     </main>
     <Footer />
-  </div>
 </Layout>
-
-<style is:global>
-  body.sidebar-expanded #content-wrapper {
-    padding-left: 256px;
-  }
-  body.sidebar-collapsed #content-wrapper {
-    padding-left: 80px;
-  }
-
-  @media (max-width: 768px) {
-    body.sidebar-expanded #content-wrapper,
-    body.sidebar-collapsed #content-wrapper {
-      padding-left: 0;
-      padding-top: 64px;
-    }
-  }
-</style>
 
 <script>
   import { applyLanguage, getStoredLang } from "../../lib/i18n-runtime";
