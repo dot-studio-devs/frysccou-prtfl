@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:#1a1517; }
+  ::selection{ background:#CF3147; color:#F2EBE7; }
+  @keyframes ysc-pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.35; transform:scale(.7);} }
+  @keyframes ysc-marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  @keyframes ysc-rise{ from{ opacity:0; transform:translateY(18px);} to{ opacity:1; transform:translateY(0);} }
+  @keyframes ysc-seal{ 0%,100%{ transform:rotate(-8deg);} 50%{ transform:rotate(-2deg);} }
+  @keyframes ysc-float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-16px); } }
+  @keyframes ysc-spin{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+  /* responsive */
+  @media (max-width:1200px){ .r-rail{ display:none !important; } }
+  @media (max-width:980px){
+    .r-hero{ grid-template-columns:1fr !important; }
+    .r-hero .r-visual{ min-height:380px !important; order:-1; }
+  }
+  @media (max-width:760px){
+    .r-2{ grid-template-columns:1fr !important; }
+  }
+  @media (max-width:600px){
+    .r-navlink{ display:none !important; }
+    .r-h1{ font-size:44px !important; }
+    .r-pad{ padding-left:22px !important; padding-right:22px !important; }
+  }
+</style>
+</helmet>
+
+<div style="background:#1a1517; color:#F2EBE7; font-family:'Zen Kaku Gothic New',sans-serif; min-height:100vh; position:relative; overflow:hidden; -webkit-font-smoothing:antialiased;">
+
+  <div style="position:absolute; top:-200px; right:-160px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.16), transparent 62%); pointer-events:none; z-index:0;"></div>
+  <div style="position:absolute; top:1100px; left:-220px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(89,31,40,.4), transparent 64%); pointer-events:none; z-index:0;"></div>
+
+  <!-- vertical side rails -->
+  <sc-if value="{{ showRails }}" hint-placeholder-val="{{ true }}">
+  <div class="r-rail" style="position:fixed; left:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
+    <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
+    <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">結 — 工房</div>
+    <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#CF3147; opacity:.85; text-transform:uppercase;">YSC&nbsp;STUDIO</div>
+    <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
+  </div>
+  <div class="r-rail" style="position:fixed; right:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
+    <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
+    <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">開発 — 設計</div>
+    <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#F2EBE7; opacity:.4; text-transform:uppercase;">BUENOS&nbsp;AIRES</div>
+    <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
+  </div>
+  </sc-if>
+
+  <!-- NAV -->
+  <nav data-screen-label="Nav" style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(28px,6vw,96px); background:rgba(26,21,23,.72); backdrop-filter:blur(14px); border-bottom:1px solid rgba(89,31,40,.45);">
+    <a href="#top" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+      <img src="assets/ysc-2d.png" alt="YSC" style="width:50px; height:54px; object-fit:contain; display:block;">
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(16px,2.6vw,34px); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase;">
+      <a href="#work" class="r-navlink" style="color:#F2EBE7; text-decoration:none; opacity:.78;" style-hover="color:#CF3147; opacity:1;">Work</a>
+      <a href="#about" class="r-navlink" style="color:#F2EBE7; text-decoration:none; opacity:.78;" style-hover="color:#CF3147; opacity:1;">About</a>
+      <a href="#stack" class="r-navlink" style="color:#F2EBE7; text-decoration:none; opacity:.78;" style-hover="color:#CF3147; opacity:1;">Stack</a>
+      <a href="#contact" style="display:inline-flex; align-items:center; gap:8px; color:#F2EBE7; text-decoration:none; border:1px solid #591F28; padding:9px 16px; border-radius:3px;" style-hover="border-color:#CF3147; color:#CF3147;">Contact <span style="color:#CF3147;">↗</span></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="r-hero r-pad" data-screen-label="Hero" style="position:relative; z-index:10; display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(32px,5vw,80px); align-items:center; padding:clamp(56px,9vh,110px) clamp(28px,6vw,96px) clamp(60px,8vh,96px);">
+    <div style="animation:ysc-rise .7s ease both;">
+      <div style="display:inline-flex; align-items:center; gap:10px; padding:7px 14px; border:1px solid #591F28; border-radius:100px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#F2EBE7; margin-bottom:34px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:#CF3147; animation:ysc-pulse 1.8s ease-in-out infinite;"></span>
+        Available for work
+      </div>
+      <h1 class="r-h1" style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(52px,8vw,124px); line-height:.92; letter-spacing:-.01em; color:#F2EBE7; margin-bottom:10px;">
+        Build something<br><span style="color:#CF3147;">worth remembering.</span>
+      </h1>
+      <p style="max-width:48ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:rgba(242,235,231,.66); margin:26px 0 38px;">
+        YSC is the studio of <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture. If it's on the web, I engineer it right.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px;">
+        <a href="#work" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border-radius:3px;" style-hover="background:#591F28;">View work <span>→</span></a>
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border:1px solid #591F28; border-radius:3px;" style-hover="border-color:#CF3147; color:#CF3147;">Get in touch</a>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:26px; margin-top:46px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,235,231,.45);">
+        <span>Full-Stack Engineer</span>
+        <span style="color:#591F28;">/</span>
+        <span>Studio</span>
+        <span style="color:#591F28;">/</span>
+        <span>Buenos Aires, AR</span>
+      </div>
+    </div>
+
+    <div class="r-visual" style="position:relative; min-height:clamp(420px,52vh,580px); display:flex; align-items:center; justify-content:center; animation:ysc-rise .9s ease both;">
+      <!-- ensō moon ring behind -->
+      <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(94%,440px); aspect-ratio:1/1; border-radius:50%; border:1px solid rgba(89,31,40,.55); box-shadow:inset 0 0 80px rgba(207,49,71,.08);"></div>
+      <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(70%,330px); aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.22), transparent 66%); filter:blur(6px);"></div>
+      <!-- faint rotating tick ring -->
+      <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(102%,470px); aspect-ratio:1/1; border-radius:50%; border:1px dashed rgba(242,235,231,.10); animation:ysc-spin 60s linear infinite;"></div>
+
+      <!-- vertical kanji label -->
+      <div style="position:absolute; top:8%; right:2%; writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:15px; letter-spacing:.3em; color:rgba(242,235,231,.5);">壱 — 守護</div>
+
+      <!-- the 3D figure -->
+      <img src="assets/ysc-3d.png" alt="YSC emblem" style="position:relative; z-index:2; width:min(86%,400px); height:auto; display:block; filter:drop-shadow(0 40px 50px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(207,49,71,.18)); animation:ysc-float 6s ease-in-out infinite;">
+
+      <!-- floor shadow -->
+      <div style="position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:54%; height:26px; border-radius:50%; background:radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%); filter:blur(5px); z-index:1;"></div>
+
+      <!-- hanko seal -->
+      <sc-if value="{{ showSeal }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute; bottom:4%; right:6%; z-index:3; width:84px; height:84px; border:2px solid #CF3147; border-radius:8px; background:rgba(26,21,23,.85); backdrop-filter:blur(4px); display:grid; place-items:center; animation:ysc-seal 5s ease-in-out infinite; box-shadow:0 14px 30px -10px rgba(0,0,0,.7);">
+        <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:34px; color:#CF3147; line-height:1;">結</span>
+      </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <!-- MARQUEE -->
+  <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+  <div style="position:relative; z-index:10; border-top:1px solid rgba(89,31,40,.5); border-bottom:1px solid rgba(89,31,40,.5); overflow:hidden; padding:16px 0; background:rgba(38,38,38,.35);">
+    <div style="display:flex; width:max-content; animation:ysc-marquee 26s linear infinite; font-family:'Zen Old Mincho',serif; font-size:18px; letter-spacing:.04em; white-space:nowrap;">
+      <span style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);">
+        <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
+      </span>
+      <span style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);" aria-hidden="true">
+        <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
+      </span>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- SELECTED WORK -->
+  <section id="work" data-screen-label="Work" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px);">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:54px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">壱 — Selected Work</div>
+        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#F2EBE7;">Real products,<br>shipped.</h2>
+      </div>
+      <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">A selection of work — from full-stack platforms to premium interfaces, owned end to end.</p>
+    </div>
+
+    <!-- FEATURED: Tokenit (2 products) -->
+    <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(20px,2.6vw,34px); background:linear-gradient(150deg,rgba(38,38,38,.45),rgba(26,21,23,.2)); margin-bottom:26px;" style-hover="border-color:#CF3147;">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">01</span>
+        <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(30px,3.4vw,46px); color:#F2EBE7;">Tokenit</h3>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:#F2EBE7; border:1px solid #CF3147; border-radius:100px; padding:5px 12px;">2 products</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45);">Investor Platform · Web3</span>
+      </div>
+      <p style="font-size:14.5px; line-height:1.75; color:rgba(242,235,231,.64); max-width:88ch; margin-bottom:26px;">
+        A Chilean collective financing platform enabling online investment in fixed real-estate returns through blockchain-tokenized assets. I own both the public marketplace and the investor app — built for accessibility, transparency and Web3 traceability.
+      </p>
+      <div class="r-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px;">
+        <div style="border:1px solid rgba(89,31,40,.5); border-radius:5px; padding:16px; background:rgba(12,8,9,.4);">
+          <div style="position:relative; aspect-ratio:16/9; border-radius:4px; background:repeating-linear-gradient(45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:14px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ tokenit — investor app ]</span>
+          </div>
+          <div style="font-family:'Zen Old Mincho',serif; font-size:18px; color:#F2EBE7; margin-bottom:4px;">Investor App</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:#CF3147; margin-bottom:8px;">app.tokenit.cl</div>
+          <p style="font-size:12.5px; line-height:1.6; color:rgba(242,235,231,.55);">Real-time portfolio monitoring, KYC, digital signing and AI-powered risk scoring.</p>
+        </div>
+        <div style="border:1px solid rgba(89,31,40,.5); border-radius:5px; padding:16px; background:rgba(12,8,9,.4);">
+          <div style="position:relative; aspect-ratio:16/9; border-radius:4px; background:repeating-linear-gradient(-45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:14px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ tokenit — marketplace ]</span>
+          </div>
+          <div style="font-family:'Zen Old Mincho',serif; font-size:18px; color:#F2EBE7; margin-bottom:4px;">Landing &amp; Marketplace</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:#CF3147; margin-bottom:8px;">tokenit.cl</div>
+          <p style="font-size:12.5px; line-height:1.6; color:rgba(242,235,231,.55);">Public-facing landing and marketplace for blockchain-tokenized real-estate assets.</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Meteor.js</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">React</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Gatsby</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Python</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Node.js</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">MongoDB</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Blockchain</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Web3</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">MercadoPago</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">AI</span>
+      </div>
+    </article>
+
+    <!-- GRID of the rest -->
+    <div class="r-2" style="display:grid; grid-template-columns:repeat(2,1fr); gap:26px;">
+
+      <!-- ZatoBox -->
+      <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column;" style-hover="border-color:#CF3147;">
+        <div style="position:relative; aspect-ratio:16/10; border-radius:4px; background:repeating-linear-gradient(45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ zatobox — pos ]</span>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">02</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Open Source · Point of Sale</div>
+        <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">ZatoBox</h3>
+        <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modular, open-source POS for SMEs — cloud inventory, online catalogs with ZatoLink, payments via ZatoConnect, and upcoming smart-inventory and automation modules.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:7px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Next.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">TypeScript</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Supabase</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Docker</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">BTC Server</span>
+        </div>
+      </article>
+
+      <!-- ConSentido -->
+      <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column;" style-hover="border-color:#CF3147;">
+        <div style="position:relative; aspect-ratio:16/10; border-radius:4px; background:repeating-linear-gradient(-45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ consentido — web ]</span>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">03</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Psicopedagogía · Accessibility</div>
+        <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">ConSentido Cognitivo</h3>
+        <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">An informational, accessible site for neurocognitive stimulation for older adults — downloadable resources and cognitive workshops focused on active aging.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:7px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Next.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Tailwind CSS</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Firebase</span>
+        </div>
+      </article>
+
+      <!-- Liz -->
+      <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column;" style-hover="border-color:#CF3147;">
+        <div style="position:relative; aspect-ratio:16/10; border-radius:4px; background:repeating-linear-gradient(45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ liz — anime app ]</span>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">04</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Product · Anime &amp; Manga</div>
+        <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">Liz</h3>
+        <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modern, responsive web app for anime &amp; manga fans — discover trending content, advanced search, progress tracking and custom lists, powered by the AniList API.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:7px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Vue 3</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Pinia</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Supabase</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">AniList API</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Vite</span>
+        </div>
+      </article>
+
+      <!-- Las Taurinas -->
+      <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column;" style-hover="border-color:#CF3147;">
+        <div style="position:relative; aspect-ratio:16/10; border-radius:4px; background:repeating-linear-gradient(-45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center; margin-bottom:18px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ las taurinas — shop ]</span>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">05</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">E-commerce · Retail</div>
+        <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">Las Taurinas</h3>
+        <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modern e-commerce on Empretienda with Andreani shipping, custom CSS3 styling and secure payments via Mercado Pago and bank transfer — fully responsive, seamless UX.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:7px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Empretienda</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Andreani</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">CSS3</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Mercado Pago</span>
+        </div>
+      </article>
+
+      <!-- Dot Studio -->
+      <article style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; grid-column:1 / -1;" style-hover="border-color:#CF3147;">
+        <div class="r-2" style="display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(18px,2.6vw,40px); align-items:center;">
+          <div style="position:relative; aspect-ratio:16/9; border-radius:4px; background:repeating-linear-gradient(45deg,#221b1d,#221b1d 11px,#1b1517 11px,#1b1517 22px); border:1px solid rgba(89,31,40,.5); display:grid; place-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; color:rgba(242,235,231,.42); text-transform:uppercase;">[ dot studio — site ]</span>
+            <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">06</span>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Studio · Digital Ecosystems</div>
+            <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:30px; color:#F2EBE7; margin-bottom:12px;">Dot Studio</h3>
+            <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); max-width:54ch; margin-bottom:18px;">We don't just build websites — we create digital ecosystems that drive growth, transforming complex ideas into seamless, high-converting web experiences with cutting-edge technology and strategic design.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">Next.js</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">UI/UX</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">SEO</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">E-commerce</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-screen-label="About" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+    <div class="r-hero" style="display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(36px,6vw,90px); align-items:start;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">弐 — The Engineer</div>
+        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1.02; color:#F2EBE7; margin-bottom:26px;">Built with heart<br>&amp; surgical precision.</h2>
+        <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch; margin-bottom:20px;">Hi, I'm <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer working end to end to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture, where every detail — from typography to deploy — has weight. If an idea sparks, chances are I'll build it and ship it.</p>
+        <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch;">I'm obsessed with pixel-perfect details and I code better with my favorite soundtracks on. When I'm not building, I'm gaming or reading manga — always chasing the next challenge.</p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">アニメ Anime</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">ゲーム Gaming</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">音楽 Music Lover</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">物作り Building Things</span>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(38,38,38,.5),rgba(26,21,23,.2));">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:10px;">Core Philosophy</div>
+          <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#F2EBE7;">Building products with heart and surgical precision.</p>
+        </div>
+        <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(38,38,38,.5),rgba(26,21,23,.2));">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:10px;">Focus State</div>
+          <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#F2EBE7;">Music is my secret for deep work sessions.</p>
+        </div>
+        <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(38,38,38,.5),rgba(26,21,23,.2));">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:10px;">Tech DNA</div>
+          <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#F2EBE7;">Obsessed with clean architecture and modern stacks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & EDUCATION -->
+  <section id="history" data-screen-label="History" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+    <div style="margin-bottom:54px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">参 — History</div>
+      <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Experience &amp; Education.</h2>
+    </div>
+
+    <div class="r-hero" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,72px);">
+      <!-- Work -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Work Background</div>
+        <div style="display:flex; flex-direction:column; gap:24px;">
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#CF3147;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Niuro</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">Currently</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Dec 2025 — Present</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack Engineer · Marketplace Platform</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Placed at Tokenit, a Chilean blockchain-based real-estate investment platform. Building and maintaining the public marketplace and the investor dashboard — real-time monitoring, KYC, digital signing and AI risk scoring.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#CF3147;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Dot Studio</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">Currently</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Aug 2024 — Present</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack Engineer &amp; Content Creator</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Independent developer building functional, well-structured digital solutions, and creating tech content that bridges complex code and community learning.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#591F28;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">ZatoBox</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Aug 2025 — Dec 2025</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack &amp; Cloud Solutions Architect</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">DevOps Lead overseeing the full software development lifecycle. Led platform architecture from conception to deployment, specializing in advanced data-recognition systems and decentralized infrastructure.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#591F28;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Dragon Pyramid</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Jun 2025 — Oct 2025</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack Engineer</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Front-end focused work on the Gym Master project. Modern interfaces with Next.js 14, TailwindCSS and Shadcn UI; auth with NextAuth, real-time notifications and dynamic data from Supabase.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Academic Background</div>
+        <div style="display:flex; flex-direction:column; gap:24px;">
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#CF3147;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Escuela Da Vinci</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">Currently</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">2026 — Present</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Web Design &amp; Programming</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Official degree — Full Stack development, UX/UI, Ecommerce and Artificial Intelligence application.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#CF3147;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Inst. Sup. Santo Domingo</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">Currently</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">2025 — Present</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Web Development &amp; Mobile Applications</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Comprehensive training in modern web and mobile development technologies and methodologies.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#591F28;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Codigo Facilito</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Graduated Jan 2026</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Modern Frontend Bootcamp</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Intensive training in modern frontend technologies, performance optimization and advanced UI patterns.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#591F28;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Henry</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Graduated Jun 2025</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack Development Bootcamp</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">+800 hour intensive bootcamp focused on JavaScript, React, Node.js and PostgreSQL.</p>
+          </div>
+
+          <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+            <span style="position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:#591F28;"></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+              <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">Coderhouse</h4>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">Graduated Feb 2025</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">Full Stack Development Program</div>
+            <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">Pathway from frontend to backend, building real-world applications and mastering the MERN stack.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL TECH STACK -->
+  <section id="stack" data-screen-label="Stack" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:50px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">肆 — Toolkit</div>
+        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Full tech stack.</h2>
+      </div>
+      <p style="max-width:38ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">End-to-end mastery across modern web technologies, performance engineering and scalable architectures.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:rgba(89,31,40,.45); border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden;">
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">言語</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Core Languages</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">HTML</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">CSS</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">JavaScript</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">TypeScript</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Java</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Python</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">PHP</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">前面</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Frontend</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">React</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Vue</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Angular</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Gatsby</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">背面</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Backend</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Node.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">NestJS</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Spring Boot</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Django</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">FastAPI</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Laravel</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">全層</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Meta-frameworks</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Next.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Nuxt.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Meteor</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Astro</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">携帯</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Mobile</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Flutter</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Dart</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">React Native</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">意匠</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Styling &amp; Design</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Tailwind CSS</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Bootstrap</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Figma</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Photoshop</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">蓄積</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Databases</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">MongoDB</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Supabase</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Firebase</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">MySQL</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">PostgreSQL</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Convex</span>
+        </div>
+      </div>
+
+      <div style="background:#1a1517; padding:26px 24px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+          <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">道具</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">Tools &amp; DevOps</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Docker</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">GitHub</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">Git</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">AWS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" data-screen-label="Contact" style="position:relative; z-index:10; padding:clamp(72px,12vh,140px) clamp(28px,6vw,96px); text-align:center; border-top:1px solid rgba(89,31,40,.45); background:radial-gradient(ellipse at center, rgba(89,31,40,.32), transparent 70%);">
+    <div style="font-family:'Zen Old Mincho',serif; font-size:34px; color:#CF3147; margin-bottom:22px;">結</div>
+    <h2 style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(40px,6.6vw,96px); line-height:.98; color:#F2EBE7; max-width:16ch; margin:0 auto 26px;">Build something great.</h2>
+    <p style="max-width:48ch; margin:0 auto 40px; font-size:15.5px; line-height:1.7; color:rgba(242,235,231,.62);">Open for freelance projects, collaborations and full-time opportunities. Tell me about it — scope and timing, we figure out together. Let's make something worth remembering.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+      <a href="mailto:franespindola71@gmail.com" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border-radius:3px;" style-hover="background:#591F28;">Get in touch <span>↗</span></a>
+      <a href="#work" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border:1px solid #591F28; border-radius:3px;" style-hover="border-color:#CF3147; color:#CF3147;">Revisit the work</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-screen-label="Footer" style="position:relative; z-index:10; padding:clamp(40px,6vh,64px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45); display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="assets/ysc-3d.png" alt="YSC" style="width:34px; height:42px; object-fit:contain; display:block; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));">
+      <div style="display:flex; flex-direction:column; line-height:1.3;">
+        <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:18px; letter-spacing:.22em;">YSC</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.24em; color:rgba(242,235,231,.4); text-transform:uppercase;">© 2026 · Buenos Aires</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;">
+      <a href="https://github.com/esspindola" target="_blank" rel="noopener" style="color:rgba(242,235,231,.7); text-decoration:none;" style-hover="color:#CF3147;">GitHub</a>
+      <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" style="color:rgba(242,235,231,.7); text-decoration:none;" style-hover="color:#CF3147;">LinkedIn</a>
+      <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" style="color:rgba(242,235,231,.7); text-decoration:none;" style-hover="color:#CF3147;">Instagram</a>
+      <a href="mailto:franespindola71@gmail.com" style="color:rgba(242,235,231,.7); text-decoration:none;" style-hover="color:#CF3147;">Email</a>
+    </div>
+    <div style="font-family:'Zen Old Mincho',serif; font-size:14px; letter-spacing:.2em; color:rgba(242,235,231,.45);">工房 · Buenos Aires</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showRails&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Japanese accents&quot; },
+  &quot;showMarquee&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Japanese accents&quot; },
+  &quot;showSeal&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Japanese accents&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showRails: this.props.showRails ?? true,
+      showMarquee: this.props.showMarquee ?? true,
+      showSeal: this.props.showSeal ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

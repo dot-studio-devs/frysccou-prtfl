@@ -1,196 +1,389 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import Footer from "../components/Footer.astro";
-import { projects } from "../i18n/data.js";
-import { ArrowUpRight } from "lucide-astro";
 import { Image } from "astro:assets";
 
 import tokenit from "../assets/projects/tokenit.png";
 import tokenitApp from "../assets/projects/app-tokenit.png";
 import zatobox from "../assets/projects/zatobox.png";
 import consentido from "../assets/projects/consentido.png";
-
-const tokenit_data = (projects as any[]).find((p: any) => p.id === 7);
-const zatobox_data = (projects as any[]).find((p: any) => p.id === 3);
-const consentido_data = (projects as any[]).find((p: any) => p.id === 2);
+import liz from "../assets/projects/liz.png";
+import lastaurinas from "../assets/projects/lastaurinas.png";
+import dotStudio from "../assets/projects/dot-studio.png";
 ---
 
 <Layout>
-  <main>
-    <Hero />
+  <div style="background:#1a1517; color:#F2EBE7; font-family:'Zen Kaku Gothic New',sans-serif; min-height:100vh; position:relative; overflow:hidden;">
 
-    <section class="section-animate py-32 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-8 sm:px-12">
-        <div class="flex items-end justify-between mb-16">
-          <div class="space-y-4">
-            <span data-i18n="home.selectedWork" class="text-[10px] font-bold uppercase tracking-[0.4em] text-accent-text/60 block">
-              Selected Work
-            </span>
-            <h2 data-i18n="home.projects" class="text-5xl md:text-7xl font-[Outfit] font-black text-white leading-[0.9] tracking-tighter">
-              Projects.
-            </h2>
-          </div>
-          <a
-            href="/work"
-            class="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-accent-text transition-colors duration-300"
-          >
-            <span data-i18n="home.viewAll">View all</span>
-            <ArrowUpRight class="w-3.5 h-3.5" />
-          </a>
+    <!-- ambient blobs -->
+    <div style="position:fixed; top:-200px; right:-160px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.16), transparent 62%); pointer-events:none; z-index:0;"></div>
+    <div style="position:fixed; top:1100px; left:-220px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(89,31,40,.4), transparent 64%); pointer-events:none; z-index:0;"></div>
+
+    <!-- side rails -->
+    <div class="r-rail" style="position:fixed; left:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
+      <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
+      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">結 — 工房</div>
+      <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#CF3147; opacity:.85; text-transform:uppercase;">YSC&nbsp;STUDIO</div>
+      <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
+    </div>
+    <div class="r-rail" style="position:fixed; right:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
+      <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
+      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">開発 — 設計</div>
+      <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#F2EBE7; opacity:.4; text-transform:uppercase;">BUENOS&nbsp;AIRES</div>
+      <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(28px,6vw,96px); background:rgba(26,21,23,.72); backdrop-filter:blur(14px); border-bottom:1px solid rgba(89,31,40,.45);">
+      <a href="#top" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+        <img src="/ysc-2d.png" alt="YSC" style="width:50px; height:54px; object-fit:contain; display:block;" />
+      </a>
+      <div style="display:flex; align-items:center; gap:clamp(16px,2.6vw,34px); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase;">
+        <a href="#work" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Work</a>
+        <a href="#about" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">About</a>
+        <a href="#stack" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Stack</a>
+        <a href="#contact" class="nav-cta" style="display:inline-flex; align-items:center; gap:8px; color:#F2EBE7; text-decoration:none; border:1px solid #591F28; padding:9px 16px; border-radius:3px; transition:border-color .2s,color .2s;">Contact <span style="color:#CF3147;">↗</span></a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="top" class="r-hero r-pad" style="position:relative; z-index:10; display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(32px,5vw,80px); align-items:center; padding:clamp(56px,9vh,110px) clamp(28px,6vw,96px) clamp(60px,8vh,96px);">
+      <div style="animation:ysc-rise .7s ease both;">
+        <div style="display:inline-flex; align-items:center; gap:10px; padding:7px 14px; border:1px solid #591F28; border-radius:100px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#F2EBE7; margin-bottom:34px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:#CF3147; animation:ysc-pulse 1.8s ease-in-out infinite;"></span>
+          Available for work
         </div>
+        <h1 class="r-h1" style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(52px,8vw,124px); line-height:.92; letter-spacing:-.01em; color:#F2EBE7; margin-bottom:10px;">
+          Build something<br><span style="color:#CF3147;">worth remembering.</span>
+        </h1>
+        <p style="max-width:48ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:rgba(242,235,231,.66); margin:26px 0 38px;">
+          YSC is the studio of <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture. If it's on the web, I engineer it right.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px;">
+          <a href="#work" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border-radius:3px; transition:background .2s;">View work <span>→</span></a>
+          <a href="#contact" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Get in touch</a>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:26px; margin-top:46px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,235,231,.45);">
+          <span>Full-Stack Engineer</span>
+          <span style="color:#591F28;">/</span>
+          <span>Studio</span>
+          <span style="color:#591F28;">/</span>
+          <span>Buenos Aires, AR</span>
+        </div>
+      </div>
 
-        <div class="space-y-4">
+      <div class="r-visual" style="position:relative; min-height:clamp(420px,52vh,580px); display:flex; align-items:center; justify-content:center; animation:ysc-rise .9s ease both;">
+        <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(94%,440px); aspect-ratio:1/1; border-radius:50%; border:1px solid rgba(89,31,40,.55); box-shadow:inset 0 0 80px rgba(207,49,71,.08);"></div>
+        <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(70%,330px); aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.22), transparent 66%); filter:blur(6px);"></div>
+        <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(102%,470px); aspect-ratio:1/1; border-radius:50%; border:1px dashed rgba(242,235,231,.10); animation:ysc-spin 60s linear infinite;"></div>
+        <div style="position:absolute; top:8%; right:2%; writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:15px; letter-spacing:.3em; color:rgba(242,235,231,.5);">壱 — 守護</div>
+        <img src="/YSC3D.png" alt="YSC emblem" style="position:relative; z-index:2; width:min(86%,400px); height:auto; display:block; filter:drop-shadow(0 40px 50px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(207,49,71,.18)); animation:ysc-float 6s ease-in-out infinite;" />
+        <div style="position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:54%; height:26px; border-radius:50%; background:radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%); filter:blur(5px); z-index:1;"></div>
+        <div style="position:absolute; bottom:4%; right:6%; z-index:3; width:84px; height:84px; border:2px solid #CF3147; border-radius:8px; background:rgba(26,21,23,.85); backdrop-filter:blur(4px); display:grid; place-items:center; animation:ysc-seal 5s ease-in-out infinite; box-shadow:0 14px 30px -10px rgba(0,0,0,.7);">
+          <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:34px; color:#CF3147; line-height:1;">結</span>
+        </div>
+      </div>
+    </header>
 
-          <!-- Tokenit — card especial doble -->
-          <div class="group border border-white/6 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-accent/[0.04] hover:border-accent/25 transition-all duration-500">
-            <!-- Imágenes split -->
-            <div class="grid grid-cols-2 gap-0 relative">
-              <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" class="overflow-hidden aspect-[16/9] block relative">
-                <Image
-                  src={tokenitApp}
-                  alt="Tokenit App"
-                  width={720}
-                  height={405}
-                  class="w-full h-full object-cover opacity-60 group-hover:opacity-90 hover:scale-[1.02] transition-all duration-700"
-                />
-                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] font-bold tracking-widest text-white/70 uppercase">
-                  app.tokenit.cl
-                </div>
-              </a>
-              <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" class="overflow-hidden aspect-[16/9] border-l border-white/5 block relative">
-                <Image
-                  src={tokenit}
-                  alt="Tokenit Landing"
-                  width={720}
-                  height={405}
-                  class="w-full h-full object-cover opacity-60 group-hover:opacity-90 hover:scale-[1.02] transition-all duration-700"
-                />
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] font-bold tracking-widest text-white/70 uppercase">
-                  tokenit.cl
-                </div>
-              </a>
-              <!-- Divider central con label -->
-              <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-none">
-                <div class="px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-accent/30 text-[9px] font-black uppercase tracking-widest text-accent-text">
-                  2 products
-                </div>
-              </div>
-            </div>
+    <!-- MARQUEE -->
+    <div style="position:relative; z-index:10; border-top:1px solid rgba(89,31,40,.5); border-bottom:1px solid rgba(89,31,40,.5); overflow:hidden; padding:16px 0; background:rgba(38,38,38,.35);">
+      <div style="display:flex; width:max-content; animation:ysc-marquee 26s linear infinite; font-family:'Zen Old Mincho',serif; font-size:18px; letter-spacing:.04em; white-space:nowrap;">
+        <span style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);">
+          <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
+        </span>
+        <span aria-hidden="true" style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);">
+          <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
+        </span>
+      </div>
+    </div>
 
-            <!-- Info -->
-            <div class="p-6 flex items-start justify-between gap-6">
-              <div class="space-y-3 flex-1">
-                <div class="flex items-center gap-3">
-                  <h3 class="text-white font-[Outfit] font-black text-xl leading-tight">
-                    Tokenit
-                  </h3>
-                  {tokenit_data?.isNew && (
-                    <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest border border-accent/30 text-accent-text bg-accent/10">New</span>
-                  )}
-                  <span class="text-[9px] font-bold uppercase tracking-widest text-white/25 border border-white/8 px-2 py-0.5 rounded-full">Investor Platform</span>
-                </div>
-                <p class="text-white/40 text-sm leading-relaxed max-w-2xl">
-                  {tokenit_data?.description.en}
-                </p>
-              </div>
-              <div class="flex items-center gap-2 shrink-0 mt-1">
-                <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg border border-white/8 flex items-center justify-center text-white/30 hover:text-accent-text hover:border-accent/30 transition-all" aria-label="Open app">
-                  <ArrowUpRight class="w-4 h-4" />
-                </a>
-                <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" class="text-[9px] font-bold uppercase tracking-widest text-white/20 hover:text-accent-text transition-colors border border-white/8 hover:border-accent/30 px-2.5 py-1.5 rounded-lg">
-                  site
-                </a>
-              </div>
-            </div>
+    <!-- SELECTED WORK -->
+    <section id="work" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px);">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:54px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">壱 — Selected Work</div>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#F2EBE7;">Real products,<br>shipped.</h2>
+        </div>
+        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">A selection of work — from full-stack platforms to premium interfaces, owned end to end.</p>
+      </div>
+
+      <!-- FEATURED: Tokenit -->
+      <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(20px,2.6vw,34px); background:linear-gradient(150deg,rgba(38,38,38,.45),rgba(26,21,23,.2)); margin-bottom:26px; transition:border-color .2s;">
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">01</span>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(30px,3.4vw,46px); color:#F2EBE7;">Tokenit</h3>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:#F2EBE7; border:1px solid #CF3147; border-radius:100px; padding:5px 12px;">2 products</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45);">Investor Platform · Web3</span>
+        </div>
+        <p style="font-size:14.5px; line-height:1.75; color:rgba(242,235,231,.64); max-width:88ch; margin-bottom:26px;">
+          A Chilean collective financing platform enabling online investment in fixed real-estate returns through blockchain-tokenized assets. I own both the public marketplace and the investor app — built for accessibility, transparency and Web3 traceability.
+        </p>
+        <div class="r-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px;">
+          <div style="border:1px solid rgba(89,31,40,.5); border-radius:5px; padding:16px; background:rgba(12,8,9,.4);">
+            <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" style="display:block; position:relative; aspect-ratio:16/9; border-radius:4px; overflow:hidden; margin-bottom:14px;">
+              <Image src={tokenitApp} alt="Tokenit Investor App" width={640} height={360} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            </a>
+            <div style="font-family:'Zen Old Mincho',serif; font-size:18px; color:#F2EBE7; margin-bottom:4px;">Investor App</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:#CF3147; margin-bottom:8px;">app.tokenit.cl</div>
+            <p style="font-size:12.5px; line-height:1.6; color:rgba(242,235,231,.55);">Real-time portfolio monitoring, KYC, digital signing and AI-powered risk scoring.</p>
           </div>
+          <div style="border:1px solid rgba(89,31,40,.5); border-radius:5px; padding:16px; background:rgba(12,8,9,.4);">
+            <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" style="display:block; position:relative; aspect-ratio:16/9; border-radius:4px; overflow:hidden; margin-bottom:14px;">
+              <Image src={tokenit} alt="Tokenit Landing" width={640} height={360} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            </a>
+            <div style="font-family:'Zen Old Mincho',serif; font-size:18px; color:#F2EBE7; margin-bottom:4px;">Landing &amp; Marketplace</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:#CF3147; margin-bottom:8px;">tokenit.cl</div>
+            <p style="font-size:12.5px; line-height:1.6; color:rgba(242,235,231,.55);">Public-facing landing and marketplace for blockchain-tokenized real-estate assets.</p>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:7px;">
+          {["Meteor.js","React","Gatsby","Python","Node.js","MongoDB","Blockchain","Web3","MercadoPago","AI"].map(t => (
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
+          ))}
+        </div>
+      </article>
 
-          <!-- ZatoBox + ConSentido en grilla de 2 -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { data: zatobox_data, img: zatobox },
-              { data: consentido_data, img: consentido },
-            ].map(({ data, img }) => data && (
-              <a
-                href={data.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group border border-white/5 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-accent/[0.04] hover:border-accent/20 transition-all duration-500"
-              >
-                <div class="aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={img}
-                    alt={data.title.en}
-                    width={640}
-                    height={360}
-                    class="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-[1.02] transition-all duration-700"
-                  />
-                </div>
-                <div class="p-6 space-y-3">
-                  <div class="flex items-start justify-between">
-                    <h3 class="text-white font-[Outfit] font-bold text-lg leading-tight">
-                      {data.title.en.split("|")[0].trim()}
-                    </h3>
-                    <ArrowUpRight class="w-4 h-4 text-white/20 group-hover:text-accent-text transition-colors shrink-0" />
-                  </div>
-                  <p class="text-white/40 text-sm leading-relaxed line-clamp-2">
-                    {data.description.en}
-                  </p>
-                </div>
-              </a>
+      <!-- GRID -->
+      <div class="r-2" style="display:grid; grid-template-columns:repeat(2,1fr); gap:26px;">
+
+        <!-- ZatoBox -->
+        <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; transition:border-color .2s;">
+          <div style="position:relative; aspect-ratio:16/10; border-radius:4px; overflow:hidden; border:1px solid rgba(89,31,40,.5); margin-bottom:18px;">
+            <Image src={zatobox} alt="ZatoBox" width={640} height={400} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">02</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Open Source · Point of Sale</div>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">ZatoBox</h3>
+          <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modular, open-source POS for SMEs — cloud inventory, online catalogs with ZatoLink, payments via ZatoConnect, and upcoming smart-inventory and automation modules.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            {["Next.js","TypeScript","Supabase","Docker","BTC Server"].map(t => (
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
             ))}
           </div>
+        </article>
 
+        <!-- ConSentido -->
+        <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; transition:border-color .2s;">
+          <div style="position:relative; aspect-ratio:16/10; border-radius:4px; overflow:hidden; border:1px solid rgba(89,31,40,.5); margin-bottom:18px;">
+            <Image src={consentido} alt="ConSentido Cognitivo" width={640} height={400} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">03</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Psicopedagogía · Accessibility</div>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">ConSentido Cognitivo</h3>
+          <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">An informational, accessible site for neurocognitive stimulation for older adults — downloadable resources and cognitive workshops focused on active aging.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            {["Next.js","Tailwind CSS","Firebase"].map(t => (
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
+            ))}
+          </div>
+        </article>
+
+        <!-- Liz -->
+        <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; transition:border-color .2s;">
+          <div style="position:relative; aspect-ratio:16/10; border-radius:4px; overflow:hidden; border:1px solid rgba(89,31,40,.5); margin-bottom:18px;">
+            <Image src={liz} alt="Liz" width={640} height={400} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">04</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Product · Anime &amp; Manga</div>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">Liz</h3>
+          <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modern, responsive web app for anime &amp; manga fans — discover trending content, advanced search, progress tracking and custom lists, powered by the AniList API.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            {["Vue 3","Pinia","Supabase","AniList API","Vite"].map(t => (
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
+            ))}
+          </div>
+        </article>
+
+        <!-- Las Taurinas -->
+        <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; transition:border-color .2s;">
+          <div style="position:relative; aspect-ratio:16/10; border-radius:4px; overflow:hidden; border:1px solid rgba(89,31,40,.5); margin-bottom:18px;">
+            <Image src={lastaurinas} alt="Las Taurinas" width={640} height={400} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+            <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">05</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">E-commerce · Retail</div>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin-bottom:12px;">Las Taurinas</h3>
+          <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); margin-bottom:18px; flex:1;">A modern e-commerce on Empretienda with Andreani shipping, custom CSS3 styling and secure payments via Mercado Pago and bank transfer — fully responsive, seamless UX.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            {["Empretienda","Andreani","CSS3","Mercado Pago"].map(t => (
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
+            ))}
+          </div>
+        </article>
+
+        <!-- Dot Studio — full width -->
+        <article class="card" style="border:1px solid rgba(89,31,40,.45); border-radius:6px; padding:clamp(18px,2.2vw,26px); background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column; grid-column:1 / -1; transition:border-color .2s;">
+          <div class="r-2" style="display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(18px,2.6vw,40px); align-items:center;">
+            <div style="position:relative; aspect-ratio:16/9; border-radius:4px; overflow:hidden; border:1px solid rgba(89,31,40,.5);">
+              <Image src={dotStudio} alt="Dot Studio" width={640} height={360} style="width:100%; height:100%; object-fit:cover; opacity:.75;" />
+              <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#CF3147;">06</span>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.45); margin-bottom:10px;">Studio · Digital Ecosystems</div>
+              <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:30px; color:#F2EBE7; margin-bottom:12px;">Dot Studio</h3>
+              <p style="font-size:13.5px; line-height:1.65; color:rgba(242,235,231,.6); max-width:54ch; margin-bottom:18px;">We don't just build websites — we create digital ecosystems that drive growth, transforming complex ideas into seamless, high-converting web experiences with cutting-edge technology and strategic design.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:7px;">
+                {["Next.js","UI/UX","SEO","E-commerce"].map(t => (
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.6);">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+      <div class="r-hero" style="display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(36px,6vw,90px); align-items:start;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">弐 — The Engineer</div>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1.02; color:#F2EBE7; margin-bottom:26px;">Built with heart<br>&amp; surgical precision.</h2>
+          <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch; margin-bottom:20px;">Hi, I'm <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer working end to end to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture, where every detail — from typography to deploy — has weight. If an idea sparks, chances are I'll build it and ship it.</p>
+          <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch;">I'm obsessed with pixel-perfect details and I code better with my favorite soundtracks on. When I'm not building, I'm gaming or reading manga — always chasing the next challenge.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;">
+            {["アニメ Anime","ゲーム Gaming","音楽 Music Lover","物作り Building Things"].map(tag => (
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">{tag}</span>
+            ))}
+          </div>
         </div>
-
-        <div class="mt-8 sm:hidden">
-          <a
-            href="/work"
-            class="flex items-center justify-center gap-2 py-4 border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-widest text-white/40 hover:text-accent-text hover:border-accent/30 transition-all duration-300"
-          >
-            <span data-i18n="home.viewAllWork">View all work</span>
-            <ArrowUpRight class="w-3.5 h-3.5" />
-          </a>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          {[
+            { label: "Core Philosophy", text: "Building products with heart and surgical precision." },
+            { label: "Focus State", text: "Music is my secret for deep work sessions." },
+            { label: "Tech DNA", text: "Obsessed with clean architecture and modern stacks." },
+          ].map(({ label, text }) => (
+            <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(38,38,38,.5),rgba(26,21,23,.2));">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:10px;">{label}</div>
+              <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#F2EBE7;">{text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section-animate py-40 border-t border-white/5 relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]"></div>
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="history" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+      <div style="margin-bottom:54px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">参 — History</div>
+        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Experience &amp; Education.</h2>
       </div>
-      <div class="max-w-5xl mx-auto px-8 sm:px-12 relative z-10">
-        <div class="space-y-10">
-          <span data-i18n="home.collaborate" class="text-[10px] font-bold uppercase tracking-[0.4em] text-accent-text/60 block">
-            Let's collaborate
-          </span>
-          <h2 class="text-6xl sm:text-7xl md:text-9xl font-[Outfit] font-black leading-[0.88] tracking-tighter">
-            <span data-i18n="home.buildSomething" class="text-white">Build something</span><br/>
-            <span data-i18n="home.great" class="text-accent">great.</span>
-          </h2>
-          <p data-i18n="home.buildDesc" class="text-white/40 text-lg max-w-md leading-relaxed">
-            Open for freelance projects, collaborations, and full-time opportunities.
-            Let's make something worth remembering.
-          </p>
-          <div class="flex items-center gap-6 flex-wrap">
-            <a
-              href="/contact"
-              class="group inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-accent/90 transition-all duration-300 shadow-lg shadow-accent/20"
-            >
-              <span data-i18n="home.getInTouch">Get in touch</span>
-              <ArrowUpRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="mailto:franespindola71@gmail.com"
-              class="text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-accent-text transition-colors duration-300"
-            >
-              franespindola71@gmail.com
-            </a>
+
+      <div class="r-hero" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,72px);">
+        <!-- Work -->
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Work Background</div>
+          <div style="display:flex; flex-direction:column; gap:24px;">
+            {[
+              { company: "Niuro", badge: "Currently", date: "Dec 2025 — Present", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform. Building and maintaining the public marketplace and the investor dashboard — real-time monitoring, KYC, digital signing and AI risk scoring.", active: true },
+              { company: "Dot Studio", badge: "Currently", date: "Aug 2024 — Present", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions, and creating tech content that bridges complex code and community learning.", active: true },
+              { company: "ZatoBox", badge: null, date: "Aug 2025 — Dec 2025", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps Lead overseeing the full software development lifecycle. Led platform architecture from conception to deployment, specializing in advanced data-recognition systems and decentralized infrastructure.", active: false },
+              { company: "Dragon Pyramid", badge: null, date: "Jun 2025 — Oct 2025", role: "Full Stack Engineer", desc: "Front-end focused work on the Gym Master project. Modern interfaces with Next.js 14, TailwindCSS and Shadcn UI; auth with NextAuth, real-time notifications and dynamic data from Supabase.", active: false },
+            ].map(({ company, badge, date, role, desc, active }) => (
+              <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+                <span style={`position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:${active ? '#CF3147' : '#591F28'};`}></span>
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">{company}</h4>
+                  {badge && <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">{badge}</span>}
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">{date}</span>
+                </div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">{role}</div>
+                <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Academic Background</div>
+          <div style="display:flex; flex-direction:column; gap:24px;">
+            {[
+              { school: "Escuela Da Vinci", badge: "Currently", date: "2026 — Present", role: "Web Design & Programming", desc: "Official degree — Full Stack development, UX/UI, Ecommerce and Artificial Intelligence application.", active: true },
+              { school: "Inst. Sup. Santo Domingo", badge: "Currently", date: "2025 — Present", role: "Web Development & Mobile Applications", desc: "Comprehensive training in modern web and mobile development technologies and methodologies.", active: true },
+              { school: "Codigo Facilito", badge: null, date: "Graduated Jan 2026", role: "Modern Frontend Bootcamp", desc: "Intensive training in modern frontend technologies, performance optimization and advanced UI patterns.", active: false },
+              { school: "Henry", badge: null, date: "Graduated Jun 2025", role: "Full Stack Development Bootcamp", desc: "+800 hour intensive bootcamp focused on JavaScript, React, Node.js and PostgreSQL.", active: false },
+              { school: "Coderhouse", badge: null, date: "Graduated Feb 2025", role: "Full Stack Development Program", desc: "Pathway from frontend to backend, building real-world applications and mastering the MERN stack.", active: false },
+            ].map(({ school, badge, date, role, desc, active }) => (
+              <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
+                <span style={`position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:${active ? '#CF3147' : '#591F28'};`}></span>
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">{school}</h4>
+                  {badge && <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">{badge}</span>}
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">{date}</span>
+                </div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">{role}</div>
+                <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">{desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer />
+    <!-- TECH STACK -->
+    <section id="stack" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:50px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">肆 — Toolkit</div>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Full tech stack.</h2>
+        </div>
+        <p style="max-width:38ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">End-to-end mastery across modern web technologies, performance engineering and scalable architectures.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1px; background:rgba(89,31,40,.45); border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden;">
+        {[
+          { kanji: "言語", label: "Core Languages", items: ["HTML","CSS","JavaScript","TypeScript","Java","Python","PHP"] },
+          { kanji: "前面", label: "Frontend", items: ["React","Vue","Angular","Gatsby"] },
+          { kanji: "背面", label: "Backend", items: ["Node.js","NestJS","Spring Boot","Django","FastAPI","Laravel"] },
+          { kanji: "全層", label: "Meta-frameworks", items: ["Next.js","Nuxt.js","Meteor","Astro"] },
+          { kanji: "携帯", label: "Mobile", items: ["Flutter","Dart","React Native"] },
+          { kanji: "意匠", label: "Styling & Design", items: ["Tailwind CSS","Bootstrap","Figma","Photoshop"] },
+          { kanji: "蓄積", label: "Databases", items: ["MongoDB","Supabase","Firebase","MySQL","PostgreSQL","Convex"] },
+          { kanji: "道具", label: "Tools & DevOps", items: ["Docker","GitHub","Git","AWS"] },
+        ].map(({ kanji, label, items }) => (
+          <div style="background:#1a1517; padding:26px 24px;">
+            <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
+              <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">{kanji}</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">{label}</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              {items.map(item => (
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="position:relative; z-index:10; padding:clamp(72px,12vh,140px) clamp(28px,6vw,96px); text-align:center; border-top:1px solid rgba(89,31,40,.45); background:radial-gradient(ellipse at center, rgba(89,31,40,.32), transparent 70%);">
+      <div style="font-family:'Zen Old Mincho',serif; font-size:34px; color:#CF3147; margin-bottom:22px;">結</div>
+      <h2 style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(40px,6.6vw,96px); line-height:.98; color:#F2EBE7; max-width:16ch; margin:0 auto 26px;">Build something great.</h2>
+      <p style="max-width:48ch; margin:0 auto 40px; font-size:15.5px; line-height:1.7; color:rgba(242,235,231,.62);">Open for freelance projects, collaborations and full-time opportunities. Tell me about it — scope and timing, we figure out together. Let's make something worth remembering.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+        <a href="mailto:franchuespindola25@gmail.com" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border-radius:3px; transition:background .2s;">Get in touch <span>↗</span></a>
+        <a href="#work" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Revisit the work</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="position:relative; z-index:10; padding:clamp(40px,6vh,64px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45); display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <img src="/YSC3D.png" alt="YSC" style="width:34px; height:42px; object-fit:contain; display:block; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));" />
+        <div style="display:flex; flex-direction:column; line-height:1.3;">
+          <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:18px; letter-spacing:.22em;">YSC</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.24em; color:rgba(242,235,231,.4); text-transform:uppercase;">© 2026 · Buenos Aires</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;">
+        <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">GitHub</a>
+        <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">LinkedIn</a>
+        <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">Instagram</a>
+        <a href="mailto:franchuespindola25@gmail.com" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">Email</a>
+      </div>
+      <div style="font-family:'Zen Old Mincho',serif; font-size:14px; letter-spacing:.2em; color:rgba(242,235,231,.45);">工房 · Buenos Aires</div>
+    </footer>
+
+  </div>
 </Layout>
