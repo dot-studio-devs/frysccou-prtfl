@@ -4,14 +4,48 @@ import "../styles/globals.css";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title = "YSC Studio — Francisco Espindola · Full Stack Engineer",
   description = "YSC is the studio of Francisco Espindola — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture.",
+  image = "/brand/og.png",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
+const siteURL = Astro.site ?? new URL(Astro.url.href);
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const ogImage = new URL(image, siteURL);
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteURL}#website`,
+      url: siteURL,
+      name: "YSC Studio",
+      description,
+      inLanguage: "en",
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteURL}#person`,
+      name: "Francisco Espindola",
+      alternateName: "frysccou",
+      url: siteURL,
+      image: ogImage,
+      jobTitle: "Full Stack Engineer",
+      worksFor: { "@type": "Organization", name: "YSC Studio" },
+      address: { "@type": "PostalAddress", addressLocality: "Buenos Aires", addressCountry: "AR" },
+      sameAs: [
+        "https://github.com/esspindola",
+        "https://www.linkedin.com/in/espindola-francisco",
+        "https://instagram.com/frysccou",
+      ],
+    },
+  ],
+});
 ---
 
 <!doctype html>
@@ -24,16 +58,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.href);
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Francisco Espindola" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={canonicalURL} />
 
+    <meta name="theme-color" content="#1a1517" />
+    <meta name="color-scheme" content="dark" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="YSC Studio" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="YSC Studio — Francisco Espindola" />
+    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@frysccou" />
     <meta name="twitter:creator" content="@frysccou" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={jsonLd} />
 
     <link rel="icon" type="image/x-icon" href="/brand/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32x32.png" />
