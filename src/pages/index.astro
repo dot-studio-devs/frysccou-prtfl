@@ -9,6 +9,11 @@ import consentido from "../assets/projects/consentido.png";
 import liz from "../assets/projects/liz.png";
 import lastaurinas from "../assets/projects/lastaurinas.png";
 import dotStudio from "../assets/projects/dot-studio.png";
+
+import elevate from "../assets/sideprojects/elevate.png";
+import atlas from "../assets/sideprojects/atlas.png";
+import aurora from "../assets/sideprojects/aurora.png";
+import coffee from "../assets/sideprojects/coffee.png";
 ---
 
 <Layout>
@@ -160,6 +165,61 @@ import dotStudio from "../assets/projects/dot-studio.png";
         ))}
       </div>
     </section>
+
+    <!-- SIDE PROJECTS -->
+    <section id="side-projects" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(40px,7vh,72px);">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">弐 — Side Projects</div>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#F2EBE7;">Visual archive.</h2>
+        </div>
+        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">A collection of interfaces built for the craft of it — no client, no brief, just vision.</p>
+      </div>
+
+      <div class="sp-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        {[
+          { title: "Elevate Gym", img: elevate, alt: "Elevate Gym" },
+          { title: "Atlas", img: atlas, alt: "Atlas" },
+          { title: "Aurora AI", img: aurora, alt: "Aurora AI" },
+          { title: "Noma Coffee", img: coffee, alt: "Noma Coffee" },
+        ].map(({ title, img, alt }, i) => (
+          <button
+            class="sp-card"
+            data-index={i}
+            style="all:unset; cursor:pointer; position:relative; border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden; background:rgba(26,21,23,.6); display:block; width:100%; text-align:left;"
+          >
+            <div style="overflow:hidden; position:relative;">
+              <Image src={img} alt={alt} width={800} height={500} style="width:100%; display:block; object-fit:cover; transition:transform .5s ease;" class="sp-img" />
+              <div class="sp-overlay" style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,21,23,.92) 0%, rgba(26,21,23,.1) 50%, transparent 100%); opacity:0; transition:opacity .35s ease;"></div>
+              <div class="sp-hint" style="position:absolute; bottom:18px; right:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#F2EBE7; opacity:0; transition:opacity .35s ease;">View full ↗</div>
+            </div>
+            <div style="padding:16px 20px; border-top:1px solid rgba(89,31,40,.35);">
+              <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(18px,2vw,26px); color:#F2EBE7; margin:0;">{title}</h3>
+            </div>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- MODAL SIDE PROJECTS -->
+    <div id="sp-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(12,9,10,.92); backdrop-filter:blur(18px); align-items:center; justify-content:center;">
+      <button id="sp-close" style="all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(242,235,231,.6); border:1px solid rgba(89,31,40,.55); padding:10px 18px; border-radius:3px; transition:color .2s,border-color .2s;">✕ Close</button>
+
+      <button id="sp-prev" style="all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(242,235,231,.6); font-size:18px; transition:color .2s,border-color .2s;">←</button>
+      <button id="sp-next" style="all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(242,235,231,.6); font-size:18px; transition:color .2s,border-color .2s;">→</button>
+
+      <div style="position:relative; width:min(90vw,820px); max-height:88vh; overflow-y:auto; border:1px solid rgba(89,31,40,.5); border-radius:8px; background:#1a1517; scrollbar-width:thin; scrollbar-color:#591F28 transparent;">
+        <div style="padding:22px 26px 14px; border-bottom:1px solid rgba(89,31,40,.4); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; background:#1a1517; z-index:5;">
+          <div>
+            <div id="sp-modal-num" style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:4px;"></div>
+            <h3 id="sp-modal-title" style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin:0;"></h3>
+          </div>
+        </div>
+        <div style="padding:0;">
+          <img id="sp-modal-img" src="" alt="" style="width:100%; display:block;" />
+        </div>
+      </div>
+    </div>
 
     <!-- ABOUT -->
     <section id="about" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
@@ -317,11 +377,87 @@ import dotStudio from "../assets/projects/dot-studio.png";
   </div>
 </Layout>
 
+<script>
+  const PROJECTS = [
+    { title: "Elevate Gym", num: "01" },
+    { title: "Atlas", num: "02" },
+    { title: "Aurora AI", num: "03" },
+    { title: "Noma Coffee", num: "04" },
+  ];
+
+  const modal = document.getElementById('sp-modal');
+  const modalTitle = document.getElementById('sp-modal-title');
+  const modalNum = document.getElementById('sp-modal-num');
+  const modalImg = document.getElementById('sp-modal-img');
+  const closeBtn = document.getElementById('sp-close');
+  const prevBtn = document.getElementById('sp-prev');
+  const nextBtn = document.getElementById('sp-next');
+
+  let current = 0;
+  const cards = document.querySelectorAll('.sp-card');
+  const imgs = document.querySelectorAll('.sp-card img');
+
+  function getImgSrc(index) {
+    return imgs[index]?.src ?? '';
+  }
+
+  function openModal(index) {
+    current = index;
+    modalTitle.textContent = PROJECTS[index].title;
+    modalNum.textContent = PROJECTS[index].num + ' / 04';
+    modalImg.src = getImgSrc(index);
+    modalImg.alt = PROJECTS[index].title;
+    modal.style.display = 'flex';
+    modal.querySelector('div[style*="overflow-y"]').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    current = (current + dir + PROJECTS.length) % PROJECTS.length;
+    openModal(current);
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => openModal(i));
+    card.addEventListener('mouseenter', () => {
+      card.querySelector('.sp-overlay').style.opacity = '1';
+      card.querySelector('.sp-hint').style.opacity = '1';
+      card.querySelector('.sp-img').style.transform = 'scale(1.03)';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.querySelector('.sp-overlay').style.opacity = '0';
+      card.querySelector('.sp-hint').style.opacity = '0';
+      card.querySelector('.sp-img').style.transform = 'scale(1)';
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  prevBtn?.addEventListener('click', () => navigate(-1));
+  nextBtn?.addEventListener('click', () => navigate(1));
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'none') return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+</script>
+
 <style>
   @media (max-width: 680px) {
     .work-grid { grid-template-columns: 1fr !important; }
     .work-featured { grid-template-columns: 1fr !important; }
     .work-wide-inner { grid-template-columns: 1fr !important; }
     .work-wide-inner > div:last-child { border-left: none !important; border-top: 1px solid rgba(89,31,40,.3); }
+    .sp-grid { grid-template-columns: 1fr !important; }
   }
 </style>
