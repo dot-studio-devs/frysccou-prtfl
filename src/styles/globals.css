@@ -1,7 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { background: #1a1517; color: #F2EBE7; font-family: 'Zen Kaku Gothic New', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-::selection { background: #CF3147; color: #F2EBE7; }
+body { background: #f1e2d4; color: #24171A; font-family: 'Zen Kaku Gothic New', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: #CF3147; color: #F8ECE4; }
 
 @keyframes ysc-pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.7); } }
 @keyframes ysc-marquee { from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
@@ -28,3 +28,8 @@ body { background: #1a1517; color: #F2EBE7; font-family: 'Zen Kaku Gothic New', 
 .btn-primary:hover { background: #591F28 !important; }
 .btn-outline:hover { border-color: #CF3147 !important; color: #CF3147 !important; }
 .footer-link:hover { color: #CF3147 !important; }
+
+.proj-card:hover { border-color: #CF3147 !important; transform: translateY(-4px); box-shadow: 0 20px 40px -18px rgba(89,31,40,.35); }
+.proj-card:hover .proj-img { transform: scale(1.06); }
+.proj-card a[href]:hover { background: #CF3147 !important; border-color: #CF3147 !important; color: #F8ECE4 !important; }
+.proj-card a[href]:hover span { color: #F8ECE4 !important; }

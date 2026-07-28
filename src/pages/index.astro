@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
+import logo from "../assets/logo.png";
+
 import tokenit from "../assets/projects/tokenit.png";
 import tokenitApp from "../assets/projects/app-tokenit.png";
 import zatobox from "../assets/projects/zatobox.png";
@@ -17,7 +19,7 @@ import coffee from "../assets/sideprojects/coffee.png";
 ---
 
 <Layout>
-  <div style="background:#1a1517; color:#F2EBE7; font-family:'Zen Kaku Gothic New',sans-serif; min-height:100vh; position:relative; overflow:hidden;">
+  <div style="background:#f1e2d4; color:#24171A; font-family:'Zen Kaku Gothic New',sans-serif; min-height:100vh; position:relative; overflow:hidden;">
 
     <!-- ambient blobs -->
     <div style="position:fixed; top:-200px; right:-160px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.16), transparent 62%); pointer-events:none; z-index:0;"></div>
@@ -26,46 +28,44 @@ import coffee from "../assets/sideprojects/coffee.png";
     <!-- side rails -->
     <div class="r-rail" style="position:fixed; left:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
       <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
-      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">結 — 工房</div>
+      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#24171A; opacity:.5;">結 — 工房</div>
       <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#CF3147; opacity:.85; text-transform:uppercase;">YSC&nbsp;STUDIO</div>
       <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
     </div>
     <div class="r-rail" style="position:fixed; right:26px; top:0; bottom:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; pointer-events:none; mix-blend-mode:screen;">
       <div style="width:1px; height:80px; background:linear-gradient(transparent, #591F28);"></div>
-      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#F2EBE7; opacity:.5;">開発 — 設計</div>
-      <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#F2EBE7; opacity:.4; text-transform:uppercase;">BUENOS&nbsp;AIRES</div>
+      <div style="writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:19px; letter-spacing:.32em; color:#24171A; opacity:.5;">開発 — 設計</div>
+      <div style="writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.5em; color:#24171A; opacity:.4; text-transform:uppercase;">BUENOS&nbsp;AIRES</div>
       <div style="width:1px; height:80px; background:linear-gradient(#591F28, transparent);"></div>
     </div>
 
     <!-- NAV -->
-    <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(28px,6vw,96px); background:rgba(26,21,23,.72); backdrop-filter:blur(14px); border-bottom:1px solid rgba(89,31,40,.45);">
+    <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(28px,6vw,96px); background:rgba(241,226,212,.72); backdrop-filter:blur(14px); border-bottom:1px solid rgba(89,31,40,.45);">
       <a href="#top" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
-        <span style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:22px; letter-spacing:.14em; color:#F2EBE7; line-height:1;">YSC</span>
-        <span style="width:1px; height:18px; background:rgba(89,31,40,.7); display:block;"></span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:rgba(242,235,231,.4);">Studio</span>
+        <Image src={logo} alt="YSC" width={176} height={88} style="height:48px; width:auto; object-fit:contain; display:block;" />
       </a>
       <div style="display:flex; align-items:center; gap:clamp(16px,2.6vw,34px); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase;">
-        <a href="#work" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Work</a>
-        <a href="#about" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">About</a>
-        <a href="#stack" class="r-navlink nav-link" style="color:#F2EBE7; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Stack</a>
-        <a href="#contact" class="nav-cta" style="display:inline-flex; align-items:center; gap:8px; color:#F2EBE7; text-decoration:none; border:1px solid #591F28; padding:9px 16px; border-radius:3px; transition:border-color .2s,color .2s;">Contact <span style="color:#CF3147;">↗</span></a>
+        <a href="#work" class="r-navlink nav-link" style="color:#24171A; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Work</a>
+        <a href="#about" class="r-navlink nav-link" style="color:#24171A; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">About</a>
+        <a href="#stack" class="r-navlink nav-link" style="color:#24171A; text-decoration:none; opacity:.78; transition:color .2s,opacity .2s;">Stack</a>
+        <a href="#contact" class="nav-cta" style="display:inline-flex; align-items:center; gap:8px; color:#24171A; text-decoration:none; border:1px solid #591F28; padding:9px 16px; border-radius:3px; transition:border-color .2s,color .2s;">Contact <span style="color:#CF3147;">↗</span></a>
       </div>
     </nav>
 
     <!-- HERO -->
     <header id="top" class="r-hero r-pad" style="position:relative; z-index:10; display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(32px,5vw,80px); align-items:center; padding:clamp(56px,9vh,110px) clamp(28px,6vw,96px) clamp(60px,8vh,96px);">
       <div style="animation:ysc-rise .7s ease both;">
-        <h1 class="r-h1" style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(52px,8vw,124px); line-height:.92; letter-spacing:-.01em; color:#F2EBE7; margin-bottom:10px;">
+        <h1 class="r-h1" style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(52px,8vw,124px); line-height:.92; letter-spacing:-.01em; color:#24171A; margin-bottom:10px;">
           Build something<br><span style="color:#CF3147;">worth remembering.</span>
         </h1>
-        <p style="max-width:48ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:rgba(242,235,231,.66); margin:26px 0 38px;">
-          YSC is the studio of <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture. If it's on the web, I engineer it right.
+        <p style="max-width:48ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:rgba(36,23,26,.66); margin:26px 0 38px;">
+          YSC is the studio of <span style="color:#24171A;">Francisco Espindola</span> — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture. If it's on the web, I engineer it right.
         </p>
         <div style="display:flex; flex-wrap:wrap; gap:14px;">
-          <a href="#work" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border-radius:3px; transition:background .2s;">View work <span>→</span></a>
-          <a href="#contact" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Get in touch</a>
+          <a href="#work" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F8ECE4; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border-radius:3px; transition:background .2s;">View work <span>→</span></a>
+          <a href="#contact" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#24171A; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:16px 26px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Get in touch</a>
         </div>
-        <div style="display:flex; flex-wrap:wrap; gap:26px; margin-top:46px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,235,231,.45);">
+        <div style="display:flex; flex-wrap:wrap; gap:26px; margin-top:46px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(36,23,26,.45);">
           <span>Full-Stack Engineer</span>
           <span style="color:#591F28;">/</span>
           <span>Studio</span>
@@ -77,23 +77,23 @@ import coffee from "../assets/sideprojects/coffee.png";
       <div class="r-visual" style="position:relative; min-height:clamp(420px,52vh,580px); display:flex; align-items:center; justify-content:center; animation:ysc-rise .9s ease both;">
         <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(94%,440px); aspect-ratio:1/1; border-radius:50%; border:1px solid rgba(89,31,40,.55); box-shadow:inset 0 0 80px rgba(207,49,71,.08);"></div>
         <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(70%,330px); aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle, rgba(207,49,71,.22), transparent 66%); filter:blur(6px);"></div>
-        <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(102%,470px); aspect-ratio:1/1; border-radius:50%; border:1px dashed rgba(242,235,231,.10); animation:ysc-spin 60s linear infinite;"></div>
-        <div style="position:absolute; top:8%; right:2%; writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:15px; letter-spacing:.3em; color:rgba(242,235,231,.5);">壱 — 守護</div>
+        <div style="position:absolute; top:50%; left:52%; transform:translate(-50%,-54%); width:min(102%,470px); aspect-ratio:1/1; border-radius:50%; border:1px dashed rgba(36,23,26,.10); animation:ysc-spin 60s linear infinite;"></div>
+        <div style="position:absolute; top:8%; right:2%; writing-mode:vertical-rl; font-family:'Zen Old Mincho',serif; font-size:15px; letter-spacing:.3em; color:rgba(36,23,26,.5);">壱 — 守護</div>
         <img src="/YSC3D.png" alt="YSC emblem" style="position:relative; z-index:2; width:min(86%,400px); height:auto; display:block; filter:drop-shadow(0 40px 50px rgba(0,0,0,.7)) drop-shadow(0 0 40px rgba(207,49,71,.18)); animation:ysc-float 6s ease-in-out infinite;" />
         <div style="position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:54%; height:26px; border-radius:50%; background:radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%); filter:blur(5px); z-index:1;"></div>
-        <div style="position:absolute; bottom:4%; right:6%; z-index:3; width:84px; height:84px; border:2px solid #CF3147; border-radius:8px; background:rgba(26,21,23,.85); backdrop-filter:blur(4px); display:grid; place-items:center; animation:ysc-seal 5s ease-in-out infinite; box-shadow:0 14px 30px -10px rgba(0,0,0,.7);">
+        <div style="position:absolute; bottom:4%; right:6%; z-index:3; width:84px; height:84px; border:2px solid #CF3147; border-radius:8px; background:rgba(241,226,212,.85); backdrop-filter:blur(4px); display:grid; place-items:center; animation:ysc-seal 5s ease-in-out infinite; box-shadow:0 14px 30px -10px rgba(0,0,0,.7);">
           <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:34px; color:#CF3147; line-height:1;">結</span>
         </div>
       </div>
     </header>
 
     <!-- MARQUEE -->
-    <div style="position:relative; z-index:10; border-top:1px solid rgba(89,31,40,.5); border-bottom:1px solid rgba(89,31,40,.5); overflow:hidden; padding:16px 0; background:rgba(38,38,38,.35);">
+    <div style="position:relative; z-index:10; border-top:1px solid rgba(89,31,40,.5); border-bottom:1px solid rgba(89,31,40,.5); overflow:hidden; padding:16px 0; background:rgba(89,31,40,.07);">
       <div style="display:flex; width:max-content; animation:ysc-marquee 26s linear infinite; font-family:'Zen Old Mincho',serif; font-size:18px; letter-spacing:.04em; white-space:nowrap;">
-        <span style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);">
+        <span style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(36,23,26,.62);">
           <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
         </span>
-        <span aria-hidden="true" style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(242,235,231,.62);">
+        <span aria-hidden="true" style="display:inline-flex; gap:34px; padding-right:34px; color:rgba(36,23,26,.62);">
           <span>System Architecture</span><span style="color:#CF3147;">✦</span><span>Full-Stack Engineering</span><span style="color:#CF3147;">✦</span><span>Premium Interfaces</span><span style="color:#CF3147;">✦</span><span>Motion &amp; Interaction</span><span style="color:#CF3147;">✦</span><span>Performance</span><span style="color:#CF3147;">✦</span>
         </span>
       </div>
@@ -104,28 +104,28 @@ import coffee from "../assets/sideprojects/coffee.png";
       <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(40px,7vh,72px);">
         <div>
           <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">壱 — Selected Work</div>
-          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#F2EBE7;">Real products,<br>shipped.</h2>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#24171A;">Featured Projects</h2>
         </div>
-        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">A selection of work — from full-stack platforms to premium interfaces, owned end to end.</p>
+        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(36,23,26,.55);">A selection of work — from full-stack platforms to premium interfaces, owned end to end.</p>
       </div>
 
       <!-- FEATURED: Tokenit -->
-      <div class="work-featured" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); align-items:center; border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:clamp(24px,3vw,40px); background:linear-gradient(150deg,rgba(38,38,38,.45),rgba(26,21,23,.2)); margin-bottom:20px;">
+      <div class="work-featured" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); align-items:center; border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:clamp(24px,3vw,40px); background:linear-gradient(150deg,rgba(0,0,0,.045),rgba(255,255,255,.3)); margin-bottom:20px;">
         <div>
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
             <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#CF3147; border:1px solid rgba(207,49,71,.35); border-radius:100px; padding:4px 12px;">01 — Featured</span>
-            <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,235,231,.3);">Investor Platform · Web3</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:rgba(36,23,26,.3);">Investor Platform · Web3</span>
           </div>
-          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(32px,4vw,54px); color:#F2EBE7; line-height:.96; margin-bottom:16px;">Tokenit</h3>
-          <p style="font-size:14px; line-height:1.75; color:rgba(242,235,231,.6); margin-bottom:22px;">A Chilean collective financing platform enabling online investment in fixed real-estate returns through blockchain-tokenized assets. I own both the public marketplace and the investor app.</p>
+          <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(32px,4vw,54px); color:#24171A; line-height:.96; margin-bottom:16px;">Tokenit</h3>
+          <p style="font-size:14px; line-height:1.75; color:rgba(36,23,26,.6); margin-bottom:22px;">A Chilean collective financing platform enabling online investment in fixed real-estate returns through blockchain-tokenized assets. I own both the public marketplace and the investor app.</p>
           <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px;">
             {["Meteor.js","React","Gatsby","Python","MongoDB","Blockchain","Web3","MercadoPago"].map(t => (
-              <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; padding:5px 10px; border:1px solid rgba(89,31,40,.55); border-radius:100px; color:rgba(242,235,231,.52);">{t}</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; padding:5px 10px; border:1px solid rgba(89,31,40,.55); border-radius:100px; color:rgba(36,23,26,.52);">{t}</span>
             ))}
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7; text-decoration:none; border:1px solid #591F28; padding:10px 18px; border-radius:3px; transition:border-color .2s;">Investor App ↗</a>
-            <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,235,231,.55); text-decoration:none; border:1px solid rgba(89,31,40,.4); padding:10px 18px; border-radius:3px; transition:border-color .2s;">Landing ↗</a>
+            <a href="https://app.tokenit.cl" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#24171A; text-decoration:none; border:1px solid #591F28; padding:10px 18px; border-radius:3px; transition:border-color .2s;">Investor App ↗</a>
+            <a href="https://tokenit.cl" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(36,23,26,.55); text-decoration:none; border:1px solid rgba(89,31,40,.4); padding:10px 18px; border-radius:3px; transition:border-color .2s;">Landing ↗</a>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:12px;">
@@ -139,27 +139,30 @@ import coffee from "../assets/sideprojects/coffee.png";
       </div>
 
       <!-- GRID -->
-      <div class="work-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div class="work-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px;">
         {[
-          { n:"02", title:"ZatoBox", cat:"Open Source · POS", img:zatobox, alt:"ZatoBox", tags:["Next.js","TypeScript","Supabase","Docker"] },
-          { n:"03", title:"ConSentido Cognitivo", cat:"Psicopedagogía · Accessibility", img:consentido, alt:"ConSentido Cognitivo", tags:["Next.js","Tailwind CSS","Firebase"] },
-          { n:"04", title:"Liz", cat:"Product · Anime & Manga", img:liz, alt:"Liz", tags:["Vue 3","Pinia","Supabase","AniList API"] },
-          { n:"05", title:"Las Taurinas", cat:"E-commerce · Retail", img:lastaurinas, alt:"Las Taurinas", tags:["Empretienda","CSS3","Mercado Pago"] },
-          { n:"06", title:"Dot Studio", cat:"Studio · Digital Ecosystems", img:dotStudio, alt:"Dot Studio", tags:["Next.js","UI/UX","SEO","E-commerce"], wide:true },
-        ].map(({ n, title, cat, img, alt, tags, wide }) => (
-          <article style={`border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden; background:linear-gradient(150deg,rgba(38,38,38,.4),rgba(26,21,23,.2)); display:flex; flex-direction:column;${wide ? ' grid-column:1/-1;' : ''}`}>
-            <div class={wide ? "work-wide-inner" : ""} style={wide ? "display:grid; grid-template-columns:1.1fr .9fr;" : ""}>
-              <div style={`overflow:hidden; border-bottom:1px solid rgba(89,31,40,.3);${wide ? ' aspect-ratio:4/3;' : ''}`}>
-                <Image src={img} alt={alt} width={640} height={wide ? 480 : 400} style={`width:100%; height:100%; display:block;${wide ? ' object-fit:cover; object-position:center;' : ''}`} />
+          { n:"02", title:"ZatoBox", cat:"Open Source · POS", img:zatobox, alt:"ZatoBox", tags:["Next.js","TypeScript","Supabase","Docker"], url:"https://www.zatobox.io/", desc:"Open-source point-of-sale system with real-time inventory, order management and a Docker-based deployment pipeline." },
+          { n:"03", title:"ConSentido Cognitivo", cat:"Psicopedagogía · Accessibility", img:consentido, alt:"ConSentido Cognitivo", tags:["Next.js","Tailwind CSS","Firebase"], url:"https://www.consentidocognitivo.site/", desc:"Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families and professionals." },
+          { n:"04", title:"Liz", cat:"Product · Anime & Manga", img:liz, alt:"Liz", tags:["Vue 3","Pinia","Supabase","AniList API"], url:"https://liz-beth.vercel.app/", desc:"Anime and manga tracking app powered by the AniList API, with personal lists, progress sync and a clean, fast Vue 3 front end." },
+          { n:"05", title:"Las Taurinas", cat:"E-commerce · Retail", img:lastaurinas, alt:"Las Taurinas", tags:["Empretienda","CSS3","Mercado Pago"], url:"https://lastaurinas.empretienda.com.ar/", desc:"E-commerce storefront for a retail brand, with a custom checkout experience and Mercado Pago integration." },
+          { n:"06", title:"Dot Studio", cat:"Studio · Digital Ecosystems", img:dotStudio, alt:"Dot Studio", tags:["Next.js","UI/UX","SEO","E-commerce"], wide:true, url:"https://www.dot-studio.site/", desc:"Digital ecosystem for a creative studio, combining a marketing site, e-commerce flow and SEO-first architecture." },
+        ].map(({ n, title, cat, img, alt, tags, wide, url, desc }) => (
+          <article class="proj-card" style={`position:relative; border-radius:8px; overflow:hidden; border:1px solid rgba(89,31,40,.4); background:#fff8f0; display:flex; flex-direction:column; transition:border-color .25s,transform .25s,box-shadow .25s;${wide ? ' grid-column:span 2;' : ''}`}>
+            <div class="proj-media" style={`position:relative; overflow:hidden; aspect-ratio:${wide ? '21/9' : '16/10'};`}>
+              <Image src={img} alt={alt} width={800} height={wide ? 343 : 500} class="proj-img" style="width:100%; height:100%; display:block; object-fit:cover; object-position:top; transition:transform .6s ease;" />
+              <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(20,12,13,.88) 0%, rgba(20,12,13,.15) 55%, transparent 78%); pointer-events:none;"></div>
+              <div style="position:absolute; top:14px; left:16px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; color:#CF3147; text-shadow:0 1px 6px rgba(0,0,0,.6);">{n}</div>
+              <div style="position:absolute; bottom:14px; left:16px; right:16px;">
+                <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(20px,2.2vw,28px); color:#F8ECE4; line-height:1.05; margin-bottom:4px; text-shadow:0 2px 10px rgba(0,0,0,.5);">{title}</h3>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:rgba(248,236,228,.75);">{cat}</div>
               </div>
-              <div style={`padding:clamp(16px,2vw,26px);${wide ? ' display:flex; flex-direction:column; justify-content:center; border-left:1px solid rgba(89,31,40,.3); border-bottom:none;' : ''}`}>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:#CF3147; opacity:.8; margin-bottom:6px;">{n}</div>
-                <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(20px,2.2vw,30px); color:#F2EBE7; margin-bottom:6px;">{title}</h3>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,231,.35); margin-bottom:14px;">{cat}</div>
-                <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                  {tags.map(t => <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; padding:4px 10px; border:1px solid rgba(89,31,40,.5); border-radius:100px; color:rgba(242,235,231,.5);">{t}</span>)}
-                </div>
+            </div>
+            <div style="padding:18px 20px 20px; display:flex; flex-direction:column; flex:1;">
+              <p style="font-size:12.5px; line-height:1.65; color:rgba(36,23,26,.6); margin-bottom:14px; flex:1;">{desc}</p>
+              <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
+                {tags.map(t => <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; padding:4px 10px; border:1px solid rgba(89,31,40,.5); border-radius:100px; color:rgba(36,23,26,.5);">{t}</span>)}
               </div>
+              <a href={url} target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#24171A; text-decoration:none; border:1px solid #591F28; padding:10px 16px; border-radius:3px; transition:border-color .2s,color .2s,background .2s;">Visit site <span style="color:#CF3147;">↗</span></a>
             </div>
           </article>
         ))}
@@ -171,9 +174,9 @@ import coffee from "../assets/sideprojects/coffee.png";
       <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(40px,7vh,72px);">
         <div>
           <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">弐 — Side Projects</div>
-          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#F2EBE7;">Visual archive.</h2>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; color:#24171A;">Visual archive.</h2>
         </div>
-        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">A collection of complete projects delivered for real clients, beyond the ones featured above.</p>
+        <p style="max-width:36ch; font-size:14px; line-height:1.7; color:rgba(36,23,26,.55);">A collection of complete projects delivered for real clients, beyond the ones featured above.</p>
       </div>
 
       <div class="sp-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
@@ -186,15 +189,15 @@ import coffee from "../assets/sideprojects/coffee.png";
           <button
             class="sp-card"
             data-index={i}
-            style="all:unset; cursor:pointer; position:relative; border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden; background:rgba(26,21,23,.6); display:block; width:100%; text-align:left;"
+            style="all:unset; cursor:pointer; position:relative; border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden; background:rgba(241,226,212,.6); display:block; width:100%; text-align:left;"
           >
             <div style="overflow:hidden; position:relative;">
               <Image src={img} alt={alt} width={800} height={500} style="width:100%; display:block; object-fit:cover; transition:transform .5s ease;" class="sp-img" />
-              <div class="sp-overlay" style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,21,23,.92) 0%, rgba(26,21,23,.1) 50%, transparent 100%); opacity:0; transition:opacity .35s ease;"></div>
-              <div class="sp-hint" style="position:absolute; bottom:18px; right:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#F2EBE7; opacity:0; transition:opacity .35s ease;">View full ↗</div>
+              <div class="sp-overlay" style="position:absolute; inset:0; background:linear-gradient(to top, rgba(241,226,212,.92) 0%, rgba(241,226,212,.1) 50%, transparent 100%); opacity:0; transition:opacity .35s ease;"></div>
+              <div class="sp-hint" style="position:absolute; bottom:18px; right:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#24171A; opacity:0; transition:opacity .35s ease;">View full ↗</div>
             </div>
             <div style="padding:16px 20px; border-top:1px solid rgba(89,31,40,.35);">
-              <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(18px,2vw,26px); color:#F2EBE7; margin:0;">{title}</h3>
+              <h3 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(18px,2vw,26px); color:#24171A; margin:0;">{title}</h3>
             </div>
           </button>
         ))}
@@ -203,16 +206,16 @@ import coffee from "../assets/sideprojects/coffee.png";
 
     <!-- MODAL SIDE PROJECTS -->
     <div id="sp-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(12,9,10,.92); backdrop-filter:blur(18px); align-items:center; justify-content:center;">
-      <button id="sp-close" style="all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(242,235,231,.6); border:1px solid rgba(89,31,40,.55); padding:10px 18px; border-radius:3px; transition:color .2s,border-color .2s;">✕ Close</button>
+      <button id="sp-close" style="all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(36,23,26,.6); border:1px solid rgba(89,31,40,.55); padding:10px 18px; border-radius:3px; transition:color .2s,border-color .2s;">✕ Close</button>
 
-      <button id="sp-prev" style="all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(242,235,231,.6); font-size:18px; transition:color .2s,border-color .2s;">←</button>
-      <button id="sp-next" style="all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(242,235,231,.6); font-size:18px; transition:color .2s,border-color .2s;">→</button>
+      <button id="sp-prev" style="all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(36,23,26,.6); font-size:18px; transition:color .2s,border-color .2s;">←</button>
+      <button id="sp-next" style="all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(89,31,40,.55); border-radius:3px; display:flex; align-items:center; justify-content:center; color:rgba(36,23,26,.6); font-size:18px; transition:color .2s,border-color .2s;">→</button>
 
-      <div style="position:relative; width:min(90vw,820px); max-height:88vh; overflow-y:auto; border:1px solid rgba(89,31,40,.5); border-radius:8px; background:#1a1517; scrollbar-width:thin; scrollbar-color:#591F28 transparent;">
-        <div style="padding:22px 26px 14px; border-bottom:1px solid rgba(89,31,40,.4); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; background:#1a1517; z-index:5;">
+      <div style="position:relative; width:min(90vw,820px); max-height:88vh; overflow-y:auto; border:1px solid rgba(89,31,40,.5); border-radius:8px; background:#f1e2d4; scrollbar-width:thin; scrollbar-color:#591F28 transparent;">
+        <div style="padding:22px 26px 14px; border-bottom:1px solid rgba(89,31,40,.4); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; background:#f1e2d4; z-index:5;">
           <div>
             <div id="sp-modal-num" style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:4px;"></div>
-            <h3 id="sp-modal-title" style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#F2EBE7; margin:0;"></h3>
+            <h3 id="sp-modal-title" style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:26px; color:#24171A; margin:0;"></h3>
           </div>
         </div>
         <div style="padding:0;">
@@ -226,12 +229,12 @@ import coffee from "../assets/sideprojects/coffee.png";
       <div class="r-hero" style="display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(36px,6vw,90px); align-items:start;">
         <div>
           <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">弐 — The Engineer</div>
-          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1.02; color:#F2EBE7; margin-bottom:26px;">Built with heart<br>&amp; surgical precision.</h2>
-          <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch; margin-bottom:20px;">Hi, I'm <span style="color:#F2EBE7;">Francisco Espindola</span> — a Full Stack Engineer working end to end to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture, where every detail — from typography to deploy — has weight. If an idea sparks, chances are I'll build it and ship it.</p>
-          <p style="font-size:15px; line-height:1.8; color:rgba(242,235,231,.64); max-width:52ch;">I'm obsessed with pixel-perfect details and I code better with my favorite soundtracks on. When I'm not building, I'm gaming or reading manga — always chasing the next challenge.</p>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1.02; color:#24171A; margin-bottom:26px;">Built with heart<br>&amp; surgical precision.</h2>
+          <p style="font-size:15px; line-height:1.8; color:rgba(36,23,26,.64); max-width:52ch; margin-bottom:20px;">Hi, I'm <span style="color:#24171A;">Francisco Espindola</span> — a Full Stack Engineer working end to end to ship high-performance web applications, premium interfaces and motion-driven experiences. My focus lives at the intersection of design, performance and architecture, where every detail — from typography to deploy — has weight. If an idea sparks, chances are I'll build it and ship it.</p>
+          <p style="font-size:15px; line-height:1.8; color:rgba(36,23,26,.64); max-width:52ch;">I'm obsessed with pixel-perfect details and I code better with my favorite soundtracks on. When I'm not building, I'm gaming or reading manga — always chasing the next challenge.</p>
           <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;">
             {["アニメ Anime","ゲーム Gaming","音楽 Music Lover","物作り Building Things"].map(tag => (
-              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(242,235,231,.7);">{tag}</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding:9px 15px; border:1px solid rgba(89,31,40,.6); border-radius:100px; color:rgba(36,23,26,.7);">{tag}</span>
             ))}
           </div>
         </div>
@@ -241,9 +244,9 @@ import coffee from "../assets/sideprojects/coffee.png";
             { label: "Focus State", text: "Music is my secret for deep work sessions." },
             { label: "Tech DNA", text: "Obsessed with clean architecture and modern stacks." },
           ].map(({ label, text }) => (
-            <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(38,38,38,.5),rgba(26,21,23,.2));">
+            <div style="border:1px solid rgba(89,31,40,.5); border-radius:6px; padding:24px; background:linear-gradient(150deg,rgba(0,0,0,.05),rgba(255,255,255,.3));">
               <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:#CF3147; margin-bottom:10px;">{label}</div>
-              <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#F2EBE7;">{text}</p>
+              <p style="font-family:'Zen Old Mincho',serif; font-size:19px; line-height:1.5; color:#24171A;">{text}</p>
             </div>
           ))}
         </div>
@@ -254,31 +257,31 @@ import coffee from "../assets/sideprojects/coffee.png";
     <section id="history" style="position:relative; z-index:10; padding:clamp(64px,10vh,120px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45);">
       <div style="margin-bottom:54px;">
         <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">参 — History</div>
-        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Experience &amp; Education.</h2>
+        <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#24171A;">Experience &amp; Education.</h2>
       </div>
 
       <div class="r-hero" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,72px);">
         <!-- Work -->
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Work Background</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(36,23,26,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Work Background</div>
           <div style="display:flex; flex-direction:column; gap:24px;">
             {[
               { company: "Niuro", badge: "Currently", date: "Dec 2025 — Present", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform. Building and maintaining the public marketplace and the investor dashboard — real-time monitoring, KYC, digital signing and AI risk scoring.", active: true, clients: ["Client: Tokenit", "Product: Tokenit", "Product: Faena — in development"] },
-              { company: "Dot Studio", badge: "Currently", date: "Aug 2024 — Present", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions, and creating tech content that bridges complex code and community learning.", active: true },
+              { company: "YSC by frysccou", badge: "Currently", date: "Aug 2024 — Present", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions, and creating tech content that bridges complex code and community learning.", active: true },
               { company: "ZatoBox", badge: null, date: "Aug 2025 — Dec 2025", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps Lead overseeing the full software development lifecycle. Led platform architecture from conception to deployment, specializing in advanced data-recognition systems and decentralized infrastructure.", active: false },
               { company: "Dragon Pyramid", badge: null, date: "Jun 2025 — Oct 2025", role: "Full Stack Engineer", desc: "Front-end focused work on the Gym Master project. Modern interfaces with Next.js 14, TailwindCSS and Shadcn UI; auth with NextAuth, real-time notifications and dynamic data from Supabase.", active: false },
             ].map(({ company, badge, date, role, desc, active, clients }) => (
               <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
                 <span style={`position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:${active ? '#CF3147' : '#591F28'};`}></span>
                 <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
-                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">{company}</h4>
+                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#24171A;">{company}</h4>
                   {badge && <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">{badge}</span>}
-                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">{date}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(36,23,26,.45);">{date}</span>
                 </div>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">{role}</div>
-                <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">{desc}</p>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(36,23,26,.62); margin-bottom:8px;">{role}</div>
+                <p style="font-size:13px; line-height:1.65; color:rgba(36,23,26,.55);">{desc}</p>
                 {clients && <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">
-                  {clients.map(c => <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.06em; padding:4px 10px; border:1px solid rgba(89,31,40,.5); border-radius:100px; color:rgba(242,235,231,.55);">{c}</span>)}
+                  {clients.map(c => <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.06em; padding:4px 10px; border:1px solid rgba(89,31,40,.5); border-radius:100px; color:rgba(36,23,26,.55);">{c}</span>)}
                 </div>}
               </div>
             ))}
@@ -287,7 +290,7 @@ import coffee from "../assets/sideprojects/coffee.png";
 
         <!-- Education -->
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(242,235,231,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Academic Background</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(36,23,26,.55); margin-bottom:26px; padding-bottom:14px; border-bottom:1px solid rgba(89,31,40,.45);">Academic Background</div>
           <div style="display:flex; flex-direction:column; gap:24px;">
             {[
               { school: "Inst. Sup. Santo Domingo", badge: "Currently", date: "2025 — Present", role: "Web Development & Mobile Applications", desc: "Comprehensive training in modern web and mobile development technologies and methodologies.", active: true },
@@ -298,12 +301,12 @@ import coffee from "../assets/sideprojects/coffee.png";
               <div style="border-left:1px solid rgba(89,31,40,.6); padding-left:22px; position:relative;">
                 <span style={`position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:${active ? '#CF3147' : '#591F28'};`}></span>
                 <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
-                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#F2EBE7;">{school}</h4>
+                  <h4 style="font-family:'Zen Old Mincho',serif; font-size:21px; color:#24171A;">{school}</h4>
                   {badge && <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CF3147; border:1px solid #591F28; border-radius:100px; padding:3px 9px;">{badge}</span>}
-                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(242,235,231,.45);">{date}</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; color:rgba(36,23,26,.45);">{date}</span>
                 </div>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(242,235,231,.62); margin-bottom:8px;">{role}</div>
-                <p style="font-size:13px; line-height:1.65; color:rgba(242,235,231,.55);">{desc}</p>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:rgba(36,23,26,.62); margin-bottom:8px;">{role}</div>
+                <p style="font-size:13px; line-height:1.65; color:rgba(36,23,26,.55);">{desc}</p>
               </div>
             ))}
           </div>
@@ -316,9 +319,9 @@ import coffee from "../assets/sideprojects/coffee.png";
       <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:50px;">
         <div>
           <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:#CF3147; margin-bottom:18px;">肆 — Toolkit</div>
-          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#F2EBE7;">Full tech stack.</h2>
+          <h2 style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:clamp(34px,4.6vw,62px); line-height:1; color:#24171A;">Full tech stack.</h2>
         </div>
-        <p style="max-width:38ch; font-size:14px; line-height:1.7; color:rgba(242,235,231,.55);">End-to-end mastery across modern web technologies, performance engineering and scalable architectures.</p>
+        <p style="max-width:38ch; font-size:14px; line-height:1.7; color:rgba(36,23,26,.55);">End-to-end mastery across modern web technologies, performance engineering and scalable architectures.</p>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1px; background:rgba(89,31,40,.45); border:1px solid rgba(89,31,40,.45); border-radius:6px; overflow:hidden;">
@@ -332,14 +335,14 @@ import coffee from "../assets/sideprojects/coffee.png";
           { kanji: "蓄積", label: "Databases", items: ["MongoDB","Supabase","Firebase","MySQL","PostgreSQL","Convex"] },
           { kanji: "道具", label: "Tools & DevOps", items: ["Docker","GitHub","Git","AWS"] },
         ].map(({ kanji, label, items }) => (
-          <div style="background:#1a1517; padding:26px 24px;">
+          <div style="background:#f1e2d4; padding:26px 24px;">
             <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:18px;">
               <span style="font-family:'Zen Old Mincho',serif; font-size:22px; color:#CF3147;">{kanji}</span>
-              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#F2EBE7;">{label}</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#24171A;">{label}</span>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px;">
               {items.map(item => (
-                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(242,235,231,.72);">{item}</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 11px; border:1px solid rgba(89,31,40,.6); border-radius:4px; color:rgba(36,23,26,.72);">{item}</span>
               ))}
             </div>
           </div>
@@ -350,30 +353,29 @@ import coffee from "../assets/sideprojects/coffee.png";
     <!-- CONTACT -->
     <section id="contact" style="position:relative; z-index:10; padding:clamp(72px,12vh,140px) clamp(28px,6vw,96px); text-align:center; border-top:1px solid rgba(89,31,40,.45); background:radial-gradient(ellipse at center, rgba(89,31,40,.32), transparent 70%);">
       <div style="font-family:'Zen Old Mincho',serif; font-size:34px; color:#CF3147; margin-bottom:22px;">結</div>
-      <h2 style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(40px,6.6vw,96px); line-height:.98; color:#F2EBE7; max-width:16ch; margin:0 auto 26px;">Build something great.</h2>
-      <p style="max-width:48ch; margin:0 auto 40px; font-size:15.5px; line-height:1.7; color:rgba(242,235,231,.62);">Open for freelance projects, collaborations and full-time opportunities. Tell me about it — scope and timing, we figure out together. Let's make something worth remembering.</p>
+      <h2 style="font-family:'Zen Old Mincho',serif; font-weight:900; font-size:clamp(40px,6.6vw,96px); line-height:.98; color:#24171A; max-width:16ch; margin:0 auto 26px;">Build something great.</h2>
+      <p style="max-width:48ch; margin:0 auto 40px; font-size:15.5px; line-height:1.7; color:rgba(36,23,26,.62);">Open for freelance projects, collaborations and full-time opportunities. Tell me about it — scope and timing, we figure out together. Let's make something worth remembering.</p>
       <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
-        <a href="mailto:franchuespindola25@gmail.com" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border-radius:3px; transition:background .2s;">Get in touch <span>↗</span></a>
-        <a href="#work" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#F2EBE7; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Revisit the work</a>
+        <a href="mailto:franchuespindola25@gmail.com" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; background:#CF3147; color:#F8ECE4; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border-radius:3px; transition:background .2s;">Get in touch <span>↗</span></a>
+        <a href="#work" class="btn-outline" style="display:inline-flex; align-items:center; gap:10px; background:transparent; color:#24171A; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding:18px 30px; border:1px solid #591F28; border-radius:3px; transition:border-color .2s,color .2s;">Revisit the work</a>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer style="position:relative; z-index:10; padding:clamp(40px,6vh,64px) clamp(28px,6vw,96px); border-top:1px solid rgba(89,31,40,.45); display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:space-between;">
       <div style="display:flex; align-items:center; gap:14px;">
-        <img src="/ysc-2d.png" alt="YSC" style="width:30px; height:34px; object-fit:contain; display:block; opacity:.85;" />
+        <Image src={logo} alt="YSC" width={176} height={88} style="height:48px; width:auto; object-fit:contain; display:block;" />
         <div style="display:flex; flex-direction:column; line-height:1.3;">
-          <span style="font-family:'Zen Old Mincho',serif; font-weight:700; font-size:18px; letter-spacing:.22em;">YSC</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.24em; color:rgba(242,235,231,.4); text-transform:uppercase;">© 2026 · Buenos Aires</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.24em; color:rgba(36,23,26,.4); text-transform:uppercase;">© 2026 · Buenos Aires</span>
         </div>
       </div>
       <div style="display:flex; flex-wrap:wrap; gap:22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;">
-        <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">GitHub</a>
-        <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">LinkedIn</a>
-        <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">Instagram</a>
-        <a href="mailto:franchuespindola25@gmail.com" class="footer-link" style="color:rgba(242,235,231,.7); text-decoration:none; transition:color .2s;">Email</a>
+        <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="color:rgba(36,23,26,.7); text-decoration:none; transition:color .2s;">GitHub</a>
+        <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="color:rgba(36,23,26,.7); text-decoration:none; transition:color .2s;">LinkedIn</a>
+        <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="color:rgba(36,23,26,.7); text-decoration:none; transition:color .2s;">Instagram</a>
+        <a href="mailto:franchuespindola25@gmail.com" class="footer-link" style="color:rgba(36,23,26,.7); text-decoration:none; transition:color .2s;">Email</a>
       </div>
-      <div style="font-family:'Zen Old Mincho',serif; font-size:14px; letter-spacing:.2em; color:rgba(242,235,231,.45);">工房 · Buenos Aires</div>
+      <div style="font-family:'Zen Old Mincho',serif; font-size:14px; letter-spacing:.2em; color:rgba(36,23,26,.45);">工房 · Buenos Aires</div>
     </footer>
 
   </div>
