@@ -19,6 +19,7 @@ const RAIL = [
   { label: "Intro", href: "#top" },
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Archive", href: "#side-projects" },
   { label: "Log", href: "#experience" },
   { label: "Stack", href: "#tech" },
@@ -32,6 +33,12 @@ const SERVICES = [
   { n: "04", title: "E-Commerce", desc: "Secure and scalable online stores with the best experience." },
   { n: "05", title: "Web Applications", desc: "Custom web apps built with the right tools for your needs." },
   { n: "06", title: "Maintenance", desc: "Keep your website updated, secure and running smoothly." },
+];
+
+const PRICING = [
+  { n: "01", title: "Basic Landing", price: "199", desc: "A focused one-pager to validate an idea or get a small business online fast — built right, nothing missing.", features: ["Up to 4 sections (hero, about, services, contact)", "Contact form wired to your email", "Responsive design", "Basic on-page SEO", "1 round of revisions", "1-3 days delivery"] },
+  { n: "02", title: "Standard Landing", price: "299", desc: "For businesses that need more room to explain themselves — more content, more trust signals, still lean.", features: ["Up to 7 sections (+ testimonials, FAQ, gallery)", "WhatsApp / social integrations", "Responsive design", "Full on-page SEO (meta tags, sitemap)", "2 rounds of revisions", "2-5 days delivery"], highlight: true },
+  { n: "03", title: "Professional Landing", price: "409", desc: "The complete package — built with the same care as this portfolio, tuned for conversion and performance.", features: ["Unlimited sections, tailored structure", "Custom motion design & interactions", "Performance & Core Web Vitals tuning", "Analytics setup (GA / Meta Pixel)", "3 rounds of revisions", "15 days of post-launch support"] },
 ];
 
 const PROJECTS = [
@@ -49,25 +56,25 @@ const SIDE_PROJECTS = [
 ];
 
 const TIMELINE = [
-  { year: "2026", type: "Education", title: "Codigo Facilito", role: "Modern Frontend Bootcamp", date: "Graduated Jan 2026", active: false },
-  { year: "2025", type: "Work", title: "Niuro", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform. Real-time monitoring, KYC, digital signing and AI risk scoring.", date: "Dec 2025 — Present", active: true },
-  { year: "2025", type: "Work", title: "ZatoBox", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps Lead overseeing the full software development lifecycle — architecture from conception to deployment.", date: "Aug — Dec 2025", active: false },
-  { year: "2025", type: "Work", title: "Dragon Pyramid", role: "Full Stack Engineer", desc: "Front-end focused work on the Gym Master project — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.", date: "Jun — Oct 2025", active: false },
-  { year: "2025", type: "Education", title: "Inst. Sup. Santo Domingo", role: "Web Development & Mobile Applications", date: "2025 — Present", active: true },
-  { year: "2025", type: "Education", title: "Henry", role: "Full Stack Development Bootcamp", date: "Graduated Jun 2025", active: false },
-  { year: "2025", type: "Education", title: "Coderhouse", role: "Full Stack Development Program", date: "Graduated Feb 2025", active: false },
-  { year: "2024", type: "Work", title: "YSC by frysccou", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions and creating tech content.", date: "Aug 2024 — Present", active: true },
+  { id: "codigo-facilito", year: "2026", type: "Education", title: "Codigo Facilito", role: "Modern Frontend Bootcamp", date: "Graduated Jan 2026", active: false },
+  { id: "niuro", year: "2025", type: "Work", title: "Niuro", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform. Real-time monitoring, KYC, digital signing and AI risk scoring.", date: "Dec 2025 — Present", active: true },
+  { id: "zatobox-work", year: "2025", type: "Work", title: "ZatoBox", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps Lead overseeing the full software development lifecycle — architecture from conception to deployment.", date: "Aug — Dec 2025", active: false },
+  { id: "dragon-pyramid", year: "2025", type: "Work", title: "Dragon Pyramid", role: "Full Stack Engineer", desc: "Front-end focused work on the Gym Master project — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.", date: "Jun — Oct 2025", active: false },
+  { id: "issd", year: "2025", type: "Education", title: "Inst. Sup. Santo Domingo", role: "Web Development & Mobile Applications", date: "2025 — Present", active: true },
+  { id: "henry", year: "2025", type: "Education", title: "Henry", role: "Full Stack Development Bootcamp", date: "Graduated Jun 2025", active: false },
+  { id: "coderhouse", year: "2025", type: "Education", title: "Coderhouse", role: "Full Stack Development Program", date: "Graduated Feb 2025", active: false },
+  { id: "ysc", year: "2024", type: "Work", title: "YSC by frysccou", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions and creating tech content.", date: "Aug 2024 — Present", active: true },
 ];
 
 const TECH_STACK = [
-  { label: "Core Languages", items: ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "Python", "PHP"] },
-  { label: "Frontend", items: ["React", "Vue", "Angular", "Gatsby"] },
-  { label: "Backend", items: ["Node.js", "NestJS", "Spring Boot", "Django", "FastAPI", "Laravel"] },
-  { label: "Meta-frameworks", items: ["Next.js", "Nuxt.js", "Meteor", "Astro"] },
-  { label: "Mobile", items: ["Flutter", "Dart", "React Native"] },
-  { label: "Styling & Design", items: ["Tailwind CSS", "Bootstrap", "Figma", "Photoshop"] },
-  { label: "Databases", items: ["MongoDB", "Supabase", "Firebase", "MySQL", "PostgreSQL", "Convex"] },
-  { label: "Tools & DevOps", items: ["Docker", "GitHub", "Git", "AWS"] },
+  { id: "core-languages", label: "Core Languages", items: ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "Python", "PHP"] },
+  { id: "frontend", label: "Frontend", items: ["React", "Vue", "Angular", "Gatsby"] },
+  { id: "backend", label: "Backend", items: ["Node.js", "NestJS", "Spring Boot", "Django", "FastAPI", "Laravel"] },
+  { id: "meta-frameworks", label: "Meta-frameworks", items: ["Next.js", "Nuxt.js", "Meteor", "Astro"] },
+  { id: "mobile", label: "Mobile", items: ["Flutter", "Dart", "React Native"] },
+  { id: "styling-design", label: "Styling & Design", items: ["Tailwind CSS", "Bootstrap", "Figma", "Photoshop"] },
+  { id: "databases", label: "Databases", items: ["MongoDB", "Supabase", "Firebase", "MySQL", "PostgreSQL", "Convex"] },
+  { id: "tools-devops", label: "Tools & DevOps", items: ["Docker", "GitHub", "Git", "AWS"] },
 ];
 
 const FOOTER_NAV = [
@@ -77,7 +84,7 @@ const FOOTER_NAV = [
   { label: "Log", href: "#experience" },
   { label: "Stack", href: "#tech" },
 ];
-const FOOTER_SERVICES = SERVICES.map(s => s.title);
+const FOOTER_SERVICES = SERVICES;
 
 const INK = "#1c1512";
 const CREAM = "#f2e4d0";
@@ -100,21 +107,25 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       <a href="#top" style="display:flex;"><Image src={logo} alt="YSC" width={1774} height={887} style="width:48px; height:auto; object-fit:contain;" /></a>
       <div style="display:flex; flex-direction:column; align-items:center; gap:30px;">
         {RAIL.map(({ label, href }) => (
-          <a href={href} data-rail={href} class="rail-link" style={`writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:${INK}; opacity:.4; text-decoration:none; transition:opacity .2s,color .2s;`}>{label}</a>
+          <a href={href} data-rail={href} data-i18n={`nav.${href.slice(1)}`} class="rail-link" style={`writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:${INK}; opacity:.4; text-decoration:none; transition:opacity .2s,color .2s;`}>{label}</a>
         ))}
       </div>
-      <div style={`width:20px; height:20px; color:${RED};`} set:html={STAMP} />
+      <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+        <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.04em; color:${INK}; border:1px solid ${INK};`}>ES</button>
+        <div style={`width:20px; height:20px; color:${RED};`} set:html={STAMP} />
+      </div>
     </nav>
 
     <!-- TOP BAR -->
     <div class="topbar" style={`position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:20px; height:52px; padding:0 clamp(20px,4vw,48px); background:rgba(242,228,208,.9); backdrop-filter:blur(10px); border-bottom:1px solid ${LINE};`}>
       <div class="mobile-nav" style="display:none; overflow-x:auto; gap:16px; flex:1;">
         {RAIL.map(({ label, href }) => (
-          <a href={href} style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; opacity:.65; text-decoration:none; white-space:nowrap;`}>{label}</a>
+          <a href={href} data-i18n={`nav.${href.slice(1)}`} style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; opacity:.65; text-decoration:none; white-space:nowrap;`}>{label}</a>
         ))}
       </div>
+      <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10.5px; letter-spacing:.04em; color:${INK}; border:1px solid ${INK};`}>ES</button>
       <a href="#contact" class="avail-link" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${INK}; text-decoration:none; display:flex; align-items:center; gap:8px; white-space:nowrap; margin-left:auto;`}>
-        <span style={`width:6px; height:6px; background:${RED}; display:inline-block; flex-shrink:0;`}></span> <span class="avail-full">Available for work — get in touch</span><span class="avail-short" style="display:none;">Get in touch</span> ↗
+        <span style={`width:6px; height:6px; background:${RED}; display:inline-block; flex-shrink:0;`}></span> <span class="avail-full" data-i18n="avail.full">Available for work — get in touch</span><span class="avail-short" data-i18n="avail.short" style="display:none;">Get in touch</span> ↗
       </a>
     </div>
 
@@ -127,7 +138,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
           <span style="display:inline-flex; gap:26px; padding-right:26px;">
             {Array.from({ length: 2 }).map(() => (
               <>
-                <span style={`color:${RED};`}>結</span><span>Full Stack Engineer</span><span style={`color:${RED};`}>✦</span><span>Buenos Aires, AR</span><span style={`color:${RED};`}>✦</span><span>Est. 2024</span><span style={`color:${RED};`}>✦</span><span>Available for work</span><span style={`color:${RED};`}>✦</span>
+                <span style={`color:${RED};`}>結</span><span data-i18n="hero.marquee.role">Full Stack Engineer</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.location">Buenos Aires, AR</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.est">Est. 2024</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.available">Available for work</span><span style={`color:${RED};`}>✦</span>
               </>
             ))}
           </span>
@@ -135,18 +146,18 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       </div>
 
       <h1 class="r-h1" style={`font-family:'Poppins',sans-serif; font-weight:900; letter-spacing:-.03em; color:${INK}; line-height:.92;`}>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px);">I build</span>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,10vw,140px);"><span style={`color:${RED};`}>digital</span> products</span>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,4vw,60px);">that feel effortless.</span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px);" data-i18n="hero.h1.line1">I build</span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,10vw,140px);"><span style={`color:${RED};`} data-i18n="hero.h1.digital">digital</span> <span data-i18n="hero.h1.products">products</span></span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,4vw,60px);" data-i18n="hero.h1.line3">that feel effortless.</span>
       </h1>
 
       <div class="hero-grid" style="display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(24px,4vw,56px); margin-top:clamp(36px,6vh,64px); align-items:end;">
-        <p style="max-width:54ch; font-size:16px; line-height:1.7; color:rgba(28,21,18,.6);">
+        <p style="max-width:54ch; font-size:16px; line-height:1.7; color:rgba(28,21,18,.6);" data-i18n="hero.intro">
           Francisco Espindola — Full Stack Engineer crafting fast, elegant and reliable web experiences, from pixel-perfect interfaces to scalable back-end architecture. This page is my open case file: what I've shipped, who I've shipped it for, and how to reach me.
         </p>
         <div class="hero-btns" style="display:flex; flex-direction:column; gap:0;">
-          <a href="#contact" class="btn-primary" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:${RED}; padding:16px 24px; border:1px solid ${RED}; text-align:center;`}>Start a project →</a>
-          <a href="#work" class="btn-outline hero-btn-2" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:transparent; padding:16px 24px; border:1px solid ${INK}; border-top:none; text-align:center;`}>View the work</a>
+          <a href="#contact" class="btn-primary" data-i18n="hero.btn.start" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:${RED}; padding:16px 24px; border:1px solid ${RED}; text-align:center;`}>Start a project →</a>
+          <a href="#work" class="btn-outline hero-btn-2" data-i18n="hero.btn.view" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:transparent; padding:16px 24px; border:1px solid ${INK}; border-top:none; text-align:center;`}>View the work</a>
         </div>
       </div>
     </header>
@@ -154,8 +165,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- SERVICES -->
     <section id="services" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`}>Services — what I can do for you</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{SERVICES.length} disciplines</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="services.header">Services — what I can do for you</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{SERVICES.length} <span data-i18n="services.count">disciplines</span></span>
       </div>
 
       <div style={`border-top:1px solid ${INK};`}>
@@ -163,22 +174,56 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
           <div class="menu-row" style={`border-bottom:1px solid ${LINE};`}>
             <div style="display:flex; align-items:center; gap:18px; padding:20px 4px; cursor:default;">
               <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED}; flex-shrink:0;`}>{n}</span>
-              <h3 class="menu-title" style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(20px,2.6vw,30px); color:${INK}; white-space:nowrap;`}>{title}</h3>
+              <h3 class="menu-title" data-i18n={`services.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(20px,2.6vw,30px); color:${INK}; white-space:nowrap;`}>{title}</h3>
               <span class="leader" style={`flex:1; border-bottom:1px dotted rgba(28,21,18,.3); margin:0 4px; transform:translateY(-6px);`}></span>
             </div>
             <div class="menu-desc" style="max-height:0; overflow:hidden; transition:max-height .35s ease;">
-              <p style="font-size:13.5px; line-height:1.6; color:rgba(28,21,18,.55); padding:0 4px 20px 40px; max-width:56ch;">{desc}</p>
+              <p data-i18n={`services.${n}.desc`} style="font-size:13.5px; line-height:1.6; color:rgba(28,21,18,.55); padding:0 4px 20px 40px; max-width:56ch;">{desc}</p>
             </div>
           </div>
         ))}
       </div>
     </section>
 
+    <!-- PRICING -->
+    <section id="pricing" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="pricing.header">Pricing — landing pages</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="pricing.usd">Prices in USD</span>
+      </div>
+
+      <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #1c1512; border-left:1px solid #1c1512;">
+        {PRICING.map(({ n, title, price, desc, features, highlight }) => (
+          <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${INK}; color:${CREAM};` : ''}`}>
+            {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${CREAM}; background:${RED}; padding:5px 10px;`}>Most chosen</span>}
+            <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED};`}>{n}</span>
+            <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? CREAM : INK};`}>{title}</h3>
+            <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:14px;">
+              <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,4vw,42px); color:${highlight ? CREAM : INK};`}>${price}</span>
+              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${highlight ? 'rgba(242,228,208,.5)' : 'rgba(28,21,18,.4)'};`} data-i18n="pricing.currency">USD</span>
+            </div>
+            <p data-i18n={`pricing.${n}.desc`} style={`font-size:13px; line-height:1.6; margin-bottom:18px; color:${highlight ? 'rgba(242,228,208,.65)' : 'rgba(28,21,18,.55)'};`}>{desc}</p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+              {features.map((f, i) => (
+                <li style={`display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:${highlight ? 'rgba(242,228,208,.8)' : 'rgba(28,21,18,.65)'};`}>
+                  <span style={`color:${RED};`}>✦</span> <span data-i18n={`pricing.${n}.feature.${i}`}>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <p style="font-size:12.5px; line-height:1.7; color:rgba(28,21,18,.5); max-width:70ch; margin-top:20px;" data-i18n="pricing.note">
+        Prices shown are for landing pages only. Business websites, e-commerce, web apps and other projects are quoted based on your specific needs — <a href="#contact" style={`color:${INK}; text-decoration:underline;`}>get in touch</a> for a quote. In every case, hosting, domain and any third-party services are paid directly by you — they are not included in the price.
+      </p>
+    </section>
+
     <!-- FEATURED WORK -->
     <section id="work" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px) 0; border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`}>Work — selected exhibits</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{PROJECTS.length} case files</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="work.header">Work — selected exhibits</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{PROJECTS.length} <span data-i18n="work.count">case files</span></span>
       </div>
 
       {PROJECTS.map(({ n, title, cat, img, alt, desc, tags, url }, i) => (
@@ -190,13 +235,13 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
           </div>
 
           <div style={`position:relative; z-index:1; order:${i % 2 === 0 ? 2 : 1};`}>
-            <div style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${RED}; margin-bottom:10px;`}>Exhibit №{n} — {cat}</div>
+            <div style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${RED}; margin-bottom:10px;`}><span data-i18n="work.exhibitLabel">Exhibit №</span>{n} — <span data-i18n={`work.${n}.cat`}>{cat}</span></div>
             <h3 style={`font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(28px,3.6vw,44px); color:${INK}; line-height:1; margin-bottom:16px;`}>{title}</h3>
-            <p style="font-size:14.5px; line-height:1.7; color:rgba(28,21,18,.6); max-width:48ch; margin-bottom:20px;">{desc}</p>
+            <p data-i18n={`work.${n}.desc`} style="font-size:14.5px; line-height:1.7; color:rgba(28,21,18,.6); max-width:48ch; margin-bottom:20px;">{desc}</p>
             <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px;">
               {tags.map(t => <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; padding:4px 10px; border:1px solid ${LINE}; color:rgba(28,21,18,.55);`}>{t}</span>)}
             </div>
-            <a href={url} target="_blank" rel="noopener noreferrer" class="exhibit-link" style={`display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; text-decoration:none; border-bottom:1px solid ${INK}; padding-bottom:3px;`}>Open case file <span>↗</span></a>
+            <a href={url} target="_blank" rel="noopener noreferrer" class="exhibit-link" style={`display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; text-decoration:none; border-bottom:1px solid ${INK}; padding-bottom:3px;`}><span data-i18n="work.openCase">Open case file</span> <span>↗</span></a>
           </div>
         </article>
       ))}
@@ -205,8 +250,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- SIDE PROJECTS -->
     <section id="side-projects" style={`padding:clamp(56px,9vh,100px) 0; border-bottom:1px solid ${LINE};`}>
       <div class="r-pad" style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,44px); padding-left:clamp(24px,5vw,64px); padding-right:clamp(24px,5vw,64px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`}>Archive — visual reel</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">Scroll to browse →</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="archive.header">Archive — visual reel</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="archive.scroll">Scroll to browse →</span>
       </div>
 
       <div class="reel" style="display:flex; justify-content:safe center; gap:16px; overflow-x:auto; padding:0 clamp(24px,5vw,64px) 12px; scroll-snap-type:x proximity;">
@@ -226,7 +271,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     <!-- MODAL SIDE PROJECTS -->
     <div id="sp-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(12,9,10,.94); align-items:center; justify-content:center;">
-      <button id="sp-close" style={`all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${CREAM}; border:1px solid rgba(245,230,210,.35); padding:10px 18px;`}>✕ Close</button>
+      <button id="sp-close" style={`all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${CREAM}; border:1px solid rgba(245,230,210,.35); padding:10px 18px;`}>✕ <span data-i18n="modal.close">Close</span></button>
       <button id="sp-prev" style={`all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${CREAM}; font-size:18px;`}>←</button>
       <button id="sp-next" style={`all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${CREAM}; font-size:18px;`}>→</button>
 
@@ -242,8 +287,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- EXPERIENCE / LOG -->
     <section id="experience" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`}>Log — where I've been</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">Work &amp; education, reverse-chronological</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="log.header">Log — where I've been</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="log.subtitle">Work &amp; education, reverse-chronological</span>
       </div>
 
       {Object.entries(
@@ -255,17 +300,17 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
         <div class="log-year" style={`display:grid; grid-template-columns:140px 1fr; gap:clamp(16px,3vw,32px); border-top:1px solid ${INK}; padding:clamp(20px,3vh,32px) 0;`}>
           <div style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(40px,5vw,64px); color:${INK}; line-height:1;`}>{year}</div>
           <div>
-            {entries.map(({ type, title, role, desc, date, active }) => (
+            {entries.map(({ id, type, title, role, desc, date, active }) => (
               <div style="padding:14px 0; display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:start;">
-                <span style={`font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:${RED}; border:1px solid rgba(155,30,41,.4); padding:3px 8px; margin-top:3px; white-space:nowrap;`}>{type}</span>
+                <span data-i18n={`log.type.${type.toLowerCase()}`} style={`font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:${RED}; border:1px solid rgba(155,30,41,.4); padding:3px 8px; margin-top:3px; white-space:nowrap;`}>{type}</span>
                 <div>
                   <div style="display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:3px;">
                     {active && <span style={`width:6px; height:6px; background:${RED}; display:inline-block; border-radius:50%;`}></span>}
                     <h4 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:16.5px; color:${INK};`}>{title}</h4>
-                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(28,21,18,.4);">{date}</span>
+                    <span data-i18n={`log.${id}.date`} style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(28,21,18,.4);">{date}</span>
                   </div>
-                  <div style="font-family:'Inter',sans-serif; font-weight:600; font-size:12.5px; color:rgba(28,21,18,.6); margin-bottom:4px;">{role}</div>
-                  {desc && <p style="font-size:12.5px; line-height:1.6; color:rgba(28,21,18,.5); max-width:60ch;">{desc}</p>}
+                  <div data-i18n={`log.${id}.role`} style="font-family:'Inter',sans-serif; font-weight:600; font-size:12.5px; color:rgba(28,21,18,.6); margin-bottom:4px;">{role}</div>
+                  {desc && <p data-i18n={`log.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(28,21,18,.5); max-width:60ch;">{desc}</p>}
                 </div>
               </div>
             ))}
@@ -277,14 +322,14 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- FULL TECH STACK -->
     <section id="tech" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,44px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`}>Stack — the full index</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{TECH_STACK.reduce((n, g) => n + g.items.length, 0)} technologies</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="tech.header">Stack — the full index</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{TECH_STACK.reduce((n, g) => n + g.items.length, 0)} <span data-i18n="tech.count">technologies</span></span>
       </div>
 
       <div style={`border-top:1px solid ${INK};`}>
-        {TECH_STACK.map(({ label, items }) => (
+        {TECH_STACK.map(({ id, label, items }) => (
           <div style={`padding:16px 0; border-bottom:1px solid ${LINE}; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 0;`}>
-            <span style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:13.5px; color:${INK}; width:190px; flex-shrink:0;`}>{label}</span>
+            <span data-i18n={`tech.label.${id}`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:13.5px; color:${INK}; width:190px; flex-shrink:0;`}>{label}</span>
             <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:2; color:rgba(28,21,18,.6);">
               {items.map((item, i) => (
                 <>{item}{i < items.length - 1 && <span style={`color:${RED};`}> · </span>}</>
@@ -299,12 +344,12 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <section id="contact" class="r-pad" style={`padding:clamp(64px,11vh,130px) clamp(24px,5vw,64px); background:${INK};`}>
       <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
         <div>
-          <div style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED}; margin-bottom:20px;`}>Contact — closing statement</div>
-          <h2 style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,5.4vw,62px); line-height:1.02; letter-spacing:-.02em; color:${CREAM}; max-width:16ch; margin-bottom:24px;`}>Let's build something worth remembering.</h2>
-          <p style="max-width:50ch; font-size:15px; line-height:1.7; color:rgba(242,228,208,.6); margin-bottom:36px;">Open for freelance projects, collaborations and full-time opportunities. Tell me about your idea — we'll figure out scope and timing together.</p>
+          <div style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED}; margin-bottom:20px;`} data-i18n="contact.header">Contact — closing statement</div>
+          <h2 style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,5.4vw,62px); line-height:1.02; letter-spacing:-.02em; color:${CREAM}; max-width:16ch; margin-bottom:24px;`} data-i18n="contact.h2">Let's build something worth remembering.</h2>
+          <p style="max-width:50ch; font-size:15px; line-height:1.7; color:rgba(242,228,208,.6); margin-bottom:36px;" data-i18n="contact.paragraph">Open for freelance projects, collaborations and full-time opportunities. Tell me about your idea — we'll figure out scope and timing together.</p>
           <div style="display:inline-flex; flex-wrap:wrap;">
-            <a href="mailto:franchuespindola25@gmail.com" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:${CREAM}; padding:17px 28px; border:1px solid ${CREAM};`}>Get in touch →</a>
-            <a href="#work" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:transparent; padding:17px 28px; border:1px solid rgba(242,228,208,.35); border-left:none;`}>Revisit the work</a>
+            <a href="mailto:franchuespindola25@gmail.com" data-i18n="contact.btn.email" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:${CREAM}; padding:17px 28px; border:1px solid ${CREAM};`}>Get in touch →</a>
+            <a href="#work" data-i18n="contact.btn.work" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:transparent; padding:17px 28px; border:1px solid rgba(242,228,208,.35); border-left:none;`}>Revisit the work</a>
           </div>
         </div>
         <div style={`width:clamp(70px,8vw,110px); height:clamp(70px,8vw,110px); color:${RED}; flex-shrink:0;`} set:html={STAMP} />
@@ -318,33 +363,33 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       </div>
       <div class="r-pad footer-grid" style="padding:clamp(40px,6vh,56px) clamp(24px,5vw,64px); display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:clamp(28px,4vw,48px);">
         <div>
-          <p style="font-size:12.5px; line-height:1.7; color:rgba(242,228,208,.55); max-width:34ch;">Full Stack Engineer studio based in Buenos Aires, Argentina — building fast, elegant and reliable digital products end to end.</p>
+          <p style="font-size:12.5px; line-height:1.7; color:rgba(242,228,208,.55); max-width:34ch;" data-i18n="footer.desc">Full Stack Engineer studio based in Buenos Aires, Argentina — building fast, elegant and reliable digital products end to end.</p>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;">Navigation</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.navHeader">Navigation</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
-            {FOOTER_NAV.map(({ label, href }) => <a href={href} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{label}</a>)}
+            {FOOTER_NAV.map(({ label, href }) => <a href={href} data-i18n={`nav.${href.slice(1)}`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{label}</a>)}
           </div>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;">Services</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.servicesHeader">Services</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
-            {FOOTER_SERVICES.map(s => <a href="#services" class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{s}</a>)}
+            {FOOTER_SERVICES.map(s => <a href="#services" data-i18n={`services.${s.n}.title`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{s.title}</a>)}
           </div>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;">Elsewhere</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.elsewhereHeader">Elsewhere</div>
           <div style="display:flex; flex-direction:column; gap:12px;">
             <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Github size={15} /> GitHub</a>
             <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Linkedin size={15} /> LinkedIn</a>
             <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Instagram size={15} /> Instagram</a>
-            <a href="mailto:franchuespindola25@gmail.com" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Mail size={15} /> Email</a>
+            <a href="mailto:franchuespindola25@gmail.com" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Mail size={15} /> <span data-i18n="footer.email">Email</span></a>
           </div>
         </div>
       </div>
       <div class="r-pad" style="padding:18px clamp(24px,5vw,64px); border-top:1px solid rgba(242,228,208,.12); display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
         <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(242,228,208,.4); text-transform:uppercase;">© 2026 YSC by fryscou — Buenos Aires, Argentina</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(242,228,208,.4); text-transform:uppercase;">Designed &amp; built by Francisco Espindola</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(242,228,208,.4); text-transform:uppercase;" data-i18n="footer.tagline">Designed &amp; built by Francisco Espindola</span>
       </div>
     </footer>
 
@@ -439,6 +484,131 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     });
   }, { rootMargin: '-40% 0px -50% 0px' });
   sections.forEach(s => observer.observe(s));
+
+  // i18n — EN (default, baked into the markup) / ES toggle
+  const ES = {
+    'nav.top': 'Inicio', 'nav.work': 'Trabajos', 'nav.services': 'Servicios', 'nav.pricing': 'Precios',
+    'nav.side-projects': 'Archivo', 'nav.experience': 'Trayectoria', 'nav.tech': 'Stack', 'nav.contact': 'Contacto',
+
+    'avail.full': 'Disponible para trabajar — contáctame', 'avail.short': 'Contáctame',
+
+    'hero.marquee.role': 'Full Stack Engineer', 'hero.marquee.location': 'Buenos Aires, AR',
+    'hero.marquee.est': 'Desde 2024', 'hero.marquee.available': 'Disponible para trabajar',
+    'hero.h1.line1': 'Construyo', 'hero.h1.digital': 'productos', 'hero.h1.products': 'digitales',
+    'hero.h1.line3': 'que se sienten perfectos.',
+    'hero.intro': 'Francisco Espíndola — Full Stack Engineer que construye experiencias web rápidas, elegantes y confiables, desde interfaces cuidadas al detalle hasta arquitecturas de backend escalables. Esta página es mi expediente abierto: lo que he construido, para quién, y cómo contactarme.',
+    'hero.btn.start': 'Iniciar un proyecto →', 'hero.btn.view': 'Ver los trabajos',
+
+    'services.header': 'Servicios — en qué puedo ayudarte', 'services.count': 'disciplinas',
+    'services.01.title': 'Landing Pages', 'services.01.desc': 'Landing pages de alta conversión que transforman visitantes en clientes.',
+    'services.02.title': 'Sitios Web Empresariales', 'services.02.desc': 'Sitios web profesionales que representan tu marca y hacen crecer tu negocio.',
+    'services.03.title': 'Sitios Portfolio', 'services.03.desc': 'Muestra tu trabajo con portfolios elegantes y modernos.',
+    'services.04.title': 'E-Commerce', 'services.04.desc': 'Tiendas online seguras y escalables con la mejor experiencia de compra.',
+    'services.05.title': 'Aplicaciones Web', 'services.05.desc': 'Aplicaciones web a medida, construidas con las herramientas correctas para tus necesidades.',
+    'services.06.title': 'Mantenimiento', 'services.06.desc': 'Mantengo tu sitio actualizado, seguro y funcionando sin problemas.',
+
+    'pricing.header': 'Precios — landing pages', 'pricing.usd': 'Precios en USD',
+    'pricing.badge': 'Más elegido', 'pricing.currency': 'USD',
+    'pricing.01.title': 'Landing Básica',
+    'pricing.01.desc': 'Una landing de una sola página para validar una idea o poner en línea un negocio chico, rápido y bien hecha.',
+    'pricing.01.feature.0': 'Hasta 4 secciones (hero, sobre mí, servicios, contacto)',
+    'pricing.01.feature.1': 'Formulario de contacto conectado a tu email',
+    'pricing.01.feature.2': 'Diseño responsive',
+    'pricing.01.feature.3': 'SEO básico on-page',
+    'pricing.01.feature.4': '1 ronda de revisiones',
+    'pricing.01.feature.5': 'Entrega en 1-3 días',
+    'pricing.02.title': 'Landing Standard',
+    'pricing.02.desc': 'Para negocios que necesitan más espacio para explicarse — más contenido, más señales de confianza, sin perder foco.',
+    'pricing.02.feature.0': 'Hasta 7 secciones (+ testimonios, FAQ, galería)',
+    'pricing.02.feature.1': 'Integraciones con WhatsApp / redes sociales',
+    'pricing.02.feature.2': 'Diseño responsive',
+    'pricing.02.feature.3': 'SEO on-page completo (meta tags, sitemap)',
+    'pricing.02.feature.4': '2 rondas de revisiones',
+    'pricing.02.feature.5': 'Entrega en 2-5 días',
+    'pricing.03.title': 'Landing Profesional',
+    'pricing.03.desc': 'El paquete completo — construido con el mismo cuidado que este portfolio, optimizado para conversión y performance.',
+    'pricing.03.feature.0': 'Secciones ilimitadas, estructura a medida',
+    'pricing.03.feature.1': 'Motion design e interacciones a medida',
+    'pricing.03.feature.2': 'Optimización de performance y Core Web Vitals',
+    'pricing.03.feature.3': 'Configuración de analítica (GA / Meta Pixel)',
+    'pricing.03.feature.4': '3 rondas de revisiones',
+    'pricing.03.feature.5': '15 días de soporte post-lanzamiento',
+    'pricing.note': 'Los precios mostrados son solo para landing pages. Sitios empresariales, e-commerce, aplicaciones web y otros proyectos se cotizan según tus necesidades específicas — <a href="#contact" style="color:#1c1512; text-decoration:underline;">contáctame</a> para una cotización. En todos los casos, el hosting, el dominio y cualquier servicio de terceros corren por tu cuenta — no están incluidos en el precio.',
+
+    'work.header': 'Trabajos — casos destacados', 'work.count': 'casos de estudio', 'work.exhibitLabel': 'Expediente Nº',
+    'work.01.cat': 'App de Inversores · Web3',
+    'work.01.desc': 'Panel de inversores para una plataforma chilena de real estate en blockchain — monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.',
+    'work.02.cat': 'Landing Page · Web3',
+    'work.02.desc': 'Marketplace público que conecta inversores con oportunidades de real estate tokenizado respaldadas por activos reales.',
+    'work.03.cat': 'Open Source · POS',
+    'work.03.desc': 'Sistema de punto de venta open-source con inventario en tiempo real, gestión de pedidos y un pipeline de despliegue basado en Docker.',
+    'work.04.cat': 'Psicopedagogía · Accesibilidad',
+    'work.04.desc': 'Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.',
+    'work.openCase': 'Ver caso completo',
+
+    'archive.header': 'Archivo — carrete visual', 'archive.scroll': 'Desliza para explorar →',
+    'modal.close': 'Cerrar',
+
+    'log.header': "Trayectoria — por dónde he pasado", 'log.subtitle': 'Trabajo y educación, en orden cronológico inverso',
+    'log.type.education': 'Educación', 'log.type.work': 'Trabajo',
+    'log.codigo-facilito.role': 'Bootcamp de Frontend Moderno', 'log.codigo-facilito.date': 'Graduado en enero de 2026',
+    'log.niuro.role': 'Full Stack Engineer · Plataforma Marketplace',
+    'log.niuro.desc': 'Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain. Monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.',
+    'log.niuro.date': 'Dic 2025 — Presente',
+    'log.zatobox-work.role': 'Full Stack & Cloud Solutions Architect',
+    'log.zatobox-work.desc': 'Líder de DevOps a cargo de todo el ciclo de vida del desarrollo de software — arquitectura desde la concepción hasta el despliegue.',
+    'log.zatobox-work.date': 'Ago — Dic 2025',
+    'log.dragon-pyramid.role': 'Full Stack Engineer',
+    'log.dragon-pyramid.desc': 'Trabajo enfocado en frontend para el proyecto Gym Master — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.',
+    'log.dragon-pyramid.date': 'Jun — Oct 2025',
+    'log.issd.role': 'Desarrollo Web y Aplicaciones Móviles', 'log.issd.date': '2025 — Presente',
+    'log.henry.role': 'Bootcamp de Desarrollo Full Stack', 'log.henry.date': 'Graduado en junio de 2025',
+    'log.coderhouse.role': 'Programa de Desarrollo Full Stack', 'log.coderhouse.date': 'Graduado en febrero de 2025',
+    'log.ysc.role': 'Full Stack Engineer & Creador de Contenido',
+    'log.ysc.desc': 'Desarrollador independiente construyendo soluciones digitales funcionales y bien estructuradas, y creando contenido tech.',
+    'log.ysc.date': 'Ago 2024 — Presente',
+
+    'tech.header': 'Stack — el índice completo', 'tech.count': 'tecnologías',
+    'tech.label.core-languages': 'Lenguajes Core', 'tech.label.frontend': 'Frontend', 'tech.label.backend': 'Backend',
+    'tech.label.meta-frameworks': 'Meta-frameworks', 'tech.label.mobile': 'Mobile',
+    'tech.label.styling-design': 'Estilos y Diseño', 'tech.label.databases': 'Bases de Datos',
+    'tech.label.tools-devops': 'Herramientas y DevOps',
+
+    'contact.header': 'Contacto — cierre', 'contact.h2': 'Construyamos algo que valga la pena recordar.',
+    'contact.paragraph': 'Disponible para proyectos freelance, colaboraciones y oportunidades full-time. Cuéntame tu idea — definimos juntos el alcance y los tiempos.',
+    'contact.btn.email': 'Contáctame →', 'contact.btn.work': 'Volver a los trabajos',
+
+    'footer.desc': 'Estudio de Full Stack Engineer con base en Buenos Aires, Argentina — construyendo productos digitales rápidos, elegantes y confiables de punta a punta.',
+    'footer.navHeader': 'Navegación', 'footer.servicesHeader': 'Servicios', 'footer.elsewhereHeader': 'En otros lados',
+    'footer.email': 'Correo', 'footer.tagline': 'Diseñado y desarrollado por Francisco Espíndola',
+  };
+
+  const LANG_KEY = 'site-lang';
+  const originalHTML = new WeakMap();
+  let currentLang = 'en';
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      if (!originalHTML.has(el)) originalHTML.set(el, el.innerHTML);
+      const key = el.getAttribute('data-i18n');
+      const orig = originalHTML.get(el);
+      el.innerHTML = (lang === 'es' && ES[key]) ? ES[key] : orig;
+    });
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-toggle').forEach((btn) => {
+      btn.textContent = lang === 'en' ? 'ES' : 'EN';
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch {}
+  }
+
+  document.querySelectorAll('.lang-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'es' : 'en'));
+  });
+
+  let storedLang = 'en';
+  try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
+  if (storedLang === 'es') applyLang('es');
 </script>
 
 <style>
@@ -454,6 +624,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     .mobile-nav { display: flex !important; }
   }
   @media (max-width: 760px) {
+    .pricing-grid { grid-template-columns: 1fr !important; }
     .exhibit { grid-template-columns: 1fr !important; }
     .exhibit-media { order: 1 !important; }
     .exhibit > div:last-child { order: 2 !important; }
