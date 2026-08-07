@@ -146,14 +146,15 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       </div>
 
       <h1 class="r-h1" style={`font-family:'Poppins',sans-serif; font-weight:900; letter-spacing:-.03em; color:${INK}; line-height:.92;`}>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px);" data-i18n="hero.h1.line1">I build</span>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,10vw,140px);"><span style={`color:${RED};`} data-i18n="hero.h1.digital">digital</span> <span data-i18n="hero.h1.products">products</span></span>
-        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,4vw,60px);" data-i18n="hero.h1.line3">that feel effortless.</span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px);" data-i18n="hero.h1.line1">Designing.</span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,10vw,140px);" data-i18n="hero.h1.line2">Engineering.</span>
+        <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,4vw,60px);" data-i18n="hero.h1.line3prefix">Shipping</span>
+        <span class="hero-tag" style={`display:block; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:clamp(14px,1.6vw,18px); letter-spacing:.04em; text-transform:uppercase; color:rgba(28,21,18,.55); margin-left:clamp(0px,4vw,60px); margin-top:clamp(10px,1.6vh,16px);`}><span data-i18n="hero.h1.digital">digital</span> <span data-i18n="hero.h1.products">products.</span></span>
       </h1>
 
       <div class="hero-grid" style="display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(24px,4vw,56px); margin-top:clamp(36px,6vh,64px); align-items:end;">
         <p style="max-width:54ch; font-size:16px; line-height:1.7; color:rgba(28,21,18,.6);" data-i18n="hero.intro">
-          Francisco Espindola — Full Stack Engineer crafting fast, elegant and reliable web experiences, from pixel-perfect interfaces to scalable back-end architecture. This page is my open case file: what I've shipped, who I've shipped it for, and how to reach me.
+          Francisco Espindola — Full Stack Engineer focused on building thoughtful digital products from end to end. Every project blends design, engineering and attention to detail to create experiences that feel simple, intuitive and built to last.
         </p>
         <div class="hero-btns" style="display:flex; flex-direction:column; gap:0;">
           <a href="#contact" class="btn-primary" data-i18n="hero.btn.start" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:${RED}; padding:16px 24px; border:1px solid ${RED}; text-align:center;`}>Start a project →</a>
@@ -494,9 +495,9 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     'hero.marquee.role': 'Full Stack Engineer', 'hero.marquee.location': 'Buenos Aires, AR',
     'hero.marquee.est': 'Desde 2024', 'hero.marquee.available': 'Disponible para trabajar',
-    'hero.h1.line1': 'Construyo', 'hero.h1.digital': 'productos', 'hero.h1.products': 'digitales',
-    'hero.h1.line3': 'que se sienten perfectos.',
-    'hero.intro': 'Francisco Espíndola — Full Stack Engineer que construye experiencias web rápidas, elegantes y confiables, desde interfaces cuidadas al detalle hasta arquitecturas de backend escalables. Esta página es mi expediente abierto: lo que he construido, para quién, y cómo contactarme.',
+    'hero.h1.line1': 'Diseñando.', 'hero.h1.line2': 'Ingeniando.', 'hero.h1.line3prefix': 'Lanzando',
+    'hero.h1.digital': 'productos', 'hero.h1.products': 'digitales.',
+    'hero.intro': 'Francisco Espíndola — Full Stack Engineer enfocado en construir productos digitales pensados de punta a punta. Cada proyecto combina diseño, ingeniería y atención al detalle para crear experiencias simples, intuitivas y hechas para durar.',
     'hero.btn.start': 'Iniciar un proyecto →', 'hero.btn.view': 'Ver los trabajos',
 
     'services.header': 'Servicios — en qué puedo ayudarte', 'services.count': 'disciplinas',
@@ -636,7 +637,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     .log-year > div:first-child { margin-bottom: 4px; }
   }
   @media (max-width: 600px) {
-    .r-h1 span { margin-left: 0 !important; font-size: 34px !important; }
+    .r-h1 span:not(.hero-tag) { margin-left: 0 !important; font-size: 34px !important; }
+    .hero-tag { margin-left: 0 !important; }
     .r-pad { padding-left: 20px !important; padding-right: 20px !important; }
     .footer-grid { grid-template-columns: 1fr !important; }
     .mobile-nav { gap: 12px !important; }
