@@ -15,14 +15,27 @@ import atlas from "../assets/sideprojects/atlas.png";
 import aurora from "../assets/sideprojects/aurora.png";
 import coffee from "../assets/sideprojects/coffee.png";
 
+import arc1 from "../assets/projects/Arc/1.png";
+import arc2 from "../assets/projects/Arc/2.png";
+import arc3 from "../assets/projects/Arc/3.png";
+import outdoor1 from "../assets/projects/outdoor/1.png";
+import outdoor2 from "../assets/projects/outdoor/2.png";
+import outdoor3 from "../assets/projects/outdoor/3.png";
+import muebles1 from "../assets/projects/muebles/1.png";
+import muebles2 from "../assets/projects/muebles/2.png";
+import muebles3 from "../assets/projects/muebles/3.png";
+import prisma1 from "../assets/projects/prisma/1.png";
+import prisma2 from "../assets/projects/prisma/2.png";
+import prisma3 from "../assets/projects/prisma/3.png";
+
 const RAIL = [
   { label: "Intro", href: "#top" },
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
   { label: "Archive", href: "#side-projects" },
   { label: "Log", href: "#experience" },
   { label: "Stack", href: "#tech" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -36,9 +49,9 @@ const SERVICES = [
 ];
 
 const PRICING = [
-  { n: "01", title: "Basic Landing", price: "199", desc: "A focused one-pager to validate an idea or get a small business online fast — built right, nothing missing.", features: ["Up to 4 sections (hero, about, services, contact)", "Contact form wired to your email", "Responsive design", "Basic on-page SEO", "1 round of revisions", "1-3 days delivery"] },
-  { n: "02", title: "Standard Landing", price: "299", desc: "For businesses that need more room to explain themselves — more content, more trust signals, still lean.", features: ["Up to 7 sections (+ testimonials, FAQ, gallery)", "WhatsApp / social integrations", "Responsive design", "Full on-page SEO (meta tags, sitemap)", "2 rounds of revisions", "2-5 days delivery"], highlight: true },
-  { n: "03", title: "Professional Landing", price: "409", desc: "The complete package — built with the same care as this portfolio, tuned for conversion and performance.", features: ["Unlimited sections, tailored structure", "Custom motion design & interactions", "Performance & Core Web Vitals tuning", "Analytics setup (GA / Meta Pixel)", "3 rounds of revisions", "15 days of post-launch support"] },
+  { n: "01", title: "Basic Landing", price: "199", original: "269", desc: "A focused one-pager to validate an idea or get a small business online fast — built right, nothing missing.", features: ["Up to 4 sections (hero, about, services, contact)", "Contact form wired to your email", "Responsive design", "Basic on-page SEO", "1 round of revisions", "1-3 days delivery"] },
+  { n: "02", title: "Standard Landing", price: "299", original: "399", desc: "For businesses that need more room to explain themselves — more content, more trust signals, still lean.", features: ["Up to 7 sections (+ testimonials, FAQ, gallery)", "WhatsApp / social integrations", "Responsive design", "Full on-page SEO (meta tags, sitemap)", "2 rounds of revisions", "2-5 days delivery"], highlight: true },
+  { n: "03", title: "Professional Landing", price: "409", original: "549", desc: "The complete package — built with the same care as this portfolio, tuned for conversion and performance.", features: ["Unlimited sections, tailored structure", "Custom motion design & interactions", "Performance & Core Web Vitals tuning", "Analytics setup (GA / Meta Pixel)", "3 rounds of revisions", "15 days of post-launch support"] },
 ];
 
 const PROJECTS = [
@@ -53,6 +66,13 @@ const SIDE_PROJECTS = [
   { title: "Atlas", img: atlas, alt: "Atlas" },
   { title: "Aurora AI", img: aurora, alt: "Aurora AI" },
   { title: "Noma Coffee", img: coffee, alt: "Noma Coffee" },
+];
+
+const REEL_PROJECTS = [
+  { id: "arc", title: "Arc & Form", subtitle: "Interior Design Studio", desc: "A refined portfolio website for an interior design studio, built around large project imagery, editorial typography and a strong visual identity.", imgs: [arc1, arc2, arc3] },
+  { id: "wild-oak", title: "Wild Oak Supply", subtitle: "Outdoor & Lifestyle Store", desc: "An e-commerce experience for a retailer selling outdoor equipment, apparel and everyday adventure gear, with product discovery and category-focused navigation.", imgs: [outdoor1, outdoor2, outdoor3] },
+  { id: "muebles", title: "Muebles & Decoración", subtitle: "Furniture & Decor Store", desc: "A landing page and digital catalog for a furniture and home decor store, designed to showcase collections and featured products while making inquiries and orders easy.", imgs: [muebles1, muebles2, muebles3] },
+  { id: "prisma", title: "Prisma Events", subtitle: "Event Production Company", desc: "A landing page for events and experiences, featuring upcoming dates, tickets, artists, galleries and a more experimental visual identity.", imgs: [prisma1, prisma2, prisma3] },
 ];
 
 const TIMELINE = [
@@ -186,40 +206,6 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
-      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="pricing.header">Pricing — landing pages</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="pricing.usd">Prices in USD</span>
-      </div>
-
-      <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #1c1512; border-left:1px solid #1c1512;">
-        {PRICING.map(({ n, title, price, desc, features, highlight }) => (
-          <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${INK}; color:${CREAM};` : ''}`}>
-            {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${CREAM}; background:${RED}; padding:5px 10px;`}>Most chosen</span>}
-            <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED};`}>{n}</span>
-            <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? CREAM : INK};`}>{title}</h3>
-            <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:14px;">
-              <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,4vw,42px); color:${highlight ? CREAM : INK};`}>${price}</span>
-              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${highlight ? 'rgba(242,228,208,.5)' : 'rgba(28,21,18,.4)'};`} data-i18n="pricing.currency">USD</span>
-            </div>
-            <p data-i18n={`pricing.${n}.desc`} style={`font-size:13px; line-height:1.6; margin-bottom:18px; color:${highlight ? 'rgba(242,228,208,.65)' : 'rgba(28,21,18,.55)'};`}>{desc}</p>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-              {features.map((f, i) => (
-                <li style={`display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:${highlight ? 'rgba(242,228,208,.8)' : 'rgba(28,21,18,.65)'};`}>
-                  <span style={`color:${RED};`}>✦</span> <span data-i18n={`pricing.${n}.feature.${i}`}>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <p style="font-size:12.5px; line-height:1.7; color:rgba(28,21,18,.5); max-width:70ch; margin-top:20px;" data-i18n="pricing.note">
-        Prices shown are for landing pages only. Business websites, e-commerce, web apps and other projects are quoted based on your specific needs — <a href="#contact" style={`color:${INK}; text-decoration:underline;`}>get in touch</a> for a quote. In every case, hosting, domain and any third-party services are paid directly by you — they are not included in the price.
-      </p>
-    </section>
-
     <!-- FEATURED WORK -->
     <section id="work" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px) 0; border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
@@ -253,6 +239,31 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
       <div class="r-pad" style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,44px); padding-left:clamp(24px,5vw,64px); padding-right:clamp(24px,5vw,64px);">
         <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="archive.header">Archive — visual reel</h2>
         <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="archive.scroll">Scroll to browse →</span>
+      </div>
+
+      <!-- REEL PROJECT CARDS -->
+      <div class="r-pad reel-projects" style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px; padding-left:clamp(24px,5vw,64px); padding-right:clamp(24px,5vw,64px); margin-bottom:clamp(36px,6vh,56px);">
+        {REEL_PROJECTS.map(({ id, title, subtitle, desc, imgs }) => (
+          <div class="reel-card" style={`border:1px solid ${LINE};`}>
+            <div class="reel-slides" style="position:relative; aspect-ratio:16/10; overflow:hidden; background:rgba(28,21,18,.04);">
+              {imgs.map((img, i) => (
+                <Image src={img} alt={title} width={900} height={563} class="reel-slide" data-slide={i} style={`position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:${i === 0 ? 1 : 0}; transition:opacity .4s ease;`} />
+              ))}
+              <button type="button" class="reel-nav reel-prev" aria-label="Previous" style={`all:unset; cursor:pointer; position:absolute; left:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(242,228,208,.85); color:${INK}; font-size:14px;`}>←</button>
+              <button type="button" class="reel-nav reel-next" aria-label="Next" style={`all:unset; cursor:pointer; position:absolute; right:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(242,228,208,.85); color:${INK}; font-size:14px;`}>→</button>
+              <div class="reel-dots" style="position:absolute; bottom:10px; left:0; right:0; display:flex; justify-content:center; gap:6px;">
+                {imgs.map((_, i) => (
+                  <span class="reel-dot" data-dot={i} style={`width:6px; height:6px; border-radius:50%; background:${i === 0 ? INK : 'rgba(28,21,18,.3)'}; transition:background .25s ease;`}></span>
+                ))}
+              </div>
+            </div>
+            <div style={`padding:16px 18px; border-top:1px solid ${LINE};`}>
+              <h3 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; color:${INK}; margin-bottom:2px;`}>{title}</h3>
+              <div data-i18n={`reel.${id}.subtitle`} style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:${RED}; margin-bottom:9px;`}>{subtitle}</div>
+              <p data-i18n={`reel.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(28,21,18,.6);">{desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
       <div class="reel" style="display:flex; justify-content:safe center; gap:16px; overflow-x:auto; padding:0 clamp(24px,5vw,64px) 12px; scroll-snap-type:x proximity;">
@@ -339,6 +350,52 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
           </div>
         ))}
       </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="pricing.header">Pricing — landing pages</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="pricing.usd">Prices in USD</span>
+      </div>
+
+      <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #1c1512; border-left:1px solid #1c1512;">
+        {PRICING.map(({ n, title, price, original, desc, features, highlight }) => {
+          const discount = Math.round((1 - Number(price) / Number(original)) * 100);
+          return (
+            <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${INK}; color:${CREAM};` : ''}`}>
+              {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${CREAM}; background:${RED}; padding:5px 10px;`}>Most chosen</span>}
+              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED};`}>{n}</span>
+              <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? CREAM : INK};`}>{title}</h3>
+
+              <div class="price-box" style="position:relative; height:clamp(34px,4vw,42px); margin-bottom:14px; cursor:pointer;">
+                <div class="price-hidden" style="position:absolute; inset:0; display:flex; align-items:baseline; gap:8px; transition:opacity .25s ease;">
+                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,4vw,42px); color:${highlight ? CREAM : INK};`}>??</span>
+                  <span data-i18n="pricing.hoverHint" style={`font-family:'JetBrains Mono',monospace; font-size:10.5px; color:${highlight ? 'rgba(242,228,208,.5)' : 'rgba(28,21,18,.4)'};`}>Hover to see the price</span>
+                </div>
+                <div class="price-reveal" style="position:absolute; inset:0; display:flex; align-items:baseline; gap:8px; opacity:0; transition:opacity .25s ease;">
+                  <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.06em; color:${CREAM}; background:${RED}; padding:2px 6px;`}>-{discount}%</span>
+                  <span style={`font-family:'JetBrains Mono',monospace; font-size:13px; text-decoration:line-through; color:${highlight ? 'rgba(242,228,208,.45)' : 'rgba(28,21,18,.35)'};`}>${original}</span>
+                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(26px,3vw,32px); color:${highlight ? CREAM : INK};`}>${price}</span>
+                </div>
+              </div>
+
+              <p data-i18n={`pricing.${n}.desc`} style={`font-size:13px; line-height:1.6; margin-bottom:18px; color:${highlight ? 'rgba(242,228,208,.65)' : 'rgba(28,21,18,.55)'};`}>{desc}</p>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+                {features.map((f, i) => (
+                  <li style={`display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:${highlight ? 'rgba(242,228,208,.8)' : 'rgba(28,21,18,.65)'};`}>
+                    <span style={`color:${RED};`}>✦</span> <span data-i18n={`pricing.${n}.feature.${i}`}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
+      <p style="font-size:12.5px; line-height:1.7; color:rgba(28,21,18,.5); max-width:70ch; margin-top:20px;" data-i18n="pricing.note">
+        Prices shown are for landing pages only. Business websites, e-commerce, web apps and other projects are quoted based on your specific needs — <a href="#contact" style={`color:${INK}; text-decoration:underline;`}>get in touch</a> for a quote. In every case, hosting, domain and any third-party services are paid directly by you — they are not included in the price.
+      </p>
     </section>
 
     <!-- CONTACT / CTA -->
@@ -462,6 +519,26 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     if (e.key === 'ArrowRight') navigate(1);
   });
 
+  // reel project cards — manual carousel
+  document.querySelectorAll('.reel-card').forEach((card) => {
+    const slides = card.querySelectorAll('.reel-slide');
+    const dots = card.querySelectorAll('.reel-dot');
+    if (slides.length < 2) return;
+    let active = 0;
+
+    function show(index) {
+      slides[active].style.opacity = '0';
+      dots[active].style.background = 'rgba(28,21,18,.3)';
+      active = (index + slides.length) % slides.length;
+      slides[active].style.opacity = '1';
+      dots[active].style.background = '#1c1512';
+    }
+
+    card.querySelector('.reel-prev')?.addEventListener('click', () => show(active - 1));
+    card.querySelector('.reel-next')?.addEventListener('click', () => show(active + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  });
+
   // services accordion
   document.querySelectorAll('.menu-row').forEach(row => {
     const desc = row.querySelector('.menu-desc');
@@ -510,6 +587,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     'pricing.header': 'Precios — landing pages', 'pricing.usd': 'Precios en USD',
     'pricing.badge': 'Más elegido', 'pricing.currency': 'USD',
+    'pricing.hoverHint': 'Pasa el cursor para ver el precio',
     'pricing.01.title': 'Landing Básica',
     'pricing.01.desc': 'Una landing de una sola página para validar una idea o poner en línea un negocio chico, rápido y bien hecha.',
     'pricing.01.feature.0': 'Hasta 4 secciones (hero, sobre mí, servicios, contacto)',
@@ -549,6 +627,15 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     'archive.header': 'Archivo — carrete visual', 'archive.scroll': 'Desliza para explorar →',
     'modal.close': 'Cerrar',
+
+    'reel.arc.subtitle': 'Estudio de Diseño de Interiores',
+    'reel.arc.desc': 'Un sitio portfolio refinado para un estudio de diseño de interiores, construido en torno a imágenes de proyectos a gran escala, tipografía editorial y una identidad visual sólida.',
+    'reel.wild-oak.subtitle': 'Tienda Outdoor y Lifestyle',
+    'reel.wild-oak.desc': 'Una experiencia de e-commerce para una tienda que vende equipo outdoor, indumentaria y gear de aventura para el día a día, con descubrimiento de productos y navegación enfocada en categorías.',
+    'reel.muebles.subtitle': 'Tienda de Muebles y Decoración',
+    'reel.muebles.desc': 'Landing y catálogo digital para una tienda de muebles y decoración, pensado para mostrar colecciones, productos destacados y facilitar consultas y pedidos.',
+    'reel.prisma.subtitle': 'Productora de Eventos',
+    'reel.prisma.desc': 'Landing para eventos y experiencias, con próximas fechas, entradas, artistas, galerías y una identidad visual más experimental.',
 
     'log.header': "Trayectoria — por dónde he pasado", 'log.subtitle': 'Trabajo y educación, en orden cronológico inverso',
     'log.type.education': 'Educación', 'log.type.work': 'Trabajo',
@@ -619,6 +706,9 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
   .page-body { margin-left: 56px; }
   .mobile-nav::-webkit-scrollbar { display: none; }
 
+  .price-box:hover .price-hidden { opacity: 0; }
+  .price-box:hover .price-reveal { opacity: 1; }
+
   @media (max-width: 900px) {
     .rail { display: none !important; }
     .page-body { margin-left: 0 !important; }
@@ -626,6 +716,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
   }
   @media (max-width: 760px) {
     .pricing-grid { grid-template-columns: 1fr !important; }
+    .reel-projects { grid-template-columns: 1fr !important; }
     .exhibit { grid-template-columns: 1fr !important; }
     .exhibit-media { order: 1 !important; }
     .exhibit > div:last-child { order: 2 !important; }
