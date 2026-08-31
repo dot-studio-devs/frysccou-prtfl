@@ -30,8 +30,8 @@ import prisma3 from "../assets/projects/prisma/3.png";
 
 const RAIL = [
   { label: "Intro", href: "#top" },
-  { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
+  { label: "Work", href: "#work" },
   { label: "Archive", href: "#side-projects" },
   { label: "Log", href: "#experience" },
   { label: "Stack", href: "#tech" },
@@ -106,10 +106,10 @@ const FOOTER_NAV = [
 ];
 const FOOTER_SERVICES = SERVICES;
 
-const INK = "#1c1512";
-const CREAM = "#f2e4d0";
-const RED = "#9b1e29";
-const LINE = "rgba(28,21,18,.16)";
+const BLACK = "#171522";
+const BG = "#F5F3FA";
+const VIOLET = "#6C4CCF";
+const LINE = "rgba(23,21,34,.16)";
 
 const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.1">
   <circle cx="30" cy="30" r="28" stroke-dasharray="2 3"/>
@@ -120,65 +120,66 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 ---
 
 <Layout>
-  <div style={`background:${CREAM}; color:${INK}; font-family:'Inter',sans-serif; min-height:100vh;`}>
+  <div style={`color:${BLACK}; font-family:'Inter',sans-serif; min-height:100vh;`}>
 
     <!-- RAIL -->
-    <nav class="rail" style={`position:fixed; left:0; top:0; bottom:0; width:56px; border-right:1px solid ${LINE}; z-index:60; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:20px 0; background:${CREAM};`}>
+    <nav class="rail" style={`position:fixed; left:0; top:0; bottom:0; width:56px; border-right:1px solid ${LINE}; z-index:60; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:20px 0; background:${BG};`}>
       <a href="#top" style="display:flex;"><Image src={logo} alt="YSC" width={1774} height={887} style="width:48px; height:auto; object-fit:contain;" /></a>
       <div style="display:flex; flex-direction:column; align-items:center; gap:30px;">
         {RAIL.map(({ label, href }) => (
-          <a href={href} data-rail={href} data-i18n={`nav.${href.slice(1)}`} class="rail-link" style={`writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:${INK}; opacity:.4; text-decoration:none; transition:opacity .2s,color .2s;`}>{label}</a>
+          <a href={href} data-rail={href} data-i18n={`nav.${href.slice(1)}`} class="rail-link" style={`writing-mode:vertical-rl; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:${BLACK}; opacity:.4; text-decoration:none; transition:opacity .2s,color .2s;`}>{label}</a>
         ))}
       </div>
       <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
-        <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.04em; color:${INK}; border:1px solid ${INK};`}>ES</button>
-        <div style={`width:20px; height:20px; color:${RED};`} set:html={STAMP} />
+        <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10px; letter-spacing:.04em; color:${BLACK}; border:1px solid ${BLACK};`}>ES</button>
+        <div style={`width:20px; height:20px; color:${VIOLET};`} set:html={STAMP} />
       </div>
     </nav>
 
     <!-- TOP BAR -->
-    <div class="topbar" style={`position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:20px; height:52px; padding:0 clamp(20px,4vw,48px); background:rgba(242,228,208,.9); backdrop-filter:blur(10px); border-bottom:1px solid ${LINE};`}>
+    <div class="topbar" style={`position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:20px; height:52px; padding:0 clamp(20px,4vw,48px); background:rgba(245,243,250,.9); backdrop-filter:blur(10px); border-bottom:1px solid ${LINE};`}>
       <div class="mobile-nav" style="display:none; overflow-x:auto; gap:16px; flex:1;">
         {RAIL.map(({ label, href }) => (
-          <a href={href} data-i18n={`nav.${href.slice(1)}`} style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; opacity:.65; text-decoration:none; white-space:nowrap;`}>{label}</a>
+          <a href={href} data-i18n={`nav.${href.slice(1)}`} style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:${BLACK}; opacity:.65; text-decoration:none; white-space:nowrap;`}>{label}</a>
         ))}
       </div>
-      <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10.5px; letter-spacing:.04em; color:${INK}; border:1px solid ${INK};`}>ES</button>
-      <a href="#contact" class="avail-link" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${INK}; text-decoration:none; display:flex; align-items:center; gap:8px; white-space:nowrap; margin-left:auto;`}>
-        <span style={`width:6px; height:6px; background:${RED}; display:inline-block; flex-shrink:0;`}></span> <span class="avail-full" data-i18n="avail.full">Available for work — get in touch</span><span class="avail-short" data-i18n="avail.short" style="display:none;">Get in touch</span> ↗
+      <button type="button" class="lang-toggle" aria-label="Switch language" style={`all:unset; cursor:pointer; box-sizing:border-box; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10.5px; letter-spacing:.04em; color:${BLACK}; border:1px solid ${BLACK};`}>ES</button>
+      <a href="#contact" class="avail-link" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${BLACK}; text-decoration:none; display:flex; align-items:center; gap:8px; white-space:nowrap; margin-left:auto;`}>
+        <span style={`width:6px; height:6px; background:${VIOLET}; display:inline-block; flex-shrink:0;`}></span> <span class="avail-full" data-i18n="avail.full">Available for work — get in touch</span><span class="avail-short" data-i18n="avail.short" style="display:none;">Get in touch</span> ↗
       </a>
     </div>
 
     <div class="page-body">
 
     <!-- HERO -->
-    <header id="top" class="r-pad" style={`padding:clamp(64px,10vh,120px) clamp(24px,5vw,64px) clamp(40px,6vh,64px); border-bottom:1px solid ${LINE};`}>
-      <div style="overflow:hidden; margin-bottom:clamp(28px,5vh,56px);">
+    <header id="top" class="r-pad" style={`position:relative; padding:clamp(64px,10vh,120px) clamp(24px,5vw,64px) clamp(40px,6vh,64px); border-bottom:1px solid ${LINE};`}>
+      <div class="hero-glow"></div>
+      <div style="overflow:hidden; margin-bottom:clamp(28px,5vh,56px); position:relative; z-index:1;">
         <div class="marquee" style="display:flex; width:max-content; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; white-space:nowrap;">
           <span style="display:inline-flex; gap:26px; padding-right:26px;">
             {Array.from({ length: 2 }).map(() => (
               <>
-                <span style={`color:${RED};`}>結</span><span data-i18n="hero.marquee.role">Full Stack Engineer</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.location">Buenos Aires, AR</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.est">Est. 2024</span><span style={`color:${RED};`}>✦</span><span data-i18n="hero.marquee.available">Available for work</span><span style={`color:${RED};`}>✦</span>
+                <span style={`color:${VIOLET};`}>結</span><span data-i18n="hero.marquee.role">Full Stack Engineer</span><span style={`color:${VIOLET};`}>✦</span><span data-i18n="hero.marquee.location">Buenos Aires, AR</span><span style={`color:${VIOLET};`}>✦</span><span data-i18n="hero.marquee.est">Est. 2024</span><span style={`color:${VIOLET};`}>✦</span><span data-i18n="hero.marquee.available">Available for work</span><span style={`color:${VIOLET};`}>✦</span>
               </>
             ))}
           </span>
         </div>
       </div>
 
-      <h1 class="r-h1" style={`font-family:'Poppins',sans-serif; font-weight:900; letter-spacing:-.03em; color:${INK}; line-height:.92;`}>
+      <h1 class="r-h1" style={`font-family:'Poppins',sans-serif; font-weight:900; letter-spacing:-.03em; color:${BLACK}; line-height:.92;`}>
         <span style="display:block; font-size:clamp(38px,6.4vw,88px);" data-i18n="hero.h1.line1">Designing.</span>
         <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,10vw,140px);" data-i18n="hero.h1.line2">Engineering.</span>
         <span style="display:block; font-size:clamp(38px,6.4vw,88px); margin-left:clamp(0px,4vw,60px);" data-i18n="hero.h1.line3prefix">Shipping</span>
-        <span class="hero-tag" style={`display:block; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:clamp(14px,1.6vw,18px); letter-spacing:.04em; text-transform:uppercase; color:rgba(28,21,18,.55); margin-left:clamp(0px,4vw,60px); margin-top:clamp(10px,1.6vh,16px);`}><span data-i18n="hero.h1.digital">digital</span> <span data-i18n="hero.h1.products">products.</span></span>
+        <span class="hero-tag" style={`display:block; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:clamp(14px,1.6vw,18px); letter-spacing:.04em; text-transform:uppercase; color:rgba(23,21,34,.55); margin-left:clamp(0px,4vw,60px); margin-top:clamp(10px,1.6vh,16px);`}><span data-i18n="hero.h1.digital">digital</span> <span data-i18n="hero.h1.products">products.</span></span>
       </h1>
 
       <div class="hero-grid" style="display:grid; grid-template-columns:1.3fr .7fr; gap:clamp(24px,4vw,56px); margin-top:clamp(36px,6vh,64px); align-items:end;">
-        <p style="max-width:54ch; font-size:16px; line-height:1.7; color:rgba(28,21,18,.6);" data-i18n="hero.intro">
+        <p style="max-width:54ch; font-size:16px; line-height:1.7; color:rgba(23,21,34,.6);" data-i18n="hero.intro">
           Francisco Espindola — Full Stack Engineer focused on building thoughtful digital products from end to end. Every project blends design, engineering and attention to detail to create experiences that feel simple, intuitive and built to last.
         </p>
         <div class="hero-btns" style="display:flex; flex-direction:column; gap:0;">
-          <a href="#contact" class="btn-primary" data-i18n="hero.btn.start" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:${RED}; padding:16px 24px; border:1px solid ${RED}; text-align:center;`}>Start a project →</a>
-          <a href="#work" class="btn-outline hero-btn-2" data-i18n="hero.btn.view" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:transparent; padding:16px 24px; border:1px solid ${INK}; border-top:none; text-align:center;`}>View the work</a>
+          <a href="#contact" class="btn-primary" data-i18n="hero.btn.start" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${BG}; text-decoration:none; background:${VIOLET}; padding:16px 24px; border:1px solid ${VIOLET}; text-align:center;`}>Start a project →</a>
+          <a href="#work" class="btn-outline hero-btn-2" data-i18n="hero.btn.view" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${BLACK}; text-decoration:none; background:transparent; padding:16px 24px; border:1px solid ${BLACK}; border-top:none; text-align:center;`}>View the work</a>
         </div>
       </div>
     </header>
@@ -186,20 +187,20 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- SERVICES -->
     <section id="services" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="services.header">Services — what I can do for you</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{SERVICES.length} <span data-i18n="services.count">disciplines</span></span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="services.header">Services — what I can do for you</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);">{SERVICES.length} <span data-i18n="services.count">disciplines</span></span>
       </div>
 
-      <div style={`border-top:1px solid ${INK};`}>
+      <div style={`border-top:1px solid ${BLACK};`}>
         {SERVICES.map(({ n, title, desc }) => (
           <div class="menu-row" style={`border-bottom:1px solid ${LINE};`}>
             <div style="display:flex; align-items:center; gap:18px; padding:20px 4px; cursor:default;">
-              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED}; flex-shrink:0;`}>{n}</span>
-              <h3 class="menu-title" data-i18n={`services.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(20px,2.6vw,30px); color:${INK}; white-space:nowrap;`}>{title}</h3>
-              <span class="leader" style={`flex:1; border-bottom:1px dotted rgba(28,21,18,.3); margin:0 4px; transform:translateY(-6px);`}></span>
+              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${VIOLET}; flex-shrink:0;`}>{n}</span>
+              <h3 class="menu-title" data-i18n={`services.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(20px,2.6vw,30px); color:${BLACK}; white-space:nowrap;`}>{title}</h3>
+              <span class="leader" style={`flex:1; border-bottom:1px dotted rgba(23,21,34,.3); margin:0 4px; transform:translateY(-6px);`}></span>
             </div>
             <div class="menu-desc" style="max-height:0; overflow:hidden; transition:max-height .35s ease;">
-              <p data-i18n={`services.${n}.desc`} style="font-size:13.5px; line-height:1.6; color:rgba(28,21,18,.55); padding:0 4px 20px 40px; max-width:56ch;">{desc}</p>
+              <p data-i18n={`services.${n}.desc`} style="font-size:13.5px; line-height:1.6; color:rgba(23,21,34,.55); padding:0 4px 20px 40px; max-width:56ch;">{desc}</p>
             </div>
           </div>
         ))}
@@ -209,26 +210,26 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- FEATURED WORK -->
     <section id="work" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px) 0; border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="work.header">Work — selected exhibits</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{PROJECTS.length} <span data-i18n="work.count">case files</span></span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="work.header">Work — selected exhibits</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);">{PROJECTS.length} <span data-i18n="work.count">case files</span></span>
       </div>
 
       {PROJECTS.map(({ n, title, cat, img, alt, desc, tags, url }, i) => (
         <article class="exhibit" style={`position:relative; display:grid; grid-template-columns:${i % 2 === 0 ? '1.1fr .9fr' : '.9fr 1.1fr'}; gap:clamp(24px,4vw,56px); align-items:center; padding:clamp(36px,6vh,64px) 0; border-bottom:1px solid ${LINE}; overflow:hidden;`}>
-          <span aria-hidden="true" style={`position:absolute; top:-4vw; ${i % 2 === 0 ? 'right:-1vw' : 'left:-1vw'}; font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(120px,20vw,280px); line-height:1; color:${INK}; opacity:.04; pointer-events:none; z-index:0;`}>{n}</span>
+          <span aria-hidden="true" style={`position:absolute; top:-4vw; ${i % 2 === 0 ? 'right:-1vw' : 'left:-1vw'}; font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(120px,20vw,280px); line-height:1; color:${BLACK}; opacity:.04; pointer-events:none; z-index:0;`}>{n}</span>
 
           <div class="exhibit-media" style={`position:relative; z-index:1; order:${i % 2 === 0 ? 1 : 2}; border:1px solid ${LINE}; overflow:hidden;`}>
             <Image src={img} alt={alt} width={800} height={500} class="proj-img" style="width:100%; aspect-ratio:16/10; display:block; object-fit:cover; object-position:top; transition:transform .6s ease;" />
           </div>
 
           <div style={`position:relative; z-index:1; order:${i % 2 === 0 ? 2 : 1};`}>
-            <div style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${RED}; margin-bottom:10px;`}><span data-i18n="work.exhibitLabel">Exhibit №</span>{n} — <span data-i18n={`work.${n}.cat`}>{cat}</span></div>
-            <h3 style={`font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(28px,3.6vw,44px); color:${INK}; line-height:1; margin-bottom:16px;`}>{title}</h3>
-            <p data-i18n={`work.${n}.desc`} style="font-size:14.5px; line-height:1.7; color:rgba(28,21,18,.6); max-width:48ch; margin-bottom:20px;">{desc}</p>
+            <div style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${VIOLET}; margin-bottom:10px;`}><span data-i18n="work.exhibitLabel">Exhibit №</span>{n} — <span data-i18n={`work.${n}.cat`}>{cat}</span></div>
+            <h3 style={`font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(28px,3.6vw,44px); color:${BLACK}; line-height:1; margin-bottom:16px;`}>{title}</h3>
+            <p data-i18n={`work.${n}.desc`} style="font-size:14.5px; line-height:1.7; color:rgba(23,21,34,.6); max-width:48ch; margin-bottom:20px;">{desc}</p>
             <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px;">
-              {tags.map(t => <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; padding:4px 10px; border:1px solid ${LINE}; color:rgba(28,21,18,.55);`}>{t}</span>)}
+              {tags.map(t => <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; padding:4px 10px; border:1px solid ${LINE}; color:rgba(23,21,34,.55);`}>{t}</span>)}
             </div>
-            <a href={url} target="_blank" rel="noopener noreferrer" class="exhibit-link" style={`display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:${INK}; text-decoration:none; border-bottom:1px solid ${INK}; padding-bottom:3px;`}><span data-i18n="work.openCase">Open case file</span> <span>↗</span></a>
+            <a href={url} target="_blank" rel="noopener noreferrer" class="exhibit-link" style={`display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:${BLACK}; text-decoration:none; border-bottom:1px solid ${BLACK}; padding-bottom:3px;`}><span data-i18n="work.openCase">Open case file</span> <span>↗</span></a>
           </div>
         </article>
       ))}
@@ -237,30 +238,30 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- SIDE PROJECTS -->
     <section id="side-projects" style={`padding:clamp(56px,9vh,100px) 0; border-bottom:1px solid ${LINE};`}>
       <div class="r-pad" style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,44px); padding-left:clamp(24px,5vw,64px); padding-right:clamp(24px,5vw,64px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="archive.header">Archive — visual reel</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="archive.scroll">Scroll to browse →</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="archive.header">Archive — visual reel</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);" data-i18n="archive.scroll">Scroll to browse →</span>
       </div>
 
       <!-- REEL PROJECT CARDS -->
       <div class="r-pad reel-projects" style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px; padding-left:clamp(24px,5vw,64px); padding-right:clamp(24px,5vw,64px); margin-bottom:clamp(36px,6vh,56px);">
         {REEL_PROJECTS.map(({ id, title, subtitle, desc, imgs }) => (
           <div class="reel-card" style={`border:1px solid ${LINE};`}>
-            <div class="reel-slides" style="position:relative; aspect-ratio:16/10; overflow:hidden; background:rgba(28,21,18,.04);">
+            <div class="reel-slides" style="position:relative; aspect-ratio:16/10; overflow:hidden; background:rgba(23,21,34,.04);">
               {imgs.map((img, i) => (
                 <Image src={img} alt={title} width={900} height={563} class="reel-slide" data-slide={i} style={`position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:${i === 0 ? 1 : 0}; transition:opacity .4s ease;`} />
               ))}
-              <button type="button" class="reel-nav reel-prev" aria-label="Previous" style={`all:unset; cursor:pointer; position:absolute; left:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(242,228,208,.85); color:${INK}; font-size:14px;`}>←</button>
-              <button type="button" class="reel-nav reel-next" aria-label="Next" style={`all:unset; cursor:pointer; position:absolute; right:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(242,228,208,.85); color:${INK}; font-size:14px;`}>→</button>
+              <button type="button" class="reel-nav reel-prev" aria-label="Previous" style={`all:unset; cursor:pointer; position:absolute; left:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(245,243,250,.85); color:${BLACK}; font-size:14px;`}>←</button>
+              <button type="button" class="reel-nav reel-next" aria-label="Next" style={`all:unset; cursor:pointer; position:absolute; right:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; background:rgba(245,243,250,.85); color:${BLACK}; font-size:14px;`}>→</button>
               <div class="reel-dots" style="position:absolute; bottom:10px; left:0; right:0; display:flex; justify-content:center; gap:6px;">
                 {imgs.map((_, i) => (
-                  <span class="reel-dot" data-dot={i} style={`width:6px; height:6px; border-radius:50%; background:${i === 0 ? INK : 'rgba(28,21,18,.3)'}; transition:background .25s ease;`}></span>
+                  <span class="reel-dot" data-dot={i} style={`width:6px; height:6px; border-radius:50%; background:${i === 0 ? BLACK : 'rgba(23,21,34,.3)'}; transition:background .25s ease;`}></span>
                 ))}
               </div>
             </div>
             <div style={`padding:16px 18px; border-top:1px solid ${LINE};`}>
-              <h3 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; color:${INK}; margin-bottom:2px;`}>{title}</h3>
-              <div data-i18n={`reel.${id}.subtitle`} style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:${RED}; margin-bottom:9px;`}>{subtitle}</div>
-              <p data-i18n={`reel.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(28,21,18,.6);">{desc}</p>
+              <h3 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; color:${BLACK}; margin-bottom:2px;`}>{title}</h3>
+              <div data-i18n={`reel.${id}.subtitle`} style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:${VIOLET}; margin-bottom:9px;`}>{subtitle}</div>
+              <p data-i18n={`reel.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(23,21,34,.6);">{desc}</p>
             </div>
           </div>
         ))}
@@ -273,8 +274,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
               <Image src={img} alt={alt} width={600} height={420} style="width:100%; aspect-ratio:4/3; display:block; object-fit:cover; filter:grayscale(1); transition:filter .5s ease, transform .5s ease;" class="sp-img" />
             </div>
             <div style={`padding:12px 14px; border-top:1px solid ${LINE}; display:flex; align-items:center; justify-content:space-between; gap:8px;`}>
-              <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; color:${RED};`}>0{i + 1}</span>
-              <h3 style={`font-family:'Poppins',sans-serif; font-weight:600; font-size:13.5px; color:${INK}; margin:0;`}>{title}</h3>
+              <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; color:${VIOLET};`}>0{i + 1}</span>
+              <h3 style={`font-family:'Poppins',sans-serif; font-weight:600; font-size:13.5px; color:${BLACK}; margin:0;`}>{title}</h3>
             </div>
           </button>
         ))}
@@ -283,14 +284,14 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     <!-- MODAL SIDE PROJECTS -->
     <div id="sp-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(12,9,10,.94); align-items:center; justify-content:center;">
-      <button id="sp-close" style={`all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${CREAM}; border:1px solid rgba(245,230,210,.35); padding:10px 18px;`}>✕ <span data-i18n="modal.close">Close</span></button>
-      <button id="sp-prev" style={`all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${CREAM}; font-size:18px;`}>←</button>
-      <button id="sp-next" style={`all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${CREAM}; font-size:18px;`}>→</button>
+      <button id="sp-close" style={`all:unset; cursor:pointer; position:absolute; top:22px; right:28px; z-index:10; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${BG}; border:1px solid rgba(245,230,210,.35); padding:10px 18px;`}>✕ <span data-i18n="modal.close">Close</span></button>
+      <button id="sp-prev" style={`all:unset; cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${BG}; font-size:18px;`}>←</button>
+      <button id="sp-next" style={`all:unset; cursor:pointer; position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border:1px solid rgba(245,230,210,.35); display:flex; align-items:center; justify-content:center; color:${BG}; font-size:18px;`}>→</button>
 
-      <div style={`position:relative; width:min(90vw,760px); max-height:88vh; overflow-y:auto; border:1px solid rgba(245,230,210,.3); background:${CREAM};`}>
-        <div style={`padding:20px 24px; border-bottom:1px solid ${LINE}; position:sticky; top:0; background:${CREAM}; z-index:5;`}>
-          <div id="sp-modal-num" style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${RED}; margin-bottom:4px;`}></div>
-          <h3 id="sp-modal-title" style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:${INK}; margin:0;`}></h3>
+      <div style={`position:relative; width:min(90vw,760px); max-height:88vh; overflow-y:auto; border:1px solid rgba(245,230,210,.3); background:${BG};`}>
+        <div style={`padding:20px 24px; border-bottom:1px solid ${LINE}; position:sticky; top:0; background:${BG}; z-index:5;`}>
+          <div id="sp-modal-num" style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${VIOLET}; margin-bottom:4px;`}></div>
+          <h3 id="sp-modal-title" style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:${BLACK}; margin:0;`}></h3>
         </div>
         <img id="sp-modal-img" src="" alt="" style="width:100%; display:block;" />
       </div>
@@ -299,8 +300,8 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- EXPERIENCE / LOG -->
     <section id="experience" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="log.header">Log — where I've been</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="log.subtitle">Work &amp; education, reverse-chronological</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="log.header">Log — where I've been</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);" data-i18n="log.subtitle">Work &amp; education, reverse-chronological</span>
       </div>
 
       {Object.entries(
@@ -309,20 +310,20 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
           return acc;
         }, {})
       ).sort((a, b) => b[0] - a[0]).map(([year, entries]) => (
-        <div class="log-year" style={`display:grid; grid-template-columns:140px 1fr; gap:clamp(16px,3vw,32px); border-top:1px solid ${INK}; padding:clamp(20px,3vh,32px) 0;`}>
-          <div style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(40px,5vw,64px); color:${INK}; line-height:1;`}>{year}</div>
+        <div class="log-year" style={`display:grid; grid-template-columns:140px 1fr; gap:clamp(16px,3vw,32px); border-top:1px solid ${BLACK}; padding:clamp(20px,3vh,32px) 0;`}>
+          <div style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(40px,5vw,64px); color:${BLACK}; line-height:1;`}>{year}</div>
           <div>
             {entries.map(({ id, type, title, role, desc, date, active }) => (
               <div style="padding:14px 0; display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:start;">
-                <span data-i18n={`log.type.${type.toLowerCase()}`} style={`font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:${RED}; border:1px solid rgba(155,30,41,.4); padding:3px 8px; margin-top:3px; white-space:nowrap;`}>{type}</span>
+                <span data-i18n={`log.type.${type.toLowerCase()}`} style={`font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:${VIOLET}; border:1px solid rgba(108,76,207,.4); padding:3px 8px; margin-top:3px; white-space:nowrap;`}>{type}</span>
                 <div>
                   <div style="display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:3px;">
-                    {active && <span style={`width:6px; height:6px; background:${RED}; display:inline-block; border-radius:50%;`}></span>}
-                    <h4 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:16.5px; color:${INK};`}>{title}</h4>
-                    <span data-i18n={`log.${id}.date`} style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(28,21,18,.4);">{date}</span>
+                    {active && <span style={`width:6px; height:6px; background:${VIOLET}; display:inline-block; border-radius:50%;`}></span>}
+                    <h4 style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:16.5px; color:${BLACK};`}>{title}</h4>
+                    <span data-i18n={`log.${id}.date`} style="font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(23,21,34,.4);">{date}</span>
                   </div>
-                  <div data-i18n={`log.${id}.role`} style="font-family:'Inter',sans-serif; font-weight:600; font-size:12.5px; color:rgba(28,21,18,.6); margin-bottom:4px;">{role}</div>
-                  {desc && <p data-i18n={`log.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(28,21,18,.5); max-width:60ch;">{desc}</p>}
+                  <div data-i18n={`log.${id}.role`} style="font-family:'Inter',sans-serif; font-weight:600; font-size:12.5px; color:rgba(23,21,34,.6); margin-bottom:4px;">{role}</div>
+                  {desc && <p data-i18n={`log.${id}.desc`} style="font-size:12.5px; line-height:1.6; color:rgba(23,21,34,.5); max-width:60ch;">{desc}</p>}
                 </div>
               </div>
             ))}
@@ -334,17 +335,17 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- FULL TECH STACK -->
     <section id="tech" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,44px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="tech.header">Stack — the full index</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);">{TECH_STACK.reduce((n, g) => n + g.items.length, 0)} <span data-i18n="tech.count">technologies</span></span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="tech.header">Stack — the full index</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);">{TECH_STACK.reduce((n, g) => n + g.items.length, 0)} <span data-i18n="tech.count">technologies</span></span>
       </div>
 
-      <div style={`border-top:1px solid ${INK};`}>
+      <div style={`border-top:1px solid ${BLACK};`}>
         {TECH_STACK.map(({ id, label, items }) => (
           <div style={`padding:16px 0; border-bottom:1px solid ${LINE}; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 0;`}>
-            <span data-i18n={`tech.label.${id}`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:13.5px; color:${INK}; width:190px; flex-shrink:0;`}>{label}</span>
-            <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:2; color:rgba(28,21,18,.6);">
+            <span data-i18n={`tech.label.${id}`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:13.5px; color:${BLACK}; width:190px; flex-shrink:0;`}>{label}</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:2; color:rgba(23,21,34,.6);">
               {items.map((item, i) => (
-                <>{item}{i < items.length - 1 && <span style={`color:${RED};`}> · </span>}</>
+                <>{item}{i < items.length - 1 && <span style={`color:${VIOLET};`}> · </span>}</>
               ))}
             </span>
           </div>
@@ -355,36 +356,36 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     <!-- PRICING -->
     <section id="pricing" class="r-pad" style={`padding:clamp(56px,9vh,100px) clamp(24px,5vw,64px); border-bottom:1px solid ${LINE};`}>
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,5vh,48px);">
-        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED};`} data-i18n="pricing.header">Pricing — landing pages</h2>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(28,21,18,.4);" data-i18n="pricing.usd">Prices in USD</span>
+        <h2 style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET};`} data-i18n="pricing.header">Pricing — landing pages</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(23,21,34,.4);" data-i18n="pricing.usd">Prices in USD</span>
       </div>
 
-      <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #1c1512; border-left:1px solid #1c1512;">
+      <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #171522; border-left:1px solid #171522;">
         {PRICING.map(({ n, title, price, original, desc, features, highlight }) => {
           const discount = Math.round((1 - Number(price) / Number(original)) * 100);
           return (
-            <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${INK}; color:${CREAM};` : ''}`}>
-              {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${CREAM}; background:${RED}; padding:5px 10px;`}>Most chosen</span>}
-              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${RED};`}>{n}</span>
-              <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? CREAM : INK};`}>{title}</h3>
+            <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${BLACK}; color:${BG};` : ''}`}>
+              {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${BG}; background:${VIOLET}; padding:5px 10px;`}>Most chosen</span>}
+              <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${VIOLET};`}>{n}</span>
+              <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? BG : BLACK};`}>{title}</h3>
 
               <div class="price-box" style="position:relative; height:clamp(34px,4vw,42px); margin-bottom:14px; cursor:pointer;">
                 <div class="price-hidden" style="position:absolute; inset:0; display:flex; align-items:baseline; gap:8px; transition:opacity .25s ease;">
-                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,4vw,42px); color:${highlight ? CREAM : INK};`}>??</span>
-                  <span data-i18n="pricing.hoverHint" style={`font-family:'JetBrains Mono',monospace; font-size:10.5px; color:${highlight ? 'rgba(242,228,208,.5)' : 'rgba(28,21,18,.4)'};`}>Hover to see the price</span>
+                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,4vw,42px); color:${highlight ? BG : BLACK};`}>??</span>
+                  <span data-i18n="pricing.hoverHint" style={`font-family:'JetBrains Mono',monospace; font-size:10.5px; color:${highlight ? 'rgba(245,243,250,.5)' : 'rgba(23,21,34,.4)'};`}>Hover to see the price</span>
                 </div>
                 <div class="price-reveal" style="position:absolute; inset:0; display:flex; align-items:baseline; gap:8px; transition:opacity .25s ease;">
-                  <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.06em; color:${CREAM}; background:${RED}; padding:2px 6px;`}>-{discount}%</span>
-                  <span style={`font-family:'JetBrains Mono',monospace; font-size:13px; text-decoration:line-through; color:${highlight ? 'rgba(242,228,208,.45)' : 'rgba(28,21,18,.35)'};`}>${original}</span>
-                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(26px,3vw,32px); color:${highlight ? CREAM : INK};`}>${price}</span>
+                  <span style={`font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.06em; color:${BG}; background:${VIOLET}; padding:2px 6px;`}>-{discount}%</span>
+                  <span style={`font-family:'JetBrains Mono',monospace; font-size:13px; text-decoration:line-through; color:${highlight ? 'rgba(245,243,250,.45)' : 'rgba(23,21,34,.35)'};`}>${original}</span>
+                  <span style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(26px,3vw,32px); color:${highlight ? BG : BLACK};`}>${price}</span>
                 </div>
               </div>
 
-              <p data-i18n={`pricing.${n}.desc`} style={`font-size:13px; line-height:1.6; margin-bottom:18px; color:${highlight ? 'rgba(242,228,208,.65)' : 'rgba(28,21,18,.55)'};`}>{desc}</p>
+              <p data-i18n={`pricing.${n}.desc`} style={`font-size:13px; line-height:1.6; margin-bottom:18px; color:${highlight ? 'rgba(245,243,250,.65)' : 'rgba(23,21,34,.55)'};`}>{desc}</p>
               <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
                 {features.map((f, i) => (
-                  <li style={`display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:${highlight ? 'rgba(242,228,208,.8)' : 'rgba(28,21,18,.65)'};`}>
-                    <span style={`color:${RED};`}>✦</span> <span data-i18n={`pricing.${n}.feature.${i}`}>{f}</span>
+                  <li style={`display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:${highlight ? 'rgba(245,243,250,.8)' : 'rgba(23,21,34,.65)'};`}>
+                    <span style={`color:${VIOLET};`}>✦</span> <span data-i18n={`pricing.${n}.feature.${i}`}>{f}</span>
                   </li>
                 ))}
               </ul>
@@ -393,61 +394,61 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
         })}
       </div>
 
-      <p style="font-size:12.5px; line-height:1.7; color:rgba(28,21,18,.5); max-width:70ch; margin-top:20px;" data-i18n="pricing.note">
-        Prices shown are for landing pages only. Business websites, e-commerce, web apps and other projects are quoted based on your specific needs — <a href="#contact" style={`color:${INK}; text-decoration:underline;`}>get in touch</a> for a quote. In every case, hosting, domain and any third-party services are paid directly by you — they are not included in the price.
+      <p style="font-size:12.5px; line-height:1.7; color:rgba(23,21,34,.5); max-width:70ch; margin-top:20px;" data-i18n="pricing.note">
+        Prices shown are for landing pages only. Business websites, e-commerce, web apps and other projects are quoted based on your specific needs — <a href="#contact" style={`color:${BLACK}; text-decoration:underline;`}>get in touch</a> for a quote. In every case, hosting, domain and any third-party services are paid directly by you — they are not included in the price.
       </p>
     </section>
 
     <!-- CONTACT / CTA -->
-    <section id="contact" class="r-pad" style={`padding:clamp(64px,11vh,130px) clamp(24px,5vw,64px); background:${INK};`}>
+    <section id="contact" class="r-pad" style={`padding:clamp(64px,11vh,130px) clamp(24px,5vw,64px); background:${BLACK};`}>
       <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
         <div>
-          <div style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${RED}; margin-bottom:20px;`} data-i18n="contact.header">Contact — closing statement</div>
-          <h2 style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,5.4vw,62px); line-height:1.02; letter-spacing:-.02em; color:${CREAM}; max-width:16ch; margin-bottom:24px;`} data-i18n="contact.h2">Let's build something worth remembering.</h2>
-          <p style="max-width:50ch; font-size:15px; line-height:1.7; color:rgba(242,228,208,.6); margin-bottom:36px;" data-i18n="contact.paragraph">Open for freelance projects, collaborations and full-time opportunities. Tell me about your idea — we'll figure out scope and timing together.</p>
+          <div style={`font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:${VIOLET}; margin-bottom:20px;`} data-i18n="contact.header">Contact — closing statement</div>
+          <h2 style={`font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(34px,5.4vw,62px); line-height:1.02; letter-spacing:-.02em; color:${BG}; max-width:16ch; margin-bottom:24px;`} data-i18n="contact.h2">Let's build something worth remembering.</h2>
+          <p style="max-width:50ch; font-size:15px; line-height:1.7; color:rgba(245,243,250,.6); margin-bottom:36px;" data-i18n="contact.paragraph">Open for freelance projects, collaborations and full-time opportunities. Tell me about your idea — we'll figure out scope and timing together.</p>
           <div style="display:inline-flex; flex-wrap:wrap;">
-            <a href="mailto:franespindola71@gmail.com" data-i18n="contact.btn.email" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${INK}; text-decoration:none; background:${CREAM}; padding:17px 28px; border:1px solid ${CREAM};`}>Get in touch →</a>
-            <a href="#work" data-i18n="contact.btn.work" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${CREAM}; text-decoration:none; background:transparent; padding:17px 28px; border:1px solid rgba(242,228,208,.35); border-left:none;`}>Revisit the work</a>
+            <a href="mailto:franespindola71@gmail.com" data-i18n="contact.btn.email" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${BLACK}; text-decoration:none; background:${BG}; padding:17px 28px; border:1px solid ${BG};`}>Get in touch →</a>
+            <a href="#work" data-i18n="contact.btn.work" style={`font-family:'JetBrains Mono',monospace; font-weight:500; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:${BG}; text-decoration:none; background:transparent; padding:17px 28px; border:1px solid rgba(245,243,250,.35); border-left:none;`}>Revisit the work</a>
           </div>
         </div>
-        <div style={`width:clamp(70px,8vw,110px); height:clamp(70px,8vw,110px); color:${RED}; flex-shrink:0;`} set:html={STAMP} />
+        <div style={`width:clamp(70px,8vw,110px); height:clamp(70px,8vw,110px); color:${VIOLET}; flex-shrink:0;`} set:html={STAMP} />
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer style={`background:${INK}; color:${CREAM};`}>
-      <div class="r-pad" style={`padding:clamp(40px,6vh,56px) clamp(24px,5vw,64px) 0; border-bottom:1px solid rgba(242,228,208,.12);`}>
+    <footer style={`background:${BLACK}; color:${BG};`}>
+      <div class="r-pad" style={`padding:clamp(40px,6vh,56px) clamp(24px,5vw,64px) 0; border-bottom:1px solid rgba(245,243,250,.12);`}>
         <Image src={logo} alt="YSC by fryscou" width={1774} height={887} style="height:clamp(64px,9vw,120px); width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); margin-bottom:clamp(32px,5vh,48px);" />
       </div>
       <div class="r-pad footer-grid" style="padding:clamp(40px,6vh,56px) clamp(24px,5vw,64px); display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:clamp(28px,4vw,48px);">
         <div>
-          <p style="font-size:12.5px; line-height:1.7; color:rgba(242,228,208,.55); max-width:34ch;" data-i18n="footer.desc">Full Stack Engineer studio based in Buenos Aires, Argentina — building fast, elegant and reliable digital products end to end.</p>
+          <p style="font-size:12.5px; line-height:1.7; color:rgba(245,243,250,.55); max-width:34ch;" data-i18n="footer.desc">Full Stack Engineer studio based in Buenos Aires, Argentina — building fast, elegant and reliable digital products end to end.</p>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.navHeader">Navigation</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,243,250,.4); margin-bottom:16px;" data-i18n="footer.navHeader">Navigation</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
-            {FOOTER_NAV.map(({ label, href }) => <a href={href} data-i18n={`nav.${href.slice(1)}`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{label}</a>)}
+            {FOOTER_NAV.map(({ label, href }) => <a href={href} data-i18n={`nav.${href.slice(1)}`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;">{label}</a>)}
           </div>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.servicesHeader">Services</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,243,250,.4); margin-bottom:16px;" data-i18n="footer.servicesHeader">Services</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
-            {FOOTER_SERVICES.map(s => <a href="#services" data-i18n={`services.${s.n}.title`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;">{s.title}</a>)}
+            {FOOTER_SERVICES.map(s => <a href="#services" data-i18n={`services.${s.n}.title`} class="footer-link" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;">{s.title}</a>)}
           </div>
         </div>
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,228,208,.4); margin-bottom:16px;" data-i18n="footer.elsewhereHeader">Elsewhere</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,243,250,.4); margin-bottom:16px;" data-i18n="footer.elsewhereHeader">Elsewhere</div>
           <div style="display:flex; flex-direction:column; gap:12px;">
-            <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Github size={15} /> GitHub</a>
-            <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Linkedin size={15} /> LinkedIn</a>
-            <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Instagram size={15} /> Instagram</a>
-            <a href="mailto:franespindola71@gmail.com" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(242,228,208,.75); text-decoration:none;"><Mail size={15} /> <span data-i18n="footer.email">Email</span></a>
+            <a href="https://github.com/esspindola" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;"><Github size={15} /> GitHub</a>
+            <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;"><Linkedin size={15} /> LinkedIn</a>
+            <a href="https://instagram.com/frysccou" target="_blank" rel="noopener" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;"><Instagram size={15} /> Instagram</a>
+            <a href="mailto:franespindola71@gmail.com" class="footer-link" style="display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; color:rgba(245,243,250,.75); text-decoration:none;"><Mail size={15} /> <span data-i18n="footer.email">Email</span></a>
           </div>
         </div>
       </div>
-      <div class="r-pad" style="padding:18px clamp(24px,5vw,64px); border-top:1px solid rgba(242,228,208,.12); display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(242,228,208,.4); text-transform:uppercase;">© 2026 YSC by fryscou — Buenos Aires, Argentina</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(242,228,208,.4); text-transform:uppercase;" data-i18n="footer.tagline">Designed &amp; built by Francisco Espindola</span>
+      <div class="r-pad" style="padding:18px clamp(24px,5vw,64px); border-top:1px solid rgba(245,243,250,.12); display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(245,243,250,.4); text-transform:uppercase;">© 2026 YSC by fryscou — Buenos Aires, Argentina</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(245,243,250,.4); text-transform:uppercase;" data-i18n="footer.tagline">Designed &amp; built by Francisco Espindola</span>
       </div>
     </footer>
 
@@ -528,10 +529,10 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 
     function show(index) {
       slides[active].style.opacity = '0';
-      dots[active].style.background = 'rgba(28,21,18,.3)';
+      dots[active].style.background = 'rgba(23,21,34,.3)';
       active = (index + slides.length) % slides.length;
       slides[active].style.opacity = '1';
-      dots[active].style.background = '#1c1512';
+      dots[active].style.background = '#171522';
     }
 
     card.querySelector('.reel-prev')?.addEventListener('click', () => show(active - 1));
@@ -556,7 +557,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
         railLinks.forEach(l => {
           const active = l.getAttribute('data-rail') === id;
           l.style.opacity = active ? '1' : '.4';
-          l.style.color = active ? '#9b1e29' : '#1c1512';
+          l.style.color = active ? '#6C4CCF' : '#171522';
         });
       }
     });
@@ -612,7 +613,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     'pricing.03.feature.3': 'Configuración de analítica (GA / Meta Pixel)',
     'pricing.03.feature.4': '3 rondas de revisiones',
     'pricing.03.feature.5': '15 días de soporte post-lanzamiento',
-    'pricing.note': 'Los precios mostrados son solo para landing pages. Sitios empresariales, e-commerce, aplicaciones web y otros proyectos se cotizan según tus necesidades específicas — <a href="#contact" style="color:#1c1512; text-decoration:underline;">contáctame</a> para una cotización. En todos los casos, el hosting, el dominio y cualquier servicio de terceros corren por tu cuenta — no están incluidos en el precio.',
+    'pricing.note': 'Los precios mostrados son solo para landing pages. Sitios empresariales, e-commerce, aplicaciones web y otros proyectos se cotizan según tus necesidades específicas — <a href="#contact" style="color:#171522; text-decoration:underline;">contáctame</a> para una cotización. En todos los casos, el hosting, el dominio y cualquier servicio de terceros corren por tu cuenta — no están incluidos en el precio.',
 
     'work.header': 'Trabajos — casos destacados', 'work.count': 'casos de estudio', 'work.exhibitLabel': 'Expediente Nº',
     'work.01.cat': 'App de Inversores · Web3',
@@ -724,7 +725,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
     .hero-grid { grid-template-columns: 1fr !important; }
     .hero-btns { flex-direction: row !important; }
-    .hero-btn-2 { border-top: 1px solid #1c1512 !important; border-left: none !important; }
+    .hero-btn-2 { border-top: 1px solid #171522 !important; border-left: none !important; }
     .log-year { grid-template-columns: 1fr !important; }
     .log-year > div:first-child { margin-bottom: 4px; }
   }
